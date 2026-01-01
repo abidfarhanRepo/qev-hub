@@ -4,6 +4,25 @@ Electrifying Qatar: Optimizing Infrastructure & Supply Chain
 
 A centralized digital ecosystem connecting Qatari consumers directly with international EV manufacturers.
 
+---
+
+## 🤖 For AI Agents & LLMs
+
+If you're an AI coding assistant (Claude, GPT-4, GLM-4, DeepSeek, etc.) working on this codebase:
+
+1. **Start Here**: Read [AI_CONTEXT.md](AI_CONTEXT.md) - Comprehensive guide for AI agents
+2. **Navigate**: Use [CODEBASE_MAP.md](CODEBASE_MAP.md) - Detailed file structure and locations
+3. **Reference**: Check [DOCUMENTATION.md](DOCUMENTATION.md) - Full technical documentation
+
+These files provide structured context about:
+- Database schema and RLS patterns
+- Common code patterns and conventions
+- How to implement features safely
+- Where to find specific functionality
+- Testing and debugging approaches
+
+---
+
 ## Project Structure
 
 ```

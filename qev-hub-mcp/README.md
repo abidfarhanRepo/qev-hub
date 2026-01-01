@@ -2,6 +2,27 @@
 
 Model Context Protocol server for QEV Hub - Enables AI assistants to interact with the EV marketplace and order tracking system.
 
+---
+
+## 🤖 For AI Agents & LLMs
+
+This MCP server allows AI assistants (Claude, GPT-4, GLM-4, Gemini, etc.) to:
+- Query the QEV Hub database through natural language
+- Search and filter electric vehicles
+- Track and update orders
+- Generate analytics and reports
+- Manage user profiles
+
+**Key Implementation Details**:
+- Built with TypeScript and `@modelcontextprotocol/sdk`
+- Uses Supabase client with service role key (bypasses RLS)
+- Implements 8 tools for database interaction
+- Runs as stdio-based MCP server
+
+**For Development**: See `src/index.ts` for tool implementations and patterns.
+
+---
+
 ## Features
 
 This MCP server provides tools to:
