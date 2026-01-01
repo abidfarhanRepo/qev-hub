@@ -92,6 +92,12 @@ QEV Hub is a comprehensive platform designed to revolutionize electric vehicle a
 - Ensures type safety across web and mobile
 - Published as local NPM package
 
+#### **qev-hub-mcp**
+- Model Context Protocol (MCP) server
+- Enables AI assistants to interact with the system
+- Provides tools for querying and managing data
+- Connects directly to Supabase backend
+
 #### **Supabase Backend**
 - PostgreSQL database with RLS (Row Level Security)
 - User authentication and authorization
@@ -162,6 +168,14 @@ QEV Hub is a comprehensive platform designed to revolutionize electric vehicle a
 - Toast notifications for changes
 - Live order tracking
 
+### 🤖 **AI Integration (MCP Server)**
+- Natural language queries to database
+- Search vehicles through AI conversation
+- Track orders via AI assistant
+- Update order status through AI commands
+- Get analytics and reports via conversation
+- Works with Claude Desktop, VS Code (Cline), and other MCP-compatible tools
+
 ---
 
 ## 4. Technology Stack
@@ -209,6 +223,15 @@ QEV Hub is a comprehensive platform designed to revolutionize electric vehicle a
 | **Prettier** | Code formatting |
 | **Metro** | React Native bundler |
 
+### AI Integration
+
+| Technology | Purpose |
+|------------|---------|
+| **MCP (Model Context Protocol)** | AI assistant integration protocol |
+| **@modelcontextprotocol/sdk** | MCP SDK for TypeScript |
+| **Claude Desktop** | Desktop AI assistant (supports MCP) |
+| **VS Code (Cline)** | Code editor with AI (supports MCP) |
+
 ---
 
 ## 5. Project Structure
@@ -218,6 +241,15 @@ QEV/
 ├── README.md                           # Project overview and setup
 ├── DATABASE_REBUILD_COMPLETE.md        # Database migration documentation
 ├── DOCUMENTATION.md                    # This file
+│
+├── qev-hub-mcp/                        # MCP Server for AI integration
+│   ├── src/
+│   │   └── index.ts                   # MCP server implementation
+│   ├── package.json                   # Dependencies
+│   ├── tsconfig.json                  # TypeScript config
+│   ├── README.md                      # MCP server documentation
+│   ├── SETUP.md                       # Setup instructions
+│   └── .env.example                   # Environment template
 │
 ├── qev-hub-web/                        # Next.js web application
 │   ├── public/                         # Static assets
@@ -754,6 +786,56 @@ router.push('/marketplace')
 
 ## 9. API & Integration
 
+### MCP Server (AI Integration)
+
+The QEV Hub MCP server enables AI assistants to interact with the system through natural language.
+
+**Location**: [qev-hub-mcp/](qev-hub-mcp/)
+
+#### Available Tools
+
+1. **search_vehicles** - Search and filter EVs in marketplace
+2. **get_vehicle** - Get detailed vehicle information
+3. **get_orders** - Retrieve orders with filtering
+4. **get_order_tracking** - Get detailed order tracking
+5. **update_order_status** - Update order status (admin)
+6. **get_user_profile** - Get user information
+7. **get_order_analytics** - Get statistics and analytics
+8. **get_sustainability_metrics** - Get environmental impact data
+
+#### Setup
+
+See [qev-hub-mcp/SETUP.md](qev-hub-mcp/SETUP.md) for detailed setup instructions.
+
+**Quick start**:
+```bash
+cd qev-hub-mcp
+npm install
+npm run build
+
+# Create .env file with Supabase credentials
+cp .env.example .env
+# Edit .env with your credentials
+
+# Test the server
+npm start
+```
+
+#### Example Usage
+
+Once configured with Claude Desktop or VS Code:
+
+```
+User: "Show me all Tesla vehicles under 200,000 QAR"
+AI: [Uses search_vehicles tool to query database]
+
+User: "What's the status of order #QEV-12345?"
+AI: [Uses get_order_tracking tool to fetch tracking info]
+
+User: "Update order XYZ to 'shipped' status"
+AI: [Uses update_order_status tool to update the order]
+```
+
 ### Supabase Client
 
 **Location**: [src/lib/supabase.ts](qev-hub-web/src/lib/supabase.ts)
@@ -917,6 +999,23 @@ Creates test accounts:
 - Consumer: consumer@test.com / password123
 - Admin: admin@test.com / password123
 
+### Step 7: Setup MCP Server (Optional - For AI Integration)
+
+```bash
+cd qev-hub-mcp
+npm install
+npm run build
+
+# Create environment file
+cp .env.example .env
+# Edit .env with Supabase service role key
+
+# Test the server
+npm start
+```
+
+See [qev-hub-mcp/SETUP.md](qev-hub-mcp/SETUP.md) for detailed configuration with Claude Desktop or VS Code.
+
 ---
 
 ## 11. Deployment
@@ -1071,9 +1170,48 @@ git push origin feature/new-feature
 
 ---
 
+## MCP Server Capabilities
+
+The QEV Hub MCP server provides these AI-powered features:
+
+### Natural Language Queries
+```
+"Show me all available EVs from Tesla"
+"What's the cheapest vehicle under 150,000 QAR?"
+"List all orders that are currently in customs"
+"How many orders were placed last month?"
+```
+
+### Order Management
+```
+"Update order ABC123 to shipped status"
+"Add a note to order XYZ: Vehicle cleared customs"
+"What's the current location of order ABC123?"
+"Show me all pending orders"
+```
+
+### Analytics & Reporting
+```
+"What's the total revenue this month?"
+"How many vehicles have we sold?"
+"Show me sustainability metrics for all EVs"
+"What's the average order value?"
+```
+
+### User Management
+```
+"Get profile information for user XYZ"
+"How many admin users are there?"
+```
+
+For detailed setup instructions, see [qev-hub-mcp/SETUP.md](qev-hub-mcp/SETUP.md).
+
+---
+
 ## Future Enhancements
 
 ### Planned Features
+- [x] **MCP Server for AI integration** ✅ **Completed!**
 - [ ] Multi-language support (Arabic + English)
 - [ ] Payment gateway integration (Qatar Payment Gateway)
 - [ ] Vehicle comparison tool
@@ -1083,7 +1221,7 @@ git push origin feature/new-feature
 - [ ] Referral program
 - [ ] Advanced analytics dashboard
 - [ ] Mobile app push notifications
-- [ ] Chatbot support (AI-powered)
+- [ ] Enhanced AI chatbot with voice support
 - [ ] Virtual showroom (3D vehicle viewer)
 - [ ] Integration with Qatar customs API
 - [ ] Blockchain-based vehicle history
