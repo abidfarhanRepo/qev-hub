@@ -81,7 +81,7 @@ export default function VehicleDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-background to-muted/30 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4" />
           <p>Loading vehicle details...</p>
@@ -92,8 +92,8 @@ export default function VehicleDetailPage() {
 
   if (!vehicle) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <Card className="max-w-md">
+      <div className="min-h-screen bg-gradient-to-br from-background to-muted/30 flex items-center justify-center">
+        <Card className="glass-card tech-border max-w-md">
           <CardContent className="pt-6">
             <div className="text-center">
               <CarIcon className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
@@ -111,15 +111,16 @@ export default function VehicleDetailPage() {
     )
   }
 
+
   const depositAmount = vehicle.price_qar * 0.2
   const savingsAmount = vehicle.price_qar * 0.35
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-16">
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted/30 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
         <nav className="mb-6 text-sm text-muted-foreground">
-          <a href="/marketplace" className="hover:text-primary">
+          <a href="/marketplace" className="hover:text-primary transition-colors">
             Marketplace
           </a>
           <span className="mx-2">/</span>
@@ -133,7 +134,7 @@ export default function VehicleDetailPage() {
           {/* Left Column - Images */}
           <div className="space-y-4">
             {/* Main Image */}
-            <Card>
+            <Card className="glass-card tech-border overflow-hidden">
               <CardContent className="p-0">
                 {vehicle.image_url && !imageError ? (
                   <img
@@ -143,8 +144,8 @@ export default function VehicleDetailPage() {
                     onError={() => setImageError(true)}
                   />
                 ) : (
-                  <div className="h-96 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                    <CarIcon className="h-32 w-32 text-gray-400" />
+                  <div className="h-96 bg-gradient-to-br from-muted/50 to-muted flex items-center justify-center">
+                    <CarIcon className="h-32 w-32 text-muted-foreground/50" />
                   </div>
                 )}
               </CardContent>

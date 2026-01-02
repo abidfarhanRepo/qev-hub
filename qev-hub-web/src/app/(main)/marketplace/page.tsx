@@ -65,48 +65,50 @@ export default function MarketplacePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.05)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.05)_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-10 pointer-events-none"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            EV Marketplace
+          <h1 className="text-4xl font-black uppercase tracking-widest text-foreground mb-2">
+            EV <span className="text-primary">Marketplace</span>
           </h1>
-          <p className="text-gray-600">
+          <p className="text-muted-foreground">
             Browse and purchase electric vehicles directly from manufacturers
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="mb-8 flex gap-4 flex-wrap">
+        <div className="mb-8 flex gap-3 flex-wrap">
           <button
             onClick={() => setFilter('all')}
-            className={`px-4 py-2 rounded-lg font-medium transition ${
+            className={`px-6 py-2.5 rounded-none skew-x-[-10deg] font-bold uppercase tracking-wider transition-all ${
               filter === 'all'
-                ? 'bg-primary text-white'
-                : 'bg-white text-gray-700 hover:bg-gray-100'
+                ? 'bg-primary text-primary-foreground shadow-lg'
+                : 'bg-muted/20 text-muted-foreground hover:bg-muted/40 border border-border hover:border-primary/50'
             }`}
           >
-            All Vehicles ({vehicles.length})
+            <span className="skew-x-[10deg] inline-block">All Vehicles ({vehicles.length})</span>
           </button>
           <button
             onClick={() => setFilter('tesla')}
-            className={`px-4 py-2 rounded-lg font-medium transition ${
+            className={`px-6 py-2.5 rounded-none skew-x-[-10deg] font-bold uppercase tracking-wider transition-all ${
               filter === 'tesla'
-                ? 'bg-primary text-white'
-                : 'bg-white text-gray-700 hover:bg-gray-100'
+                ? 'bg-primary text-primary-foreground shadow-lg'
+                : 'bg-muted/20 text-muted-foreground hover:bg-muted/40 border border-border hover:border-primary/50'
             }`}
           >
-            Tesla
+            <span className="skew-x-[10deg] inline-block">Tesla</span>
           </button>
           <button
             onClick={() => setFilter('byd')}
-            className={`px-4 py-2 rounded-lg font-medium transition ${
+            className={`px-6 py-2.5 rounded-none skew-x-[-10deg] font-bold uppercase tracking-wider transition-all ${
               filter === 'byd'
-                ? 'bg-primary text-white'
-                : 'bg-white text-gray-700 hover:bg-gray-100'
+                ? 'bg-primary text-primary-foreground shadow-lg'
+                : 'bg-muted/20 text-muted-foreground hover:bg-muted/40 border border-border hover:border-primary/50'
             }`}
           >
-            BYD
+            <span className="skew-x-[10deg] inline-block">BYD</span>
           </button>
         </div>
 
@@ -116,80 +118,77 @@ export default function MarketplacePage() {
           </div>
         ) : filteredVehicles.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-gray-600">No vehicles available</p>
+            <p className="text-muted-foreground">No vehicles available</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredVehicles.map((vehicle) => (
               <Card
                 key={vehicle.id}
-                className="overflow-hidden hover:shadow-lg transition cursor-pointer"
+                className="bg-card/50 border-border backdrop-blur-md overflow-hidden hover:border-primary transition-all hover:-translate-y-1 cursor-pointer group rounded-xl shadow-2xl"
                 onClick={() => router.push(`/marketplace/${vehicle.id}`)}
               >
-                {/* Vehicle Image */}
-                <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                <div className="h-48 bg-gradient-to-br from-black/40 to-black/60 flex items-center justify-center relative overflow-hidden">
                   {vehicle.image_url ? (
                     <img
                       src={vehicle.image_url}
                       alt={`${vehicle.manufacturer} ${vehicle.model}`}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
-                    <CarIcon className="h-16 w-16 text-gray-400" />
+                    <CarIcon className="h-16 w-16 text-muted-foreground/50 group-hover:text-primary transition-colors" />
                   )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
 
-                {/* Vehicle Details */}
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-2">
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900">
+                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                         {vehicle.manufacturer} {vehicle.model}
                       </h3>
-                      <p className="text-sm text-gray-500">{vehicle.year}</p>
+                      <p className="text-sm text-muted-foreground">{vehicle.year}</p>
                     </div>
                     {vehicle.stock_count > 0 ? (
-                      <Badge variant="secondary">
+                      <Badge variant="secondary" className="bg-primary text-primary-foreground font-bold border-none">
                         In Stock ({vehicle.stock_count})
                       </Badge>
                     ) : (
-                      <Badge variant="destructive">Out of Stock</Badge>
+                      <Badge variant="destructive" className="font-bold">Out of Stock</Badge>
                     )}
                   </div>
 
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
                     {vehicle.description}
                   </p>
 
-                  {/* Specs */}
                   <div className="grid grid-cols-2 gap-2 mb-4">
-                    <div className="bg-muted p-2 rounded">
+                    <div className="bg-muted/20 p-2.5 rounded-lg border border-border">
                       <div className="flex items-center gap-1 mb-1">
-                        <BatteryIcon className="h-3 w-3 text-muted-foreground" />
+                        <BatteryIcon className="h-3 w-3 text-primary" />
                         <p className="text-xs text-muted-foreground">Range</p>
                       </div>
-                      <p className="text-sm font-medium text-gray-900">
+                      <p className="text-sm font-semibold text-foreground">
                         {vehicle.range_km} km
                       </p>
                     </div>
-                    <div className="bg-muted p-2 rounded">
+                    <div className="bg-muted/20 p-2.5 rounded-lg border border-border">
                       <div className="flex items-center gap-1 mb-1">
-                        <BatteryIcon className="h-3 w-3 text-muted-foreground" />
+                        <BatteryIcon className="h-3 w-3 text-primary" />
                         <p className="text-xs text-muted-foreground">Battery</p>
                       </div>
-                      <p className="text-sm font-medium text-gray-900">
+                      <p className="text-sm font-semibold text-foreground">
                         {vehicle.battery_kwh} kWh
                       </p>
                     </div>
                   </div>
 
-                  {/* Price and CTA */}
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-2xl font-bold text-primary">
                         {formatPrice(vehicle.price_qar)}
                       </p>
-                      <p className="text-xs text-gray-500">Direct from manufacturer</p>
+                      <p className="text-xs text-muted-foreground">Direct from manufacturer</p>
                     </div>
                     <Button
                       size="sm"
@@ -197,6 +196,7 @@ export default function MarketplacePage() {
                         e.stopPropagation()
                         router.push(`/marketplace/${vehicle.id}`)
                       }}
+                      className="bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-colors"
                     >
                       View Details
                     </Button>

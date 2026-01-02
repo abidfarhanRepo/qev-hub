@@ -159,52 +159,55 @@ function OrdersPageContent() {
     )
   }
 
-  return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">
-            {step === 'details' && 'Purchase Vehicle'}
-            {step === 'payment' && 'Complete Payment'}
-            {step === 'confirmation' && 'Order Confirmed'}
-            {step === 'tracking' && 'Track Your Order'}
-          </h1>
-          <p className="text-muted-foreground">
-            {step === 'details' && 'Review your selection and complete the purchase'}
-            {step === 'payment' && 'Secure payment processing'}
-            {step === 'confirmation' && 'Your order has been placed successfully'}
-            {step === 'tracking' && 'Monitor your vehicle shipment in real-time'}
-          </p>
-        </div>
+   return (
+     <div className="min-h-screen bg-background py-8 relative overflow-hidden">
+       {/* Background Elements */}
+       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.05)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.05)_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-10 pointer-events-none"></div>
+       
+       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+         <div className="mb-8">
+           <h1 className="text-3xl font-black uppercase tracking-widest text-foreground mb-2">
+             {step === 'details' && 'Purchase Vehicle'}
+             {step === 'payment' && 'Complete Payment'}
+             {step === 'confirmation' && 'Order Confirmed'}
+             {step === 'tracking' && 'Track Your Order'}
+           </h1>
+           <p className="text-muted-foreground">
+             {step === 'details' && 'Review your selection and complete the purchase'}
+             {step === 'payment' && 'Secure payment processing'}
+             {step === 'confirmation' && 'Your order has been placed successfully'}
+             {step === 'tracking' && 'Monitor your vehicle shipment in real-time'}
+           </p>
+         </div>
 
-        {/* Step Indicator */}
-        <div className="mb-8 flex items-center justify-between">
-          {['details', 'payment', 'confirmation', 'tracking'].map((s, index) => (
-            <div key={s} className="flex items-center flex-1">
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                  step === s || (step === 'tracking' && index < 4)
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-200 text-gray-600'
-                }`}
+         <div className="mb-8 flex items-center justify-between">
+           {['details', 'payment', 'confirmation', 'tracking'].map((s, index) => (
+             <div key={s} className="flex items-center flex-1">
+               <div
+                 className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all ${
+                   step === s || (step === 'tracking' && index < 4)
+                     ? 'bg-primary text-primary-foreground shadow-lg scale-110'
+                     : 'bg-muted/20 text-muted-foreground'
+                 }`}
               >
                 {index + 1}
-              </div>
-              {index < 3 && (
-                <div className="flex-1 h-0.5 bg-gray-200 mx-2">
-                  {(['details', 'payment', 'confirmation'].includes(step) &&
-                    index < ['details', 'payment', 'confirmation'].indexOf(step)) ||
-                  (step === 'tracking' && index < 3) ? (
-                    <div className="h-full bg-primary" style={{ width: '100%' }} />
-                  ) : null}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+               </div>
+               {index < 3 && (
+                 <div className="flex-1 h-0.5 bg-muted/20 mx-2 relative">
+                   {(['details', 'payment', 'confirmation'].includes(step) &&
+                     index < ['details', 'payment', 'confirmation'].indexOf(step)) ||
+                   (step === 'tracking' && index < 3) ? (
+                     <div className="h-full bg-primary absolute left-0 top-0 transition-all duration-500" style={{ width: '100%' }} />
+                   ) : null}
+                 </div>
+               )}
+             </div>
+           ))}
+         </div>
 
-        {/* Content based on step */}
+         {step === 'details' && vehicle && (
+           <OrderDetails vehicle={vehicle} onPurchase={handlePurchase} />
+         )}
         {step === 'details' && vehicle && (
           <OrderDetails vehicle={vehicle} onPurchase={handlePurchase} />
         )}
@@ -218,33 +221,33 @@ function OrdersPageContent() {
           />
         )}
 
-        {step === 'confirmation' && (
-          <div className="text-center py-16">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg
-                className="w-10 h-10 text-green-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            </div>
-            <h2 className="text-2xl font-bold mb-2">Order Confirmed</h2>
-            <p className="text-muted-foreground mb-4">
-              Tracking ID: {trackingId}
-            </p>
-            <p className="text-sm text-muted-foreground mb-6">
-              Redirecting to tracking page...
-            </p>
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto" />
-          </div>
-        )}
+         {step === 'confirmation' && (
+           <div className="glass-card tech-border text-center py-16">
+             <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/25">
+               <svg
+                 className="w-10 h-10 text-white"
+                 fill="none"
+                 stroke="currentColor"
+                 viewBox="0 0 24 24"
+               >
+                 <path
+                   strokeLinecap="round"
+                   strokeLinejoin="round"
+                   strokeWidth={2}
+                   d="M5 13l4 4L19 7"
+                 />
+               </svg>
+             </div>
+             <h2 className="text-2xl font-bold mb-2">Order Confirmed</h2>
+             <p className="text-muted-foreground mb-4">
+               Tracking ID: {trackingId}
+             </p>
+             <p className="text-sm text-muted-foreground mb-6">
+               Redirecting to tracking page...
+             </p>
+             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto" />
+           </div>
+         )}
 
         {step === 'tracking' && logistics && (
           <div className="space-y-6">

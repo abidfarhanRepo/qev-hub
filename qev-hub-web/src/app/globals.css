@@ -4,48 +4,84 @@
 
 @layer base {
   :root {
+    /* Light Mode - White Background, Lighter Maroon Accents */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 344 65% 20%;
+    
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 344 65% 20%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 349 72% 31%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 180 100% 50%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 349 72% 31%;
+    --popover-foreground: 344 65% 20%;
+    
+    --primary: 344 65% 28%;
+    --primary-foreground: 0 0% 100%;
+    
+    --primary-light: 344 65% 38%;
+    --primary-dark: 344 65% 18%;
+    
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 344 65% 28%;
+    
+    --secondary-light: 210 40% 98%;
+    --secondary-dark: 210 40% 90%;
+    
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    
+    --accent: 210 40% 96%;
+    --accent-foreground: 344 65% 28%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 344 65% 28%;
+    
     --radius: 0.5rem;
+    --gradient-start: 0 0% 100%;
+    --gradient-end: 210 40% 96%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    /* Dark Mode - Deep Midnight Blue Background, Silver Accents */
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    
+    --card: 217 33% 17%;
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+    
+    --popover: 217 33% 17%;
     --popover-foreground: 210 40% 98%;
-    --primary: 349 72% 31%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 180 100% 50%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 349 72% 31%;
+    
+    --primary: 210 40% 96%;
+    --primary-foreground: 222 47% 11%;
+    
+    --primary-light: 210 40% 98%;
+    --primary-dark: 210 40% 85%;
+    
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --secondary-light: 217 33% 25%;
+    --secondary-dark: 217 33% 10%;
+    
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+    
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 210 40% 96%;
+    
+    --gradient-start: 222 47% 11%;
+    --gradient-end: 217 33% 17%;
   }
 }
 
@@ -55,5 +91,68 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    @apply bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--secondary))];
+  }
+  
+  .gradient-subtle {
+    @apply bg-gradient-to-br from-[hsl(var(--background))] to-[hsl(var(--muted))];
+  }
+  
+  .glass {
+    @apply backdrop-blur-sm bg-white/80 dark:bg-card/80 border border-border;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-md bg-white/90 dark:bg-card/90 border border-border shadow-sm;
+  }
+  
+  .hero-gradient {
+    @apply bg-gradient-to-br from-[hsl(var(--primary))] via-[hsl(var(--primary-light))] to-[hsl(var(--secondary))];
+  }
+  
+  .tech-border {
+    @apply border-2 border-[hsl(var(--secondary))] relative overflow-hidden;
+  }
+  
+  .tech-border::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[hsl(var(--secondary))] to-transparent;
+    animation: shimmer 2s infinite;
+  }
+}
+
+@layer utilities {
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+  
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center center;
+  }
+  
+  .bg-grid-white {
+    background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
   }
 }
