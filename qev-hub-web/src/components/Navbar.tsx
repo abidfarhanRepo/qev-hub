@@ -17,24 +17,28 @@ export function Navbar() {
               QEV<span className="text-primary group-hover:text-foreground transition-colors">-HUB</span>
             </a>
             <div className="ml-10 flex space-x-8">
-              <a
-                href="/marketplace"
-                className="text-muted-foreground hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider"
-              >
-                Marketplace
-              </a>
-              <a
-                href="/charging"
-                className="text-muted-foreground hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider"
-              >
-                Charging Stations
-              </a>
+              {!user && (
+                <>
+                  <a
+                    href="/marketplace"
+                    className="text-muted-foreground hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider"
+                  >
+                    Marketplace
+                  </a>
+                  <a
+                    href="/charging"
+                    className="text-muted-foreground hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider"
+                  >
+                    Charging Stations
+                  </a>
+                </>
+              )}
               {user && (
                 <a
-                  href="/orders"
+                  href="/dashboard"
                   className="text-muted-foreground hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider"
                 >
-                  My Orders
+                  Dashboard
                 </a>
               )}
             </div>

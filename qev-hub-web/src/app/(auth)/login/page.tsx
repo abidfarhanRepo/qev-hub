@@ -24,8 +24,8 @@ export default function LoginPage() {
 
       if (error) throw error
 
-      // Redirect to marketplace after successful login
-      router.push('/marketplace')
+      // Redirect to dashboard after successful login
+      router.push('/dashboard')
       router.refresh()
     } catch (error: any) {
       setError(error.message || 'Failed to login')

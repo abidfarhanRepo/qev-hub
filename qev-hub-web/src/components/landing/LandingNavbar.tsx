@@ -32,15 +32,19 @@ export default function LandingNavbar() {
         </Link>
 
         <div className="hidden md:flex items-center space-x-8">
-          <Link href="/marketplace" className="text-sm font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">
-            Marketplace
-          </Link>
-          <Link href="/charging" className="text-sm font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">
-            Charging
-          </Link>
+          {!user && (
+            <>
+              <Link href="/marketplace" className="text-sm font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">
+                Marketplace
+              </Link>
+              <Link href="/charging" className="text-sm font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">
+                Charging
+              </Link>
+            </>
+          )}
           {user && (
-            <Link href="/orders" className="text-sm font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">
-              Orders
+            <Link href="/dashboard" className="text-sm font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">
+              Dashboard
             </Link>
           )}
         </div>

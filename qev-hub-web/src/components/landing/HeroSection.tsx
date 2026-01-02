@@ -2,10 +2,13 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ChevronRight } from 'lucide-react'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function HeroSection() {
+  const { user } = useAuth()
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -62,11 +65,13 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.9 }}
           className="flex flex-col sm:flex-row gap-6"
         >
-          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-lg px-10 py-8 rounded-none skew-x-[-10deg] transition-all duration-300 group shadow-lg hover:shadow-xl">
-            <span className="skew-x-[10deg] inline-flex items-center">
-              Explore Marketplace <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </Button>
+          <Link href={user ? "/dashboard" : "/marketplace"}>
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-lg px-10 py-8 rounded-none skew-x-[-10deg] transition-all duration-300 group shadow-lg hover:shadow-xl">
+              <span className="skew-x-[10deg] inline-flex items-center">
+                {user ? "Go to Dashboard" : "Explore Marketplace"} <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Button>
+          </Link>
           <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10 font-bold text-lg px-10 py-8 rounded-none skew-x-[-10deg] transition-all duration-300 backdrop-blur-sm">
              <span className="skew-x-[10deg]">
               Locate Charging

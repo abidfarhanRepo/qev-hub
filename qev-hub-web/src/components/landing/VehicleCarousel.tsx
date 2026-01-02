@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
 const vehicles = [
@@ -86,9 +87,11 @@ export default function VehicleCarousel() {
               <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-background via-background/80 to-transparent translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                 <h3 className="text-3xl font-bold text-foreground mb-2">{vehicle.name}</h3>
                 <p className="text-primary text-xl font-medium mb-6">{vehicle.price}</p>
-                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold transition-colors rounded-none skew-x-[-10deg]">
-                   <span className="skew-x-[10deg]">View Details</span>
-                </Button>
+                 <Link href="/marketplace" className="block w-full">
+                   <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold transition-colors rounded-none skew-x-[-10deg]">
+                      <span className="skew-x-[10deg]">View Details</span>
+                   </Button>
+                 </Link>
               </div>
             </motion.div>
           ))}
