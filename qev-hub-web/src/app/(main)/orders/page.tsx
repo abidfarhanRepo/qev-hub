@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { OrderDetails } from '@/components/OrderDetails'
@@ -25,7 +25,7 @@ interface Vehicle {
   stock_count: number
 }
 
-export default function OrdersPage() {
+function OrdersPageContent() {
   const searchParams = useSearchParams()
   const vehicleId = searchParams.get('vehicle_id')
 
@@ -265,5 +265,22 @@ export default function OrdersPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function OrdersPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4" />
+            <p>Loading...</p>
+          </div>
+        </div>
+      }
+    >
+      <OrdersPageContent />
+    </Suspense>
   )
 }
