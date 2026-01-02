@@ -2,6 +2,11 @@
 
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
+import { useRouter } from 'next/navigation'
+import { Card, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { CarIcon, BatteryIcon, CheckIcon, ClockIcon } from '@/components/icons'
 
 interface Vehicle {
   id: string
@@ -19,10 +24,10 @@ interface Vehicle {
 }
 
 export default function MarketplacePage() {
+  const router = useRouter()
   const [vehicles, setVehicles] = useState<Vehicle[]>([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState<'all' | 'tesla' | 'byd'>('all')
-  const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null)
 
   useEffect(() => {
     fetchVehicles()
@@ -116,20 +121,26 @@ export default function MarketplacePage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredVehicles.map((vehicle) => (
-              <div
+              <Card
                 key={vehicle.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer"
-                onClick={() => setSelectedVehicle(vehicle)}
+                className="overflow-hidden hover:shadow-lg transition cursor-pointer"
+                onClick={() => router.push(`/marketplace/${vehicle.id}`)}
               >
-                {/* Vehicle Image Placeholder */}
+                {/* Vehicle Image */}
                 <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                  <svg className="h-16 w-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10h10zM13 16h3.586a1 1 0 00.707-.293l2.414-2.414a1 1 0 00.293-.707V16h-7z" />
-                  </svg>
+                  {vehicle.image_url ? (
+                    <img
+                      src={vehicle.image_url}
+                      alt={`${vehicle.manufacturer} ${vehicle.model}`}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <CarIcon className="h-16 w-16 text-gray-400" />
+                  )}
                 </div>
 
                 {/* Vehicle Details */}
-                <div className="p-6">
+                <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-2">
                     <div>
                       <h3 className="text-xl font-bold text-gray-900">
@@ -138,13 +149,11 @@ export default function MarketplacePage() {
                       <p className="text-sm text-gray-500">{vehicle.year}</p>
                     </div>
                     {vehicle.stock_count > 0 ? (
-                      <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
+                      <Badge variant="secondary">
                         In Stock ({vehicle.stock_count})
-                      </span>
+                      </Badge>
                     ) : (
-                      <span className="bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded-full">
-                        Out of Stock
-                      </span>
+                      <Badge variant="destructive">Out of Stock</Badge>
                     )}
                   </div>
 
@@ -154,14 +163,20 @@ export default function MarketplacePage() {
 
                   {/* Specs */}
                   <div className="grid grid-cols-2 gap-2 mb-4">
-                    <div className="bg-gray-50 p-2 rounded">
-                      <p className="text-xs text-gray-500">Range</p>
+                    <div className="bg-muted p-2 rounded">
+                      <div className="flex items-center gap-1 mb-1">
+                        <BatteryIcon className="h-3 w-3 text-muted-foreground" />
+                        <p className="text-xs text-muted-foreground">Range</p>
+                      </div>
                       <p className="text-sm font-medium text-gray-900">
                         {vehicle.range_km} km
                       </p>
                     </div>
-                    <div className="bg-gray-50 p-2 rounded">
-                      <p className="text-xs text-gray-500">Battery</p>
+                    <div className="bg-muted p-2 rounded">
+                      <div className="flex items-center gap-1 mb-1">
+                        <BatteryIcon className="h-3 w-3 text-muted-foreground" />
+                        <p className="text-xs text-muted-foreground">Battery</p>
+                      </div>
                       <p className="text-sm font-medium text-gray-900">
                         {vehicle.battery_kwh} kWh
                       </p>
@@ -176,111 +191,19 @@ export default function MarketplacePage() {
                       </p>
                       <p className="text-xs text-gray-500">Direct from manufacturer</p>
                     </div>
-                    <button
-                      className="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition"
+                    <Button
+                      size="sm"
                       onClick={(e) => {
                         e.stopPropagation()
-                        window.location.href = `/orders?vehicle_id=${vehicle.id}`
+                        router.push(`/marketplace/${vehicle.id}`)
                       }}
                     >
-                      Purchase
-                    </button>
+                      View Details
+                    </Button>
                   </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
-          </div>
-        )}
-
-        {/* Vehicle Detail Modal */}
-        {selectedVehicle && (
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-            onClick={() => setSelectedVehicle(null)}
-          >
-            <div
-              className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="h-64 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                <svg className="h-24 w-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10h10zM13 16h3.586a1 1 0 00.707-.293l2.414-2.414a1 1 0 00.293-.707V16h-7z" />
-                </svg>
-              </div>
-              <div className="p-8">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                      {selectedVehicle.manufacturer} {selectedVehicle.model}
-                    </h2>
-                    <p className="text-gray-600">{selectedVehicle.description}</p>
-                  </div>
-                  <button
-                    onClick={() => setSelectedVehicle(null)}
-                    className="text-gray-400 hover:text-gray-600 text-2xl"
-                  >
-                    ×
-                  </button>
-                </div>
-
-                {/* Specifications */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm text-gray-500 mb-1">Range</p>
-                    <p className="text-xl font-bold text-gray-900">
-                      {selectedVehicle.range_km} km
-                    </p>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm text-gray-500 mb-1">Battery</p>
-                    <p className="text-xl font-bold text-gray-900">
-                      {selectedVehicle.battery_kwh} kWh
-                    </p>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm text-gray-500 mb-1">Year</p>
-                    <p className="text-xl font-bold text-gray-900">
-                      {selectedVehicle.year}
-                    </p>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm text-gray-500 mb-1">Stock</p>
-                    <p className="text-xl font-bold text-gray-900">
-                      {selectedVehicle.stock_count}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Price and Actions */}
-                <div className="flex items-center justify-between pt-6 border-t">
-                  <div>
-                    <p className="text-sm text-gray-500">Total Price</p>
-                    <p className="text-4xl font-bold text-primary">
-                      {formatPrice(selectedVehicle.price_qar)}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      Save 30-40% by buying direct
-                    </p>
-                  </div>
-                  <div className="flex gap-4">
-                    <button
-                      className="px-6 py-3 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition"
-                      onClick={() => setSelectedVehicle(null)}
-                    >
-                      Close
-                    </button>
-                    <button
-                      className="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition"
-                      onClick={() => {
-                        window.location.href = `/orders?vehicle_id=${selectedVehicle.id}`
-                      }}
-                    >
-                      Purchase Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         )}
       </div>
