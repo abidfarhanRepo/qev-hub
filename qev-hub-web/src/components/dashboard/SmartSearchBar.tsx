@@ -10,13 +10,19 @@ import { CarIcon, BatteryIcon, ClockIcon, ShipIcon } from '@/components/icons'
 
 interface Vehicle {
   id: string
+  manufacturer_id: string
   manufacturer: string
   model: string
   year: number
   range_km: number
   charging_time_min: number
   price_qar: number
+  manufacturer_direct_price: number
+  broker_market_price: number
+  price_transparency_enabled: boolean
+  vehicle_type: 'EV' | 'PHEV' | 'FCEV'
   arrival_weeks: number
+  image_url: string
 }
 
 interface SmartSearchBarProps {
@@ -27,53 +33,99 @@ interface SmartSearchBarProps {
 const MOCK_VEHICLES: Vehicle[] = [
   {
     id: '1',
-    manufacturer: 'Tesla',
-    model: 'Model 3',
-    year: 2024,
-    range_km: 513,
-    charging_time_min: 45,
-    price_qar: 175000,
-    arrival_weeks: 6,
-  },
-  {
-    id: '2',
-    manufacturer: 'Tesla',
-    model: 'Model Y',
-    year: 2024,
-    range_km: 492,
-    charging_time_min: 50,
-    price_qar: 195000,
-    arrival_weeks: 8,
-  },
-  {
-    id: '3',
-    manufacturer: 'BYD',
+    manufacturer_id: 'mock-manufact-1',
+    manufacturer: 'BYD Auto Co Ltd',
     model: 'Atto 3',
     year: 2024,
     range_km: 420,
     charging_time_min: 60,
     price_qar: 145000,
+    manufacturer_direct_price: 145000,
+    broker_market_price: 188500,
+    price_transparency_enabled: true,
+    vehicle_type: 'EV',
+    origin_country: 'China',
     arrival_weeks: 4,
   },
   {
-    id: '4',
-    manufacturer: 'Mercedes',
-    model: 'EQE',
+    id: '2',
+    manufacturer_id: 'mock-manufact-2',
+    manufacturer: 'GAC AION',
+    model: 'AION Y Plus',
     year: 2024,
-    range_km: 550,
+    range_km: 450,
+    charging_time_min: 50,
+    price_qar: 135000,
+    manufacturer_direct_price: 135000,
+    broker_market_price: 175500,
+    price_transparency_enabled: true,
+    vehicle_type: 'PHEV',
+    origin_country: 'China',
+    arrival_weeks: 6,
+  },
+  {
+    id: '3',
+    manufacturer_id: 'mock-manufact-3',
+    manufacturer: 'NIO',
+    model: 'ES8',
+    year: 2024,
+    range_km: 500,
+    charging_time_min: 40,
+    price_qar: 210000,
+    manufacturer_direct_price: 210000,
+    broker_market_price: 273000,
+    price_transparency_enabled: true,
+    vehicle_type: 'EV',
+    origin_country: 'China',
+    arrival_weeks: 8,
+  },
+  {
+    id: '4',
+    manufacturer_id: 'mock-manufact-4',
+    manufacturer: 'XPeng',
+    model: 'P7i',
+    year: 2024,
+    range_km: 450,
     charging_time_min: 35,
-    price_qar: 285000,
+    price_qar: 165000,
+    manufacturer_direct_price: 165000,
+    broker_market_price: 214500,
+    price_transparency_enabled: true,
+    vehicle_type: 'EV',
+    origin_country: 'China',
     arrival_weeks: 10,
   },
   {
     id: '5',
-    manufacturer: 'Porsche',
-    model: 'Taycan',
+    manufacturer_id: 'mock-manufact-5',
+    manufacturer: 'BYD Auto Co Ltd',
+    model: 'Han Plus',
     year: 2024,
-    range_km: 484,
-    charging_time_min: 30,
-    price_qar: 450000,
-    arrival_weeks: 12,
+    range_km: 1200,
+    charging_time_min: 0,
+    price_qar: 115000,
+    manufacturer_direct_price: 115000,
+    broker_market_price: 149500,
+    price_transparency_enabled: true,
+    vehicle_type: 'PHEV',
+    origin_country: 'China',
+    arrival_weeks: 6,
+  },
+  {
+    id: '6',
+    manufacturer_id: 'mock-manufact-2',
+    manufacturer: 'GAC AION',
+    model: 'AION S Plus',
+    year: 2024,
+    range_km: 480,
+    charging_time_min: 45,
+    price_qar: 155000,
+    manufacturer_direct_price: 155000,
+    broker_market_price: 201500,
+    price_transparency_enabled: true,
+    vehicle_type: 'EV',
+    origin_country: 'China',
+    arrival_weeks: 8,
   },
 ]
 
@@ -175,7 +227,47 @@ export function SmartSearchBar({ onVehicleSelect, selectedVehicle }: SmartSearch
                 transition={{ duration: 0.3 }}
                 className="border-t border-border/50"
               >
-                <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                  {/* Vehicle Type Filter */}
+                  <div>
+                    <label className="flex items-center gap-2 text-sm font-medium text-foreground mb-3">
+                      <CarIcon className="h-4 w-4 text-primary" />
+                      Vehicle Type
+                    </label>
+                    <div className="grid grid-cols-3 gap-2">
+                      <button
+                        onClick={() => setFilters({ ...filters, vehicleType: 'all' })}
+                        className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
+                          filters.vehicleType === 'all'
+                            ? 'bg-primary text-primary-foreground'
+                            : 'bg-muted/50 text-foreground hover:bg-muted'
+                        }`}
+                      >
+                        All
+                      </button>
+                      <button
+                        onClick={() => setFilters({ ...filters, vehicleType: 'ev' })}
+                        className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
+                          filters.vehicleType === 'ev'
+                            ? 'bg-primary text-primary-foreground'
+                            : 'bg-muted/50 text-foreground hover:bg-muted'
+                        }`}
+                      >
+                        EV
+                      </button>
+                      <button
+                        onClick={() => setFilters({ ...filters, vehicleType: 'phev' })}
+                        className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
+                          filters.vehicleType === 'phev'
+                            ? 'bg-primary text-primary-foreground'
+                            : 'bg-muted/50 text-foreground hover:bg-muted'
+                        }`}
+                      >
+                        PHEV
+                      </button>
+                    </div>
+                  </div>
+
                   {/* Range Filter */}
                   <div>
                     <label className="flex items-center gap-2 text-sm font-medium text-foreground mb-3">

@@ -15,7 +15,7 @@ import { Progress } from '@/components/ui/progress'
 export default function DashboardPage() {
   const { user, loading, signOut } = useAuth()
   const router = useRouter()
-  const [activeTab, setActiveTab] = useState<'marketplace' | 'orders' | 'sustainability'>('marketplace')
+  const [activeTab, setActiveTab] = useState<'marketplace' | 'orders' | 'sustainability' | 'admin'>('marketplace')
   const [showCalculator, setShowCalculator] = useState(false)
   const [selectedVehicle, setSelectedVehicle] = useState<any>(null)
   const [order, setOrder] = useState<any>(null)
@@ -61,43 +61,55 @@ export default function DashboardPage() {
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 space-y-2">
-            <button
-              onClick={() => setActiveTab('marketplace')}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                activeTab === 'marketplace'
-                  ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
-                  : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
-              }`}
-            >
-              <CarIcon className="h-5 w-5" />
-              <span className="font-medium">Marketplace</span>
-            </button>
+              <nav className="flex-1 space-y-2">
+                <button
+                  onClick={() => setActiveTab('marketplace')}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                    activeTab === 'marketplace'
+                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
+                      : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
+                  }`}
+                >
+                  <CarIcon className="h-5 w-5" />
+                  <span className="font-medium">Marketplace</span>
+                </button>
 
-            <button
-              onClick={() => setActiveTab('orders')}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                activeTab === 'orders'
-                  ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
-                  : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
-              }`}
-            >
-              <ShoppingBag className="h-5 w-5" />
-              <span className="font-medium">My Orders</span>
-            </button>
+                <button
+                  onClick={() => setActiveTab('orders')}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                    activeTab === 'orders'
+                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
+                      : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
+                  }`}
+                >
+                  <ShoppingBag className="h-5 w-5" />
+                  <span className="font-medium">My Orders</span>
+                </button>
 
-            <button
-              onClick={() => setActiveTab('sustainability')}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                activeTab === 'sustainability'
-                  ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
-                  : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
-              }`}
-            >
-              <ZapIcon className="h-5 w-5" />
-              <span className="font-medium">Sustainability</span>
-            </button>
-          </nav>
+                <button
+                  onClick={() => setActiveTab('sustainability')}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                    activeTab === 'sustainability'
+                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
+                      : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
+                  }`}
+                >
+                  <ZapIcon className="h-5 w-5" />
+                  <span className="font-medium">Sustainability</span>
+                </button>
+
+                <button
+                  onClick={() => setActiveTab('admin')}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                    activeTab === 'admin'
+                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
+                      : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
+                  }`}
+                >
+                  <Settings className="h-5 w-5" />
+                  <span className="font-medium">Admin Portal</span>
+                </button>
+              </nav>
 
           {/* User Profile */}
           <div className="border-t border-border/50 pt-6 mt-6">
@@ -252,6 +264,28 @@ export default function DashboardPage() {
 
           {activeTab === 'sustainability' && (
             <SustainabilityDashboard onCalculate={() => setShowCalculator(true)} />
+          )}
+
+          {activeTab === 'admin' && (
+            <div className="space-y-6">
+              <Card className="glass-card tech-border">
+                <CardContent className="p-8 text-center">
+                  <Settings className="h-16 w-16 text-primary mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                    Manufacturer Admin Portal
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    Manage your vehicle inventory, track analytics, and update pricing information.
+                  </p>
+                  <Button
+                    onClick={() => router.push('/dashboard/admin')}
+                    className="bg-primary text-primary-foreground"
+                  >
+                    Go to Admin Dashboard
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
           )}
         </main>
       </div>

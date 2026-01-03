@@ -1,26 +1,67 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api'
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import L from 'leaflet'
 import { supabase } from '@/lib/supabase'
 import { ChargingStation } from '@/lib/charging-data-provider'
+import { Button } from '@/components/ui/button'
 
-const mapContainerStyle = {
-  width: '100%',
-  height: '600px',
-}
+const dohaCenter: [number, number] = [25.3548, 51.1839]
 
-const center = {
-  lat: 25.3548, // Doha, Qatar
-  lng: 51.1839,
+const customMarkerIcon = (isAvailable: boolean) =>
+  L.divIcon({
+    className: 'custom-marker',
+    html: `<div style="
+      background-color: ${isAvailable ? '#00FFFF' : '#4a0d1d'};
+      border: 3px solid ${isAvailable ? '#00FFFF' : '#8A1538'};
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+    </div>`,
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+  })
+
+const userLocationIcon = L.divIcon({
+  className: 'custom-marker',
+  html: `<div style="
+    background-color: #E2E8F0;
+    border: 3px solid #8A1538;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  "></div>`,
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
+})
+
+function MapController({ center, zoom }: { center: [number, number]; zoom: number }) {
+  const map = useMap()
+  useEffect(() => {
+    map.setView(center, zoom)
+  }, [center, zoom, map])
+  return null
 }
 
 export default function ChargingPage() {
   const [stations, setStations] = useState<ChargingStation[]>([])
   const [selectedStation, setSelectedStation] = useState<ChargingStation | null>(null)
   const [loading, setLoading] = useState(true)
-  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null)
+  const [userLocation, setUserLocation] = useState<[number, number] | null>(null)
   const [filter, setFilter] = useState<'all' | 'available' | 'nearby'>('all')
+  const [mapCenter, setMapCenter] = useState<[number, number]>(dohaCenter)
+  const [mapZoom, setMapZoom] = useState(12)
 
   useEffect(() => {
     fetchChargingStations()
@@ -49,10 +90,13 @@ export default function ChargingPage() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setUserLocation({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          })
+          const location: [number, number] = [
+            position.coords.latitude,
+            position.coords.longitude,
+          ]
+          setUserLocation(location)
+          setMapCenter(location)
+          setMapZoom(14)
         },
         (error) => {
           console.error('Error getting user location:', error)
@@ -81,12 +125,12 @@ export default function ChargingPage() {
     }
     if (filter === 'nearby' && userLocation) {
       const distance = calculateDistance(
-        userLocation.lat,
-        userLocation.lng,
+        userLocation[0],
+        userLocation[1],
         Number(station.latitude),
         Number(station.longitude)
       )
-      return distance <= 10 // Within 10km
+      return distance <= 10
     }
     return true
   })
@@ -104,7 +148,6 @@ export default function ChargingPage() {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Background Elements */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.05)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.05)_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-10 pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
@@ -114,202 +157,93 @@ export default function ChargingPage() {
         </div>
 
         <div className="mb-6 flex gap-3 flex-wrap">
-          <button
+          <Button
             onClick={() => setFilter('all')}
-            className={`px-6 py-2.5 rounded-none skew-x-[-10deg] font-bold uppercase tracking-wider transition-all ${
-              filter === 'all'
-                ? 'bg-primary text-primary-foreground shadow-lg'
-                : 'bg-muted/20 text-muted-foreground hover:bg-muted/40 border border-border hover:border-primary/50'
-            }`}
+            variant={filter === 'all' ? 'default' : 'outline'}
+            className="font-bold uppercase tracking-wider"
           >
-            <span className="skew-x-[10deg] inline-block">All Stations ({stations.length})</span>
-          </button>
-          <button
+            All Stations ({stations.length})
+          </Button>
+          <Button
             onClick={() => setFilter('available')}
-            className={`px-6 py-2.5 rounded-none skew-x-[-10deg] font-bold uppercase tracking-wider transition-all ${
-              filter === 'available'
-                ? 'bg-primary text-primary-foreground shadow-lg'
-                : 'bg-muted/20 text-muted-foreground hover:bg-muted/40 border border-border hover:border-primary/50'
-            }`}
+            variant={filter === 'available' ? 'default' : 'outline'}
+            className="font-bold uppercase tracking-wider"
           >
-            <span className="skew-x-[10deg] inline-block">Available Now</span>
-          </button>
-          <button
-            onClick={() => setFilter('nearby')}
-            disabled={!userLocation}
-            className={`px-6 py-2.5 rounded-none skew-x-[-10deg] font-bold uppercase tracking-wider transition-all ${
-              filter === 'nearby'
-                ? 'bg-primary text-primary-foreground shadow-lg'
-                : 'bg-muted/20 text-muted-foreground hover:bg-muted/40 border border-border hover:border-primary/50 disabled:opacity-50 disabled:cursor-not-allowed'
-            }`}
+            Available Now
+          </Button>
+          <Button
+            onClick={() => {
+              if (userLocation) {
+                setFilter('nearby')
+                setMapCenter(userLocation)
+                setMapZoom(14)
+              } else {
+                getUserLocation()
+              }
+            }}
+            variant={filter === 'nearby' ? 'default' : 'outline'}
+            className="font-bold uppercase tracking-wider"
           >
-            <span className="skew-x-[10deg] inline-block">Nearby (10km)</span>
-          </button>
+            Nearby (10km)
+          </Button>
         </div>
 
         <div className="bg-card/50 border border-border backdrop-blur-sm rounded-xl shadow-lg overflow-hidden mb-8">
-          <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}>
-            <GoogleMap
-              mapContainerStyle={mapContainerStyle}
-              center={userLocation || center}
-              zoom={12}
-              options={{
-                styles: [
-                  { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-                  { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-                  { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
-                  {
-                    featureType: "administrative.locality",
-                    elementType: "labels.text.fill",
-                    stylers: [{ color: "#d59563" }],
-                  },
-                  {
-                    featureType: "poi",
-                    elementType: "labels.text.fill",
-                    stylers: [{ color: "#d59563" }],
-                  },
-                  {
-                    featureType: "poi.park",
-                    elementType: "geometry",
-                    stylers: [{ color: "#263c3f" }],
-                  },
-                  {
-                    featureType: "poi.park",
-                    elementType: "labels.text.fill",
-                    stylers: [{ color: "#6b9a76" }],
-                  },
-                  {
-                    featureType: "road",
-                    elementType: "geometry",
-                    stylers: [{ color: "#38414e" }],
-                  },
-                  {
-                    featureType: "road",
-                    elementType: "geometry.stroke",
-                    stylers: [{ color: "#212a37" }],
-                  },
-                  {
-                    featureType: "road",
-                    elementType: "labels.text.fill",
-                    stylers: [{ color: "#9ca5b3" }],
-                  },
-                  {
-                    featureType: "road.highway",
-                    elementType: "geometry",
-                    stylers: [{ color: "#746855" }],
-                  },
-                  {
-                    featureType: "road.highway",
-                    elementType: "geometry.stroke",
-                    stylers: [{ color: "#1f2835" }],
-                  },
-                  {
-                    featureType: "road.highway",
-                    elementType: "labels.text.fill",
-                    stylers: [{ color: "#f3d19c" }],
-                  },
-                  {
-                    featureType: "transit",
-                    elementType: "geometry",
-                    stylers: [{ color: "#2f3948" }],
-                  },
-                  {
-                    featureType: "transit.station",
-                    elementType: "labels.text.fill",
-                    stylers: [{ color: "#d59563" }],
-                  },
-                  {
-                    featureType: "water",
-                    elementType: "geometry",
-                    stylers: [{ color: "#17263c" }],
-                  },
-                  {
-                    featureType: "water",
-                    elementType: "labels.text.fill",
-                    stylers: [{ color: "#515c6d" }],
-                  },
-                  {
-                    featureType: "water",
-                    elementType: "labels.text.stroke",
-                    stylers: [{ color: "#17263c" }],
-                  },
-                ]
-              }}
-            >
-              {userLocation && (
-                <Marker
-                  position={userLocation}
-                  icon={{
-                    url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
-                      '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#E2E8F0"><circle cx="12" cy="12" r="8"/></svg>'
-                    ),
-                  }}
-                />
-              )}
+          <MapContainer
+            center={mapCenter}
+            zoom={mapZoom}
+            style={{ height: '600px', width: '100%' }}
+            className="z-10"
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <MapController center={mapCenter} zoom={mapZoom} />
 
-              {filteredStations.map((station) => (
-                <Marker
-                  key={station.id}
-                  position={{
-                    lat: Number(station.latitude),
-                    lng: Number(station.longitude),
-                  }}
-                  onClick={() => setSelectedStation(station)}
-                  icon={{
-                    url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
-                      `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="${
-                        (station.available_chargers || 0) > 0 ? '#E2E8F0' : '#4a0d1d'
-                      }"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`
-                    ),
-                  }}
-                />
-              ))}
+            {userLocation && (
+              <Marker position={userLocation} icon={userLocationIcon}>
+                <Popup>Your Location</Popup>
+              </Marker>
+            )}
 
-              {selectedStation && (
-                <InfoWindow
-                  position={{
-                    lat: Number(selectedStation.latitude),
-                    lng: Number(selectedStation.longitude),
-                  }}
-                  onCloseClick={() => setSelectedStation(null)}
-                >
-                  <div className="p-3 max-w-xs text-black">
-                    <h3 className="font-bold text-lg mb-2">{selectedStation.name}</h3>
-                    <p className="text-sm text-gray-600 mb-3">{selectedStation.address}</p>
-                    <div className="space-y-1.5 text-sm mb-4">
-                      <p>
-                        <span className="font-medium">Type:</span> {selectedStation.charger_type}
-                      </p>
-                      <p>
-                        <span className="font-medium">Power:</span> {selectedStation.power_output_kw} kW
-                      </p>
-                      <p>
-                        <span className="font-medium">Available:</span>{' '}
-                        {selectedStation.available_chargers}/{selectedStation.total_chargers}
-                      </p>
-                      <p>
-                        <span className="font-medium">Pricing:</span> {selectedStation.pricing_info}
-                      </p>
-                      <p>
-                        <span className="font-medium">Hours:</span> {selectedStation.operating_hours}
-                      </p>
+            {filteredStations.map((station) => (
+              <Marker
+                key={station.id}
+                position={[Number(station.latitude), Number(station.longitude)]}
+                icon={customMarkerIcon((station.available_chargers || 0) > 0)}
+                eventHandlers={{
+                  click: () => setSelectedStation(station),
+                }}
+              >
+                <Popup>
+                  <div className="p-2 min-w-[200px]">
+                    <h3 className="font-bold text-lg mb-1">{station.name}</h3>
+                    <p className="text-sm text-gray-600 mb-2">{station.address}</p>
+                    <div className="space-y-1 text-sm mb-3">
+                      <p><span className="font-medium">Type:</span> {station.charger_type}</p>
+                      <p><span className="font-medium">Power:</span> {station.power_output_kw} kW</p>
+                      <p><span className="font-medium">Available:</span> {station.available_chargers}/{station.total_chargers}</p>
+                      <p><span className="font-medium">Pricing:</span> {station.pricing_info}</p>
+                      <p><span className="font-medium">Hours:</span> {station.operating_hours}</p>
                     </div>
-                    <button
+                    <Button
                       onClick={() => {
                         window.open(
-                          `https://www.google.com/maps/dir/?api=1&destination=${selectedStation.latitude},${selectedStation.longitude}`,
+                          `https://www.openstreetmap.org/directions?from=&to=${station.latitude},${station.longitude}`,
                           '_blank'
                         )
                       }}
-                      className="mt-3 w-full gradient-primary text-white px-4 py-2.5 rounded-lg hover:opacity-90 transition font-semibold"
+                      className="w-full"
+                      size="sm"
                     >
                       Get Directions
-                    </button>
+                    </Button>
                   </div>
-                </InfoWindow>
-              )}
-            </GoogleMap>
-          </LoadScript>
+                </Popup>
+              </Marker>
+            ))}
+          </MapContainer>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -317,7 +251,11 @@ export default function ChargingPage() {
             <div
               key={station.id}
               className="glass-card tech-border p-6 hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer group"
-              onClick={() => setSelectedStation(station)}
+              onClick={() => {
+                setSelectedStation(station)
+                setMapCenter([Number(station.latitude), Number(station.longitude)])
+                setMapZoom(15)
+              }}
             >
               <div className="flex items-start justify-between mb-3">
                 <h3 className="font-bold text-lg">{station.name}</h3>
