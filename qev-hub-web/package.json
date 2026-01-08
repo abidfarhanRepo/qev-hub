@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "verify-db": "echo 'Navigate to http://localhost:3000/db-status to verify database connection'"
+    "verify-db": "node scripts/verify-db.js",
+    "setup-db": "node scripts/setup-db.js",
+    "setup-db-shell": "./scripts/setup-db.sh"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

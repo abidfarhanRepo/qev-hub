@@ -25,6 +25,14 @@ interface Vehicle {
   range_km: number
   battery_kwh: number
   price_qar: number
+  manufacturer_direct_price: number
+  broker_market_price: number | null
+  price_transparency_enabled: boolean
+  vehicle_type: 'EV' | 'PHEV' | 'FCEV'
+  origin_country: string
+  manufacturer_id: string | null
+  warranty_years: number | null
+  warranty_km: number | null
   image_url: string | null
   description: string
   specs: Record<string, string>
@@ -113,7 +121,12 @@ export default function VehicleDetailPage() {
 
 
   const depositAmount = vehicle.price_qar * 0.2
-  const savingsAmount = vehicle.price_qar * 0.35
+  const actualSavings = vehicle.price_transparency_enabled && vehicle.broker_market_price
+    ? vehicle.broker_market_price - vehicle.manufacturer_direct_price
+    : vehicle.price_qar * 0.35
+  const savingsPercentage = vehicle.price_transparency_enabled && vehicle.broker_market_price
+    ? Math.round((actualSavings / vehicle.broker_market_price) * 100)
+    : 35
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/30 pb-16">
@@ -222,6 +235,17 @@ export default function VehicleDetailPage() {
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Badge variant="secondary" className="bg-green-600 text-white">
+                        ✓ Verified Manufacturer
+                      </Badge>
+                      <Badge variant="outline">
+                        {vehicle.vehicle_type}
+                      </Badge>
+                      <Badge variant="outline">
+                        {vehicle.origin_country}
+                      </Badge>
+                    </div>
                     <h1 className="text-3xl font-bold mb-2">
                       {vehicle.manufacturer} {vehicle.model}
                     </h1>
@@ -240,26 +264,47 @@ export default function VehicleDetailPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="flex items-baseline gap-3">
-                    <p className="text-4xl font-bold text-primary">
-                      {formatPrice(vehicle.price_qar)}
-                    </p>
-                  </div>
-
-                  <Separator />
-
-                  {/* Savings */}
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                    <div className="flex items-center gap-2 text-green-800">
-                      <ShieldIcon className="h-5 w-5" />
-                      <p className="font-semibold">
-                        Save {formatPrice(savingsAmount)} by buying direct!
-                      </p>
+                  {vehicle.price_transparency_enabled && vehicle.broker_market_price ? (
+                    <div className="space-y-3">
+                      <div className="p-4 bg-green-500/10 rounded-lg border-2 border-green-500/30">
+                        <div className="flex items-baseline justify-between mb-2">
+                          <span className="text-sm font-medium text-muted-foreground">Factory Direct Price</span>
+                          <p className="text-4xl font-bold text-green-600">
+                            {formatPrice(vehicle.manufacturer_direct_price)}
+                          </p>
+                        </div>
+                        <div className="flex items-baseline justify-between pt-2 border-t border-green-500/20">
+                          <span className="text-sm text-muted-foreground">Typical Broker Market Price</span>
+                          <p className="text-2xl font-semibold line-through text-muted-foreground">
+                            {formatPrice(vehicle.broker_market_price)}
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-4">
+                        <div className="flex items-center gap-3">
+                          <div className="h-12 w-12 rounded-full bg-green-600 flex items-center justify-center">
+                            <ShieldIcon className="h-6 w-6 text-white" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-lg font-bold text-green-800">
+                              Save {formatPrice(actualSavings)} ({savingsPercentage}%)
+                            </p>
+                            <p className="text-sm text-green-700">
+                              By purchasing directly from the manufacturer
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <p className="text-sm text-green-700 mt-1">
-                      35% savings compared to traditional dealerships
-                    </p>
-                  </div>
+                  ) : (
+                    <div className="flex items-baseline gap-3">
+                      <p className="text-4xl font-bold text-primary">
+                        {formatPrice(vehicle.price_qar)}
+                      </p>
+                      <span className="text-sm text-muted-foreground">Direct Price</span>
+                    </div>
+                  )}
 
                   <Separator />
 
@@ -301,7 +346,9 @@ export default function VehicleDetailPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckIcon className="h-3 w-3 text-primary" />
-                      <span>2-year manufacturer warranty</span>
+                      <span>
+                        {vehicle.warranty_years || 5}-year / {(vehicle.warranty_km || 100000).toLocaleString()}km manufacturer warranty
+                      </span>
                     </div>
                   </div>
                 </div>
