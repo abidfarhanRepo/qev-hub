@@ -1,9 +1,35 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+
+// Helper to get authenticated Supabase client from request
+function getSupabaseClient(request: NextRequest) {
+  const authHeader = request.headers.get('authorization')
+  const token = authHeader?.replace('Bearer ', '')
+  
+  if (token) {
+    return createClient(supabaseUrl, supabaseAnonKey, {
+      global: {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+      },
+    })
+  }
+  
+  return createClient(supabaseUrl, supabaseAnonKey)
+}
 
 // GET /api/manufacturers - Get all manufacturers or filter by user
 export async function GET(request: NextRequest) {
   try {
+    const supabase = getSupabaseClient(request)
     const { searchParams } = new URL(request.url)
     const country = searchParams.get('country')
     const userId = searchParams.get('user_id')
@@ -49,6 +75,7 @@ export async function GET(request: NextRequest) {
 // POST /api/manufacturers - Create new manufacturer (factory signup)
 export async function POST(request: NextRequest) {
   try {
+    const supabase = getSupabaseClient(request)
     const body = await request.json()
     const {
       user_id,
@@ -64,6 +91,7 @@ export async function POST(request: NextRequest) {
       description_ar,
       business_license,
       business_license_expiry,
+      verified_documents,
     } = body
 
     if (!user_id || !company_name || !contact_email || !business_license) {
@@ -71,6 +99,20 @@ export async function POST(request: NextRequest) {
         { error: 'Missing required fields' },
         { status: 400 }
       )
+    }
+
+    // Validate business license expiry
+    if (business_license_expiry) {
+      const expiryDate = new Date(business_license_expiry)
+      const today = new Date()
+      today.setHours(0, 0, 0, 0)
+      
+      if (expiryDate < today) {
+        return NextResponse.json(
+          { error: 'Business license has expired' },
+          { status: 400 }
+        )
+      }
     }
 
     // Create manufacturer profile
@@ -91,7 +133,7 @@ export async function POST(request: NextRequest) {
         business_license,
         business_license_expiry: business_license_expiry ? new Date(business_license_expiry).toISOString() : null,
         verification_status: 'pending',
-        verified_documents: [],
+        verified_documents: verified_documents || [],
       })
       .select()
       .single()

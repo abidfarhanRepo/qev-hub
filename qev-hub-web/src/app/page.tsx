@@ -33,7 +33,28 @@ export default function Home() {
                   <a href="#" className="text-gray-400 hover:text-qev-accent transition-colors">Contact</a>
                </div>
             </div>
-            <p className="text-sm">&copy; 2026 QEV-Hub. All rights reserved. Qatar's Premier Electric Vehicle Marketplace.</p>
+            <p className="text-sm mb-6">&copy; 2026 QEV-Hub. All rights reserved. Qatar's Premier Electric Vehicle Marketplace.</p>
+            
+            {/* Manufacturer Portal Link */}
+            <div className="pt-6 border-t border-white/5">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                <span className="text-sm text-gray-400">Are you an EV manufacturer?</span>
+                <div className="flex gap-3">
+                  <a 
+                    href="/manufacturer-login" 
+                    className="px-6 py-2 text-sm font-semibold text-primary border border-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all"
+                  >
+                    Manufacturer Login
+                  </a>
+                  <a 
+                    href="/manufacturer-signup" 
+                    className="px-6 py-2 text-sm font-semibold bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all"
+                  >
+                    Join as Manufacturer
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </footer>
       </div>

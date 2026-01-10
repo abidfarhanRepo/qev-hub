@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { supabase } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
+import { useAuth } from '@/contexts/AuthContext'
+import { supabase } from '@/lib/supabase'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,11 +12,12 @@ import { AlertCircle, CheckCircle2, FileText, ZapIcon } from '@/components/icons
 
 export default function ManufacturerSignupPage() {
   const router = useRouter()
+  const { user, getSupabaseClient, loading: authLoading } = useAuth()
   const [step, setStep] = useState<'details' | 'documents' | 'review'>('details')
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
-
+  
   const [formData, setFormData] = useState({
     // Company Details
     companyName: '',
@@ -39,12 +41,92 @@ export default function ManufacturerSignupPage() {
     documents: [] as File[],
   })
 
+  const [uploadedDocUrls, setUploadedDocUrls] = useState<string[]>([])
+  const [uploading, setUploading] = useState(false)
+
+  // Redirect to login if not authenticated
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
+      </div>
+    )
+  }
+
+  if (!user) {
+    router.push('/login')
+    return null
+  }
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
+      const newFiles = Array.from(e.target.files)
+      
+      // Validate file size (10MB max per file)
+      const invalidFiles = newFiles.filter(file => file.size > 10 * 1024 * 1024)
+      if (invalidFiles.length > 0) {
+        setError(`Some files exceed 10MB limit: ${invalidFiles.map(f => f.name).join(', ')}`)
+        return
+      }
+      
+      // Validate file types
+      const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png']
+      const invalidTypes = newFiles.filter(file => !allowedTypes.includes(file.type))
+      if (invalidTypes.length > 0) {
+        setError(`Invalid file types. Only PDF and images (JPG, PNG) are allowed.`)
+        return
+      }
+      
+      setError(null)
       setFormData({
         ...formData,
-        documents: [...formData.documents, ...Array.from(e.target.files)],
+        documents: [...formData.documents, ...newFiles],
       })
+    }
+  }
+
+  const removeDocument = (index: number) => {
+    setFormData({
+      ...formData,
+      documents: formData.documents.filter((_, i) => i !== index),
+    })
+  }
+
+  const uploadDocuments = async (): Promise<string[]> => {
+    if (formData.documents.length === 0) return []
+    
+    setUploading(true)
+    const uploadedUrls: string[] = []
+    
+    try {
+      const authSupabase = getSupabaseClient()
+      
+      for (const file of formData.documents) {
+        const fileExt = file.name.split('.').pop()
+        const fileName = `${user!.id}/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
+        
+        const { data, error } = await authSupabase.storage
+          .from('manufacturer-documents')
+          .upload(fileName, file, {
+            cacheControl: '3600',
+            upsert: false,
+          })
+        
+        if (error) throw error
+        
+        // Get public URL (even though bucket is private, we store the path)
+        const { data: { publicUrl } } = authSupabase.storage
+          .from('manufacturer-documents')
+          .getPublicUrl(data.path)
+        
+        uploadedUrls.push(data.path)
+      }
+      
+      return uploadedUrls
+    } catch (error: any) {
+      throw new Error(`Document upload failed: ${error.message}`)
+    } finally {
+      setUploading(false)
     }
   }
 
@@ -54,45 +136,63 @@ export default function ManufacturerSignupPage() {
     setLoading(true)
 
     try {
-      const { data: { user } } = await supabase.auth.getUser()
-
       if (!user) {
         throw new Error('Please log in first')
       }
 
-      // Create manufacturer profile
+      // Validate business license expiry date
+      const expiryDate = new Date(formData.businessLicenseExpiry)
+      const today = new Date()
+      today.setHours(0, 0, 0, 0)
+      
+      if (expiryDate < today) {
+        throw new Error('Business license has expired. Please provide a valid license.')
+      }
+
+      // Upload documents first
+      let documentUrls: string[] = []
+      if (formData.documents.length > 0) {
+        documentUrls = await uploadDocuments()
+      }
+
+      // Use the main supabase client which has the authenticated session
       const { data: manufacturer, error: manufacturerError } = await supabase
         .from('manufacturers')
         .insert({
           user_id: user.id,
           company_name: formData.companyName,
-          company_name_ar: formData.companyNameAr,
+          company_name_ar: formData.companyNameAr || null,
           country: formData.country,
-          city: formData.city,
-          region: formData.region,
+          city: formData.city || null,
+          region: formData.region || null,
           contact_email: formData.contactEmail,
-          contact_phone: formData.contactPhone,
-          website_url: formData.websiteUrl,
-          description: formData.description,
-          description_ar: formData.descriptionAr,
+          contact_phone: formData.contactPhone || null,
+          website_url: formData.websiteUrl || null,
+          description: formData.description || null,
+          description_ar: formData.descriptionAr || null,
           business_license: formData.businessLicense,
-          business_license_expiry: new Date(formData.businessLicenseExpiry).toISOString(),
-          verified_documents: [],
+          business_license_expiry: formData.businessLicenseExpiry,
           verification_status: 'pending',
+          verified_documents: documentUrls,
         })
         .select()
         .single()
 
-      if (manufacturerError) throw manufacturerError
+      if (manufacturerError) {
+        console.error('Full error:', manufacturerError)
+        throw new Error(manufacturerError.message || 'Failed to create manufacturer profile')
+      }
 
+      setUploadedDocUrls(documentUrls)
       setSuccess(true)
 
       // Redirect to admin dashboard after 3 seconds
       setTimeout(() => {
-        router.push('/dashboard?tab=admin')
+        router.push('/dashboard/admin')
       }, 3000)
     } catch (error: any) {
       setError(error.message || 'Failed to register manufacturer')
+      console.error('Signup error:', error)
     } finally {
       setLoading(false)
     }
@@ -404,7 +504,7 @@ export default function ManufacturerSignupPage() {
                         <ul className="space-y-2 text-sm text-muted-foreground">
                           <li className="flex items-start gap-2">
                             <ZapIcon className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                            <span>Business License (PDF/IMG)</span>
+                            <span>Business License (PDF/IMG) - Max 10MB</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <ZapIcon className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
@@ -435,9 +535,45 @@ export default function ManufacturerSignupPage() {
                       className="w-full px-3 py-6 border-2 border-dashed border-border bg-background rounded-lg cursor-pointer hover:border-primary/50 transition-colors"
                     />
                     <p className="text-xs text-muted-foreground mt-2">
-                      {formData.documents.length} file(s) selected
+                      Accepted formats: PDF, JPG, PNG. Max 10MB per file.
                     </p>
                   </div>
+
+                  {/* File List Preview */}
+                  {formData.documents.length > 0 && (
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-foreground">
+                        Selected Files ({formData.documents.length})
+                      </p>
+                      <div className="space-y-2">
+                        {formData.documents.map((file, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center justify-between p-3 bg-muted/30 rounded-lg border border-border/50"
+                          >
+                            <div className="flex items-center gap-3">
+                              <FileText className="h-5 w-5 text-primary" />
+                              <div>
+                                <p className="text-sm font-medium text-foreground">{file.name}</p>
+                                <p className="text-xs text-muted-foreground">
+                                  {(file.size / 1024 / 1024).toFixed(2)} MB
+                                </p>
+                              </div>
+                            </div>
+                            <Button
+                              type="button"
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => removeDocument(index)}
+                              className="text-red-500 hover:text-red-600 hover:bg-red-50"
+                            >
+                              Remove
+                            </Button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   <div className="p-4 bg-muted/30 rounded-lg border border-border/50">
                     <p className="text-sm text-foreground">
@@ -522,10 +658,10 @@ export default function ManufacturerSignupPage() {
                 {step === 'review' && (
                   <Button
                     type="submit"
-                    disabled={loading}
+                    disabled={loading || uploading}
                     className="bg-primary text-primary-foreground hover:bg-primary/90"
                   >
-                    {loading ? 'Submitting...' : 'Submit Application'}
+                    {loading ? (uploading ? 'Uploading Documents...' : 'Submitting...') : 'Submit Application'}
                   </Button>
                 )}
               </div>

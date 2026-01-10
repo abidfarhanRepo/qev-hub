@@ -16,11 +16,11 @@ import { Separator } from '@/components/ui/separator'
 export default function DashboardPage() {
   const { user, loading, signOut } = useAuth()
   const router = useRouter()
-  const [activeTab, setActiveTab] = useState<'marketplace' | 'orders' | 'charging' | 'sustainability' | 'admin' | 'settings'>('marketplace')
+  const [activeTab, setActiveTab] = useState<'marketplace' | 'orders' | 'charging' | 'sustainability' | 'settings'>('marketplace')
   const [order, setOrder] = useState<any>(null)
   const [vehicles, setVehicles] = useState<any[]>([])
   const [vehiclesLoading, setVehiclesLoading] = useState(true)
-  const [vehicleFilter, setVehicleFilter] = useState<'all' | 'EV' | 'PHEV' | 'FCEV'>('all')
+  const [vehicleFilter, setVehicleFilter] = useState<'all' | 'EV' | 'PHEV'>('all')
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState<'name' | 'price' | 'range'>('name')
 
@@ -105,7 +105,7 @@ export default function DashboardPage() {
   if (!user) return null
 
   return (
-    <div className="min-h-screen bg-background overflow-hidden">
+    <div className="h-screen bg-background overflow-hidden">
       {/* Animated Background */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.02)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.02)_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-50"></div>
@@ -113,9 +113,9 @@ export default function DashboardPage() {
         <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full animate-pulse-slow" style={{ animationDelay: '1s' }} />
       </div>
 
-      <div className="relative z-10 flex min-h-screen">
+      <div className="relative z-10 flex h-screen overflow-hidden">
         {/* Sidebar */}
-        <aside className="w-64 bg-card/30 backdrop-blur-xl border-r border-border/50 p-6 flex flex-col sticky top-0 h-screen overflow-y-auto">
+        <aside className="w-64 bg-card/30 backdrop-blur-xl border-r border-border/50 p-6 flex flex-col h-full overflow-y-auto flex-shrink-0">
           {/* Logo */}
           <div className="mb-8">
             <h1 className="text-2xl font-black tracking-widest text-foreground uppercase">
@@ -185,18 +185,6 @@ export default function DashboardPage() {
                   <Settings className="h-5 w-5" />
                   <span className="font-medium">Settings</span>
                 </button>
-
-                <button
-                  onClick={() => setActiveTab('admin')}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                    activeTab === 'admin'
-                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
-                      : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
-                  }`}
-                >
-                  <Settings className="h-5 w-5" />
-                  <span className="font-medium">Admin Portal</span>
-                </button>
               </nav>
 
           {/* User Profile */}
@@ -232,8 +220,9 @@ export default function DashboardPage() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 overflow-y-auto">
-          <div className="sticky top-0 z-20 bg-background/95 backdrop-blur-xl border-b border-border/50 px-8 py-4">
+        <main className="flex-1 flex flex-col overflow-hidden">
+          {/* Top Sticky Nav */}
+          <div className="flex-shrink-0 bg-background/95 backdrop-blur-xl border-b border-border/50 px-8 py-4 z-20">
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-2xl font-bold text-foreground">
@@ -241,7 +230,6 @@ export default function DashboardPage() {
                   {activeTab === 'orders' && 'My Orders'}
                   {activeTab === 'charging' && 'Charging Stations'}
                   {activeTab === 'sustainability' && 'Sustainability'}
-                  {activeTab === 'admin' && 'Admin Portal'}
                   {activeTab === 'settings' && 'Settings'}
                 </h1>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -249,7 +237,6 @@ export default function DashboardPage() {
                   {activeTab === 'orders' && 'Track your vehicle orders and deliveries'}
                   {activeTab === 'charging' && 'Find nearby charging stations'}
                   {activeTab === 'sustainability' && 'Your environmental impact'}
-                  {activeTab === 'admin' && 'Manage vehicles and inventory'}
                   {activeTab === 'settings' && 'Manage your account settings'}
                 </p>
               </div>
@@ -264,7 +251,8 @@ export default function DashboardPage() {
               )}
             </div>
           </div>
-          <div className="p-8">
+          {/* Scrollable Content Area */}
+          <div className="flex-1 overflow-y-auto p-8">
           {activeTab === 'marketplace' && (
             <div className="space-y-6">
               <div className="flex items-center justify-between mb-6">
@@ -339,16 +327,6 @@ export default function DashboardPage() {
                     }`}
                   >
                     Plug-in Hybrid ({vehicles.filter((v) => v.vehicle_type === 'PHEV').length})
-                  </button>
-                  <button
-                    onClick={() => setVehicleFilter('FCEV')}
-                    className={`px-6 py-2.5 rounded-lg font-bold uppercase tracking-wider transition-all ${
-                      vehicleFilter === 'FCEV'
-                        ? 'bg-primary text-primary-foreground shadow-lg'
-                        : 'bg-muted/20 text-muted-foreground hover:bg-muted/40 border border-border hover:border-primary/50'
-                    }`}
-                  >
-                    Fuel Cell ({vehicles.filter((v) => v.vehicle_type === 'FCEV').length})
                   </button>
                 </div>
 
@@ -674,27 +652,7 @@ export default function DashboardPage() {
             </div>
           )}
 
-          {activeTab === 'admin' && (
-            <div className="space-y-6">
-              <Card className="glass-card tech-border">
-                <CardContent className="p-8 text-center">
-                  <Settings className="h-16 w-16 text-primary mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
-                    Manufacturer Admin Portal
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    Manage your vehicle inventory, track analytics, and update pricing information.
-                  </p>
-                  <Button
-                    onClick={() => router.push('/dashboard/admin')}
-                    className="bg-primary text-primary-foreground"
-                  >
-                    Go to Admin Dashboard
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          )}
+
           </div>
         </main>
       </div>

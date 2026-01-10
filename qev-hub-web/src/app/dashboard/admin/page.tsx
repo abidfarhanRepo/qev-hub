@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter, useParams } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -44,10 +43,12 @@ interface Manufacturer {
   country: string
   city: string
   verification_status: string
+  contact_email?: string
+  contact_phone?: string
 }
 
 export default function AdminDashboard() {
-  const { user } = useAuth()
+  const { user, getSupabaseClient } = useAuth()
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'inventory' | 'analytics' | 'settings'>('inventory')
   const [vehicles, setVehicles] = useState<Vehicle[]>([])
@@ -72,13 +73,14 @@ export default function AdminDashboard() {
 
   const fetchManufacturerData = async () => {
     try {
-      const { data: { user } } = await supabase.auth.getUser()
       if (!user) {
         router.push('/login')
         return
       }
 
-      const { data: mfr } = await supabase
+      const authSupabase = getSupabaseClient()
+
+      const { data: mfr } = await authSupabase
         .from('manufacturers')
         .select('*')
         .eq('user_id', user.id)
@@ -86,9 +88,8 @@ export default function AdminDashboard() {
 
       if (mfr) {
         setManufacturer(mfr)
-      } else {
-        router.push('/manufacturer-signup')
       }
+      // If no manufacturer profile, show access denied (removed auto-redirect to signup)
     } catch (error) {
       console.error('Error fetching manufacturer data:', error)
     }
@@ -99,7 +100,8 @@ export default function AdminDashboard() {
 
     try {
       setLoading(true)
-      const { data, error } = await supabase
+      const authSupabase = getSupabaseClient()
+      const { data, error } = await authSupabase
         .from('vehicles')
         .select('*')
         .eq('manufacturer_id', manufacturer.id)
@@ -118,12 +120,13 @@ export default function AdminDashboard() {
     if (!manufacturer) return
 
     try {
-      const { data: vehiclesData } = await supabase
+      const authSupabase = getSupabaseClient()
+      const { data: vehiclesData } = await authSupabase
         .from('vehicles')
         .select('id')
         .eq('manufacturer_id', manufacturer.id)
 
-      const { data: inquiriesData } = await supabase
+      const { data: inquiriesData } = await authSupabase
         .from('vehicle_inquiries')
         .select('id')
         .in('vehicle_id', vehiclesData?.map((v: any) => v.id) || [])
@@ -173,7 +176,8 @@ export default function AdminDashboard() {
 
   const handleDeleteVehicle = async (vehicleId: string) => {
     try {
-      const { error } = await supabase
+      const authSupabase = getSupabaseClient()
+      const { error } = await authSupabase
         .from('vehicles')
         .delete()
         .eq('id', vehicleId)
@@ -193,8 +197,9 @@ export default function AdminDashboard() {
     if (!manufacturer) return
 
     try {
+      const authSupabase = getSupabaseClient()
       if (editMode) {
-        const { error } = await supabase
+        const { error } = await authSupabase
           .from('vehicles')
           .update({
             ...vehicleData,
@@ -204,7 +209,7 @@ export default function AdminDashboard() {
 
         if (error) throw error
       } else {
-        const { error } = await supabase
+        const { error } = await authSupabase
           .from('vehicles')
           .insert({
             ...vehicleData,
@@ -246,6 +251,28 @@ export default function AdminDashboard() {
       <div className="min-h-screen flex items-center justify-center bg-background p-8">
         <Card className="glass-card tech-border max-w-md">
           <CardContent className="p-8 text-center">
+            {!manufacturer && (
+              <>
+                <AlertCircle className="h-16 w-16 text-primary mx-auto mb-4" />
+                <h2 className="text-2xl font-bold text-foreground mb-2">Access Denied</h2>
+                <p className="text-muted-foreground mb-6">
+                  You need a manufacturer account to access this portal. Apply through the link at the bottom of our homepage.
+                </p>
+                <div className="flex gap-3">
+                  <Button
+                    variant="outline"
+                    onClick={() => router.push('/')}
+                  >
+                    Go to Homepage
+                  </Button>
+                  <Button
+                    onClick={() => router.push('/manufacturer-signup')}
+                  >
+                    Apply as Manufacturer
+                  </Button>
+                </div>
+              </>
+            )}
             {manufacturer?.verification_status === 'pending' && (
               <>
                 <AlertCircle className="h-16 w-16 text-yellow-600 mx-auto mb-4" />
@@ -259,14 +286,14 @@ export default function AdminDashboard() {
               <>
                 <AlertCircle className="h-16 w-16 text-red-600 mx-auto mb-4" />
                 <h2 className="text-2xl font-bold text-foreground mb-2">Application Rejected</h2>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground mb-6">
                   Your manufacturer application was rejected. Please contact support for more information.
                 </p>
                 <Button
-                  onClick={() => router.push('/manufacturer-signup')}
+                  onClick={() => window.location.href = 'mailto:manufacturers@qev-hub.qa'}
                   className="mt-6"
                 >
-                  Submit New Application
+                  Contact Support
                 </Button>
               </>
             )}
@@ -562,7 +589,7 @@ export default function AdminDashboard() {
                     </label>
                     <Input
                       type="email"
-                      value={manufacturer.contact_email}
+                      value={manufacturer.contact_email || ''}
                       disabled
                       className="bg-muted/30"
                     />
@@ -573,7 +600,7 @@ export default function AdminDashboard() {
                     </label>
                     <Input
                       type="tel"
-                      value={manufacturer.contact_phone}
+                      value={manufacturer.contact_phone || ''}
                       disabled
                       className="bg-muted/30"
                     />
