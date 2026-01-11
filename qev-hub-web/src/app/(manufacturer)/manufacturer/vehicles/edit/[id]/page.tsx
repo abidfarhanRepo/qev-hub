@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -9,22 +9,32 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { AlertCircle, CheckCircleIcon } from '@/components/icons'
+import { AlertCircle } from '@/components/icons'
 import { useToast } from '@/components/ui/use-toast'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 
-export default function NewVehiclePage() {
+interface VehicleImage {
+  url: string
+  is_primary: boolean
+  isNew?: boolean
+  file?: File
+}
+
+export default function EditVehiclePage() {
   const router = useRouter()
+  const params = useParams()
+  const vehicleId = params.id as string
   const { toast } = useToast()
   const [loading, setLoading] = useState(false)
+  const [loadingVehicle, setLoadingVehicle] = useState(true)
   const [manufacturer, setManufacturer] = useState<any>(null)
   const [error, setError] = useState<string | null>(null)
-  
+
   // Image upload state
   const fileInputRef = useRef<HTMLInputElement>(null)
-  const [imageFiles, setImageFiles] = useState<File[]>([])
-  const [imagePreviews, setImagePreviews] = useState<string[]>([])
+  const [images, setImages] = useState<VehicleImage[]>([])
+  const [newImageFiles, setNewImageFiles] = useState<File[]>([])
   const [uploadingImages, setUploadingImages] = useState(false)
   const [uploadProgress, setUploadProgress] = useState(0)
 
@@ -50,7 +60,8 @@ export default function NewVehiclePage() {
 
   useEffect(() => {
     fetchManufacturer()
-  }, [])
+    fetchVehicle()
+  }, [vehicleId])
 
   const fetchManufacturer = async () => {
     try {
@@ -66,6 +77,60 @@ export default function NewVehiclePage() {
       setManufacturer(manufacturerData)
     } catch (error) {
       console.error('Error fetching manufacturer:', error)
+    }
+  }
+
+  const fetchVehicle = async () => {
+    try {
+      const { data: vehicle, error } = await supabase
+        .from('vehicles')
+        .select('*')
+        .eq('id', vehicleId)
+        .single()
+
+      if (error) throw error
+
+      setFormData({
+        make: vehicle.make || '',
+        model: vehicle.model || '',
+        year: vehicle.year || new Date().getFullYear(),
+        vehicle_type: vehicle.vehicle_type || 'EV',
+        price: vehicle.price?.toString() || '',
+        battery_capacity: vehicle.battery_capacity?.toString() || '',
+        range: vehicle.range?.toString() || '',
+        charging_time: vehicle.charging_time || '',
+        top_speed: vehicle.top_speed?.toString() || '',
+        acceleration: vehicle.acceleration || '',
+        seating_capacity: vehicle.seating_capacity?.toString() || '5',
+        cargo_space: vehicle.cargo_space?.toString() || '',
+        availability: vehicle.availability || 'available',
+        description: vehicle.description || '',
+        warranty_years: vehicle.warranty_years?.toString() || '5',
+        warranty_km: vehicle.warranty_km?.toString() || '100000',
+        origin_country: vehicle.origin_country || 'China',
+      })
+
+      // Fetch vehicle images
+      const { data: vehicleImages } = await supabase
+        .from('vehicle_images')
+        .select('*')
+        .eq('vehicle_id', vehicleId)
+        .order('is_primary', { ascending: false })
+
+      if (vehicleImages && vehicleImages.length > 0) {
+        setImages(vehicleImages.map(img => ({
+          url: img.image_url,
+          is_primary: img.is_primary
+        })))
+      } else if (vehicle.image_url) {
+        setImages([{ url: vehicle.image_url, is_primary: true }])
+      }
+
+    } catch (error) {
+      console.error('Error fetching vehicle:', error)
+      setError('Failed to load vehicle')
+    } finally {
+      setLoadingVehicle(false)
     }
   }
 
@@ -93,7 +158,7 @@ export default function NewVehiclePage() {
       return true
     })
 
-    if (imageFiles.length + validFiles.length > maxImages) {
+    if (images.length + validFiles.length > maxImages) {
       toast({
         title: 'Too many images',
         description: `Maximum ${maxImages} images allowed.`,
@@ -102,19 +167,63 @@ export default function NewVehiclePage() {
       return
     }
 
-    setImageFiles([...imageFiles, ...validFiles])
-    const newPreviews = validFiles.map(file => URL.createObjectURL(file))
-    setImagePreviews([...imagePreviews, ...newPreviews])
+    setNewImageFiles([...newImageFiles, ...validFiles])
+    const newImages = validFiles.map((file, index) => ({
+      url: URL.createObjectURL(file),
+      is_primary: images.length === 0 && index === 0,
+      isNew: true,
+      file
+    }))
+    setImages([...images, ...newImages])
   }
 
-  const removeImage = (index: number) => {
-    URL.revokeObjectURL(imagePreviews[index])
-    setImageFiles(imageFiles.filter((_, i) => i !== index))
-    setImagePreviews(imagePreviews.filter((_, i) => i !== index))
+  const removeImage = async (index: number) => {
+    const image = images[index]
+    
+    if (!image.isNew && vehicleId) {
+      // Delete from server
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        if (!session) throw new Error('Not authenticated')
+
+        await fetch(`/api/admin/vehicles/${vehicleId}/images`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${session.access_token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ imageUrl: image.url })
+        })
+      } catch (error) {
+        console.error('Error deleting image:', error)
+      }
+    }
+
+    if (image.isNew && image.url.startsWith('blob:')) {
+      URL.revokeObjectURL(image.url)
+      setNewImageFiles(newImageFiles.filter(f => f !== image.file))
+    }
+
+    const newImages = images.filter((_, i) => i !== index)
+    
+    // If we removed the primary, make the first remaining image primary
+    if (image.is_primary && newImages.length > 0) {
+      newImages[0].is_primary = true
+    }
+    
+    setImages(newImages)
   }
 
-  const uploadImages = async (vehicleId: string): Promise<string | null> => {
-    if (imageFiles.length === 0) return null
+  const setPrimaryImage = (index: number) => {
+    setImages(images.map((img, i) => ({
+      ...img,
+      is_primary: i === index
+    })))
+  }
+
+  const uploadNewImages = async (): Promise<string | null> => {
+    const newImages = images.filter(img => img.isNew && img.file)
+    if (newImages.length === 0) return null
 
     setUploadingImages(true)
     setUploadProgress(0)
@@ -125,11 +234,13 @@ export default function NewVehiclePage() {
 
       let primaryImageUrl: string | null = null
       
-      for (let i = 0; i < imageFiles.length; i++) {
-        const file = imageFiles[i]
+      for (let i = 0; i < newImages.length; i++) {
+        const image = newImages[i]
+        if (!image.file) continue
+
         const formData = new FormData()
-        formData.append('file', file)
-        formData.append('isPrimary', (i === 0).toString())
+        formData.append('file', image.file)
+        formData.append('isPrimary', image.is_primary.toString())
 
         const response = await fetch(`/api/admin/vehicles/${vehicleId}/images`, {
           method: 'POST',
@@ -141,12 +252,12 @@ export default function NewVehiclePage() {
 
         if (response.ok) {
           const result = await response.json()
-          if (i === 0) {
+          if (image.is_primary) {
             primaryImageUrl = result.image.url
           }
         }
 
-        setUploadProgress(((i + 1) / imageFiles.length) * 100)
+        setUploadProgress(((i + 1) / newImages.length) * 100)
       }
 
       return primaryImageUrl
@@ -173,58 +284,50 @@ export default function NewVehiclePage() {
         throw new Error('Please fill in all required fields')
       }
 
-      // Insert vehicle
-      const { data: vehicleData, error: vehicleError } = await supabase
+      // Upload any new images first
+      const primaryImageUrl = await uploadNewImages()
+
+      // Find the current primary image URL
+      const currentPrimary = images.find(img => img.is_primary && !img.isNew)
+      const imageUrl = primaryImageUrl || currentPrimary?.url || images[0]?.url || null
+
+      // Update vehicle
+      const { error: vehicleError } = await supabase
         .from('vehicles')
-        .insert([
-          {
-            manufacturer_id: manufacturer.id,
-            make: formData.make,
-            model: formData.model,
-            year: formData.year,
-            vehicle_type: formData.vehicle_type,
-            price: parseFloat(formData.price),
-            battery_capacity: formData.battery_capacity ? parseFloat(formData.battery_capacity) : null,
-            range: formData.range ? parseInt(formData.range) : null,
-            charging_time: formData.charging_time || null,
-            top_speed: formData.top_speed ? parseInt(formData.top_speed) : null,
-            acceleration: formData.acceleration || null,
-            seating_capacity: parseInt(formData.seating_capacity),
-            cargo_space: formData.cargo_space ? parseInt(formData.cargo_space) : null,
-            availability: formData.availability,
-            description: formData.description || null,
-            warranty_years: parseInt(formData.warranty_years),
-            warranty_km: parseInt(formData.warranty_km),
-            origin_country: formData.origin_country,
-            manufacturer_direct_price: parseFloat(formData.price),
-          }
-        ])
-        .select()
+        .update({
+          make: formData.make,
+          model: formData.model,
+          year: formData.year,
+          vehicle_type: formData.vehicle_type,
+          price: parseFloat(formData.price),
+          battery_capacity: formData.battery_capacity ? parseFloat(formData.battery_capacity) : null,
+          range: formData.range ? parseInt(formData.range) : null,
+          charging_time: formData.charging_time || null,
+          top_speed: formData.top_speed ? parseInt(formData.top_speed) : null,
+          acceleration: formData.acceleration || null,
+          seating_capacity: parseInt(formData.seating_capacity),
+          cargo_space: formData.cargo_space ? parseInt(formData.cargo_space) : null,
+          availability: formData.availability,
+          description: formData.description || null,
+          warranty_years: parseInt(formData.warranty_years),
+          warranty_km: parseInt(formData.warranty_km),
+          origin_country: formData.origin_country,
+          manufacturer_direct_price: parseFloat(formData.price),
+          image_url: imageUrl,
+        })
+        .eq('id', vehicleId)
 
       if (vehicleError) throw vehicleError
 
-      // Upload images if any
-      if (vehicleData && vehicleData[0] && imageFiles.length > 0) {
-        const primaryImageUrl = await uploadImages(vehicleData[0].id)
-        
-        // Update vehicle with primary image URL
-        if (primaryImageUrl) {
-          await supabase
-            .from('vehicles')
-            .update({ image_url: primaryImageUrl })
-            .eq('id', vehicleData[0].id)
-        }
-      }
-
       toast({
         title: 'Success',
-        description: 'Vehicle added successfully',
+        description: 'Vehicle updated successfully',
       })
 
       router.push('/manufacturer/vehicles')
     } catch (error: any) {
-      console.error('Error adding vehicle:', error)
-      setError(error.message || 'Failed to add vehicle')
+      console.error('Error updating vehicle:', error)
+      setError(error.message || 'Failed to update vehicle')
     } finally {
       setLoading(false)
     }
@@ -234,12 +337,23 @@ export default function NewVehiclePage() {
     setFormData({ ...formData, [field]: value })
   }
 
+  if (loadingVehicle) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-2 text-muted-foreground">Loading vehicle...</p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Add New Vehicle</h1>
+        <h1 className="text-3xl font-bold">Edit Vehicle</h1>
         <p className="text-muted-foreground mt-1">
-          Add a new vehicle to your marketplace listings
+          Update vehicle information and images
         </p>
       </div>
 
@@ -248,7 +362,7 @@ export default function NewVehiclePage() {
           <CardHeader>
             <CardTitle>Vehicle Information</CardTitle>
             <CardDescription>
-              Enter the details of the vehicle you want to list
+              Edit the details of your vehicle listing
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -472,12 +586,12 @@ export default function NewVehiclePage() {
                   type="button"
                   variant="outline"
                   onClick={() => fileInputRef.current?.click()}
-                  disabled={imageFiles.length >= 5 || loading}
+                  disabled={images.length >= 5 || loading}
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
-                  Add Images ({imageFiles.length}/5)
+                  Add Images ({images.length}/5)
                 </Button>
                 <input
                   ref={fileInputRef}
@@ -501,35 +615,53 @@ export default function NewVehiclePage() {
                 </div>
               )}
 
-              {imagePreviews.length > 0 && (
+              {images.length > 0 && (
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                  {imagePreviews.map((preview, index) => (
-                    <div key={preview} className="relative group rounded-lg overflow-hidden border">
+                  {images.map((image, index) => (
+                    <div key={image.url} className="relative group rounded-lg overflow-hidden border">
                       <img
-                        src={preview}
-                        alt={`Preview ${index + 1}`}
+                        src={image.url}
+                        alt={`Image ${index + 1}`}
                         className="w-full h-24 object-cover"
                       />
-                      {index === 0 && (
+                      {image.is_primary && (
                         <Badge className="absolute top-1 left-1 text-xs bg-primary">
                           Primary
                         </Badge>
                       )}
-                      <button
-                        type="button"
-                        onClick={() => removeImage(index)}
-                        className="absolute top-1 right-1 w-6 h-6 bg-destructive text-destructive-foreground rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                      </button>
+                      {image.isNew && (
+                        <Badge variant="secondary" className="absolute bottom-1 left-1 text-xs">
+                          New
+                        </Badge>
+                      )}
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1">
+                        {!image.is_primary && (
+                          <button
+                            type="button"
+                            onClick={() => setPrimaryImage(index)}
+                            className="p-1.5 bg-white text-black rounded text-xs"
+                            title="Set as primary"
+                          >
+                            Primary
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => removeImage(index)}
+                          className="p-1.5 bg-destructive text-destructive-foreground rounded"
+                          title="Remove"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
               )}
 
-              {imagePreviews.length === 0 && (
+              {images.length === 0 && (
                 <div 
                   className="border-2 border-dashed border-border rounded-lg p-8 text-center cursor-pointer hover:border-primary/50 transition-colors"
                   onClick={() => fileInputRef.current?.click()}
@@ -566,15 +698,15 @@ export default function NewVehiclePage() {
               <Button
                 type="submit"
                 className="flex-1"
-                disabled={loading}
+                disabled={loading || uploadingImages}
               >
-                {loading ? 'Adding Vehicle...' : 'Add Vehicle'}
+                {loading ? 'Saving...' : uploadingImages ? 'Uploading Images...' : 'Save Changes'}
               </Button>
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => router.push('/manufacturer/vehicles')}
-                disabled={loading}
+                disabled={loading || uploadingImages}
               >
                 Cancel
               </Button>

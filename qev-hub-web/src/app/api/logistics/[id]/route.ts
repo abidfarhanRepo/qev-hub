@@ -1,6 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const orderId = params.id
+
+    // Fetch logistics entry by order_id
+    const { data: logistics, error } = await supabase
+      .from('logistics')
+      .select('*')
+      .eq('order_id', orderId)
+      .single()
+
+    if (error || !logistics) {
+      return NextResponse.json(
+        { error: 'Logistics entry not found' },
+        { status: 404 }
+      )
+    }
+
+    return NextResponse.json({
+      success: true,
+      logistics,
+    })
+  } catch (error) {
+    console.error('Logistics GET error:', error)
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
+  }
+}
+
 export async function PUT(
   request: NextRequest,
   { params }: { params: { id: string } }

@@ -1,15 +1,18 @@
 'use client'
 
 import { useState, useEffect, Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
+import { useAuth } from '@/contexts/AuthContext'
 import { OrderDetails } from '@/components/OrderDetails'
 import { PaymentForm } from '@/components/PaymentForm'
 import { OrderTracking } from '@/components/OrderTracking'
 import { ComplianceDocuments } from '@/components/ComplianceDocuments'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
 import { toast } from '@/components/ui/use-toast'
+import { PackageIcon, TruckIcon, ClockIcon, CheckIcon } from '@/components/icons'
 
 type Step = 'details' | 'payment' | 'confirmation' | 'tracking'
 
@@ -25,13 +28,187 @@ interface Vehicle {
   stock_count: number
 }
 
+interface Order {
+  id: string
+  tracking_id: string
+  status: string
+  total_price: number
+  payment_status: string
+  created_at: string
+  vehicle: Vehicle
+}
+
+function OrdersListView() {
+  const router = useRouter()
+  const { user } = useAuth()
+  const [orders, setOrders] = useState<Order[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchOrders()
+  }, [user])
+
+  const fetchOrders = async () => {
+    try {
+      setLoading(true)
+      // Use demo-user-id if not authenticated (for demo purposes)
+      const userId = user?.id || 'demo-user-id'
+      
+      const { data, error } = await supabase
+        .from('orders')
+        .select(`
+          *,
+          vehicle:vehicles(*)
+        `)
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+
+      if (error) throw error
+      setOrders(data || [])
+    } catch (error) {
+      console.error('Error fetching orders:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('en-QA', {
+      style: 'currency',
+      currency: 'QAR'
+    }).format(price)
+  }
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-QA', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
+  }
+
+  const getStatusIcon = (status: string) => {
+    switch (status) {
+      case 'Delivered':
+        return <CheckIcon className="h-4 w-4 text-green-500" />
+      case 'In Transit':
+      case 'In Customs':
+        return <TruckIcon className="h-4 w-4 text-blue-500" />
+      case 'Processing':
+        return <ClockIcon className="h-4 w-4 text-yellow-500" />
+      default:
+        return <PackageIcon className="h-4 w-4 text-muted-foreground" />
+    }
+  }
+
+  const getStatusBadgeVariant = (status: string) => {
+    switch (status) {
+      case 'Delivered':
+        return 'default'
+      case 'In Transit':
+      case 'In Customs':
+        return 'secondary'
+      default:
+        return 'outline'
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4" />
+          <p>Loading your orders...</p>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="min-h-screen bg-background py-8 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.05)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.05)_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-10 pointer-events-none"></div>
+      
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="mb-8">
+          <h1 className="text-3xl font-black uppercase tracking-widest text-foreground mb-2">
+            My <span className="text-primary">Orders</span>
+          </h1>
+          <p className="text-muted-foreground">
+            Track and manage your vehicle orders
+          </p>
+        </div>
+
+        {orders.length === 0 ? (
+          <Card>
+            <CardContent className="py-12 text-center">
+              <PackageIcon className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">No Orders Yet</h3>
+              <p className="text-muted-foreground mb-6">
+                You haven't placed any orders yet. Browse our marketplace to find your perfect EV!
+              </p>
+              <Button onClick={() => router.push('/marketplace')}>
+                Browse Marketplace
+              </Button>
+            </CardContent>
+          </Card>
+        ) : (
+          <div className="space-y-4">
+            {orders.map((order) => (
+              <Card 
+                key={order.id} 
+                className="hover:border-primary/50 transition-colors cursor-pointer"
+                onClick={() => router.push(`/orders?order_id=${order.id}`)}
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        {getStatusIcon(order.status)}
+                        <h3 className="font-semibold">
+                          {order.vehicle?.manufacturer} {order.vehicle?.model}
+                        </h3>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Tracking ID: {order.tracking_id}
+                      </p>
+                    </div>
+                    <Badge variant={getStatusBadgeVariant(order.status) as any}>
+                      {order.status}
+                    </Badge>
+                  </div>
+                  
+                  <div className="grid grid-cols-3 gap-4 text-sm">
+                    <div>
+                      <p className="text-muted-foreground">Total</p>
+                      <p className="font-semibold">{formatPrice(order.total_price)}</p>
+                    </div>
+                    <div>
+                      <p className="text-muted-foreground">Payment</p>
+                      <p className="font-semibold">{order.payment_status}</p>
+                    </div>
+                    <div>
+                      <p className="text-muted-foreground">Ordered</p>
+                      <p className="font-semibold">{formatDate(order.created_at)}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
 function OrdersPageContent() {
   const searchParams = useSearchParams()
   const vehicleId = searchParams.get('vehicle_id')
+  const existingOrderId = searchParams.get('order_id')
 
   const [step, setStep] = useState<Step>('details')
   const [vehicle, setVehicle] = useState<Vehicle | null>(null)
-  const [orderId, setOrderId] = useState<string | null>(null)
+  const [orderId, setOrderId] = useState<string | null>(existingOrderId)
   const [trackingId, setTrackingId] = useState<string | null>(null)
   const [depositAmount, setDepositAmount] = useState<number>(0)
   const [loading, setLoading] = useState(false)
@@ -41,8 +218,33 @@ function OrdersPageContent() {
   useEffect(() => {
     if (vehicleId) {
       fetchVehicle(vehicleId)
+    } else if (existingOrderId) {
+      // Viewing existing order - go directly to tracking
+      setStep('tracking')
+      fetchExistingOrderDetails(existingOrderId)
     }
-  }, [vehicleId])
+  }, [vehicleId, existingOrderId])
+
+  const fetchExistingOrderDetails = async (id: string) => {
+    try {
+      const [logisticsRes, docsRes] = await Promise.all([
+        fetch(`/api/logistics/${id}`),
+        fetch(`/api/compliance?order_id=${id}`),
+      ])
+
+      if (logisticsRes.ok) {
+        const logisticsData = await logisticsRes.json()
+        setLogistics(logisticsData.logistics)
+      }
+
+      if (docsRes.ok) {
+        const docsData = await docsRes.json()
+        setDocuments(docsData.documents || [])
+      }
+    } catch (error) {
+      console.error('Error fetching order details:', error)
+    }
+  }
 
   const fetchVehicle = async (id: string) => {
     try {
@@ -148,12 +350,32 @@ function OrdersPageContent() {
     window.location.href = '/marketplace'
   }
 
+  const handleBackToOrders = () => {
+    window.location.href = '/orders'
+  }
+
+  // Show orders list if no vehicle_id or order_id provided
+  if (!vehicleId && !existingOrderId) {
+    return <OrdersListView />
+  }
+
   if (!vehicle && vehicleId) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4" />
           <p>Loading vehicle details...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (existingOrderId && !logistics && step === 'tracking') {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4" />
+          <p>Loading order details...</p>
         </div>
       </div>
     )
@@ -208,9 +430,6 @@ function OrdersPageContent() {
          {step === 'details' && vehicle && (
            <OrderDetails vehicle={vehicle} onPurchase={handlePurchase} />
          )}
-        {step === 'details' && vehicle && (
-          <OrderDetails vehicle={vehicle} onPurchase={handlePurchase} />
-        )}
 
         {step === 'payment' && orderId && (
           <PaymentForm
@@ -259,10 +478,20 @@ function OrdersPageContent() {
         )}
 
         {/* Back button */}
-        {(step === 'details' || step === 'tracking') && (
+        {step === 'details' && (
           <div className="mt-6">
             <Button variant="outline" onClick={handleBackToMarketplace}>
               Back to Marketplace
+            </Button>
+          </div>
+        )}
+        {step === 'tracking' && (
+          <div className="mt-6 flex gap-4">
+            <Button variant="outline" onClick={handleBackToOrders}>
+              Back to My Orders
+            </Button>
+            <Button variant="outline" onClick={handleBackToMarketplace}>
+              Browse Marketplace
             </Button>
           </div>
         )}
