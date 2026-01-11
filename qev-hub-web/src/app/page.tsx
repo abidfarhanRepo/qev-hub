@@ -27,11 +27,11 @@ export default function Home() {
                <div className="text-2xl font-black tracking-widest text-white uppercase mb-4 md:mb-0">
                   QEV<span className="text-qev-accent">-HUB</span>
                </div>
-               <div className="flex space-x-6">
-                  <a href="#" className="text-gray-400 hover:text-qev-accent transition-colors">Privacy Policy</a>
-                  <a href="#" className="text-gray-400 hover:text-qev-accent transition-colors">Terms of Service</a>
-                  <a href="#" className="text-gray-400 hover:text-qev-accent transition-colors">Contact</a>
-               </div>
+                <div className="flex space-x-6">
+                   <a href="/privacy" className="text-gray-400 hover:text-qev-accent transition-colors">Privacy Policy</a>
+                   <a href="/terms" className="text-gray-400 hover:text-qev-accent transition-colors">Terms of Service</a>
+                   <a href="/marketplace/manufacturers" className="text-gray-400 hover:text-qev-accent transition-colors">Contact</a>
+                </div>
             </div>
             <p className="text-sm mb-6">&copy; 2026 QEV-Hub. All rights reserved. Qatar's Premier Electric Vehicle Marketplace.</p>
             
