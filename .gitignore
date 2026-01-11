@@ -74,3 +74,46 @@ Thumbs.db
 debug-screenshot.png
 storage/
 SCRAPER_README.md
+
+# Temporary files and data
+temp-vehicle-images/
+tarsheed-captures/
+tarsheed-captured.jsonl
+tarsheed-network-log.txt
+tarsheed-apk/
+*.jpg
+*.jpeg
+*.png
+*.xml
+*.gif
+*.webp
+*.svg
+session-*.md
+Screenshot_*.jpg
+Screenshot_*.png
+
+# Utility scripts
+**/download-images-only.js
+**/execute-sql.js
+**/run-sql.js
+**/simple-upload-images.js
+**/upload-final-images.js
+**/upload-remaining-images.js
+**/upload-tesla-model-y.js
+**/upload-vehicle-images.js
+**/import-tarsheed-captured.js
+**/parse-tarsheed-capture.js
+**/clear-and-import-tarsheed.js
+**/tarsheed-capture.py
+**/test-update.js
+**/update-charging-coordinates.js
+**/update-verbose.js
+**/update-with-service-role.js
+**/verify-update.js
+**/check_current_db.js
+**/verify_coordinates.js
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo

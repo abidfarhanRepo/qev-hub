@@ -10,6 +10,19 @@ import { Button } from '@/components/ui/button'
 
 const dohaCenter: [number, number] = [25.3548, 51.1839]
 
+const TILE_CONFIGS = {
+  en: {
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+    attribution: '&copy; <a href="https://www.esri.com/">Esri</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 17
+  },
+  ar: {
+    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19
+  }
+}
+
 const customMarkerIcon = (isAvailable: boolean) =>
   L.divIcon({
     className: 'custom-marker',
@@ -62,6 +75,7 @@ export default function ChargingPage() {
   const [filter, setFilter] = useState<'all' | 'available' | 'nearby'>('all')
   const [mapCenter, setMapCenter] = useState<[number, number]>(dohaCenter)
   const [mapZoom, setMapZoom] = useState(12)
+  const [mapLanguage, setMapLanguage] = useState<'en' | 'ar'>('en')
 
   useEffect(() => {
     fetchChargingStations()
@@ -156,35 +170,44 @@ export default function ChargingPage() {
           <p className="text-muted-foreground">Find and navigate to charging stations across Qatar</p>
         </div>
 
-        <div className="mb-6 flex gap-3 flex-wrap">
+        <div className="mb-6 flex flex-wrap gap-3 justify-between items-center">
+          <div className="flex gap-3 flex-wrap">
+            <Button
+              onClick={() => setFilter('all')}
+              variant={filter === 'all' ? 'default' : 'outline'}
+              className="font-bold uppercase tracking-wider"
+            >
+              All Stations ({stations.length})
+            </Button>
+            <Button
+              onClick={() => setFilter('available')}
+              variant={filter === 'available' ? 'default' : 'outline'}
+              className="font-bold uppercase tracking-wider"
+            >
+              Available Now
+            </Button>
+            <Button
+              onClick={() => {
+                if (userLocation) {
+                  setFilter('nearby')
+                  setMapCenter(userLocation)
+                  setMapZoom(14)
+                } else {
+                  getUserLocation()
+                }
+              }}
+              variant={filter === 'nearby' ? 'default' : 'outline'}
+              className="font-bold uppercase tracking-wider"
+            >
+              Nearby (10km)
+            </Button>
+          </div>
           <Button
-            onClick={() => setFilter('all')}
-            variant={filter === 'all' ? 'default' : 'outline'}
+            onClick={() => setMapLanguage(mapLanguage === 'en' ? 'ar' : 'en')}
+            variant="outline"
             className="font-bold uppercase tracking-wider"
           >
-            All Stations ({stations.length})
-          </Button>
-          <Button
-            onClick={() => setFilter('available')}
-            variant={filter === 'available' ? 'default' : 'outline'}
-            className="font-bold uppercase tracking-wider"
-          >
-            Available Now
-          </Button>
-          <Button
-            onClick={() => {
-              if (userLocation) {
-                setFilter('nearby')
-                setMapCenter(userLocation)
-                setMapZoom(14)
-              } else {
-                getUserLocation()
-              }
-            }}
-            variant={filter === 'nearby' ? 'default' : 'outline'}
-            className="font-bold uppercase tracking-wider"
-          >
-            Nearby (10km)
+            {mapLanguage === 'en' ? 'العربية' : 'English'}
           </Button>
         </div>
 
@@ -196,8 +219,9 @@ export default function ChargingPage() {
             className="z-10"
           >
             <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution={TILE_CONFIGS[mapLanguage].attribution}
+              url={TILE_CONFIGS[mapLanguage].url}
+              maxZoom={TILE_CONFIGS[mapLanguage].maxZoom}
             />
             <MapController center={mapCenter} zoom={mapZoom} />
 

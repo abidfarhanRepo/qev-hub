@@ -1,208 +1,130 @@
-# 🚀 Quick Start: Vehicle Images Management
+# Tarsheed Data Capture - Quick Start Guide
 
-## What Was Implemented
+## Current Status
 
-✅ **Database Migration** - Creates storage bucket with RLS policies  
-✅ **API Routes** - REST endpoints for image management (POST/GET/DELETE)  
-✅ **Upload Scripts** - Bulk upload tools for initial setup  
-✅ **Documentation** - Complete setup and usage guides  
+### ✅ Ready
+- Machine IP: `192.168.10.234`
+- mitmproxy installed: `/usr/bin/mitmproxy`
+- Capture script: `scripts/tarsheed-capture.py`
+- Instructions file: `REAL_DEVICE_INSTRUCTIONS.md`
 
----
+### ⚠️ mitmproxy Must Run in Interactive Terminal
 
-## 📋 Files Created
-
-| File | Purpose |
-|-------|---------|
-| `supabase/migrations/025_vehicle_images_storage.sql` | Database migration for storage bucket and RLS |
-| `src/app/api/admin/vehicles/[id]/images/route.ts` | API routes for image CRUD operations |
-| `scripts/simple-upload-images.js` | Basic bulk image upload script |
-| `scripts/upload-vehicle-images.js` | Advanced upload with manufacturer URLs |
-| `scripts/execute-sql.js` | SQL execution utility |
-| `VEHICLE_IMAGES_SETUP.md` | Detailed setup documentation |
-| `IMPLEMENTATION_COMPLETE.md` | Full implementation notes |
+**Important:** You need to start mitmproxy in your own terminal (I cannot start it from non-interactive shell).
 
 ---
 
-## ⚠️ Action Required: 3 Steps to Complete Setup
+## 📋 3-STEP QUICK START
 
-### Step 1: Apply Database Migration (Manual)
+### Step 1: Start mitmproxy
 
-1. Go to: https://app.supabase.com/project/wmumpqvvoydngcbffozu/sql/new
-2. Copy all SQL from: `supabase/migrations/025_vehicle_images_storage.sql`
-3. Paste and run
+**In YOUR terminal:**
+```bash
+cd /home/pi/Desktop/QEV/qev-hub-web
+/usr/bin/mitmproxy --listen-host 0.0.0.0 --listen-port 8080 -s scripts/tarsheed-capture.py --set block_global=false --ssl-insecure
+```
 
-This creates:
-- `vehicle-images` storage bucket
-- RLS policies (public read, admin/manufacturer write)
-- Updated image URLs for all existing vehicles
+**Leave this terminal open and running!**
 
-### Step 2: Add Service Role Key to `.env.local`
+**You should see:**
+```
+Mitmproxy starting...
+HTTP server listening at 0.0.0.0:8080
+```
 
-The upload scripts need the service role key to bypass RLS.
+---
 
-1. Go to: https://app.supabase.com/project/wmumpqvvoydngcbffozu/settings/api
-2. Copy "service_role" key
-3. Add to `.env.local`:
+### Step 2: Configure Your Android Device
+
+**On your Android device:**
+
+#### 2.1 Install Certificate
+
+1. Open Chrome browser
+2. Navigate to: `http://192.168.10.234:8080/mitm.it`
+3. Download: "Android CA certificate"
+4. Go to: Settings → Security → Install from storage
+5. Select: Download/mitmproxy-ca-cert.cer
+6. Name it: `mitmproxy`
+7. Choose: "VPN and apps"
+8. Confirm installation
+
+#### 2.2 Set WiFi Proxy
+
+1. Go to: Settings → WiFi
+2. Long-press your connected network
+3. Choose: "Modify network"
+4. Scroll to: "Proxy"
+5. Enable proxy:
+   - Proxy hostname: `192.168.10.234`
+   - Proxy port: `8080`
+6. Save
+
+#### 2.3 Test Proxy
+
+1. Open browser on Android
+2. Navigate to: http://google.com
+3. If it loads, proxy is working!
+
+---
+
+### Step 3: Navigate Tarsheed App
+
+**On your Android device:**
+
+1. Open Tarsheed app
+2. Login with your Qatar credentials
+3. Navigate to charging stations section
+
+**Explore for 20-30 minutes:**
+
+1. **Map View:** Zoom out, pan around Qatar to load all regions
+2. **List View:** Scroll through entire list
+3. **Station Details:** Tap 10-15 stations to see details
+4. **Filters:** Try different filters if available
+5. **Refresh:** Pull-to-refresh to reload data
+
+**Watch mitmproxy terminal - you should see:**
+```
+✓ Captured [1]: GET /api/v1/charging/stations
+✓ Captured [2]: GET /api/v1/charging/station/123/details
+```
+
+---
+
+### Step 4: Stop & Import
+
+**When done navigating Tarsheed app:**
+
+#### 4.1 Stop mitmproxy
+
+In your terminal (running mitmproxy): Press `Ctrl+C`
+
+#### 4.2 Parse Data
 
 ```bash
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+cd /home/pi/Desktop/QEV/qev-hub-web
+node scripts/parse-tarsheed-capture.js
 ```
 
-⚠️ **Keep this key secret!** Never commit to git.
+#### 4.3 Create Backup (in Supabase)
 
-### Step 3: Upload Vehicle Images
+Open Supabase SQL Editor and run:
+```sql
+CREATE TABLE charging_stations_backup AS 
+SELECT * FROM charging_stations;
+```
 
-After adding the service role key, run:
+#### 4.4 Import Data
 
 ```bash
-node scripts/simple-upload-images.js
-```
-
-This will download and upload proper vehicle images to Supabase Storage.
-
----
-
-## 📊 What the System Does
-
-### Storage
-- **Bucket**: `vehicle-images`
-- **Public**: Yes (no auth needed to view)
-- **Size Limit**: 5MB per image
-- **Formats**: JPEG, PNG, WebP
-
-### Access Control
-| Who Can | Read | Write | Delete |
-|----------|-------|-------|--------|
-| Public | ✅ | ❌ | ❌ |
-| Admins | ✅ | ✅ | ✅ (any) |
-| Verified Manufacturers | ✅ | ✅ (own only) | ✅ (own only) |
-
-### API Endpoints
-- **POST** `/api/admin/vehicles/[id]/images` - Upload image
-- **GET** `/api/admin/vehicles/[id]/images` - Get images
-- **DELETE** `/api/admin/vehicles/[id]/images` - Delete image
-
----
-
-## 🖼️ Vehicle Images Reference
-
-| Vehicle | Expected Filename | Source URL |
-|---------|------------------|--------------|
-| Tesla Model 3 | `tesla-model-3.jpg` | Motor1.com |
-| Tesla Model Y | `tesla-model-y.jpg` | Motor1.com |
-| BYD Atto 3 | `byd-atto-3.jpg` | Electrek.co |
-| BYD Han Plus | `byd-han-plus.jpg` | AutoExpress |
-| NIO ES8 | `nio-es8.jpg` | Unsplash |
-| XPeng P7i | `xpeng-p7i.jpg` | Unsplash |
-| GAC AION Y Plus | `aion-y-plus.jpg` | Unsplash |
-
----
-
-## 🔄 Usage Examples
-
-### Upload via cURL
-
-```bash
-curl -X POST \
-  https://your-domain.com/api/admin/vehicles/{vehicle-id}/images \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -F "file=@/path/to/image.jpg" \
-  -F "isPrimary=true"
-```
-
-### Upload via JavaScript
-
-```javascript
-const formData = new FormData()
-formData.append('file', imageFile)
-formData.append('isPrimary', 'true')
-
-const response = await fetch(`/api/admin/vehicles/${vehicleId}/images`, {
-  method: 'POST',
-  headers: { 'Authorization': `Bearer ${token}` },
-  body: formData
-})
-
-const result = await response.json()
-console.log('Image URL:', result.image.url)
+node scripts/clear-and-import-tarsheed.js
 ```
 
 ---
 
-## 🐛 Troubleshooting
+## ✅ READY
 
-### Upload Fails with "RLS Policy Violation"
-**Solution**: Add `SUPABASE_SERVICE_ROLE_KEY` to `.env.local`
+**Start mitmproxy in your terminal, then configure your Android device!**
 
-### Migration Fails with "Already Exists"
-**Solution**: Normal. The migration uses `ON CONFLICT DO NOTHING`
-
-### API Returns "Unauthorized"
-**Solution**: Check:
-- Token is valid
-- User has correct role (admin or verified manufacturer)
-- For manufacturers, vehicle belongs to their manufacturer account
-
-### Images Not Displaying in Marketplace
-**Solution**: Verify:
-- Migration has been run
-- Images uploaded to storage
-- `image_url` in database matches public URL format
-
----
-
-## 📚 Documentation Files
-
-- `VEHICLE_IMAGES_SETUP.md` - Detailed API reference and setup guide
-- `IMPLEMENTATION_COMPLETE.md` - Full implementation notes
-- `AGENTS.md` - Project development guidelines
-
----
-
-## ✅ Checklist
-
-After completing setup:
-
-- [ ] Migration applied in Supabase Dashboard
-- [ ] Service role key added to `.env.local`
-- [ ] Images uploaded via script
-- [ ] Images displaying in marketplace
-- [ ] API endpoints tested
-- [ ] Manufacturer portal updated with upload UI
-
----
-
-## 🎯 Next Steps
-
-1. **Test the API** - Use Postman or curl to test image upload endpoints
-2. **Update Manufacturer Portal** - Add image upload UI for manufacturers
-3. **Add Image Gallery** - Show multiple images on vehicle detail page
-4. **Implement Image Caching** - Consider CDN or Supabase Edge Functions
-5. **Add Image Alt Text** - For SEO and accessibility
-
----
-
-## 🔒 Security Notes
-
-- Service role key bypasses RLS - never use in client-side code
-- Anon key has read-only access to storage
-- Manufacturers can only upload/delete their own vehicle images
-- Public bucket means images are accessible to anyone with the URL
-- File size and type validation prevents abuse
-
----
-
-## 📞 Support
-
-If you encounter issues:
-
-1. Check `IMPLEMENTATION_COMPLETE.md` for detailed notes
-2. Review `VEHICLE_IMAGES_SETUP.md` for API documentation
-3. Verify migration was applied correctly in Supabase Dashboard
-4. Check browser console and server logs for errors
-
----
-
-**Implementation Date**: January 11, 2026  
-**Files Modified/Created**: 7 files  
-**Estimated Setup Time**: 10-15 minutes  
+Full documentation: `REAL_DEVICE_INSTRUCTIONS.md`
