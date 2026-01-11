@@ -65,3 +65,12 @@ web-build/
 
 # OS
 Thumbs.db
+
+# Web Scraping Files
+**/scrape*.js
+**/scrape*.py
+**/debug-scraper.js
+**/check-grey-market-schema.js
+debug-screenshot.png
+storage/
+SCRAPER_README.md

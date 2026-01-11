@@ -645,3 +645,37 @@ export const LogOutIcon: React.FC<VehicleIconProps> = ({ className = "h-5 w-5" }
     />
   </svg>
 )
+
+export const DollarSign: React.FC<VehicleIconProps> = ({ className = "h-5 w-5" }) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010-7h-5a3.5 3.5 0 00-7 0h5a3.5 3.5 0 010 7h-5"
+    />
+  </svg>
+)
+
+export const RefreshCw: React.FC<VehicleIconProps> = ({ className = "h-5 w-5" }) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M23 4v6h-6M1 20v-6h6M20.49 15a9 9 0 11-2.12-9.36L23 10M1 14l4.64 4.36A9 9 0 0010 22c4.18 0 7.73-2.83 8.74-6.74"
+    />
+  </svg>
+)

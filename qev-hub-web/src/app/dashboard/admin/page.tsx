@@ -10,7 +10,7 @@ import { Badge } from '@/components/ui/badge'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Separator } from '@/components/ui/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { PlusIcon, PencilIcon, TrashIcon, TrendingUp, EyeIcon, AlertCircle, CarIcon, ZapIcon } from '@/components/icons'
+import { PlusIcon, PencilIcon, TrashIcon, TrendingUp, EyeIcon, AlertCircle, CarIcon, ZapIcon, DollarSign } from '@/components/icons'
 
 interface Vehicle {
   id: string
@@ -552,85 +552,101 @@ export default function AdminDashboard() {
             </Card>
           </TabsContent>
 
-          {/* Settings Tab */}
-          <TabsContent value="settings">
-            <Card className="glass-card tech-border">
-              <CardHeader>
-                <CardTitle>Manufacturer Settings</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Company Name
-                  </label>
-                  <Input
-                    value={manufacturer.company_name}
-                    disabled
-                    className="bg-muted/30"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Company Name (Arabic)
-                  </label>
-                  <Input
-                    value={manufacturer.company_name_ar}
-                    disabled
-                    className="bg-muted/30"
-                    dir="rtl"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Contact Email
-                    </label>
-                    <Input
-                      type="email"
-                      value={manufacturer.contact_email || ''}
-                      disabled
-                      className="bg-muted/30"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Contact Phone
-                    </label>
-                    <Input
-                      type="tel"
-                      value={manufacturer.contact_phone || ''}
-                      disabled
-                      className="bg-muted/30"
-                    />
-                  </div>
-                </div>
-
-                <Separator className="my-6" />
-
-                <div className="p-4 bg-primary/5 rounded-lg border border-primary/30">
-                  <h4 className="font-semibold text-foreground mb-2">
-                    Price Transparency Mode
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    Enable to show your manufacturer direct price alongside estimated broker market prices, giving buyers transparency and trust.
-                  </p>
-                  <div className="mt-4">
-                    <Badge className="bg-green-500/10 text-green-600 border-green-500/30">
-                      Currently Enabled
-                    </Badge>
-                  </div>
-                </div>
-
-                <Separator className="my-6" />
-
-                <Button className="w-full" variant="outline">
-                  Manage Account
-                </Button>
-              </CardContent>
-            </Card>
-          </TabsContent>
+           {/* Settings Tab */}
+           <TabsContent value="settings">
+             <Card className="glass-card tech-border">
+               <CardHeader>
+                 <CardTitle>Manufacturer Settings</CardTitle>
+               </CardHeader>
+               <CardContent className="space-y-6">
+                 <div>
+                   <label className="block text-sm font-medium text-foreground mb-2">
+                     Company Name
+                   </label>
+                   <Input
+                     value={manufacturer.company_name}
+                     disabled
+                     className="bg-muted/30"
+                   />
+                 </div>
+                 
+                 <div>
+                   <label className="block text-sm font-medium text-foreground mb-2">
+                     Company Name (Arabic)
+                   </label>
+                   <Input
+                     value={manufacturer.company_name_ar}
+                     disabled
+                     className="bg-muted/30"
+                     dir="rtl"
+                   />
+                 </div>
+                 
+                 <div className="grid grid-cols-2 gap-4">
+                   <div>
+                     <label className="block text-sm font-medium text-foreground mb-2">
+                       Contact Email
+                     </label>
+                     <Input
+                       type="email"
+                       value={manufacturer.contact_email || ''}
+                       disabled
+                       className="bg-muted/30"
+                     />
+                   </div>
+                   <div>
+                     <label className="block text-sm font-medium text-foreground mb-2">
+                       Contact Phone
+                     </label>
+                     <Input
+                       type="tel"
+                       value={manufacturer.contact_phone || ''}
+                       disabled
+                       className="bg-muted/30"
+                     />
+                   </div>
+                 </div>
+                 
+                 <Separator className="my-6" />
+                 
+                 <div className="p-4 bg-primary/5 rounded-lg border border-primary/30">
+                   <h4 className="font-semibold text-foreground mb-2">
+                     Price Transparency Mode
+                   </h4>
+                   <p className="text-sm text-muted-foreground">
+                     Enable to show your manufacturer direct price alongside estimated broker market prices, giving buyers transparency and trust.
+                   </p>
+                   <div className="mt-4">
+                     <Badge className="bg-green-500/10 text-green-600 border-green-500/30">
+                       Currently Enabled
+                     </Badge>
+                   </div>
+                 </div>
+                 
+                 <Separator className="my-6" />
+                 
+                 <div>
+                   <h4 className="font-semibold text-foreground mb-2">Management Tools</h4>
+                   <div className="grid grid-cols-1 gap-2">
+                     <Button variant="outline" className="w-full justify-start">
+                       <DollarSign className="h-4 w-4 mr-2" />
+                       Manage Grey Market Prices
+                     </Button>
+                     <Button variant="outline" className="w-full justify-start">
+                       <PencilIcon className="h-4 w-4 mr-2" />
+                       Update Price Sources
+                     </Button>
+                   </div>
+                 </div>
+                 
+                 <Separator className="my-6" />
+                 
+                 <Button className="w-full" variant="outline">
+                   Manage Account
+                 </Button>
+               </CardContent>
+             </Card>
+           </TabsContent>
         </Tabs>
       </div>
 

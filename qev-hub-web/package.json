@@ -9,7 +9,10 @@
     "lint": "next lint",
     "verify-db": "node scripts/verify-db.js",
     "setup-db": "node scripts/setup-db.js",
-    "setup-db-shell": "./scripts/setup-db.sh"
+    "setup-db-shell": "./scripts/setup-db.sh",
+    "scrape-prices": "node scripts/scrape-gmarket-prices.js",
+    "scrape-ev": "node scripts/scrape-ev-prices.js",
+    "scrape-ev-all": "node scripts/scrape-ev-prices.js --all"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -28,11 +31,13 @@
     "axios": "^1.13.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "crawlee": "^3.15.3",
     "dotenv": "^17.2.3",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.562.0",
     "next": "14.2.0",
     "next-themes": "^0.4.6",
+    "playwright": "^1.57.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.69.0",

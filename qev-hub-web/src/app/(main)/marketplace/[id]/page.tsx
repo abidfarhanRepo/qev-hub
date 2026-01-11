@@ -15,7 +15,9 @@ import {
   ClockIcon,
   TruckIcon,
   MapPinIcon,
+  TrendingUp,
 } from '@/components/icons'
+import { PriceComparison } from '@/components/PriceComparison'
 
 interface Vehicle {
   id: string
@@ -264,45 +266,28 @@ export default function VehicleDetailPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {vehicle.price_transparency_enabled && vehicle.broker_market_price ? (
-                    <div className="space-y-3">
-                      <div className="p-4 bg-green-500/10 rounded-lg border-2 border-green-500/30">
-                        <div className="flex items-baseline justify-between mb-2">
-                          <span className="text-sm font-medium text-muted-foreground">Factory Direct Price</span>
-                          <p className="text-4xl font-bold text-green-600">
-                            {formatPrice(vehicle.manufacturer_direct_price)}
-                          </p>
-                        </div>
-                        <div className="flex items-baseline justify-between pt-2 border-t border-green-500/20">
-                          <span className="text-sm text-muted-foreground">Typical Broker Market Price</span>
-                          <p className="text-2xl font-semibold line-through text-muted-foreground">
-                            {formatPrice(vehicle.broker_market_price)}
-                          </p>
-                        </div>
-                      </div>
-                      
-                      <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-4">
-                        <div className="flex items-center gap-3">
-                          <div className="h-12 w-12 rounded-full bg-green-600 flex items-center justify-center">
-                            <ShieldIcon className="h-6 w-6 text-white" />
-                          </div>
-                          <div className="flex-1">
-                            <p className="text-lg font-bold text-green-800">
-                              Save {formatPrice(actualSavings)} ({savingsPercentage}%)
-                            </p>
-                            <p className="text-sm text-green-700">
-                              By purchasing directly from the manufacturer
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  {vehicle.grey_market_price && vehicle.manufacturer_direct_price ? (
+                    <PriceComparison
+                      manufacturerDirectPrice={vehicle.manufacturer_direct_price}
+                      greyMarketPrice={vehicle.grey_market_price}
+                      currency="QAR"
+                      showDetails={true}
+                    />
+                  ) : vehicle.price_transparency_enabled && vehicle.broker_market_price ? (
+                    <PriceComparison
+                      manufacturerDirectPrice={vehicle.manufacturer_direct_price || vehicle.price_qar}
+                      greyMarketPrice={vehicle.broker_market_price}
+                      currency="QAR"
+                      showDetails={true}
+                    />
                   ) : (
-                    <div className="flex items-baseline gap-3">
-                      <p className="text-4xl font-bold text-primary">
-                        {formatPrice(vehicle.price_qar)}
-                      </p>
-                      <span className="text-sm text-muted-foreground">Direct Price</span>
+                    <div className="flex items-baseline gap-3 p-4 bg-muted/30 rounded-lg border border-border/50">
+                      <div>
+                        <p className="text-sm text-muted-foreground mb-1">Factory Direct Price</p>
+                        <p className="text-4xl font-bold text-primary">
+                          {formatPrice(vehicle.price_qar)}
+                        </p>
+                      </div>
                     </div>
                   )}
 

@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { CarIcon, BatteryIcon, CheckIcon, ClockIcon } from '@/components/icons'
+import { SavingsBadge } from '@/components/SavingsBadge'
 
 interface Vehicle {
   id: string
@@ -207,7 +208,15 @@ export default function MarketplacePage() {
                     </div>
                   </div>
 
-                  {vehicle.price_transparency_enabled && vehicle.broker_market_price ? (
+                  {vehicle.grey_market_price && vehicle.manufacturer_direct_price ? (
+                    <div className="mb-4">
+                      <SavingsBadge
+                        manufacturerPrice={vehicle.manufacturer_direct_price}
+                        greyMarketPrice={vehicle.grey_market_price}
+                        size="md"
+                      />
+                    </div>
+                  ) : vehicle.price_transparency_enabled && vehicle.broker_market_price ? (
                     <div className="mb-4 p-3 bg-green-500/10 rounded-lg border border-green-500/30">
                       <div className="flex justify-between items-center mb-1">
                         <span className="text-xs text-muted-foreground">Factory Direct:</span>
