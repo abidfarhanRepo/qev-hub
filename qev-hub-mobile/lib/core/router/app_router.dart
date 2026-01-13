@@ -7,6 +7,8 @@ import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/signup_screen.dart';
 import '../../features/auth/presentation/forgot_password_screen.dart';
 import '../../features/dashboard/presentation/dashboard_screen.dart';
+import '../../features/marketplace/presentation/marketplace_screen.dart';
+import '../../features/marketplace/presentation/vehicle_detail_screen.dart';
 import '../../features/auth/presentation/auth_provider.dart';
 import '../../core/constants/route_constants.dart';
 import '../../data/models/user.dart';
@@ -84,7 +86,7 @@ class AppRouter {
         // Main App with Bottom Navigation - Shell Route
         ShellRoute(
           builder: (context, state, child) {
-            return MainScreen();
+            return MainScreen(child: child);
           },
           routes: [
             // Home / Dashboard
@@ -96,17 +98,26 @@ class AppRouter {
               ),
             ),
 
-            // Marketplace (placeholder for now)
+            // Marketplace
             GoRoute(
               path: RouteConstants.marketplace,
               name: 'marketplace',
-              pageBuilder: (context, state) => MaterialPage(
-                child: _PlaceholderScreen(
-                  title: 'Marketplace',
-                  message: 'Browse and purchase electric vehicles from verified manufacturers.',
-                  phase: 'Phase 4',
-                ),
+              pageBuilder: (context, state) => const MaterialPage(
+                child: MarketplaceScreen(),
               ),
+              routes: [
+                // Vehicle Detail
+                GoRoute(
+                  path: ':vehicleId',
+                  name: 'vehicle-detail',
+                  pageBuilder: (context, state) {
+                    final vehicleId = state.pathParameters['vehicleId'] ?? '';
+                    return MaterialPage(
+                      child: VehicleDetailScreen(vehicleId: vehicleId),
+                    );
+                  },
+                ),
+              ],
             ),
 
             // Charging Stations (placeholder for now)

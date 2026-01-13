@@ -43,3 +43,10 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Flutter SDK (when placed in parent directory)
+../flutter/
+
+# Large downloaded files
+*.tar.gz
+*.zip
