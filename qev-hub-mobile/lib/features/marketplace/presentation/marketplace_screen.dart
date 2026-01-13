@@ -158,9 +158,15 @@ class _MarketplaceScreenState extends ConsumerState<MarketplaceScreen> {
               ),
             ),
             style: const TextStyle(color: AppColors.textPrimary),
+            onChanged: (value) {
+              // Clear button appearance depends on state, update when text changes
+              setState(() {});
+            },
             onSubmitted: (value) {
               if (value.isNotEmpty) {
                 _search(value);
+              } else {
+                _clearSearch();
               }
             },
           ),
@@ -304,14 +310,18 @@ class _MarketplaceScreenState extends ConsumerState<MarketplaceScreen> {
   }
 
   void _clearSearch() {
+    _searchController.clear();
     final currentFilter = ref.read(vehicleFilterProvider);
+    ref.read(vehicleFilterProvider.notifier).state = currentFilter.copyWith(searchQuery: null);
     ref.read(vehicleListProvider.notifier).applyFilter(
           currentFilter.copyWith(searchQuery: null),
         );
+    setState(() {});
   }
 
   void _toggleSave(String vehicleId) {
-    // Implement toggle save
+    // Use the helper function to toggle saved state
+    toggleSavedVehicle(ref, vehicleId);
   }
 
   void _showFilterModal(BuildContext context) {
@@ -337,6 +347,25 @@ class _VehicleFilterModalState extends ConsumerState<VehicleFilterModal> {
   double _maxPrice = 500000;
   int _minRange = 0;
   bool _inStockOnly = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Load current filter values
+    final currentFilter = ref.read(vehicleFilterProvider);
+    if (currentFilter.vehicleTypes != null && currentFilter.vehicleTypes!.isNotEmpty) {
+      _selectedVehicleType = currentFilter.vehicleTypes!.first;
+    }
+    if (currentFilter.maxPrice != null) {
+      _maxPrice = currentFilter.maxPrice!;
+    }
+    if (currentFilter.minRange != null) {
+      _minRange = currentFilter.minRange!;
+    }
+    if (currentFilter.inStockOnly != null) {
+      _inStockOnly = currentFilter.inStockOnly!;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

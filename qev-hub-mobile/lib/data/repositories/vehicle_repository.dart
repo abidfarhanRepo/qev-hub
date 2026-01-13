@@ -54,6 +54,17 @@ class SupabaseVehicleRepository implements VehicleRepository {
       var filteredVehicles = vehicles;
 
       if (filter != null) {
+        // Handle search query first
+        if (filter.searchQuery != null && filter.searchQuery!.isNotEmpty) {
+          final query = filter.searchQuery!.toLowerCase();
+          filteredVehicles = filteredVehicles
+              .where((v) =>
+                  v.manufacturer.toLowerCase().contains(query) ||
+                  v.model.toLowerCase().contains(query) ||
+                  v.make.toLowerCase().contains(query))
+              .toList();
+        }
+
         if (filter.vehicleTypes != null && filter.vehicleTypes!.isNotEmpty) {
           final types = filter.vehicleTypes!.map((e) => e.name.toUpperCase()).toSet();
           filteredVehicles = filteredVehicles

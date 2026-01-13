@@ -22,17 +22,22 @@ final vehicleFilterProvider = StateProvider<VehicleFilter>((ref) {
 /// Provider for vehicle list state
 class VehicleListNotifier extends StateNotifier<AsyncValue<VehicleListResult>> {
   final VehicleRepository _repository;
+  VehicleFilter? _currentFilter;
 
   VehicleListNotifier(this._repository) : super(const AsyncValue.loading()) {
     loadVehicles();
   }
 
   Future<void> loadVehicles({VehicleFilter? filter, int page = 1}) async {
+    if (page == 1) {
+      _currentFilter = filter;
+    }
+
     state = const AsyncValue.loading();
 
     try {
       final result = await _repository.getVehicles(
-        filter: filter,
+        filter: _currentFilter,
         page: page,
       );
 
@@ -48,6 +53,7 @@ class VehicleListNotifier extends StateNotifier<AsyncValue<VehicleListResult>> {
 
     try {
       final result = await _repository.getVehicles(
+        filter: _currentFilter,
         page: current.page + 1,
         pageSize: current.pageSize,
       );

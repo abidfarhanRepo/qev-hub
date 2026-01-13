@@ -35,15 +35,17 @@ class VehicleCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             // Vehicle Image
             buildImage(context, hasSavings),
 
             // Vehicle Info
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
+              padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   // Manufacturer and Model
                   Text(
@@ -57,7 +59,7 @@ class VehicleCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
 
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 4),
 
                   // Year and Range
                   Wrap(
@@ -103,7 +105,7 @@ class VehicleCard extends StatelessWidget {
                     ],
                   ),
 
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 6),
 
                   // Price Row
                   buildPriceRow(hasSavings),
