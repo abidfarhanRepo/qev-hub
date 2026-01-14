@@ -15,12 +15,17 @@ class RouteConstants {
   static const String home = '/home';
   static const String marketplace = '/marketplace';
   static const String charging = '/charging';
+  static const String bookings = '/bookings';
   static const String orders = '/orders';
   static const String profile = '/profile';
   static const String settings = '/settings';
 
   // Marketplace
   static const String vehicleDetail = '/vehicle/:id';
+
+  // Charging & Bookings
+  static const String stationDetail = '/station/:stationId';
+  static const String bookingFlow = '/booking';
 
   // Orders
   static const String orderDetail = '/order/:id';

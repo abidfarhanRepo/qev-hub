@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../shared/widgets/app_loader.dart';
 import '../presentation/charging_provider.dart';
@@ -172,15 +173,11 @@ class _ChargingScreenState extends ConsumerState<ChargingScreen> with TickerProv
               height: isSelected ? 60 : 48,
               child: GestureDetector(
                 onTap: () {
-                  setState(() {
-                    if (_selectedStation?.id == station.id) {
-                      // Deselect if already selected
-                      _selectedStation = null;
-                      _mapController.move(
-                        LatLng(station.latitude, station.longitude),
-                        _mapZoom,
-                      );
-                    } else {
+                  if (_selectedStation?.id == station.id) {
+                    // Navigate to station detail if already selected
+                    context.push('/charging/${station.id}');
+                  } else {
+                    setState(() {
                       // Select this station
                       _selectedStation = station;
                       _mapCenter = LatLng(station.latitude, station.longitude);
@@ -189,8 +186,8 @@ class _ChargingScreenState extends ConsumerState<ChargingScreen> with TickerProv
                         LatLng(station.latitude, station.longitude),
                         _mapZoom,
                       );
-                    }
-                  });
+                    });
+                  }
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -358,17 +355,7 @@ class _ChargingScreenState extends ConsumerState<ChargingScreen> with TickerProv
                 return _CompactStationCard(
                   station: station,
                   isSelected: isSelected,
-                  onTap: () {
-                    setState(() {
-                      _selectedStation = station;
-                      _mapCenter = LatLng(station.latitude, station.longitude);
-                      _mapZoom = 16;
-                    });
-                    _mapController.move(
-                      LatLng(station.latitude, station.longitude),
-                      _mapZoom,
-                    );
-                  },
+                  onTap: () => context.push('/charging/${station.id}'),
                   onNavigate: () => _openNavigation(station.latitude, station.longitude),
                 );
               },
@@ -447,15 +434,32 @@ class _ChargingScreenState extends ConsumerState<ChargingScreen> with TickerProv
                     ],
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.close, size: 18),
-                  color: AppColors.textSecondary,
-                  padding: EdgeInsets.zero,
-                  constraints: const BoxConstraints(
-                    minWidth: 36,
-                    minHeight: 36,
-                  ),
-                  onPressed: () => setState(() => _selectedStation = null),
+                const SizedBox(width: 8),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.close, size: 18),
+                      color: AppColors.textSecondary,
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(
+                        minWidth: 32,
+                        minHeight: 32,
+                      ),
+                      onPressed: () => setState(() => _selectedStation = null),
+                    ),
+                    const SizedBox(height: 4),
+                    IconButton(
+                      icon: const Icon(Icons.arrow_forward_ios, size: 14),
+                      color: AppColors.primary,
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(
+                        minWidth: 32,
+                        minHeight: 32,
+                      ),
+                      onPressed: () => context.push('/charging/${station.id}'),
+                    ),
+                  ],
                 ),
               ],
             ),

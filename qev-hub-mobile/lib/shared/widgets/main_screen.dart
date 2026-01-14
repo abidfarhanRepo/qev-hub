@@ -40,10 +40,10 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       route: '/charging',
     ),
     _TabItem(
-      icon: Icons.shopping_bag_outlined,
-      activeIcon: Icons.shopping_bag,
-      label: 'Orders',
-      route: '/orders',
+      icon: Icons.bookmark_outline,
+      activeIcon: Icons.bookmark,
+      label: 'Bookings',
+      route: '/bookings',
     ),
     _TabItem(
       icon: Icons.person_outline,
