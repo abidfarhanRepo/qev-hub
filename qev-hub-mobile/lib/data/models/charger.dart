@@ -16,8 +16,8 @@ class Charger with _$Charger {
     required ChargerStatus status,
     required List<String> connectorTypes,
     required bool isEnabled,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
   }) = _Charger;
 
   factory Charger.fromJson(Map<String, dynamic> json) => _$ChargerFromJson(json);

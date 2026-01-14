@@ -18,12 +18,12 @@ _$ChargerImpl _$$ChargerImplFromJson(Map<String, dynamic> json) =>
           .map((e) => e as String)
           .toList(),
       isEnabled: json['isEnabled'] as bool,
-      createdAt: json['createdAt'] == null
+      createdAt: json['created_at'] == null
           ? null
-          : DateTime.parse(json['createdAt'] as String),
-      updatedAt: json['updatedAt'] == null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
           ? null
-          : DateTime.parse(json['updatedAt'] as String),
+          : DateTime.parse(json['updated_at'] as String),
     );
 
 Map<String, dynamic> _$$ChargerImplToJson(_$ChargerImpl instance) =>
@@ -36,8 +36,8 @@ Map<String, dynamic> _$$ChargerImplToJson(_$ChargerImpl instance) =>
       'status': _$ChargerStatusEnumMap[instance.status]!,
       'connectorTypes': instance.connectorTypes,
       'isEnabled': instance.isEnabled,
-      'createdAt': instance.createdAt?.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
     };
 
 const _$ChargerStatusEnumMap = {

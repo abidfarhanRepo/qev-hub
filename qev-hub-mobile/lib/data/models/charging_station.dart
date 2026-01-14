@@ -24,8 +24,8 @@ class ChargingStation with _$ChargingStation {
     @JsonKey(name: 'website_url') String? websiteUrl,
     @JsonKey(name: 'image_url') String? imageUrl,
     @JsonKey(name: 'distance_km') double? distanceKm,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
   }) = _ChargingStation;
 
   factory ChargingStation.fromJson(Map<String, dynamic> json) => _$ChargingStationFromJson(json);

@@ -50,7 +50,9 @@ mixin _$ChargingStation {
   String? get imageUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'distance_km')
   double? get distanceKm => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this ChargingStation to a JSON map.
@@ -88,8 +90,8 @@ abstract class $ChargingStationCopyWith<$Res> {
     @JsonKey(name: 'website_url') String? websiteUrl,
     @JsonKey(name: 'image_url') String? imageUrl,
     @JsonKey(name: 'distance_km') double? distanceKm,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
   });
 }
 
@@ -239,8 +241,8 @@ abstract class _$$ChargingStationImplCopyWith<$Res>
     @JsonKey(name: 'website_url') String? websiteUrl,
     @JsonKey(name: 'image_url') String? imageUrl,
     @JsonKey(name: 'distance_km') double? distanceKm,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
   });
 }
 
@@ -382,8 +384,8 @@ class _$ChargingStationImpl implements _ChargingStation {
     @JsonKey(name: 'website_url') this.websiteUrl,
     @JsonKey(name: 'image_url') this.imageUrl,
     @JsonKey(name: 'distance_km') this.distanceKm,
-    this.createdAt,
-    this.updatedAt,
+    @JsonKey(name: 'created_at') this.createdAt,
+    @JsonKey(name: 'updated_at') this.updatedAt,
   }) : _amenities = amenities;
 
   factory _$ChargingStationImpl.fromJson(Map<String, dynamic> json) =>
@@ -446,8 +448,10 @@ class _$ChargingStationImpl implements _ChargingStation {
   @JsonKey(name: 'distance_km')
   final double? distanceKm;
   @override
+  @JsonKey(name: 'created_at')
   final DateTime? createdAt;
   @override
+  @JsonKey(name: 'updated_at')
   final DateTime? updatedAt;
 
   @override
@@ -559,8 +563,8 @@ abstract class _ChargingStation implements ChargingStation {
     @JsonKey(name: 'website_url') final String? websiteUrl,
     @JsonKey(name: 'image_url') final String? imageUrl,
     @JsonKey(name: 'distance_km') final double? distanceKm,
-    final DateTime? createdAt,
-    final DateTime? updatedAt,
+    @JsonKey(name: 'created_at') final DateTime? createdAt,
+    @JsonKey(name: 'updated_at') final DateTime? updatedAt,
   }) = _$ChargingStationImpl;
 
   factory _ChargingStation.fromJson(Map<String, dynamic> json) =
@@ -613,8 +617,10 @@ abstract class _ChargingStation implements ChargingStation {
   @JsonKey(name: 'distance_km')
   double? get distanceKm;
   @override
+  @JsonKey(name: 'created_at')
   DateTime? get createdAt;
   @override
+  @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
 
   /// Create a copy of ChargingStation

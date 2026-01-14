@@ -139,6 +139,11 @@ final stationChargersProvider = FutureProvider.family<List<Charger>, String>((re
       .eq('is_enabled', true)
       .order('created_at', ascending: true);
 
+  // Handle null or non-list responses
+  if (response == null || response is! List) {
+    return [];
+  }
+
   return (response as List).map((json) => Charger.fromJson(json)).toList();
 });
 

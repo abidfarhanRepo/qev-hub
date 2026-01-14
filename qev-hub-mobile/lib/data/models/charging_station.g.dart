@@ -28,12 +28,12 @@ _$ChargingStationImpl _$$ChargingStationImplFromJson(
   websiteUrl: json['website_url'] as String?,
   imageUrl: json['image_url'] as String?,
   distanceKm: (json['distance_km'] as num?)?.toDouble(),
-  createdAt: json['createdAt'] == null
+  createdAt: json['created_at'] == null
       ? null
-      : DateTime.parse(json['createdAt'] as String),
-  updatedAt: json['updatedAt'] == null
+      : DateTime.parse(json['created_at'] as String),
+  updatedAt: json['updated_at'] == null
       ? null
-      : DateTime.parse(json['updatedAt'] as String),
+      : DateTime.parse(json['updated_at'] as String),
 );
 
 Map<String, dynamic> _$$ChargingStationImplToJson(
@@ -56,8 +56,8 @@ Map<String, dynamic> _$$ChargingStationImplToJson(
   'website_url': instance.websiteUrl,
   'image_url': instance.imageUrl,
   'distance_km': instance.distanceKm,
-  'createdAt': instance.createdAt?.toIso8601String(),
-  'updatedAt': instance.updatedAt?.toIso8601String(),
+  'created_at': instance.createdAt?.toIso8601String(),
+  'updated_at': instance.updatedAt?.toIso8601String(),
 };
 
 _$StationFilterImpl _$$StationFilterImplFromJson(Map<String, dynamic> json) =>

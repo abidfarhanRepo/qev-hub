@@ -29,7 +29,9 @@ mixin _$Charger {
   ChargerStatus get status => throw _privateConstructorUsedError;
   List<String> get connectorTypes => throw _privateConstructorUsedError;
   bool get isEnabled => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Charger to a JSON map.
@@ -55,8 +57,8 @@ abstract class $ChargerCopyWith<$Res> {
     ChargerStatus status,
     List<String> connectorTypes,
     bool isEnabled,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
   });
 }
 
@@ -151,8 +153,8 @@ abstract class _$$ChargerImplCopyWith<$Res> implements $ChargerCopyWith<$Res> {
     ChargerStatus status,
     List<String> connectorTypes,
     bool isEnabled,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
   });
 }
 
@@ -240,8 +242,8 @@ class _$ChargerImpl implements _Charger {
     required this.status,
     required final List<String> connectorTypes,
     required this.isEnabled,
-    this.createdAt,
-    this.updatedAt,
+    @JsonKey(name: 'created_at') this.createdAt,
+    @JsonKey(name: 'updated_at') this.updatedAt,
   }) : _connectorTypes = connectorTypes;
 
   factory _$ChargerImpl.fromJson(Map<String, dynamic> json) =>
@@ -270,8 +272,10 @@ class _$ChargerImpl implements _Charger {
   @override
   final bool isEnabled;
   @override
+  @JsonKey(name: 'created_at')
   final DateTime? createdAt;
   @override
+  @JsonKey(name: 'updated_at')
   final DateTime? updatedAt;
 
   @override
@@ -344,8 +348,8 @@ abstract class _Charger implements Charger {
     required final ChargerStatus status,
     required final List<String> connectorTypes,
     required final bool isEnabled,
-    final DateTime? createdAt,
-    final DateTime? updatedAt,
+    @JsonKey(name: 'created_at') final DateTime? createdAt,
+    @JsonKey(name: 'updated_at') final DateTime? updatedAt,
   }) = _$ChargerImpl;
 
   factory _Charger.fromJson(Map<String, dynamic> json) = _$ChargerImpl.fromJson;
@@ -367,8 +371,10 @@ abstract class _Charger implements Charger {
   @override
   bool get isEnabled;
   @override
+  @JsonKey(name: 'created_at')
   DateTime? get createdAt;
   @override
+  @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
 
   /// Create a copy of Charger
