@@ -24,9 +24,8 @@ _$VehicleImpl _$$VehicleImplFromJson(Map<String, dynamic> json) =>
       brokerMarketPrice: (json['broker_market_price'] as num?)?.toDouble(),
       greyMarketPrice: (json['grey_market_price'] as num?)?.toDouble(),
       priceTransparencyEnabled: json['price_transparency_enabled'] as bool?,
-      vehicleType: _$JsonConverterFromJson<String, VehicleType>(
-        json['vehicle_type'],
-        const VehicleTypeConverter().fromJson,
+      vehicleType: const VehicleTypeConverter().fromJson(
+        json['vehicle_type'] as String?,
       ),
       originCountry: json['origin_country'] as String?,
       warrantyYears: (json['warranty_years'] as num?)?.toInt(),
@@ -38,9 +37,8 @@ _$VehicleImpl _$$VehicleImplFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String?,
       specs: json['specs'] as Map<String, dynamic>?,
       stockCount: (json['stock_count'] as num?)?.toInt(),
-      availability: _$JsonConverterFromJson<String, AvailabilityStatus>(
-        json['availability'],
-        const AvailabilityStatusConverter().fromJson,
+      availability: const AvailabilityStatusConverter().fromJson(
+        json['availability'] as String?,
       ),
       status: json['status'] as String?,
       chargingTime: json['charging_time'] as String?,
@@ -82,7 +80,7 @@ Map<String, dynamic> _$$VehicleImplToJson(_$VehicleImpl instance) =>
       'broker_market_price': instance.brokerMarketPrice,
       'grey_market_price': instance.greyMarketPrice,
       'price_transparency_enabled': instance.priceTransparencyEnabled,
-      'vehicle_type': _$JsonConverterToJson<String, VehicleType>(
+      'vehicle_type': _$JsonConverterToJson<String?, VehicleType>(
         instance.vehicleType,
         const VehicleTypeConverter().toJson,
       ),
@@ -94,7 +92,7 @@ Map<String, dynamic> _$$VehicleImplToJson(_$VehicleImpl instance) =>
       'description': instance.description,
       'specs': instance.specs,
       'stock_count': instance.stockCount,
-      'availability': _$JsonConverterToJson<String, AvailabilityStatus>(
+      'availability': _$JsonConverterToJson<String?, AvailabilityStatus>(
         instance.availability,
         const AvailabilityStatusConverter().toJson,
       ),
@@ -114,11 +112,6 @@ Map<String, dynamic> _$$VehicleImplToJson(_$VehicleImpl instance) =>
       'createdAt': instance.createdAt?.toIso8601String(),
       'updatedAt': instance.updatedAt?.toIso8601String(),
     };
-
-Value? _$JsonConverterFromJson<Json, Value>(
-  Object? json,
-  Value? Function(Json json) fromJson,
-) => json == null ? null : fromJson(json as Json);
 
 Json? _$JsonConverterToJson<Json, Value>(
   Value? value,
