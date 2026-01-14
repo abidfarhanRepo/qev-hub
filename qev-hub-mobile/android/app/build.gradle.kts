@@ -28,6 +28,10 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+
+        // Google Maps API key
+        // Replace with your actual API key from https://console.cloud.google.com/
+        manifestPlaceholders["googleMapsApiKey"] = "AIzaSyDummyKeyReplaceWithRealKey"
     }
 
     buildTypes {

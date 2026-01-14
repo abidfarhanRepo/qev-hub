@@ -9,6 +9,7 @@ import '../../features/auth/presentation/forgot_password_screen.dart';
 import '../../features/dashboard/presentation/dashboard_screen.dart';
 import '../../features/marketplace/presentation/marketplace_screen.dart';
 import '../../features/marketplace/presentation/vehicle_detail_screen.dart';
+import '../../features/charging/presentation/charging_screen.dart';
 import '../../features/auth/presentation/auth_provider.dart';
 import '../../core/constants/route_constants.dart';
 import '../../data/models/user.dart';
@@ -120,16 +121,12 @@ class AppRouter {
               ],
             ),
 
-            // Charging Stations (placeholder for now)
+            // Charging Stations
             GoRoute(
               path: RouteConstants.charging,
               name: 'charging',
-              pageBuilder: (context, state) => MaterialPage(
-                child: _PlaceholderScreen(
-                  title: 'Charging Stations',
-                  message: 'Find EV charging stations across Qatar with real-time availability.',
-                  phase: 'Phase 5',
-                ),
+              pageBuilder: (context, state) => const MaterialPage(
+                child: ChargingScreen(),
               ),
             ),
 
