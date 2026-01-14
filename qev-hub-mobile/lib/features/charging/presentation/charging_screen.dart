@@ -23,7 +23,7 @@ class _ChargingScreenState extends ConsumerState<ChargingScreen> with TickerProv
   double _mapZoom = 12;
   LatLng? _userLocation;
   ChargingStation? _selectedStation;
-  bool _showList = true;
+  bool _showList = false;
 
   @override
   void initState() {
