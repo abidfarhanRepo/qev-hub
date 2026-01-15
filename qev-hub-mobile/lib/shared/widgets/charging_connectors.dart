@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../data/models/charging_station_enhanced.dart';
+import 'charger_connector_icons.dart';
 
 /// Individual connector icon widget
 class ConnectorIcon extends StatelessWidget {
@@ -20,7 +21,7 @@ class ConnectorIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color iconColor = isActive ? AppColors.primary : AppColors.textTertiary;
-    
+
     Widget icon;
     switch (connectorType) {
       case ConnectorType.type2:
@@ -31,6 +32,9 @@ class ConnectorIcon extends StatelessWidget {
         break;
       case ConnectorType.chademo:
         icon = _buildCHAdeMOIcon(iconColor);
+        break;
+      case ConnectorType.tesla:
+        icon = _buildTeslaIcon(iconColor);
         break;
     }
 
@@ -52,56 +56,22 @@ class ConnectorIcon extends StatelessWidget {
 
   /// Type 2 connector icon (AC charging)
   Widget _buildType2Icon(Color color) {
-    return Container(
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(4),
-        border: Border.all(color: color, width: 1),
-      ),
-      child: Center(
-        child: Icon(
-          Icons.power,
-          color: color,
-          size: size * 0.6,
-        ),
-      ),
-    );
+    return ChargerConnectorIcons.type2(size: size, color: color);
   }
 
   /// CCS connector icon (DC fast charging)
   Widget _buildCCSIcon(Color color) {
-    return Container(
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        shape: BoxShape.circle,
-        border: Border.all(color: color, width: 1),
-      ),
-      child: Center(
-        child: Icon(
-          Icons.bolt,
-          color: color,
-          size: size * 0.6,
-        ),
-      ),
-    );
+    return ChargerConnectorIcons.ccs(size: size, color: color);
   }
 
   /// CHAdeMO connector icon (Japanese standard)
   Widget _buildCHAdeMOIcon(Color color) {
-    return Container(
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color, width: 1),
-      ),
-      child: Center(
-        child: Icon(
-          Icons.electric_car,
-          color: color,
-          size: size * 0.6,
-        ),
-      ),
-    );
+    return ChargerConnectorIcons.chademo(size: size, color: color);
+  }
+
+  /// Tesla/NACS connector icon
+  Widget _buildTeslaIcon(Color color) {
+    return ChargerConnectorIcons.tesla(size: size, color: color);
   }
 }
 
@@ -373,6 +343,7 @@ class StationAmenities extends StatelessWidget {
         icon = Icons.local_parking;
         break;
       case 'restroom':
+      case 'restrooms':
         icon = Icons.wc;
         break;
       case 'wifi':
@@ -380,12 +351,41 @@ class StationAmenities extends StatelessWidget {
         color = AppColors.primary;
         break;
       case 'food':
-        icon = Icons.restaurant;
+      case 'coffee shop':
+        icon = Icons.local_cafe;
         color = Colors.orange;
         break;
       case 'convenience store':
         icon = Icons.store;
         color = Colors.blue;
+        break;
+      case 'rest area':
+        icon = Icons.weekend;
+        color = Colors.green;
+        break;
+      case 'ev service center':
+      case 'ev repair shop':
+        icon = Icons.build;
+        color = AppColors.primary;
+        break;
+      case 'car wash':
+        icon = Icons.local_car_wash;
+        color = Colors.blueGrey;
+        break;
+      case 'atm':
+        icon = Icons.atm;
+        color = Colors.indigo;
+        break;
+      case 'prayer room':
+        icon = Icons.mosque;
+        break;
+      case 'disabled access':
+        icon = Icons.accessible;
+        color = Colors.purple;
+        break;
+      case 'security 24/7':
+        icon = Icons.security;
+        color = Colors.red;
         break;
       default:
         icon = Icons.star_outline;

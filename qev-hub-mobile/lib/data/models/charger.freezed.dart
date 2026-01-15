@@ -23,15 +23,20 @@ Charger _$ChargerFromJson(Map<String, dynamic> json) {
 mixin _$Charger {
   String get id => throw _privateConstructorUsedError;
   String get stationId => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get chargerType => throw _privateConstructorUsedError;
-  double get powerKw => throw _privateConstructorUsedError;
-  ChargerStatus get status => throw _privateConstructorUsedError;
-  List<String> get connectorTypes => throw _privateConstructorUsedError;
+  String? get chargerCode => throw _privateConstructorUsedError;
+  String? get chargerName => throw _privateConstructorUsedError;
+  String? get connectorType => throw _privateConstructorUsedError;
+  List<String>? get connectorTypes => throw _privateConstructorUsedError;
+  double? get powerOutputKw => throw _privateConstructorUsedError;
   bool get isEnabled => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_at')
+  bool get isAvailable => throw _privateConstructorUsedError;
+  String? get chargerStatus => throw _privateConstructorUsedError;
+  double? get pricingPerKwh => throw _privateConstructorUsedError;
+  double? get pricingPerMinute => throw _privateConstructorUsedError;
+  int? get maxCurrent => throw _privateConstructorUsedError;
+  int? get maxVoltage => throw _privateConstructorUsedError;
+  DateTime? get sessionStartTime => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'updated_at')
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Charger to a JSON map.
@@ -51,14 +56,21 @@ abstract class $ChargerCopyWith<$Res> {
   $Res call({
     String id,
     String stationId,
-    String name,
-    String chargerType,
-    double powerKw,
-    ChargerStatus status,
-    List<String> connectorTypes,
+    String? chargerCode,
+    String? chargerName,
+    String? connectorType,
+    List<String>? connectorTypes,
+    double? powerOutputKw,
     bool isEnabled,
-    @JsonKey(name: 'created_at') DateTime? createdAt,
-    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    bool isAvailable,
+    String? chargerStatus,
+    double? pricingPerKwh,
+    double? pricingPerMinute,
+    int? maxCurrent,
+    int? maxVoltage,
+    DateTime? sessionStartTime,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   });
 }
 
@@ -79,12 +91,19 @@ class _$ChargerCopyWithImpl<$Res, $Val extends Charger>
   $Res call({
     Object? id = null,
     Object? stationId = null,
-    Object? name = null,
-    Object? chargerType = null,
-    Object? powerKw = null,
-    Object? status = null,
-    Object? connectorTypes = null,
+    Object? chargerCode = freezed,
+    Object? chargerName = freezed,
+    Object? connectorType = freezed,
+    Object? connectorTypes = freezed,
+    Object? powerOutputKw = freezed,
     Object? isEnabled = null,
+    Object? isAvailable = null,
+    Object? chargerStatus = freezed,
+    Object? pricingPerKwh = freezed,
+    Object? pricingPerMinute = freezed,
+    Object? maxCurrent = freezed,
+    Object? maxVoltage = freezed,
+    Object? sessionStartTime = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -98,30 +117,58 @@ class _$ChargerCopyWithImpl<$Res, $Val extends Charger>
                 ? _value.stationId
                 : stationId // ignore: cast_nullable_to_non_nullable
                       as String,
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as String,
-            chargerType: null == chargerType
-                ? _value.chargerType
-                : chargerType // ignore: cast_nullable_to_non_nullable
-                      as String,
-            powerKw: null == powerKw
-                ? _value.powerKw
-                : powerKw // ignore: cast_nullable_to_non_nullable
-                      as double,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as ChargerStatus,
-            connectorTypes: null == connectorTypes
+            chargerCode: freezed == chargerCode
+                ? _value.chargerCode
+                : chargerCode // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            chargerName: freezed == chargerName
+                ? _value.chargerName
+                : chargerName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            connectorType: freezed == connectorType
+                ? _value.connectorType
+                : connectorType // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            connectorTypes: freezed == connectorTypes
                 ? _value.connectorTypes
                 : connectorTypes // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
+                      as List<String>?,
+            powerOutputKw: freezed == powerOutputKw
+                ? _value.powerOutputKw
+                : powerOutputKw // ignore: cast_nullable_to_non_nullable
+                      as double?,
             isEnabled: null == isEnabled
                 ? _value.isEnabled
                 : isEnabled // ignore: cast_nullable_to_non_nullable
                       as bool,
+            isAvailable: null == isAvailable
+                ? _value.isAvailable
+                : isAvailable // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            chargerStatus: freezed == chargerStatus
+                ? _value.chargerStatus
+                : chargerStatus // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            pricingPerKwh: freezed == pricingPerKwh
+                ? _value.pricingPerKwh
+                : pricingPerKwh // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            pricingPerMinute: freezed == pricingPerMinute
+                ? _value.pricingPerMinute
+                : pricingPerMinute // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            maxCurrent: freezed == maxCurrent
+                ? _value.maxCurrent
+                : maxCurrent // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            maxVoltage: freezed == maxVoltage
+                ? _value.maxVoltage
+                : maxVoltage // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            sessionStartTime: freezed == sessionStartTime
+                ? _value.sessionStartTime
+                : sessionStartTime // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
             createdAt: freezed == createdAt
                 ? _value.createdAt
                 : createdAt // ignore: cast_nullable_to_non_nullable
@@ -147,14 +194,21 @@ abstract class _$$ChargerImplCopyWith<$Res> implements $ChargerCopyWith<$Res> {
   $Res call({
     String id,
     String stationId,
-    String name,
-    String chargerType,
-    double powerKw,
-    ChargerStatus status,
-    List<String> connectorTypes,
+    String? chargerCode,
+    String? chargerName,
+    String? connectorType,
+    List<String>? connectorTypes,
+    double? powerOutputKw,
     bool isEnabled,
-    @JsonKey(name: 'created_at') DateTime? createdAt,
-    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    bool isAvailable,
+    String? chargerStatus,
+    double? pricingPerKwh,
+    double? pricingPerMinute,
+    int? maxCurrent,
+    int? maxVoltage,
+    DateTime? sessionStartTime,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   });
 }
 
@@ -174,12 +228,19 @@ class __$$ChargerImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? stationId = null,
-    Object? name = null,
-    Object? chargerType = null,
-    Object? powerKw = null,
-    Object? status = null,
-    Object? connectorTypes = null,
+    Object? chargerCode = freezed,
+    Object? chargerName = freezed,
+    Object? connectorType = freezed,
+    Object? connectorTypes = freezed,
+    Object? powerOutputKw = freezed,
     Object? isEnabled = null,
+    Object? isAvailable = null,
+    Object? chargerStatus = freezed,
+    Object? pricingPerKwh = freezed,
+    Object? pricingPerMinute = freezed,
+    Object? maxCurrent = freezed,
+    Object? maxVoltage = freezed,
+    Object? sessionStartTime = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -193,30 +254,58 @@ class __$$ChargerImplCopyWithImpl<$Res>
             ? _value.stationId
             : stationId // ignore: cast_nullable_to_non_nullable
                   as String,
-        name: null == name
-            ? _value.name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as String,
-        chargerType: null == chargerType
-            ? _value.chargerType
-            : chargerType // ignore: cast_nullable_to_non_nullable
-                  as String,
-        powerKw: null == powerKw
-            ? _value.powerKw
-            : powerKw // ignore: cast_nullable_to_non_nullable
-                  as double,
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as ChargerStatus,
-        connectorTypes: null == connectorTypes
+        chargerCode: freezed == chargerCode
+            ? _value.chargerCode
+            : chargerCode // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        chargerName: freezed == chargerName
+            ? _value.chargerName
+            : chargerName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        connectorType: freezed == connectorType
+            ? _value.connectorType
+            : connectorType // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        connectorTypes: freezed == connectorTypes
             ? _value._connectorTypes
             : connectorTypes // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
+                  as List<String>?,
+        powerOutputKw: freezed == powerOutputKw
+            ? _value.powerOutputKw
+            : powerOutputKw // ignore: cast_nullable_to_non_nullable
+                  as double?,
         isEnabled: null == isEnabled
             ? _value.isEnabled
             : isEnabled // ignore: cast_nullable_to_non_nullable
                   as bool,
+        isAvailable: null == isAvailable
+            ? _value.isAvailable
+            : isAvailable // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        chargerStatus: freezed == chargerStatus
+            ? _value.chargerStatus
+            : chargerStatus // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        pricingPerKwh: freezed == pricingPerKwh
+            ? _value.pricingPerKwh
+            : pricingPerKwh // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        pricingPerMinute: freezed == pricingPerMinute
+            ? _value.pricingPerMinute
+            : pricingPerMinute // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        maxCurrent: freezed == maxCurrent
+            ? _value.maxCurrent
+            : maxCurrent // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        maxVoltage: freezed == maxVoltage
+            ? _value.maxVoltage
+            : maxVoltage // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        sessionStartTime: freezed == sessionStartTime
+            ? _value.sessionStartTime
+            : sessionStartTime // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
         createdAt: freezed == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
@@ -236,14 +325,21 @@ class _$ChargerImpl implements _Charger {
   const _$ChargerImpl({
     required this.id,
     required this.stationId,
-    required this.name,
-    required this.chargerType,
-    required this.powerKw,
-    required this.status,
-    required final List<String> connectorTypes,
+    this.chargerCode,
+    this.chargerName,
+    this.connectorType,
+    final List<String>? connectorTypes,
+    this.powerOutputKw,
     required this.isEnabled,
-    @JsonKey(name: 'created_at') this.createdAt,
-    @JsonKey(name: 'updated_at') this.updatedAt,
+    required this.isAvailable,
+    this.chargerStatus,
+    this.pricingPerKwh,
+    this.pricingPerMinute,
+    this.maxCurrent,
+    this.maxVoltage,
+    this.sessionStartTime,
+    this.createdAt,
+    this.updatedAt,
   }) : _connectorTypes = connectorTypes;
 
   factory _$ChargerImpl.fromJson(Map<String, dynamic> json) =>
@@ -254,33 +350,47 @@ class _$ChargerImpl implements _Charger {
   @override
   final String stationId;
   @override
-  final String name;
+  final String? chargerCode;
   @override
-  final String chargerType;
+  final String? chargerName;
   @override
-  final double powerKw;
+  final String? connectorType;
+  final List<String>? _connectorTypes;
   @override
-  final ChargerStatus status;
-  final List<String> _connectorTypes;
-  @override
-  List<String> get connectorTypes {
+  List<String>? get connectorTypes {
+    final value = _connectorTypes;
+    if (value == null) return null;
     if (_connectorTypes is EqualUnmodifiableListView) return _connectorTypes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_connectorTypes);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
+  final double? powerOutputKw;
+  @override
   final bool isEnabled;
   @override
-  @JsonKey(name: 'created_at')
+  final bool isAvailable;
+  @override
+  final String? chargerStatus;
+  @override
+  final double? pricingPerKwh;
+  @override
+  final double? pricingPerMinute;
+  @override
+  final int? maxCurrent;
+  @override
+  final int? maxVoltage;
+  @override
+  final DateTime? sessionStartTime;
+  @override
   final DateTime? createdAt;
   @override
-  @JsonKey(name: 'updated_at')
   final DateTime? updatedAt;
 
   @override
   String toString() {
-    return 'Charger(id: $id, stationId: $stationId, name: $name, chargerType: $chargerType, powerKw: $powerKw, status: $status, connectorTypes: $connectorTypes, isEnabled: $isEnabled, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Charger(id: $id, stationId: $stationId, chargerCode: $chargerCode, chargerName: $chargerName, connectorType: $connectorType, connectorTypes: $connectorTypes, powerOutputKw: $powerOutputKw, isEnabled: $isEnabled, isAvailable: $isAvailable, chargerStatus: $chargerStatus, pricingPerKwh: $pricingPerKwh, pricingPerMinute: $pricingPerMinute, maxCurrent: $maxCurrent, maxVoltage: $maxVoltage, sessionStartTime: $sessionStartTime, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -291,17 +401,34 @@ class _$ChargerImpl implements _Charger {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.stationId, stationId) ||
                 other.stationId == stationId) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.chargerType, chargerType) ||
-                other.chargerType == chargerType) &&
-            (identical(other.powerKw, powerKw) || other.powerKw == powerKw) &&
-            (identical(other.status, status) || other.status == status) &&
+            (identical(other.chargerCode, chargerCode) ||
+                other.chargerCode == chargerCode) &&
+            (identical(other.chargerName, chargerName) ||
+                other.chargerName == chargerName) &&
+            (identical(other.connectorType, connectorType) ||
+                other.connectorType == connectorType) &&
             const DeepCollectionEquality().equals(
               other._connectorTypes,
               _connectorTypes,
             ) &&
+            (identical(other.powerOutputKw, powerOutputKw) ||
+                other.powerOutputKw == powerOutputKw) &&
             (identical(other.isEnabled, isEnabled) ||
                 other.isEnabled == isEnabled) &&
+            (identical(other.isAvailable, isAvailable) ||
+                other.isAvailable == isAvailable) &&
+            (identical(other.chargerStatus, chargerStatus) ||
+                other.chargerStatus == chargerStatus) &&
+            (identical(other.pricingPerKwh, pricingPerKwh) ||
+                other.pricingPerKwh == pricingPerKwh) &&
+            (identical(other.pricingPerMinute, pricingPerMinute) ||
+                other.pricingPerMinute == pricingPerMinute) &&
+            (identical(other.maxCurrent, maxCurrent) ||
+                other.maxCurrent == maxCurrent) &&
+            (identical(other.maxVoltage, maxVoltage) ||
+                other.maxVoltage == maxVoltage) &&
+            (identical(other.sessionStartTime, sessionStartTime) ||
+                other.sessionStartTime == sessionStartTime) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -314,12 +441,19 @@ class _$ChargerImpl implements _Charger {
     runtimeType,
     id,
     stationId,
-    name,
-    chargerType,
-    powerKw,
-    status,
+    chargerCode,
+    chargerName,
+    connectorType,
     const DeepCollectionEquality().hash(_connectorTypes),
+    powerOutputKw,
     isEnabled,
+    isAvailable,
+    chargerStatus,
+    pricingPerKwh,
+    pricingPerMinute,
+    maxCurrent,
+    maxVoltage,
+    sessionStartTime,
     createdAt,
     updatedAt,
   );
@@ -342,14 +476,21 @@ abstract class _Charger implements Charger {
   const factory _Charger({
     required final String id,
     required final String stationId,
-    required final String name,
-    required final String chargerType,
-    required final double powerKw,
-    required final ChargerStatus status,
-    required final List<String> connectorTypes,
+    final String? chargerCode,
+    final String? chargerName,
+    final String? connectorType,
+    final List<String>? connectorTypes,
+    final double? powerOutputKw,
     required final bool isEnabled,
-    @JsonKey(name: 'created_at') final DateTime? createdAt,
-    @JsonKey(name: 'updated_at') final DateTime? updatedAt,
+    required final bool isAvailable,
+    final String? chargerStatus,
+    final double? pricingPerKwh,
+    final double? pricingPerMinute,
+    final int? maxCurrent,
+    final int? maxVoltage,
+    final DateTime? sessionStartTime,
+    final DateTime? createdAt,
+    final DateTime? updatedAt,
   }) = _$ChargerImpl;
 
   factory _Charger.fromJson(Map<String, dynamic> json) = _$ChargerImpl.fromJson;
@@ -359,22 +500,34 @@ abstract class _Charger implements Charger {
   @override
   String get stationId;
   @override
-  String get name;
+  String? get chargerCode;
   @override
-  String get chargerType;
+  String? get chargerName;
   @override
-  double get powerKw;
+  String? get connectorType;
   @override
-  ChargerStatus get status;
+  List<String>? get connectorTypes;
   @override
-  List<String> get connectorTypes;
+  double? get powerOutputKw;
   @override
   bool get isEnabled;
   @override
-  @JsonKey(name: 'created_at')
+  bool get isAvailable;
+  @override
+  String? get chargerStatus;
+  @override
+  double? get pricingPerKwh;
+  @override
+  double? get pricingPerMinute;
+  @override
+  int? get maxCurrent;
+  @override
+  int? get maxVoltage;
+  @override
+  DateTime? get sessionStartTime;
+  @override
   DateTime? get createdAt;
   @override
-  @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
 
   /// Create a copy of Charger

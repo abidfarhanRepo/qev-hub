@@ -11,7 +11,7 @@ import '../../features/home/presentation/enhanced_home_screen.dart';
 import '../../features/marketplace/presentation/enhanced_marketplace_screen.dart';
 import '../../features/marketplace/presentation/vehicle_detail_screen.dart';
 import '../../features/charging/presentation/charging_screen_simple.dart';
-import '../../features/booking/presentation/station_detail_simple.dart';
+import '../../features/booking/presentation/enhanced_station_detail.dart';
 import '../../features/booking/presentation/booking_flow_simple.dart';
 import '../../features/booking/presentation/my_bookings_screen.dart';
 import '../../features/booking/presentation/booking_provider.dart';
@@ -144,7 +144,7 @@ class AppRouter {
                   pageBuilder: (context, state) {
                     final stationId = state.pathParameters['stationId'] ?? '';
                     return MaterialPage(
-                      child: StationDetailSimple(stationId: stationId),
+                      child: EnhancedStationDetailFixed(stationId: stationId),
                     );
                   },
                 ),

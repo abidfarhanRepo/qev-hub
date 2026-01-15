@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../data/models/charger.dart';
-import '../../../data/models/charging_station_enhanced.dart';
-import 'charging_connectors.dart';
+import 'charger_connector_icons.dart';
 
 /// Individual charger unit card with Tarsheed-style connector icons and status
 class ChargerUnitCard extends StatelessWidget {
@@ -25,7 +24,7 @@ class ChargerUnitCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final status = Charger.getEnhancedStatus(charger.chargerStatus, charger.isEnabled, charger.isAvailable);
-    final connectorType = Charger.getConnectorTypeObject(charger.connectorType);
+    final connectorType = charger.connectorType;
     final powerLevel = Charger.getPowerLevel(charger.powerOutputKw);
 
     return Card(
@@ -59,15 +58,22 @@ class ChargerUnitCard extends StatelessWidget {
             children: [
               // Header with status and connector info
               _buildHeader(status, connectorType, powerLevel),
-              
+
               if (!compact) ...[
                 const SizedBox(height: 12),
-                
+
                 // Power and pricing info
                 _buildPowerInfo(status),
-                
+
                 const SizedBox(height: 12),
-                
+
+                // Connector type badges (prominently displayed) - show all available types
+                if (charger.connectorTypes != null && charger.connectorTypes!.isNotEmpty)
+                  _buildConnectorTypesBadges(charger.connectorTypes!),
+
+                if (charger.connectorTypes != null && charger.connectorTypes!.isNotEmpty)
+                  const SizedBox(height: 12),
+
                 // Session details or action buttons
                 _buildActionArea(status),
               ],
@@ -78,10 +84,86 @@ class ChargerUnitCard extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(ChargerStatus status, ConnectorType? connectorType, PowerLevel powerLevel) {
+  Widget _buildConnectorTypeBadge(String connectorType) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: AppColors.primary.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: AppColors.primary.withOpacity(0.3),
+          width: 1,
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.electrical_services,
+            color: AppColors.primary,
+            size: 18,
+          ),
+          const SizedBox(width: 8),
+          Text(
+            connectorType,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              color: AppColors.primary,
+              letterSpacing: 0.5,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildConnectorTypesBadges(List<String> connectorTypes) {
+    // Display multiple connector types as small badges
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: connectorTypes.map((type) {
+        final connectorTypeObj = ChargerConnectorType.fromString(type);
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+          decoration: BoxDecoration(
+            color: connectorTypeObj?.color.withOpacity(0.1) ?? AppColors.primary.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: connectorTypeObj?.color.withOpacity(0.4) ?? AppColors.primary.withOpacity(0.3),
+              width: 1,
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                connectorTypeObj?.icon ?? Icons.electrical_services,
+                color: connectorTypeObj?.color ?? AppColors.primary,
+                size: 16,
+              ),
+              const SizedBox(width: 6),
+              Text(
+                connectorTypeObj?.displayName ?? type,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: connectorTypeObj?.color ?? AppColors.primary,
+                  letterSpacing: 0.3,
+                ),
+              ),
+            ],
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _buildHeader(ChargerStatus status, String? connectorType, PowerLevel powerLevel) {
     return Row(
       children: [
-        // Status indicator with connector icon
+        // Status indicator
         Container(
           width: 60,
           height: 60,
@@ -97,19 +179,9 @@ class ChargerUnitCard extends StatelessWidget {
             children: [
               // Connector icon
               Center(
-                child: connectorType != null
-                    ? ConnectorIcon(
-                        connectorType: connectorType!,
-                        size: 32,
-                        isActive: status.isAvailable,
-                      )
-                    : Icon(
-                        Icons.ev_station,
-                        size: 32,
-                        color: status.color.withOpacity(0.7),
-                      ),
+                child: _buildConnectorIcon(connectorType, status),
               ),
-              
+
               // Status badge
               Positioned(
                 top: 4,
@@ -134,16 +206,16 @@ class ChargerUnitCard extends StatelessWidget {
             ],
           ),
         ),
-        
+
         const SizedBox(width: 16),
-        
+
         // Charger info
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-                Text(
-                  Charger.getDisplayName(charger.chargerName, charger.chargerCode, charger.id),
+              Text(
+                Charger.getDisplayName(charger.chargerName, charger.chargerCode, charger.id),
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -159,27 +231,82 @@ class ChargerUnitCard extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              if (connectorType != null) ...[
-                const SizedBox(height: 2),
-                Text(
-                  connectorType.displayName,
-                  style: const TextStyle(
-                    fontSize: 11,
-                    color: AppColors.textSecondary,
-                  ),
-                ),
-              ],
             ],
           ),
         ),
-        
+
         // Power level indicator
-        PowerIndicator(
-          powerKw: charger.powerOutputKw,
-          showLabel: !compact,
-        ),
+        _buildPowerIndicator(powerLevel),
       ],
     );
+  }
+
+  Widget _buildConnectorIcon(String? connectorType, ChargerStatus status) {
+    return ChargerConnectorIcons.getIconForType(
+      connectorType,
+      size: 32,
+      color: status.color.withOpacity(0.7),
+    );
+  }
+
+  Widget _buildPowerIndicator(PowerLevel powerLevel) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        color: _getPowerColor(powerLevel).withOpacity(0.1),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: _getPowerColor(powerLevel).withOpacity(0.3),
+          width: 1,
+        ),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.bolt,
+                color: _getPowerColor(powerLevel),
+                size: 14,
+              ),
+              const SizedBox(width: 4),
+              Text(
+                '${charger.powerOutputKw?.toInt() ?? 0}',
+                style: TextStyle(
+                  color: _getPowerColor(powerLevel),
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          if (!compact) ...[
+            const SizedBox(height: 2),
+            Text(
+              'kW',
+              style: TextStyle(
+                color: _getPowerColor(powerLevel),
+                fontSize: 10,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Color _getPowerColor(PowerLevel level) {
+    switch (level) {
+      case PowerLevel.slow:
+        return const Color(0xFF4ADE80);
+      case PowerLevel.fast:
+        return const Color(0xFFFBBF24);
+      case PowerLevel.rapid:
+        return const Color(0xFFEF4444);
+    }
   }
 
   Widget _buildPowerInfo(ChargerStatus status) {
@@ -217,7 +344,7 @@ class ChargerUnitCard extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   Charger.getPowerLevel(charger.powerOutputKw).displayName,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 11,
                     color: AppColors.textSecondary,
                   ),
@@ -225,7 +352,7 @@ class ChargerUnitCard extends StatelessWidget {
               ],
             ),
           ),
-          
+
           // Pricing info
           if (charger.pricingPerKwh != null) ...[
             Container(
@@ -276,14 +403,14 @@ class ChargerUnitCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.flash_on),
-              const SizedBox(width: 8),
+              Icon(Icons.flash_on),
+              SizedBox(width: 8),
               Text(
                 'Start Charging',
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
@@ -331,7 +458,7 @@ class ChargerUnitCard extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 'Started at ${_formatTime(charger.sessionStartTime!)}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 10,
                   color: AppColors.textSecondary,
                 ),
@@ -361,7 +488,7 @@ class ChargerUnitCard extends StatelessWidget {
           const SizedBox(width: 8),
           Text(
             status.displayName,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 12,
               color: AppColors.textTertiary,
             ),
@@ -400,7 +527,7 @@ class ChargerUnitsList extends StatelessWidget {
     // Group chargers by status
     final availableChargers = chargers.where((c) => Charger.getEnhancedStatus(c.chargerStatus, c.isEnabled, c.isAvailable).isAvailable).toList();
     final occupiedChargers = chargers.where((c) => Charger.getEnhancedStatus(c.chargerStatus, c.isEnabled, c.isAvailable) == ChargerStatus.occupied).toList();
-    final otherChargers = chargers.where((c) => 
+    final otherChargers = chargers.where((c) =>
         !Charger.getEnhancedStatus(c.chargerStatus, c.isEnabled, c.isAvailable).isAvailable && Charger.getEnhancedStatus(c.chargerStatus, c.isEnabled, c.isAvailable) != ChargerStatus.occupied
     ).toList();
 
@@ -481,18 +608,18 @@ class ChargerUnitsList extends StatelessWidget {
             color: AppColors.textTertiary,
           ),
           const SizedBox(height: 16),
-          Text(
+          const Text(
             'No chargers available at this station',
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
               color: AppColors.textSecondary,
             ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-          Text(
+          const Text(
             'Please check back later or try another station',
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 12,
               color: AppColors.textTertiary,
             ),
