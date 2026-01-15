@@ -1,6 +1,0 @@
-URGENT: Run this in Supabase SQL Editor NOW:
-
-ALTER TABLE vehicles DISABLE ROW LEVEL SECURITY;
-
-Then test:
-node scripts/test-manufacturer.js
