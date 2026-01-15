@@ -7,7 +7,8 @@ import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/signup_screen.dart';
 import '../../features/auth/presentation/forgot_password_screen.dart';
 import '../../features/dashboard/presentation/dashboard_screen.dart';
-import '../../features/marketplace/presentation/marketplace_screen.dart';
+import '../../features/home/presentation/enhanced_home_screen.dart';
+import '../../features/marketplace/presentation/enhanced_marketplace_screen.dart';
 import '../../features/marketplace/presentation/vehicle_detail_screen.dart';
 import '../../features/charging/presentation/charging_screen_simple.dart';
 import '../../features/booking/presentation/station_detail_simple.dart';
@@ -102,7 +103,7 @@ class AppRouter {
               path: RouteConstants.home,
               name: 'home',
               pageBuilder: (context, state) => const MaterialPage(
-                child: DashboardScreen(),
+                child: EnhancedHomeScreen(),
               ),
             ),
 
@@ -111,7 +112,7 @@ class AppRouter {
               path: RouteConstants.marketplace,
               name: 'marketplace',
               pageBuilder: (context, state) => const MaterialPage(
-                child: MarketplaceScreen(),
+                child: EnhancedMarketplaceScreen(),
               ),
               routes: [
                 // Vehicle Detail

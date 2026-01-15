@@ -86,7 +86,7 @@ class Vehicle with _$Vehicle {
     @JsonKey(name: 'origin_country') String? originCountry,
     @JsonKey(name: 'warranty_years') int? warrantyYears,
     @JsonKey(name: 'warranty_km') int? warrantyKm,
-    String? imageUrl,
+    @JsonKey(name: 'image_url') String? imageUrl,
     List<String>? images,
     String? description,
     Map<String, dynamic>? specs,

@@ -54,6 +54,7 @@ mixin _$Vehicle {
   int? get warrantyYears => throw _privateConstructorUsedError;
   @JsonKey(name: 'warranty_km')
   int? get warrantyKm => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_url')
   String? get imageUrl => throw _privateConstructorUsedError;
   List<String>? get images => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -128,7 +129,7 @@ abstract class $VehicleCopyWith<$Res> {
     @JsonKey(name: 'origin_country') String? originCountry,
     @JsonKey(name: 'warranty_years') int? warrantyYears,
     @JsonKey(name: 'warranty_km') int? warrantyKm,
-    String? imageUrl,
+    @JsonKey(name: 'image_url') String? imageUrl,
     List<String>? images,
     String? description,
     Map<String, dynamic>? specs,
@@ -410,7 +411,7 @@ abstract class _$$VehicleImplCopyWith<$Res> implements $VehicleCopyWith<$Res> {
     @JsonKey(name: 'origin_country') String? originCountry,
     @JsonKey(name: 'warranty_years') int? warrantyYears,
     @JsonKey(name: 'warranty_km') int? warrantyKm,
-    String? imageUrl,
+    @JsonKey(name: 'image_url') String? imageUrl,
     List<String>? images,
     String? description,
     Map<String, dynamic>? specs,
@@ -683,7 +684,7 @@ class _$VehicleImpl implements _Vehicle {
     @JsonKey(name: 'origin_country') this.originCountry,
     @JsonKey(name: 'warranty_years') this.warrantyYears,
     @JsonKey(name: 'warranty_km') this.warrantyKm,
-    this.imageUrl,
+    @JsonKey(name: 'image_url') this.imageUrl,
     final List<String>? images,
     this.description,
     final Map<String, dynamic>? specs,
@@ -765,6 +766,7 @@ class _$VehicleImpl implements _Vehicle {
   @JsonKey(name: 'warranty_km')
   final int? warrantyKm;
   @override
+  @JsonKey(name: 'image_url')
   final String? imageUrl;
   final List<String>? _images;
   @override
@@ -1012,7 +1014,7 @@ abstract class _Vehicle implements Vehicle {
     @JsonKey(name: 'origin_country') final String? originCountry,
     @JsonKey(name: 'warranty_years') final int? warrantyYears,
     @JsonKey(name: 'warranty_km') final int? warrantyKm,
-    final String? imageUrl,
+    @JsonKey(name: 'image_url') final String? imageUrl,
     final List<String>? images,
     final String? description,
     final Map<String, dynamic>? specs,
@@ -1093,6 +1095,7 @@ abstract class _Vehicle implements Vehicle {
   @JsonKey(name: 'warranty_km')
   int? get warrantyKm;
   @override
+  @JsonKey(name: 'image_url')
   String? get imageUrl;
   @override
   List<String>? get images;

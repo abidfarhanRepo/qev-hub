@@ -30,7 +30,7 @@ _$VehicleImpl _$$VehicleImplFromJson(Map<String, dynamic> json) =>
       originCountry: json['origin_country'] as String?,
       warrantyYears: (json['warranty_years'] as num?)?.toInt(),
       warrantyKm: (json['warranty_km'] as num?)?.toInt(),
-      imageUrl: json['imageUrl'] as String?,
+      imageUrl: json['image_url'] as String?,
       images: (json['images'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -87,7 +87,7 @@ Map<String, dynamic> _$$VehicleImplToJson(_$VehicleImpl instance) =>
       'origin_country': instance.originCountry,
       'warranty_years': instance.warrantyYears,
       'warranty_km': instance.warrantyKm,
-      'imageUrl': instance.imageUrl,
+      'image_url': instance.imageUrl,
       'images': instance.images,
       'description': instance.description,
       'specs': instance.specs,
