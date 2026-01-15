@@ -27,6 +27,7 @@ mixin _$Booking {
   String get stationId => throw _privateConstructorUsedError;
   DateTime get startTime => throw _privateConstructorUsedError;
   DateTime get endTime => throw _privateConstructorUsedError;
+  @BookingStatusConverter()
   BookingStatus get status => throw _privateConstructorUsedError;
   double? get estimatedCost => throw _privateConstructorUsedError;
   double? get actualCost => throw _privateConstructorUsedError;
@@ -61,7 +62,7 @@ abstract class $BookingCopyWith<$Res> {
     String stationId,
     DateTime startTime,
     DateTime endTime,
-    BookingStatus status,
+    @BookingStatusConverter() BookingStatus status,
     double? estimatedCost,
     double? actualCost,
     double? energyDelivered,
@@ -236,7 +237,7 @@ abstract class _$$BookingImplCopyWith<$Res> implements $BookingCopyWith<$Res> {
     String stationId,
     DateTime startTime,
     DateTime endTime,
-    BookingStatus status,
+    @BookingStatusConverter() BookingStatus status,
     double? estimatedCost,
     double? actualCost,
     double? energyDelivered,
@@ -378,7 +379,7 @@ class _$BookingImpl implements _Booking {
     required this.stationId,
     required this.startTime,
     required this.endTime,
-    required this.status,
+    @BookingStatusConverter() required this.status,
     this.estimatedCost,
     this.actualCost,
     this.energyDelivered,
@@ -408,6 +409,7 @@ class _$BookingImpl implements _Booking {
   @override
   final DateTime endTime;
   @override
+  @BookingStatusConverter()
   final BookingStatus status;
   @override
   final double? estimatedCost;
@@ -520,7 +522,7 @@ abstract class _Booking implements Booking {
     required final String stationId,
     required final DateTime startTime,
     required final DateTime endTime,
-    required final BookingStatus status,
+    @BookingStatusConverter() required final BookingStatus status,
     final double? estimatedCost,
     final double? actualCost,
     final double? energyDelivered,
@@ -549,6 +551,7 @@ abstract class _Booking implements Booking {
   @override
   DateTime get endTime;
   @override
+  @BookingStatusConverter()
   BookingStatus get status;
   @override
   double? get estimatedCost;

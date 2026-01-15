@@ -296,7 +296,6 @@ class _UpcomingBookingCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final station = booking.station;
-    final charger = booking.charger;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
@@ -312,32 +311,19 @@ class _UpcomingBookingCard extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header with station name and status
+          // Header with status
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      station?.name ?? 'Unknown Station',
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
-                    if (station?.address != null) ...[
-                      const SizedBox(height: 4),
-                      Text(
-                        station!.address!,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-                    ],
-                  ],
+                child: Text(
+                  'Charging Session',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary,
+                  ),
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               _StatusBadge(status: booking.status),
@@ -345,79 +331,33 @@ class _UpcomingBookingCard extends ConsumerWidget {
           ),
           const SizedBox(height: 12),
 
-          // Charger details
-          if (charger != null) ...[
-            Row(
-              children: [
-                const Icon(
-                  Icons.ev_station,
-                  size: 16,
-                  color: AppColors.primary,
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    '${charger.name} - ${charger.chargerType}',
-                    style: const TextStyle(
-                      fontSize: 13,
-                      color: AppColors.textSecondary,
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.surfaceVariant,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Text(
-                    '${charger.powerKw.toInt()} kW',
-                    style: const TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.primary,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
-          ],
-
           // Date and time
           Row(
             children: [
               const Icon(
                 Icons.calendar_today,
-                size: 16,
+                size: 14,
                 color: AppColors.textSecondary,
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 6),
               Text(
                 _formatDateTime(booking.startTime),
                 style: const TextStyle(
-                  fontSize: 13,
+                  fontSize: 12,
                   color: AppColors.textSecondary,
                 ),
               ),
-            ],
-          ),
-          const SizedBox(height: 4),
-          Row(
-            children: [
+              const SizedBox(width: 12),
               const Icon(
                 Icons.access_time,
-                size: 16,
+                size: 14,
                 color: AppColors.textSecondary,
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 6),
               Text(
                 _formatTimeRange(booking.startTime, booking.endTime),
                 style: const TextStyle(
-                  fontSize: 13,
+                  fontSize: 12,
                   color: AppColors.textSecondary,
                 ),
               ),
@@ -431,14 +371,14 @@ class _UpcomingBookingCard extends ConsumerWidget {
               children: [
                 const Icon(
                   Icons.payments_outlined,
-                  size: 16,
+                  size: 14,
                   color: AppColors.textSecondary,
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
                 Text(
                   'Est. ${booking.estimatedCost!.toStringAsFixed(2)} QAR',
                   style: const TextStyle(
-                    fontSize: 13,
+                    fontSize: 12,
                     color: AppColors.textSecondary,
                   ),
                 ),
@@ -446,58 +386,71 @@ class _UpcomingBookingCard extends ConsumerWidget {
             ),
           ],
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
 
-          // Action buttons
+          // Action buttons - single row
           Row(
             children: [
               // Cancel button (only for pending/confirmed)
               if (booking.status == BookingStatus.pending ||
-                  booking.status == BookingStatus.confirmed) ...[
+                  booking.status == BookingStatus.confirmed)
                 Expanded(
-                  child: OutlinedButton(
-                    onPressed: () => _showCancelDialog(context, ref),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: AppColors.error,
-                      side: const BorderSide(
-                        color: AppColors.error,
-                        width: 1,
+                  child: SizedBox(
+                    height: 36,
+                    child: OutlinedButton(
+                      onPressed: () => _showCancelDialog(context, ref),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: AppColors.error,
+                        side: const BorderSide(
+                          color: AppColors.error,
+                          width: 1,
+                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
                       ),
+                      child: const Text('Cancel', style: TextStyle(fontSize: 12)),
                     ),
-                    child: const Text('Cancel'),
                   ),
                 ),
-                const SizedBox(width: 8),
-              ],
-
-              // Navigate button
-              Expanded(
-                child: ElevatedButton.icon(
-                  onPressed: station != null
-                      ? () => _openNavigation(station.latitude, station.longitude)
-                      : null,
-                  icon: const Icon(Icons.directions, size: 18),
-                  label: const Text('Navigate'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.surfaceVariant,
-                    foregroundColor: AppColors.primary,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
 
               // View QR button
               Expanded(
-                child: ElevatedButton.icon(
-                  onPressed: () => _showQRCode(context),
-                  icon: const Icon(Icons.qr_code, size: 18),
-                  label: const Text('View QR'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                    foregroundColor: Colors.white,
+                child: SizedBox(
+                  height: 36,
+                  child: ElevatedButton.icon(
+                    onPressed: () => _showQRCode(context),
+                    icon: const Icon(Icons.qr_code, size: 16),
+                    label: const Text('View QR', style: TextStyle(fontSize: 12)),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                    ),
                   ),
                 ),
               ),
+
+              // Navigate button (if station available)
+              if (station != null)
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: SizedBox(
+                      height: 36,
+                      child: ElevatedButton.icon(
+                        onPressed: station != null
+                            ? () => _openNavigation(station.latitude, station.longitude)
+                            : null,
+                        icon: const Icon(Icons.directions, size: 16),
+                        label: const Text('Navigate', style: TextStyle(fontSize: 12)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.surfaceVariant,
+                          foregroundColor: AppColors.primary,
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
             ],
           ),
         ],
@@ -668,8 +621,6 @@ class _PastBookingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final station = booking.station;
-
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
@@ -684,22 +635,19 @@ class _PastBookingCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header with station name and status
+          // Header with status
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      station?.name ?? 'Unknown Station',
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  'Charging Session',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary,
+                  ),
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               _StatusBadge(status: booking.status),
@@ -712,58 +660,55 @@ class _PastBookingCard extends StatelessWidget {
             children: [
               const Icon(
                 Icons.calendar_today,
-                size: 16,
+                size: 14,
                 color: AppColors.textSecondary,
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 6),
               Text(
                 '${_formatDate(booking.startTime)} at ${_formatTime(booking.startTime)}',
                 style: const TextStyle(
-                  fontSize: 13,
+                  fontSize: 12,
                   color: AppColors.textSecondary,
                 ),
               ),
             ],
           ),
 
-          // Cost and energy (for completed bookings)
+          // Cost (for completed bookings)
           if (booking.status == BookingStatus.completed) ...[
-            const SizedBox(height: 12),
+            const SizedBox(height: 8),
             Row(
               children: [
-                Expanded(
-                  child: _buildStatItem(
-                    icon: Icons.payments,
-                    label: 'Cost',
-                    value: '${booking.actualCost?.toStringAsFixed(2) ?? booking.estimatedCost?.toStringAsFixed(2) ?? '0.00'} QAR',
+                const Icon(
+                  Icons.payments,
+                  size: 14,
+                  color: AppColors.textSecondary,
+                ),
+                const SizedBox(width: 6),
+                Text(
+                  '${booking.actualCost?.toStringAsFixed(2) ?? booking.estimatedCost?.toStringAsFixed(2) ?? '0.00'} QAR',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: AppColors.textSecondary,
                   ),
                 ),
-                if (booking.energyDelivered != null) ...[
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: _buildStatItem(
-                      icon: Icons.bolt,
-                      label: 'Energy',
-                      value: '${booking.energyDelivered!.toStringAsFixed(1)} kWh',
-                    ),
-                  ),
-                ],
               ],
             ),
           ],
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
 
           // Book Again button
           SizedBox(
             width: double.infinity,
+            height: 36,
             child: OutlinedButton.icon(
               onPressed: () {
                 // Navigate to booking flow
                 Navigator.pop(context);
               },
-              icon: const Icon(Icons.refresh, size: 18),
-              label: const Text('Book Again'),
+              icon: const Icon(Icons.refresh, size: 16),
+              label: const Text('Book Again', style: TextStyle(fontSize: 12)),
               style: OutlinedButton.styleFrom(
                 foregroundColor: AppColors.primary,
                 side: const BorderSide(

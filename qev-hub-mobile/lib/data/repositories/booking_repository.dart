@@ -131,31 +131,23 @@ class SupabaseBookingRepository implements BookingRepository {
         final slotEnd = slotStart.add(slotDuration);
 
         // Check if this slot overlaps with any existing booking
-        final conflictingBooking = bookings.firstWhere(
-          (booking) =>
-              booking.startTime.isBefore(slotEnd) &&
-              booking.endTime.isAfter(slotStart),
-          orElse: () => bookings.isEmpty
-              ? Booking.empty()
-              : bookings.first, // Dummy, never used if not found
-        );
+        final hasConflict = bookings.any((booking) =>
+            booking.startTime.isBefore(slotEnd) &&
+            booking.endTime.isAfter(slotStart));
 
-        final isAvailable = bookings.isEmpty ||
-            !bookings.any((booking) =>
-                booking.startTime.isBefore(slotEnd) &&
-                booking.endTime.isAfter(slotStart));
+        final isAvailable = !hasConflict;
 
         slots.add(TimeSlot(
           startTime: slotStart,
           endTime: slotEnd,
           isAvailable: isAvailable,
-          reason: isAvailable
-              ? null
-              : conflictingBooking.id.isEmpty
-                  ? 'Slot not available'
-                  : 'Already booked',
-          existingBookingId:
-              isAvailable ? null : conflictingBooking.id.isEmpty ? null : conflictingBooking.id,
+          reason: isAvailable ? null : 'Already booked',
+          existingBookingId: isAvailable ? null : bookings.firstWhere(
+            (booking) =>
+                booking.startTime.isBefore(slotEnd) &&
+                booking.endTime.isAfter(slotStart),
+            orElse: () => BookingExtension.empty(),
+          ).id,
         ));
       }
 
@@ -222,13 +214,12 @@ class SupabaseBookingRepository implements BookingRepository {
 
       return Booking.fromJson(
           bookingWithRelations as Map<String, dynamic>);
-    } on PostgresException catch (e) {
-      // Handle constraint violations (exclusion constraint for overlapping bookings)
-      if (e.code == '23P01') { // exclusion_violation
+    } catch (e) {
+      // Check for constraint violations (exclusion constraint for overlapping bookings)
+      final errorMsg = e.toString().toLowerCase();
+      if (errorMsg.contains('23p01') || errorMsg.contains('exclusion') || errorMsg.contains('overlap')) {
         throw Exception('This time slot is already booked. Please choose another time.');
       }
-      throw Exception('Database error: ${e.message}');
-    } catch (e) {
       throw Exception('Failed to create booking: $e');
     }
   }
@@ -241,6 +232,7 @@ class SupabaseBookingRepository implements BookingRepository {
         throw Exception('User not authenticated');
       }
 
+      // Build query with select and filters
       var query = _client
           .from('bookings')
           .select('''
@@ -248,10 +240,9 @@ class SupabaseBookingRepository implements BookingRepository {
             charger:chargers(*),
             station:charging_stations(*)
           ''')
-          .eq('user_id', userId)
-          .order('start_time', ascending: false);
+          .eq('user_id', userId);
 
-      // Apply filters
+      // Apply filters after select
       if (filter != null) {
         if (filter.status != null) {
           final statusValue = _bookingStatusToString(filter.status!);
@@ -274,7 +265,8 @@ class SupabaseBookingRepository implements BookingRepository {
         }
       }
 
-      final response = await query;
+      // Apply order and execute
+      final response = await query.order('start_time', ascending: false);
 
       return (response as List)
           .map((json) => Booking.fromJson(json as Map<String, dynamic>))

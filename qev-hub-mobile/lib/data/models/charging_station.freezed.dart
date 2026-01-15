@@ -24,7 +24,9 @@ mixin _$ChargingStation {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
+  @StringToDoubleConverter()
   double get latitude => throw _privateConstructorUsedError;
+  @StringToDoubleConverter()
   double get longitude => throw _privateConstructorUsedError;
   @JsonKey(name: 'charger_type')
   String? get chargerType => throw _privateConstructorUsedError;
@@ -76,8 +78,8 @@ abstract class $ChargingStationCopyWith<$Res> {
     String id,
     String name,
     String address,
-    double latitude,
-    double longitude,
+    @StringToDoubleConverter() double latitude,
+    @StringToDoubleConverter() double longitude,
     @JsonKey(name: 'charger_type') String? chargerType,
     @JsonKey(name: 'total_chargers') int? totalChargers,
     @JsonKey(name: 'available_chargers') int? availableChargers,
@@ -227,8 +229,8 @@ abstract class _$$ChargingStationImplCopyWith<$Res>
     String id,
     String name,
     String address,
-    double latitude,
-    double longitude,
+    @StringToDoubleConverter() double latitude,
+    @StringToDoubleConverter() double longitude,
     @JsonKey(name: 'charger_type') String? chargerType,
     @JsonKey(name: 'total_chargers') int? totalChargers,
     @JsonKey(name: 'available_chargers') int? availableChargers,
@@ -370,8 +372,8 @@ class _$ChargingStationImpl implements _ChargingStation {
     required this.id,
     required this.name,
     required this.address,
-    required this.latitude,
-    required this.longitude,
+    @StringToDoubleConverter() required this.latitude,
+    @StringToDoubleConverter() required this.longitude,
     @JsonKey(name: 'charger_type') this.chargerType,
     @JsonKey(name: 'total_chargers') this.totalChargers,
     @JsonKey(name: 'available_chargers') this.availableChargers,
@@ -398,8 +400,10 @@ class _$ChargingStationImpl implements _ChargingStation {
   @override
   final String address;
   @override
+  @StringToDoubleConverter()
   final double latitude;
   @override
+  @StringToDoubleConverter()
   final double longitude;
   @override
   @JsonKey(name: 'charger_type')
@@ -549,8 +553,8 @@ abstract class _ChargingStation implements ChargingStation {
     required final String id,
     required final String name,
     required final String address,
-    required final double latitude,
-    required final double longitude,
+    @StringToDoubleConverter() required final double latitude,
+    @StringToDoubleConverter() required final double longitude,
     @JsonKey(name: 'charger_type') final String? chargerType,
     @JsonKey(name: 'total_chargers') final int? totalChargers,
     @JsonKey(name: 'available_chargers') final int? availableChargers,
@@ -577,8 +581,10 @@ abstract class _ChargingStation implements ChargingStation {
   @override
   String get address;
   @override
+  @StringToDoubleConverter()
   double get latitude;
   @override
+  @StringToDoubleConverter()
   double get longitude;
   @override
   @JsonKey(name: 'charger_type')

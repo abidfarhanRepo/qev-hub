@@ -14,7 +14,7 @@ _$BookingImpl _$$BookingImplFromJson(Map<String, dynamic> json) =>
       stationId: json['stationId'] as String,
       startTime: DateTime.parse(json['startTime'] as String),
       endTime: DateTime.parse(json['endTime'] as String),
-      status: $enumDecode(_$BookingStatusEnumMap, json['status']),
+      status: const BookingStatusConverter().fromJson(json['status'] as String),
       estimatedCost: (json['estimatedCost'] as num?)?.toDouble(),
       actualCost: (json['actualCost'] as num?)?.toDouble(),
       energyDelivered: (json['energyDelivered'] as num?)?.toDouble(),
@@ -44,7 +44,7 @@ Map<String, dynamic> _$$BookingImplToJson(_$BookingImpl instance) =>
       'stationId': instance.stationId,
       'startTime': instance.startTime.toIso8601String(),
       'endTime': instance.endTime.toIso8601String(),
-      'status': _$BookingStatusEnumMap[instance.status]!,
+      'status': const BookingStatusConverter().toJson(instance.status),
       'estimatedCost': instance.estimatedCost,
       'actualCost': instance.actualCost,
       'energyDelivered': instance.energyDelivered,
@@ -57,15 +57,6 @@ Map<String, dynamic> _$$BookingImplToJson(_$BookingImpl instance) =>
       'charger': instance.charger,
       'station': instance.station,
     };
-
-const _$BookingStatusEnumMap = {
-  BookingStatus.pending: 'pending',
-  BookingStatus.confirmed: 'confirmed',
-  BookingStatus.inProgress: 'inProgress',
-  BookingStatus.completed: 'completed',
-  BookingStatus.cancelled: 'cancelled',
-  BookingStatus.noShow: 'noShow',
-};
 
 _$BookingFilterImpl _$$BookingFilterImplFromJson(Map<String, dynamic> json) =>
     _$BookingFilterImpl(
@@ -86,3 +77,12 @@ Map<String, dynamic> _$$BookingFilterImplToJson(_$BookingFilterImpl instance) =>
       'endDate': instance.endDate?.toIso8601String(),
       'upcomingOnly': instance.upcomingOnly,
     };
+
+const _$BookingStatusEnumMap = {
+  BookingStatus.pending: 'pending',
+  BookingStatus.confirmed: 'confirmed',
+  BookingStatus.inProgress: 'inProgress',
+  BookingStatus.completed: 'completed',
+  BookingStatus.cancelled: 'cancelled',
+  BookingStatus.noShow: 'noShow',
+};

@@ -38,37 +38,62 @@ class BookingListNotifier extends StateNotifier<AsyncValue<List<Booking>>> {
     try {
       final userId = _client.auth.currentUser?.id;
       if (userId == null) {
+        print('🔴 No user ID found');
         state = const AsyncValue.data([]);
         return;
       }
 
+      print('🔵 Loading bookings for user: $userId');
       final response = await _client
           .from('bookings')
           .select('*, charger:chargers(*), station:charging_stations(*)')
           .eq('user_id', userId)
           .order('start_time', ascending: true);
 
+      print('📊 Received ${response.length} bookings from DB');
       final bookings = (response as List).map((json) {
         // Handle relations
         final chargerData = json['charger'] as Map<String, dynamic>?;
         final stationData = json['station'] as Map<String, dynamic>?;
 
+        // Convert snake_case DB fields to camelCase for Dart model
         return Booking.fromJson({
-          ...json,
-          'charger': chargerData,
-          'station': stationData,
+          'id': json['id']?.toString() ?? '',
+          'userId': json['user_id']?.toString() ?? '',
+          'chargerId': json['charger_id']?.toString() ?? '',
+          'stationId': json['station_id']?.toString() ?? '',
+          'startTime': json['start_time']?.toString() ?? DateTime.now().toIso8601String(),
+          'endTime': json['end_time']?.toString() ?? DateTime.now().toIso8601String(),
+          'status': json['status']?.toString() ?? 'pending',
+          'estimatedCost': json['estimated_cost'],
+          'actualCost': json['actual_cost'],
+          'energyDelivered': json['energy_delivered'],
+          'notes': json['notes'],
+          'cancellationReason': json['cancellation_reason'],
+          'cancelledAt': json['cancelled_at']?.toString(),
+          'completedAt': json['completed_at']?.toString(),
+          'createdAt': json['created_at']?.toString() ?? DateTime.now().toIso8601String(),
+          'updatedAt': json['updated_at']?.toString() ?? DateTime.now().toIso8601String(),
+          // Don't include charger/station relations - they'll be loaded separately if needed
+          'charger': null,
+          'station': null,
         });
       }).toList();
 
       // Filter based on upcomingOnly
       final now = DateTime.now();
+      print('⏰ Current time: $now');
+      print('🔍 Filtering for upcomingOnly=$upcomingOnly');
+
       final filteredBookings = bookings.where((booking) {
         if (upcomingOnly) {
           // Upcoming: pending, confirmed, in_progress, or future bookings
-          return booking.status == BookingStatus.pending ||
+          final match = booking.status == BookingStatus.pending ||
               booking.status == BookingStatus.confirmed ||
               booking.status == BookingStatus.inProgress ||
               booking.startTime.isAfter(now);
+          print('  📋 Booking ${booking.id.substring(0,8)}: status=${booking.status}, start=${booking.startTime}, match=$match');
+          return match;
         } else {
           // Past: completed, cancelled, no_show, or past start time
           return booking.status == BookingStatus.completed ||
@@ -78,8 +103,11 @@ class BookingListNotifier extends StateNotifier<AsyncValue<List<Booking>>> {
         }
       }).toList();
 
+      print('✅ Filtered to ${filteredBookings.length} bookings');
       state = AsyncValue.data(filteredBookings);
     } catch (e, st) {
+      print('❌ ERROR loading bookings: $e');
+      print('❌ Stack trace: $st');
       state = AsyncValue.error(e, st);
     }
   }
@@ -121,10 +149,27 @@ final bookingProvider = FutureProvider.family<Booking?, String>((ref, id) async 
   final chargerData = response['charger'] as Map<String, dynamic>?;
   final stationData = response['station'] as Map<String, dynamic>?;
 
+  // Convert snake_case DB fields to camelCase for Dart model
   return Booking.fromJson({
-    ...response,
-    'charger': chargerData,
-    'station': stationData,
+    'id': response['id']?.toString() ?? '',
+    'userId': response['user_id']?.toString() ?? '',
+    'chargerId': response['charger_id']?.toString() ?? '',
+    'stationId': response['station_id']?.toString() ?? '',
+    'startTime': response['start_time']?.toString() ?? DateTime.now().toIso8601String(),
+    'endTime': response['end_time']?.toString() ?? DateTime.now().toIso8601String(),
+    'status': response['status']?.toString() ?? 'pending',
+    'estimatedCost': response['estimated_cost'],
+    'actualCost': response['actual_cost'],
+    'energyDelivered': response['energy_delivered'],
+    'notes': response['notes'],
+    'cancellationReason': response['cancellation_reason'],
+    'cancelledAt': response['cancelled_at']?.toString(),
+    'completedAt': response['completed_at']?.toString(),
+    'createdAt': response['created_at']?.toString() ?? DateTime.now().toIso8601String(),
+    'updatedAt': response['updated_at']?.toString() ?? DateTime.now().toIso8601String(),
+    // Don't include charger/station relations - they'll be loaded separately if needed
+    'charger': null,
+    'station': null,
   });
 });
 

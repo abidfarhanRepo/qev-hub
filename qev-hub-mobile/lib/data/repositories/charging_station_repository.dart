@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/charging_station.dart';
 
@@ -32,24 +33,56 @@ class SupabaseChargingStationRepository implements ChargingStationRepository {
     double? userLng,
   }) async {
     try {
-      // Fetch all active stations
-      var query = _client
-          .from('charging_stations')
-          .select();
+      debugPrint('Fetching charging stations...');
 
-      // Filter by status
-      if (filter?.status != null) {
-        query = query.eq('status', filter!.status!);
-      } else {
-        // Default to active stations only
-        query = query.eq('status', 'active');
+      // Fetch all active stations with explicit columns
+      final response = await _client
+          .from('charging_stations')
+          .select('''
+            id,
+            name,
+            address,
+            latitude,
+            longitude,
+            charger_type,
+            total_chargers,
+            available_chargers,
+            power_output_kw,
+            status,
+            amenities,
+            pricing_info,
+            operating_hours,
+            phone_number,
+            website_url,
+            image_url
+          ''')
+          .eq('status', 'active')
+          .order('name');
+
+      debugPrint('Raw response: $response');
+
+      final List<dynamic> responseList = response as List<dynamic>;
+      debugPrint('Processing ${responseList.length} stations');
+
+      var stations = <ChargingStation>[];
+
+      for (var item in responseList) {
+        try {
+          final json = item as Map<String, dynamic>;
+
+          // Debug print
+          debugPrint('Processing station: ${json['name']}, lat: ${json['latitude']}, lng: ${json['longitude']}');
+
+          final station = ChargingStation.fromJson(json);
+          stations.add(station);
+        } catch (e) {
+          debugPrint('Error parsing station: $e');
+          // Skip invalid stations
+          continue;
+        }
       }
 
-      final response = await query.order('name');
-
-      var stations = (response as List)
-          .map((json) => ChargingStation.fromJson(json as Map<String, dynamic>))
-          .toList();
+      debugPrint('Successfully parsed ${stations.length} stations');
 
       // Apply client-side filters
       if (filter != null) {
@@ -94,13 +127,15 @@ class SupabaseChargingStationRepository implements ChargingStationRepository {
         stations.sort((a, b) => (a.distanceKm ?? 0).compareTo(b.distanceKm ?? 0));
       }
 
+      debugPrint('Returning ${stations.length} stations after filtering');
+
       return StationListResult(
         stations: stations,
         totalCount: stations.length,
         hasMore: false,
       );
     } catch (e) {
-      print('Error fetching charging stations: $e');
+      debugPrint('Error fetching charging stations: $e');
       return StationListResult(
         stations: [],
         totalCount: 0,

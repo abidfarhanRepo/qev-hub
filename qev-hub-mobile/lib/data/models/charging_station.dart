@@ -3,6 +3,23 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'charging_station.freezed.dart';
 part 'charging_station.g.dart';
 
+/// Converter for string to double parsing
+class StringToDoubleConverter implements JsonConverter<double, dynamic> {
+  const StringToDoubleConverter();
+
+  @override
+  double fromJson(dynamic value) {
+    if (value == null) return 0.0;
+    if (value is double) return value;
+    if (value is int) return value.toDouble();
+    if (value is String) return double.parse(value);
+    return 0.0;
+  }
+
+  @override
+  dynamic toJson(double value) => value;
+}
+
 /// Charging station model matching Supabase table
 @freezed
 class ChargingStation with _$ChargingStation {
@@ -10,8 +27,8 @@ class ChargingStation with _$ChargingStation {
     required String id,
     required String name,
     required String address,
-    required double latitude,
-    required double longitude,
+    @StringToDoubleConverter() required double latitude,
+    @StringToDoubleConverter() required double longitude,
     @JsonKey(name: 'charger_type') String? chargerType,
     @JsonKey(name: 'total_chargers') int? totalChargers,
     @JsonKey(name: 'available_chargers') int? availableChargers,

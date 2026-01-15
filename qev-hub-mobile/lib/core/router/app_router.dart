@@ -9,10 +9,9 @@ import '../../features/auth/presentation/forgot_password_screen.dart';
 import '../../features/dashboard/presentation/dashboard_screen.dart';
 import '../../features/marketplace/presentation/marketplace_screen.dart';
 import '../../features/marketplace/presentation/vehicle_detail_screen.dart';
-import '../../features/charging/presentation/charging_screen.dart';
-import '../../features/charging/presentation/charging_provider.dart';
-import '../../features/booking/presentation/station_detail_screen.dart';
-import '../../features/booking/presentation/booking_flow_screen.dart';
+import '../../features/charging/presentation/charging_screen_simple.dart';
+import '../../features/booking/presentation/station_detail_simple.dart';
+import '../../features/booking/presentation/booking_flow_simple.dart';
 import '../../features/booking/presentation/my_bookings_screen.dart';
 import '../../features/booking/presentation/booking_provider.dart';
 import '../../features/auth/presentation/auth_provider.dart';
@@ -134,7 +133,7 @@ class AppRouter {
               path: RouteConstants.charging,
               name: 'charging',
               pageBuilder: (context, state) => const MaterialPage(
-                child: ChargingScreen(),
+                child: ChargingScreenSimple(),
               ),
               routes: [
                 // Station Detail
@@ -144,22 +143,22 @@ class AppRouter {
                   pageBuilder: (context, state) {
                     final stationId = state.pathParameters['stationId'] ?? '';
                     return MaterialPage(
-                      child: StationDetailScreen(stationId: stationId),
+                      child: StationDetailSimple(stationId: stationId),
                     );
                   },
                 ),
               ],
             ),
 
-            // Booking Flow
+            // Simple Booking Flow
             GoRoute(
-              path: RouteConstants.bookingFlow,
-              name: 'booking-flow',
+              path: '/booking-simple',
+              name: 'booking-simple',
               pageBuilder: (context, state) {
-                final chargerId = state.uri.queryParameters['chargerId'];
-                final stationId = state.uri.queryParameters['stationId'];
+                final chargerId = state.uri.queryParameters['chargerId'] ?? '';
+                final stationId = state.uri.queryParameters['stationId'] ?? '';
                 return MaterialPage(
-                  child: _BookingFlowWrapper(
+                  child: BookingFlowSimple(
                     chargerId: chargerId,
                     stationId: stationId,
                   ),
@@ -325,107 +324,6 @@ class _ErrorScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-/// Wrapper widget for booking flow that fetches station and charger data
-class _BookingFlowWrapper extends ConsumerWidget {
-  final String? stationId;
-  final String? chargerId;
-
-  const _BookingFlowWrapper({
-    this.stationId,
-    this.chargerId,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    if (stationId == null) {
-      return const Scaffold(
-        body: Center(
-          child: Text('Station ID is required'),
-        ),
-      );
-    }
-
-    final stationAsync = ref.watch(stationProvider(stationId!));
-    final chargerAsync = chargerId != null
-        ? ref.watch(chargerProvider(chargerId!))
-        : null;
-
-    return stationAsync.when(
-      loading: () => const Scaffold(
-        body: Center(child: AppLoader(size: 48)),
-      ),
-      error: (error, stack) => Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.error_outline, size: 64, color: Colors.red),
-              const SizedBox(height: 16),
-              Text('Error: $error'),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () => context.pop(),
-                child: const Text('Go Back'),
-              ),
-            ],
-          ),
-        ),
-      ),
-      data: (station) {
-        if (chargerAsync != null) {
-          return chargerAsync.when(
-            loading: () => const Scaffold(
-              body: Center(child: AppLoader(size: 48)),
-            ),
-            error: (error, stack) => Scaffold(
-              body: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.error_outline, size: 64, color: Colors.red),
-                    const SizedBox(height: 16),
-                    Text('Error: $error'),
-                    const SizedBox(height: 16),
-                    ElevatedButton(
-                      onPressed: () => context.pop(),
-                      child: const Text('Go Back'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            data: (charger) {
-              if (station == null) {
-                return const Scaffold(
-                  body: Center(
-                    child: Text('Station not found'),
-                  ),
-                );
-              }
-              return BookingFlowScreen(
-                station: station,
-                charger: charger,
-              );
-            },
-          );
-        }
-
-        if (station == null) {
-          return const Scaffold(
-            body: Center(
-              child: Text('Station not found'),
-            ),
-          );
-        }
-
-        return BookingFlowScreen(
-          station: station,
-        );
-      },
     );
   }
 }
