@@ -1,12 +1,36 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
-import L from 'leaflet'
+import dynamic from 'next/dynamic'
+import { Button } from '@/components/ui/button'
 import { supabase } from '@/lib/supabase'
 import { ChargingStation } from '@/lib/charging-data-provider'
-import { Button } from '@/components/ui/button'
+
+// Dynamically import leaflet components to avoid SSR issues
+const MapContainer = dynamic(
+  () => import('react-leaflet').then((mod) => mod.MapContainer),
+  { ssr: false }
+)
+const TileLayer = dynamic(
+  () => import('react-leaflet').then((mod) => mod.TileLayer),
+  { ssr: false }
+)
+const Marker = dynamic(
+  () => import('react-leaflet').then((mod) => mod.Marker),
+  { ssr: false }
+)
+const Popup = dynamic(
+  () => import('react-leaflet').then((mod) => mod.Popup),
+  { ssr: false }
+)
+
+// Lazy load useMap
+const MapController = dynamic(
+  () => import('./map-controller').then((mod) => mod.MapController),
+  { ssr: false }
+)
+
+import 'leaflet/dist/leaflet.css'
 
 const dohaCenter: [number, number] = [25.3548, 51.1839]
 
@@ -23,8 +47,11 @@ const TILE_CONFIGS = {
   }
 }
 
-const customMarkerIcon = (isAvailable: boolean) =>
-  L.divIcon({
+// Lazy load L only on client side
+const getCustomMarkerIcon = (isAvailable: boolean) => {
+  if (typeof window === 'undefined') return null
+  const L = require('leaflet')
+  return L.divIcon({
     className: 'custom-marker',
     html: `<div style="
       background-color: ${isAvailable ? '#00FFFF' : '#4a0d1d'};
@@ -44,27 +71,24 @@ const customMarkerIcon = (isAvailable: boolean) =>
     iconSize: [32, 32],
     iconAnchor: [16, 32],
   })
+}
 
-const userLocationIcon = L.divIcon({
-  className: 'custom-marker',
-  html: `<div style="
-    background-color: #E2E8F0;
-    border: 3px solid #8A1538;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  "></div>`,
-  iconSize: [24, 24],
-  iconAnchor: [12, 12],
-})
-
-function MapController({ center, zoom }: { center: [number, number]; zoom: number }) {
-  const map = useMap()
-  useEffect(() => {
-    map.setView(center, zoom)
-  }, [center, zoom, map])
-  return null
+const getUserLocationIcon = () => {
+  if (typeof window === 'undefined') return null
+  const L = require('leaflet')
+  return L.divIcon({
+    className: 'custom-marker',
+    html: `<div style="
+      background-color: #E2E8F0;
+      border: 3px solid #8A1538;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      "></div>`,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+  })
 }
 
 export default function ChargingPage() {
@@ -76,8 +100,10 @@ export default function ChargingPage() {
   const [mapCenter, setMapCenter] = useState<[number, number]>(dohaCenter)
   const [mapZoom, setMapZoom] = useState(12)
   const [mapLanguage, setMapLanguage] = useState<'en' | 'ar'>('en')
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
     fetchChargingStations()
     getUserLocation()
   }, [])
@@ -101,9 +127,9 @@ export default function ChargingPage() {
   }
 
   const getUserLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
+    if (typeof window !== 'undefined' && (window as any).navigator?.geolocation) {
+      (window as any).navigator.geolocation.getCurrentPosition(
+        (position: any) => {
           const location: [number, number] = [
             position.coords.latitude,
             position.coords.longitude,
@@ -112,7 +138,7 @@ export default function ChargingPage() {
           setMapCenter(location)
           setMapZoom(14)
         },
-        (error) => {
+        (error: any) => {
           console.error('Error getting user location:', error)
         }
       )
@@ -160,10 +186,21 @@ export default function ChargingPage() {
     )
   }
 
+  if (!isClient) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-4 text-muted-foreground">Loading map...</p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.05)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.05)_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-10 pointer-events-none"></div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
         <div className="mb-8">
           <h1 className="text-4xl font-black uppercase tracking-widest text-foreground mb-2">EV Charging <span className="text-primary">Stations</span></h1>
@@ -225,48 +262,54 @@ export default function ChargingPage() {
             />
             <MapController center={mapCenter} zoom={mapZoom} />
 
-            {userLocation && (
-              <Marker position={userLocation} icon={userLocationIcon}>
+            {userLocation && getUserLocationIcon() && (
+              <Marker position={userLocation} icon={getUserLocationIcon()!}>
                 <Popup>Your Location</Popup>
               </Marker>
             )}
 
-            {filteredStations.map((station) => (
-              <Marker
-                key={station.id}
-                position={[Number(station.latitude), Number(station.longitude)]}
-                icon={customMarkerIcon((station.available_chargers || 0) > 0)}
-                eventHandlers={{
-                  click: () => setSelectedStation(station),
-                }}
-              >
-                <Popup>
-                  <div className="p-2 min-w-[200px]">
-                    <h3 className="font-bold text-lg mb-1">{station.name}</h3>
-                    <p className="text-sm text-gray-600 mb-2">{station.address}</p>
-                    <div className="space-y-1 text-sm mb-3">
-                      <p><span className="font-medium">Type:</span> {station.charger_type}</p>
-                      <p><span className="font-medium">Power:</span> {station.power_output_kw} kW</p>
-                      <p><span className="font-medium">Available:</span> {station.available_chargers}/{station.total_chargers}</p>
-                      <p><span className="font-medium">Pricing:</span> {station.pricing_info}</p>
-                      <p><span className="font-medium">Hours:</span> {station.operating_hours}</p>
+            {filteredStations.map((station) => {
+              const icon = getCustomMarkerIcon((station.available_chargers || 0) > 0)
+              if (!icon) return null
+              return (
+                <Marker
+                  key={station.id}
+                  position={[Number(station.latitude), Number(station.longitude)]}
+                  icon={icon}
+                  eventHandlers={{
+                    click: () => setSelectedStation(station),
+                  }}
+                >
+                  <Popup>
+                    <div className="p-2 min-w-[200px]">
+                      <h3 className="font-bold text-lg mb-1">{station.name}</h3>
+                      <p className="text-sm text-gray-600 mb-2">{station.address}</p>
+                      <div className="space-y-1 text-sm mb-3">
+                        <p><span className="font-medium">Type:</span> {station.charger_type}</p>
+                        <p><span className="font-medium">Power:</span> {station.power_output_kw} kW</p>
+                        <p><span className="font-medium">Available:</span> {station.available_chargers}/{station.total_chargers}</p>
+                        <p><span className="font-medium">Pricing:</span> {station.pricing_info}</p>
+                        <p><span className="font-medium">Hours:</span> {station.operating_hours}</p>
+                      </div>
+                      <Button
+                        onClick={() => {
+                          if (typeof window !== 'undefined') {
+                            window.open(
+                              `https://www.openstreetmap.org/directions?from=&to=${station.latitude},${station.longitude}`,
+                              '_blank'
+                            )
+                          }
+                        }}
+                        className="w-full"
+                        size="sm"
+                      >
+                        Get Directions
+                      </Button>
                     </div>
-                    <Button
-                      onClick={() => {
-                        window.open(
-                          `https://www.openstreetmap.org/directions?from=&to=${station.latitude},${station.longitude}`,
-                          '_blank'
-                        )
-                      }}
-                      className="w-full"
-                      size="sm"
-                    >
-                      Get Directions
-                    </Button>
-                  </div>
-                </Popup>
-              </Marker>
-            ))}
+                  </Popup>
+                </Marker>
+              )
+            })}
           </MapContainer>
         </div>
 
