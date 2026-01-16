@@ -97,7 +97,7 @@ class HomeScreen extends ConsumerWidget {
                 title: 'Browse Vehicles',
                 description:
                     'Discover a wide range of electric vehicles from verified manufacturers.',
-                onTap: () => context.push('/marketplace'),
+                onTap: () => context.go('/marketplace'),
               ),
               const SizedBox(height: 16),
 
@@ -106,7 +106,7 @@ class HomeScreen extends ConsumerWidget {
                 title: 'Find Charging',
                 description:
                     'Locate EV charging stations across Qatar with real-time availability.',
-                onTap: () => context.push('/charging'),
+                onTap: () => context.go('/charging'),
               ),
               const SizedBox(height: 16),
 
@@ -115,7 +115,7 @@ class HomeScreen extends ConsumerWidget {
                 title: 'Track Orders',
                 description:
                     'Monitor your vehicle order from factory to delivery.',
-                onTap: () => context.push('/orders'),
+                onTap: () => context.go('/orders'),
               ),
               const SizedBox(height: 32),
 

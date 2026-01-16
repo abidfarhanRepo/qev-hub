@@ -15,6 +15,7 @@ import '../../features/booking/presentation/enhanced_station_detail.dart';
 import '../../features/booking/presentation/booking_flow_simple.dart';
 import '../../features/booking/presentation/my_bookings_screen.dart';
 import '../../features/booking/presentation/booking_provider.dart';
+import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/auth/presentation/auth_provider.dart';
 import '../../core/constants/route_constants.dart';
 import '../../data/models/user.dart';
@@ -189,16 +190,12 @@ class AppRouter {
               ),
             ),
 
-            // Profile / Settings (placeholder for now)
+            // Profile / Settings
             GoRoute(
               path: RouteConstants.profile,
               name: 'profile',
-              pageBuilder: (context, state) => MaterialPage(
-                child: _PlaceholderScreen(
-                  title: 'Profile & Settings',
-                  message: 'Manage your profile and application settings.',
-                  phase: 'Phase 9',
-                ),
+              pageBuilder: (context, state) => const MaterialPage(
+                child: ProfileScreen(),
               ),
             ),
           ],

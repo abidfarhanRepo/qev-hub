@@ -58,15 +58,15 @@ class _MainScreenState extends ConsumerState<MainScreen> {
     // Sync _currentIndex with current route
     final currentRoute = GoRouterState.of(context).matchedLocation;
     final newIndex = _getIndexForRoute(currentRoute);
-    if (_currentIndex != newIndex) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) {
-          setState(() {
-            _currentIndex = newIndex;
-          });
-        }
-      });
-    }
+
+    // Use addPostFrameCallback to avoid setState during build
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted && _currentIndex != newIndex) {
+        setState(() {
+          _currentIndex = newIndex;
+        });
+      }
+    });
 
     return Scaffold(
       backgroundColor: AppColors.background,
