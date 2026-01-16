@@ -1,0 +1,1 @@
+INSERT INTO scrape_jobs (source, status, full_scrape, vehicles_processed, vehicles_updated, vehicles_created, result) VALUES ('byd_multi_agent_scraper', 'completed', true, 24, 0, 24, 'Successfully scraped and inserted 24 BYD vehicles from multiple sources');
