@@ -208,11 +208,11 @@ export default function MarketplacePage() {
                     </div>
                   </div>
 
-                  {vehicle.grey_market_price && vehicle.manufacturer_direct_price ? (
+                  {vehicle.price_transparency_enabled && vehicle.broker_market_price && vehicle.manufacturer_direct_price ? (
                     <div className="mb-4">
                       <SavingsBadge
                         manufacturerPrice={vehicle.manufacturer_direct_price}
-                        greyMarketPrice={vehicle.grey_market_price}
+                        greyMarketPrice={vehicle.broker_market_price}
                         size="md"
                       />
                     </div>

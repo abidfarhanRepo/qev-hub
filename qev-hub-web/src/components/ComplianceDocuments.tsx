@@ -43,7 +43,7 @@ export function ComplianceDocuments({ documents, orderId }: ComplianceDocumentsP
   }
 
   const handleDownload = (document: ComplianceDocument) => {
-    window.open(document.document_url, '_blank')
+    window.open(document.document_url, '_blank', 'noopener,noreferrer')
   }
 
   return (

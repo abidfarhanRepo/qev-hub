@@ -275,13 +275,16 @@ export default function ManufacturerSignupPage() {
 
         {/* Progress Steps */}
         <div className="flex items-center justify-center gap-4 mb-12">
-          {['details', 'documents', 'review'].map((s, index) => (
+          {['details', 'documents', 'review'].map((s, index) => {
+            const currentIndex = ['details', 'documents', 'review'].indexOf(step);
+            const isCompleted = index < currentIndex;
+            return (
             <div key={s} className="flex items-center gap-3">
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all ${
                   step === s
                     ? 'bg-primary text-primary-foreground scale-110 shadow-lg shadow-primary/25'
-                    : 'completed' || index < ['details', 'documents', 'review'].indexOf(step)
+                    : isCompleted
                     ? 'bg-green-500 text-white'
                     : 'bg-muted/20 text-muted-foreground'
                 }`}
@@ -291,14 +294,14 @@ export default function ManufacturerSignupPage() {
               {index < 2 && (
                 <div
                   className={`flex-1 h-0.5 transition-all ${
-                    index < ['details', 'documents', 'review'].indexOf(step)
+                    index < currentIndex
                       ? 'bg-primary'
                       : 'bg-muted/30'
                   }`}
                 />
               )}
             </div>
-          ))}
+          )})}
         </div>
 
         {/* Error Message */}

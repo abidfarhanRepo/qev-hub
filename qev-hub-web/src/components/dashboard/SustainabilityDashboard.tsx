@@ -1,12 +1,37 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { ZapIcon, Leaf, Globe, Award, Target, TrendingUp, AlertCircle } from '@/components/icons'
+
+// Move constants outside component to prevent recreation
+const QATAR_VISION_2030_GOALS = [
+  {
+    goal: 'Carbon Neutrality',
+    progress: 68,
+    icon: Leaf,
+    color: 'text-green-600',
+    bgColor: 'bg-green-500/10',
+  },
+  {
+    goal: 'Renewable Energy',
+    progress: 72,
+    icon: ZapIcon,
+    color: 'text-yellow-600',
+    bgColor: 'bg-yellow-500/10',
+  },
+  {
+    goal: 'Electric Vehicles',
+    progress: 55,
+    icon: Globe,
+    color: 'text-blue-600',
+    bgColor: 'bg-blue-500/10',
+  },
+]
 
 interface SustainabilityDashboardProps {
   onCalculate: () => void
@@ -16,17 +41,31 @@ export function SustainabilityDashboard({ onCalculate }: SustainabilityDashboard
   const [co2Saved, setCo2Saved] = useState(12450)
   const [treesEquivalent, setTreesEquivalent] = useState(565)
   const [qatarVisionProgress, setQatarVisionProgress] = useState(68)
+  const isVisibleRef = useRef(true)
 
   useEffect(() => {
+    // Track visibility to pause updates when tab is not visible
+    const handleVisibilityChange = () => {
+      isVisibleRef.current = document.visibilityState === 'visible'
+    }
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
     const interval = setInterval(() => {
-      setCo2Saved((prev) => prev + Math.random() * 5)
-      setTreesEquivalent((prev) => prev + Math.random() * 0.2)
+      // Only update when tab is visible to save resources
+      if (isVisibleRef.current) {
+        setCo2Saved((prev) => prev + Math.random() * 5)
+        setTreesEquivalent((prev) => prev + Math.random() * 0.2)
+      }
     }, 5000)
 
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(interval)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
   }, [])
 
-  const calculateImpact = () => {
+  // Memoize calculateImpact to prevent unnecessary recalculation
+  const impact = useMemo(() => {
     const kmDriven = 15000
     const evCo2PerKm = 0.05
     const iceCo2PerKm = 0.21
@@ -38,37 +77,11 @@ export function SustainabilityDashboard({ onCalculate }: SustainabilityDashboard
       treesEquivalent: annualSavings / 22,
       petrolSaved: kmDriven * 8 / 100,
     }
-  }
+  }, [])
 
-  const impact = calculateImpact()
-
-  const formatNumber = (num: number) => {
+  const formatNumber = useCallback((num: number) => {
     return new Intl.NumberFormat('en-QA').format(Math.round(num))
-  }
-
-  const QATAR_VISION_2030_GOALS = [
-    {
-      goal: 'Carbon Neutrality',
-      progress: 68,
-      icon: Leaf,
-      color: 'text-green-600',
-      bgColor: 'bg-green-500/10',
-    },
-    {
-      goal: 'Renewable Energy',
-      progress: 72,
-      icon: ZapIcon,
-      color: 'text-yellow-600',
-      bgColor: 'bg-yellow-500/10',
-    },
-    {
-      goal: 'Electric Vehicles',
-      progress: 55,
-      icon: Globe,
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-500/10',
-    },
-  ]
+  }, [])
 
   return (
     <div className="space-y-6">

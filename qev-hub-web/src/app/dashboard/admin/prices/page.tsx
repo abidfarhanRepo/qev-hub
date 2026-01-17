@@ -137,7 +137,7 @@ export default function AdminPricesPage() {
     vehicle.model?.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
-  const formatPrice = (price: number | null) => {
+  const formatPrice = (price: number | null | undefined) => {
     if (!price) return 'N/A'
     return new Intl.NumberFormat('en-QA', {
       style: 'currency',

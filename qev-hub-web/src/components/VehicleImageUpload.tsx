@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -29,6 +29,18 @@ export function VehicleImageUpload({
   const [uploadProgress, setUploadProgress] = useState(0)
   const [images, setImages] = useState<Array<{ url: string; is_primary: boolean }>>(existingImages)
   const [pendingFiles, setPendingFiles] = useState<File[]>([])
+  // Track blob URLs for cleanup to prevent memory leaks
+  const blobUrlsRef = useRef<Set<string>>(new Set())
+
+  // Cleanup blob URLs on unmount to prevent memory leaks
+  useEffect(() => {
+    return () => {
+      blobUrlsRef.current.forEach(url => {
+        URL.revokeObjectURL(url)
+      })
+      blobUrlsRef.current.clear()
+    }
+  }, [])
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || [])
@@ -69,12 +81,16 @@ export function VehicleImageUpload({
     } else {
       // Store pending files for later upload
       setPendingFiles([...pendingFiles, ...validFiles])
-      // Create preview URLs
-      const newImages = validFiles.map((file, index) => ({
-        url: URL.createObjectURL(file),
-        is_primary: images.length === 0 && index === 0,
-        file
-      }))
+      // Create preview URLs and track them for cleanup
+      const newImages = validFiles.map((file, index) => {
+        const blobUrl = URL.createObjectURL(file)
+        blobUrlsRef.current.add(blobUrl)
+        return {
+          url: blobUrl,
+          is_primary: images.length === 0 && index === 0,
+          file
+        }
+      })
       setImages([...images, ...newImages])
     }
   }
@@ -140,9 +156,20 @@ export function VehicleImageUpload({
 
   const handleDelete = async (imageUrl: string) => {
     if (!vehicleId) {
-      // For pending files, just remove from state
+      // For pending files, revoke blob URL and remove from state
+      if (imageUrl.startsWith('blob:')) {
+        URL.revokeObjectURL(imageUrl)
+        blobUrlsRef.current.delete(imageUrl)
+      }
       setImages(images.filter(img => img.url !== imageUrl))
-      setPendingFiles(pendingFiles.filter(f => URL.createObjectURL(f) !== imageUrl))
+      // Find and remove the corresponding pending file by matching stored URL
+      const imageToRemove = images.find(img => img.url === imageUrl)
+      if (imageToRemove) {
+        setPendingFiles(prev => prev.filter((_, idx) => {
+          const storedUrl = images[existingImages.length + idx]?.url
+          return storedUrl !== imageUrl
+        }))
+      }
       return
     }
 

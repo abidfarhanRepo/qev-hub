@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { requireAuth } from '@/lib/api-auth'
 
 export async function POST(request: NextRequest) {
+  // Require authentication for processing payments
+  const { response: authResponse, user } = await requireAuth(request)
+  if (authResponse) return authResponse
+
   try {
     const body = await request.json()
     const { order_id, amount, payment_method, transaction_id } = body
@@ -13,17 +18,26 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Get order details
+    // Get order details and verify ownership
     const { data: order, error: orderError } = await supabase
       .from('orders')
       .select('*')
       .eq('id', order_id)
+      .eq('user_id', user!.id) // Ensure user owns this order
       .single()
 
     if (orderError || !order) {
       return NextResponse.json(
-        { error: 'Order not found' },
+        { error: 'Order not found or access denied' },
         { status: 404 }
+      )
+    }
+
+    // Check if already paid
+    if (order.payment_status === 'Completed') {
+      return NextResponse.json(
+        { error: 'Order has already been paid' },
+        { status: 400 }
       )
     }
 

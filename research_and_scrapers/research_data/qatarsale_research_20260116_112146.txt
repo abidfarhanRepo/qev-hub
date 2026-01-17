@@ -1,0 +1,35 @@
+================================================================================
+QATARSALE RESEARCH - PREMIUM CHINESE EVs
+================================================================================
+
+RESEARCH DATE: 2026-01-16
+SOURCE: https://qatarsale.com (if accessible)
+
+NOTES:
+- QatarSale is a major grey market car listing platform in Qatar
+- Private importers list vehicles here
+- Prices reflect import costs, not official distributor pricing
+- Warranty typically not included or limited
+
+STRATEGY FOR QATARSALE RESEARCH:
+1. Search for: NIO, XPeng, Zeekr, 极氪, 蔚来, 小鹏
+2. Check specific model pages:
+   - /products/cars_for_sale/nio
+   - /products/cars_for_sale/xpeng
+   - /products/cars_for_sale/zeekr
+3. Document listings, prices, and vehicle conditions
+4. Note trim levels, model years, and specifications
+
+OBSERVATIONS (if accessible):
+- Most premium Chinese EVs in Qatar are through private import
+- Limited official presence means limited stock
+- Higher prices due to import duties and logistics
+- Service challenges affect resale value
+
+ALTERNATIVE SOURCES TO CHECK:
+- QatarLiving.com
+- OpenSooq Qatar
+- Facebook Marketplace Qatar
+- Local dealers specializing in grey imports
+
+Found. Redirecting to /ar

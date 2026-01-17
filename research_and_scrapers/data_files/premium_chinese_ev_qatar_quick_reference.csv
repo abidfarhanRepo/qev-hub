@@ -1,0 +1,31 @@
+Brand,Model,Year,Trim,Type,Range_km,Battery_kwh,Power_hp,0-100kmh,Price_QAR,Status,Notes
+NIO,ES8,2025,Signature 100 kWh,SUV,605,100,650,4.1,240000,Grey Market,7-seater flagship, battery swap
+NIO,ES8,2025,Performance 150 kWh,SUV,520,150,650,4.1,290000,Grey Market,Semi-solid-state battery
+NIO,ES6,2025,100 kWh Performance,SUV,625,100,650,4.5,225000,Grey Market,5-seater, battery swap
+NIO,ES6,2025,75 kWh Standard,SUV,500,75,480,5.0,200000,Grey Market,Accessible price point
+NIO,EL7,2025,100 kWh Premium,SUV,500,100,650,4.5,235000,Grey Market,Air suspension, NAD
+NIO,ET7,2025,100 kWh Signature,Sedan,700,100,653,3.8,280000,Grey Market,Flagship sedan, LiDAR
+NIO,ET7,2025,150 kWh Ultra Range,Sedan,1000,150,653,3.8,320000,Grey Market,1000km range
+NIO,ET5,2025,100 kWh Sport,Sedan,710,100,480,4.0,200000,Grey Market,Sports sedan, NT2.0
+NIO,ET5,2025,75 kWh Standard,Sedan,560,75,480,4.3,180000,Grey Market,Accessible luxury
+XPeng,P7,2025,P7i Performance AWD,Sedan,702,87.5,430,4.3,175000,Grey Market,800V, LiDAR, XNGP
+XPeng,P7,2025,P7i Standard RWD,Sedan,680,78.5,267,6.0,145000,Grey Market,Value-oriented
+XPeng,P7+,2026,Ultra AI Luxury,Sedan,700,100,475,4.0,195000,Grey Market,All-new AI flagship
+XPeng,G9,2025,702 Max AWD,SUV,702,98,551,3.9,220000,Grey Market,Flagship SUV, air suspension
+XPeng,G9,2025,570 Plus RWD,SUV,570,78.5,313,6.4,185000,Grey Market,Accessible luxury SUV
+XPeng,G6,2025,755 Performance AWD,SUV,755,87.5,487,3.9,165000,Grey Market,800V, best value
+XPeng,G6,2026,焕芯 AI Edition,SUV,755,87.5,487,3.9,170000,Grey Market,Upgraded AI chip
+XPeng,X9,2025,EV 640 km,MPV,640,84.5,313,5.8,210000,Grey Market,7-seater luxury MPV
+XPeng,X9,2026,超级增程 Super Range Extender,Hybrid,1200,40,380,5.5,230000,Grey Market,World's longest MPV
+XPeng,G3i,2025,520 km,SUV,520,66,218,8.6,105000,Grey Market,Compact affordable SUV
+XPeng,G7,2026,1704 km Super Range Extender,Hybrid,1704,45,408,6.0,200000,Grey Market,World's longest SUV
+XPeng,MONA M03,2025,620 Long Range,Hatchback,620,62,218,7.4,90000,Grey Market,Entry-level trendy
+Zeekr,001,2025,100 kWh YOU Version,Shooting Brake,1032,100,544,3.8,220000,Grey Market,800V, CATL Qilin
+Zeekr,001,2025,95 kWh FR Performance,Shooting Brake,546,95,544,3.3,240000,Grey Market,3.3s acceleration
+Zeekr,009,2025,116 kWh Glory Edition,MPV,822,116,789,4.5,270000,Grey Market,6-seater ultra-luxury
+Zeekr,X,2025,77 kWh Performance AWD,SUV,560,77,428,3.7,175000,Grey Market,Compact luxury SUV
+Zeekr,X,2025,66 kWh Standard RWD,SUV,500,66,272,6.5,145000,Grey Market,Accessible compact SUV
+Zeekr,007,2025,100 kWh Performance,Sedan,870,100,421,2.84,205000,Grey Market,2.84s, LiDAR, 800V
+Zeekr,007,2025,75 kWh Standard,Sedan,688,75,421,5.5,165000,Grey Market,Accessible performance sedan
+Zeekr,7X,2025,Coming Soon,SUV,TBA,TBA,TBA,TBA,TBA,Coming Soon,Large 7-seat SUV
+Zeekr,MIX,2025,Coming Soon,MPV,TBA,TBA,TBA,TBA,TBA,Coming Soon,Innovative MPV

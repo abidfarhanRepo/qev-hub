@@ -62,7 +62,10 @@ class _EnhancedHomeScreenState extends ConsumerState<EnhancedHomeScreen>
 
   void _animateCounters() {
     Future.delayed(const Duration(milliseconds: 400), () {
-      _counterController.forward();
+      // Check if widget is still mounted before animating
+      if (mounted) {
+        _counterController.forward();
+      }
     });
   }
 

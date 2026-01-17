@@ -1,0 +1,698 @@
+{
+  "manufacturer": "BYD",
+  "country": "Qatar",
+  "dealer": "BYD Qatar",
+  "website": "https://bydqatar.com.qa",
+  "warranty": {
+    "vehicle": "6 years or 150,000 km (whichever comes first)",
+    "battery": "8 years or 200,000 km (whichever comes first)"
+  },
+  "models": [
+    {
+      "manufacturer": "BYD",
+      "model": "HAN EV",
+      "year": 2024,
+      "trim_level": "AWD",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "range_km": 521,
+      "battery_kwh": null,
+      "acceleration_0_100": 3.9,
+      "top_speed_kmh": 180,
+      "power_kw": 380,
+      "power_hp": 530,
+      "drivetrain": "AWD",
+      "cargo_capacity_l": 410,
+      "wheels": "19 inch",
+      "battery_type": "BYD Blade Battery (LFP)",
+      "charging_dc_kw": null,
+      "charging_ac_kw": null,
+      "price_qar": null,
+      "body_style": "Sedan",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": null,
+          "width_mm": null,
+          "height_mm": null,
+          "wheelbase_mm": null
+        },
+        "performance": {
+          "acceleration_0_100kmh_s": 3.9,
+          "top_speed_kmh": 180,
+          "range_wltp_km": 565,
+          "range_nedc_km": 521
+        },
+        "powertrain": {
+          "motor_type": "Dual Motor AWD",
+          "peak_power_kw": 380,
+          "peak_power_hp": 530,
+          "drivetrain": "AWD"
+        },
+        "battery": {
+          "type": "BYD Blade Battery (LFP)",
+          "technology": "Lithium Iron Phosphate"
+        },
+        "features": [
+          "iF Design Award Winner",
+          "Crystal Streamer Headlights",
+          "Full-width LED rear combination light bar",
+          "15.6-inch multimedia touchscreen",
+          "DiPilot Intelligent Assisted Driving System",
+          "W HUD (Head-Up Display)",
+          "3D ADAS",
+          "Dragon Face Design",
+          "Dragon Heart gear lever",
+          "Vehicle-to-Load (V2L) technology",
+          "SiC MOSFETs Semiconductor Technology",
+          "High efficiency heat pump system",
+          "11 airbags",
+          "C-NCAP 5 stars",
+          "C-IASI rating Good",
+          "Remote high-temperature disinfection system",
+          "Sun protection, heat insulation and noise-proof windows"
+        ],
+        "safety": [
+          "High-strength hot-formed steel",
+          "11 airbags",
+          "C-NCAP 5 stars",
+          "C-IASI rating Good",
+          "DiPilot Intelligent Assisted Driving System",
+          "Bosch IPB intelligent integrated brake control system"
+        ],
+        "technology": [
+          "CTB (Cell-To-Body) Technology",
+          "Blade Battery",
+          "e-Platform 3.0",
+          "SiC MOSFETs",
+          "Heat pump system",
+          "V2L (Vehicle-to-Load)"
+        ]
+      },
+      "images": [
+        {
+          "type": "exterior_front",
+          "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/10/21-scaled.jpg"
+        },
+        {
+          "type": "exterior",
+          "url": "https://sp-ao.shortpixel.ai/client/to_webp,q_lossless,ret_img,w_2560,h_1440/https://www.bydqatar.com.qa/wp-content/uploads/2024/10/21-scaled.jpg"
+        }
+      ]
+    },
+    {
+      "manufacturer": "BYD",
+      "model": "SEAL",
+      "year": 2024,
+      "trim_level": "AWD",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "range_km": 570,
+      "battery_kwh": null,
+      "acceleration_0_100": 3.8,
+      "top_speed_kmh": null,
+      "power_kw": 390,
+      "power_hp": 530,
+      "drivetrain": "AWD",
+      "cargo_capacity_l": 453,
+      "wheels": null,
+      "battery_type": "BYD Blade Battery (LFP)",
+      "charging_dc_kw": 150,
+      "charging_ac_kw": 11,
+      "charging_time_dc_min_30_80": 26,
+      "price_qar": null,
+      "body_style": "Sedan",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": null,
+          "width_mm": null,
+          "height_mm": null,
+          "wheelbase_mm": null
+        },
+        "performance": {
+          "acceleration_0_100kmh_s": 3.8,
+          "top_speed_kmh": null,
+          "range_wltp_km": 570
+        },
+        "powertrain": {
+          "motor_type": "Electric Motor",
+          "peak_power_kw": 390,
+          "peak_power_hp": 530,
+          "drivetrain": "AWD"
+        },
+        "battery": {
+          "type": "BYD Blade Battery (LFP)",
+          "technology": "Lithium Iron Phosphate"
+        },
+        "charging": {
+          "dc_charging_kw": 150,
+          "ac_charging_kw": 11,
+          "dc_charging_time_30_to_80_min": 26
+        },
+        "features": [
+          "iF Design Award Winner",
+          "Ocean Aesthetics Design",
+          "X-shaped front end",
+          "Double U-shaped light clusters",
+          "Dot matrix taillight",
+          "15.6-inch rotatable multimedia touchscreen",
+          "Panoramic sunroof",
+          "HIFI Dynaudio Premium Sound - 12 speakers",
+          "Integrated sport seats",
+          "Heated front seats",
+          "Electrically adjustable seats",
+          "400L trunk capacity",
+          "53L front trunk (frunk)",
+          "CTB (Cell-To-Body) Technology",
+          "iTAC (Intelligence Torque Adaption Control) System",
+          "e-Platform 3.0",
+          "Heat pump system",
+          "8-in-1 electric powertrain"
+        ],
+        "technology": [
+          "CTB (Cell-To-Body) Technology",
+          "iTAC (Intelligence Torque Adaption Control)",
+          "e-Platform 3.0",
+          "Blade Battery",
+          "Heat pump system",
+          "8-in-1 electric powertrain"
+        ]
+      },
+      "images": [
+        {
+          "type": "exterior",
+          "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/09/section02-scaled.jpg"
+        }
+      ]
+    },
+    {
+      "manufacturer": "BYD",
+      "model": "ATTO 3",
+      "year": 2024,
+      "trim_level": "Standard",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "range_km": 400,
+      "battery_kwh": 60.48,
+      "acceleration_0_100": 7.3,
+      "top_speed_kmh": null,
+      "power_kw": 150,
+      "power_hp": 204,
+      "torque_nm": 310,
+      "drivetrain": "FWD",
+      "cargo_capacity_min_l": 440,
+      "cargo_capacity_max_l": 1340,
+      "wheels": "18 inch alloy",
+      "wheels_size": "215/55 R18",
+      "battery_type": "BYD Blade Battery (LFP)",
+      "charging_dc_kw": 80,
+      "charging_ac_kw": 7,
+      "price_qar": null,
+      "body_style": "SUV",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4455,
+          "width_mm": 1875,
+          "height_mm": 1615,
+          "wheelbase_mm": 2720,
+          "ground_clearance_mm": 150
+        },
+        "performance": {
+          "acceleration_0_100kmh_s": 7.3,
+          "range_estimated_km": 400,
+          "top_speed_kmh": null
+        },
+        "powertrain": {
+          "motor_type": "Permanent magnet synchronous motor",
+          "peak_power_kw": 150,
+          "peak_power_hp": 204,
+          "max_torque_nm": 310,
+          "drivetrain": "Front-wheel drive"
+        },
+        "battery": {
+          "type": "BYD Blade Battery (LFP)",
+          "capacity_kwh": 60.48,
+          "technology": "Lithium Iron Phosphate"
+        },
+        "charging": {
+          "dc_charging_kw": 80,
+          "ac_charging_kw": 7,
+          "domestic_charging": "Domestic 3-pin plug AC",
+          "ac_charging_port": "Type 2",
+          "dc_charging_port": "CCS 2",
+          "vtol_mobile_power_supply": true,
+          "regenerative_braking": true
+        },
+        "chassis": {
+          "front_suspension": "MacPherson strut",
+          "rear_suspension": "Multi-link",
+          "front_brake": "Ventilated discs",
+          "rear_brake": "Discs",
+          "wheel_type": "Alloy",
+          "tyre_size": "215/55 R18"
+        },
+        "weight": {
+          "kerb_weight_kg": 1680,
+          "gross_vehicle_mass_kg": 2090
+        },
+        "safety_features": [
+          "Front airbags - driver & front passenger",
+          "Side airbags - driver & front passenger",
+          "Side curtain airbags - front & rear",
+          "Far-side airbags - driver",
+          "Seat belt reminder - front & rear",
+          "Tyre Pressure Monitoring System (TPMS)",
+          "ISOFIX child restraint anchorage points",
+          "Anti-Lock Braking System (ABS)",
+          "Electric Parking Brake System (EPB)",
+          "Electronic Stability Program (ESP)",
+          "Traction Control System (TCS)",
+          "Electronic Brake Force Distribution (EBD)",
+          "Hill Descent Control (HDC)",
+          "360-degree view monitor",
+          "Front 2 radars",
+          "Rear 4 radars",
+          "Auto Vehicle Hold (AVH)",
+          "Adaptive Cruise Control (ACC-S&G)",
+          "Automatic Emergency Braking (AEB)",
+          "Blind Spot Monitoring (BSD)",
+          "Lane Departure Warning (LDW)",
+          "Lane Keeping Assist (LKA)"
+        ],
+        "exterior_features": [
+          "Panoramic sunroof with electric slide and anti-trap",
+          "Electric unlock tailgate",
+          "Roof rails",
+          "Electrically heated and adjustable exterior mirrors",
+          "Electrically retractable exterior mirrors",
+          "LED headlight",
+          "Follow me home headlight",
+          "High Beam Assist (HMA)",
+          "LED daytime running light",
+          "LED rear light"
+        ],
+        "interior_features": [
+          "Steering wheel mounted controls",
+          "Electric power assisted steering",
+          "5-inch digital instrument panel",
+          "Synthetic leather seats",
+          "Centre console storage compartment",
+          "60/40 split fold rear seats",
+          "6-way power adjustment - driver seat",
+          "4-way power adjustment - front passenger seat"
+        ],
+        "infotainment": [
+          "FM radio",
+          "Bluetooth phone connectivity and audio streaming",
+          "12.8-inch intelligent rotating touch screen",
+          "Dirac HD sound, 8 speakers",
+          "USB x 2 (centre console)",
+          "USB x 2 (rear)"
+        ],
+        "lighting": [
+          "Multi-color gradient ambient lighting",
+          "LED front reading light",
+          "LED rear side reading light",
+          "Luggage compartment light"
+        ],
+        "comfort_convenience": [
+          "Wireless phone charger",
+          "12V socket",
+          "Keyless entry & keyless start",
+          "Portable card key",
+          "4-door window one touch up-down with anti-pinch",
+          "Heat pump",
+          "PM2.5 air filter",
+          "Tyre repair kit"
+        ],
+        "colors": {
+          "body_colors": [
+            "Boulder Grey",
+            "Ski White",
+            "Surf Blue",
+            "Adventure Green",
+            "Energy Red"
+          ],
+          "interior_colors": [
+            "Eclipse Blue + Hazy Grey"
+          ]
+        },
+        "technology": [
+          "DiPilot",
+          "Rotating Display",
+          "Stylish Design",
+          "Cutting Edge Technology",
+          "Blade Battery Technology"
+        ]
+      },
+      "images": []
+    },
+    {
+      "manufacturer": "BYD",
+      "model": "SEALION 7",
+      "year": 2025,
+      "trim_level": "Excellence AWD",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "range_km": 482,
+      "battery_kwh": 82.5,
+      "acceleration_0_100": 4.5,
+      "top_speed_kmh": 215,
+      "power_kw": null,
+      "power_hp": 523,
+      "drivetrain": "AWD",
+      "cargo_capacity_min_l": 520,
+      "cargo_capacity_max_l": 1789,
+      "front_trunk_l": 58,
+      "wheels": null,
+      "battery_type": "BYD Blade Battery (LFP)",
+      "charging_dc_kw": 150,
+      "charging_time_dc_min_10_80": 24,
+      "price_qar": null,
+      "body_style": "SUV",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": null,
+          "width_mm": null,
+          "height_mm": null,
+          "wheelbase_mm": null
+        },
+        "performance": {
+          "acceleration_0_100kmh_s": 4.5,
+          "top_speed_kmh": 215,
+          "range_wltp_km": 482
+        },
+        "powertrain": {
+          "motor_rpm": 23000,
+          "peak_power_hp": 523,
+          "drivetrain": "AWD"
+        },
+        "battery": {
+          "type": "BYD Blade Battery (LFP)",
+          "capacity_kwh": 82.5,
+          "technology": "Lithium Iron Phosphate"
+        },
+        "charging": {
+          "dc_charging_kw": 150,
+          "dc_charging_time_10_to_80_min": 24
+        },
+        "features": [
+          "Ocean aesthetics design",
+          "OCEAN X front styling",
+          "X-structure front",
+          "Low-slung bonnet",
+          "Sweeping fastback design",
+          "Dual waistline",
+          "Electric tailgate with foot gesture",
+          "Intelligent anti-pinch system",
+          "Dynamic water drop tail lamps",
+          "Premium quilted Nappa leather seats",
+          "Vegan leather covers 80% of interior",
+          "15.6-inch rotating centre screen",
+          "128-colour ambient lighting",
+          "12 Dynaudio speakers",
+          "Ventilated and heated front seats",
+          "Heated rear seats",
+          "Electric lumbar and leg support (driver)",
+          "50W wireless phone charger",
+          "Head-Up Display (HUD)",
+          "Panoramic sunroof with electric sunshade",
+          "Quiet cabin (NVH optimized)",
+          "CTB (cell-to-body) Technology",
+          "iTAC (Intelligence Torque Adaption Control)",
+          "8-in-1 electric powertrain",
+          "Heat pump system",
+          "Front double-wishbone suspension",
+          "Rear multi-link suspension",
+          "FSD (Frequency Selective Damping) shock absorbers",
+          "ADAS (Advanced Driver Assistance Systems)",
+          "360-degree panoramic cameras",
+          "Four-zone voice control",
+          "Android Auto",
+          "Apple CarPlay",
+          "OTA updates",
+          "NFC card key",
+          "BYD app",
+          "Remote A/C control",
+          "V2L (Vehicle-to-Load) functionality"
+        ],
+        "technology": [
+          "CTB (cell-to-body) Technology",
+          "Blade Battery",
+          "iTAC",
+          "8-in-1 electric powertrain",
+          "Heat pump system",
+          "FSD shock absorbers",
+          "ADAS",
+          "V2L"
+        ],
+        "interior": {
+          "seats": "Premium quilted Nappa leather",
+          "interior_coverage": "Vegan leather 80%",
+          "screen": "15.6-inch rotating touchscreen",
+          "audio": "12 Dynaudio speakers",
+          "ambient_lighting": "128 colours",
+          "hud": true,
+          "sunroof": "Panoramic with electric sunshade"
+        }
+      },
+      "images": [
+        {
+          "type": "exterior_front",
+          "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/12/byd-sealion-7-exterior-01-l-scaled.jpg"
+        },
+        {
+          "type": "exterior_side",
+          "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/12/byd-sealion-7-exterior-02-l-scaled.jpg"
+        },
+        {
+          "type": "exterior",
+          "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/12/byd-sealion-7-exterior-03-l-768x1024.jpg"
+        },
+        {
+          "type": "exterior_rear",
+          "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/12/byd-sealion-7-exterior-04-xl-768x1024.jpg"
+        },
+        {
+          "type": "interior",
+          "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/12/byd-sealion-7-interior-01-l-scaled.jpg"
+        }
+      ]
+    },
+    {
+      "manufacturer": "BYD",
+      "model": "SHARK 6",
+      "year": 2025,
+      "trim_level": "DMO",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": true,
+      "range_km": 520,
+      "combined_range_km": 800,
+      "battery_kwh": null,
+      "acceleration_0_100": 5.7,
+      "top_speed_kmh": null,
+      "power_kw": 321,
+      "power_hp": null,
+      "torque_nm": 650,
+      "drivetrain": "AWD",
+      "towing_capacity_kg": 2500,
+      "battery_type": "BYD Blade Battery",
+      "engine_type": "1.5L Turbo Hybrid",
+      "price_qar": null,
+      "body_style": "Pickup Truck",
+      "seats": null,
+      "specs": {
+        "dimensions": {
+          "length_mm": null,
+          "width_mm": null,
+          "height_mm": null,
+          "wheelbase_mm": null
+        },
+        "performance": {
+          "acceleration_0_100kmh_s": 5.7,
+          "range_wltp_km": 520,
+          "combined_range_km": 800,
+          "towing_capacity_kg": 2500
+        },
+        "powertrain": {
+          "engine": "Hybrid Special 1.5 litre turbo high-power",
+          "power_kw": 321,
+          "max_torque_nm": 650,
+          "drivetrain": "AWD Plug-in hybrid"
+        },
+        "technology": [
+          "DMO (Dual Mode Off-Road) Hybrid System",
+          "World's first longitudinal EHS drive assembly",
+          "Cell to Chassis technology",
+          "High-integrated high-performance off-road chassis",
+          "High-strength steel underbody protection plate",
+          "Long-travel double-wishbone suspension",
+          "Intelligent Gravel, Mud and Sand terrain modes",
+          "Hill Hold Control",
+          "Vehicle Dynamic Control",
+          "Hill Descent Control",
+          "Auto-Hold",
+          "Intelligent Power Brake",
+          "Comfort Stop (CST) function"
+        ],
+        "safety": [
+          "Child presence detection",
+          "7 SRS airbags",
+          "Front airbags",
+          "Side airbags (front & rear)",
+          "Side curtain airbags (front & rear)",
+          "ISOFIX child restraint anchorage points",
+          "Front and rear cross-traffic alert with braking"
+        ],
+        "features": [
+          "W-HUD (Head Up Display)",
+          "Portable charging cable",
+          "V2L functionality",
+          "12 speaker Dynaudio sound system",
+          "Wireless phone charger",
+          "USB-C & USB-A (front)",
+          "USB-C & USB-A (rear)",
+          "Intelligent driver cockpit system",
+          "Bluetooth phone connectivity",
+          "DAB digital radio",
+          "Voice assistant",
+          "Advanced driver assist system",
+          "OTA updates",
+          "12.8 inch intelligent touch screen (Premium model)",
+          "10.25 inch digital instrument cluster"
+        ],
+        "interior": {
+          "sound_system": "12 speaker Dynaudio",
+          "infotainment": "12.8 inch intelligent touch screen",
+          "instrument_cluster": "10.25 inch digital"
+        }
+      },
+      "images": [
+        {
+          "type": "engine",
+          "url": "https://www.bydqatar.com.qa/wp-content/uploads/2025/08/ehs.jpg"
+        }
+      ]
+    },
+    {
+      "manufacturer": "BYD",
+      "model": "SEAL 7 DM-i",
+      "year": 2025,
+      "trim_level": "Hybrid",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": true,
+      "range_km": 850,
+      "battery_kwh": null,
+      "acceleration_0_100": 7.9,
+      "top_speed_kmh": null,
+      "power_kw": null,
+      "power_hp": null,
+      "drivetrain": null,
+      "battery_type": null,
+      "price_qar": null,
+      "body_style": "Sedan",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": null,
+          "width_mm": null,
+          "height_mm": null,
+          "wheelbase_mm": null
+        },
+        "performance": {
+          "acceleration_0_100kmh_s": 7.9,
+          "combined_range_km": 850
+        },
+        "design": [
+          "Ocean series design language",
+          "Marine aesthetics",
+          "Fastback shape",
+          "Sharp headlights",
+          "Water droplet lattice light",
+          "Compound air tail structure"
+        ],
+        "interior": [
+          "Ocean Style luxury cockpit",
+          "Ripple wrap-around leather seats",
+          "Comfortable wrapping",
+          "Color matching design",
+          "Adjustable headrest",
+          "12 directions adjustment",
+          "15.6-inch adaptive floating PAD",
+          "High-transparency glass panel",
+          "Aluminum decoration",
+          "Independent central headrest",
+          "Hidden armrest",
+          "Folding cup holder",
+          "Touch-sensitive wide-angle panoramic sunroof",
+          "0.867m2 sunroof"
+        ],
+        "technology": [
+          "DM-i Gen 4.0",
+          "EHS (Electric Hybrid System)",
+          "Mainly powered by electricity",
+          "Ultra-low fuel consumption",
+          "Super smooth"
+        ],
+        "safety": [
+          "12 airbags",
+          "DiPilot system",
+          "Front Collision Warning (FCW)",
+          "Rear Collision Warning (RCW)",
+          "Rear Crossing Traffic Alert (RCTA)",
+          "Emergency Brake Signal System (EBSS)",
+          "Lane Departure Warning (LDW)",
+          "Lane Centering Control (LCC)",
+          "Intelligent High Beam (IHBC)",
+          "Door Open Warning (DOW)",
+          "Blind Spot Indicator"
+        ]
+      },
+      "images": [
+        {
+          "type": "exterior",
+          "url": "https://www.bydqatar.com.qa/wp-content/uploads/2025/04/kv4pc-scaled.png"
+        },
+        {
+          "type": "exterior",
+          "url": "https://www.bydqatar.com.qa/wp-content/uploads/2025/04/kvpc5-scaled.png"
+        },
+        {
+          "type": "exterior_rear",
+          "url": "https://www.bydqatar.com.qa/wp-content/uploads/2025/04/kvpc6-scaled.png"
+        },
+        {
+          "type": "interior",
+          "url": "https://www.bydqatar.com.qa/wp-content/uploads/2025/04/kv7pc-scaled.png"
+        }
+      ]
+    }
+  ],
+  "dealer_info": {
+    "name": "BYD Qatar",
+    "website": "https://bydqatar.com.qa",
+    "social_media": {
+      "instagram": null,
+      "facebook": "https://www.facebook.com/bydqatar/",
+      "linkedin": null,
+      "youtube": null
+    },
+    "services": [
+      "Test Drive Booking",
+      "Service Booking",
+      "Warranty Service",
+      "Maintenance"
+    ]
+  },
+  "notes": [
+    "Pricing information was not available on the website and needs to be obtained directly from the dealer",
+    "Some specifications were not fully detailed on the website",
+    "All vehicles are GCC specifications",
+    "Warranty: 6 years/150,000 km vehicle, 8 years/200,000 km battery",
+    "All BYD models use Blade Battery technology (LFP - Lithium Iron Phosphate)"
+  ],
+  "scraped_date": "2025-01-16"
+}

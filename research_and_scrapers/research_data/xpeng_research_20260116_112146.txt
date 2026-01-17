@@ -1,0 +1,165 @@
+================================================================================
+XPENG RESEARCH - QATAR MARKET
+================================================================================
+
+BRAND OVERVIEW:
+- XPeng (Chinese: 小鹏汽车) is a smart EV manufacturer
+- Founded: 2014 by Henry Xia (He Xiaopeng)
+- Headquarters: Guangzhou, China
+- Market Position: Premium smart EV with focus on autonomous driving
+- Key Technology: XNGP (Navigation Guided Pilot), Xmart OS
+
+MODELS RESEARCH:
+================================================================================
+
+1. XPeng P7 (Premium Sedan) - 2024/2025 Models
+   - Position: Premium electric sports sedan
+   - China Launch: 2020, Updated 2024
+   - 2025 Model: P7i (international version)
+   - Battery Options: 78.5 kWh, 87.5 kWh
+   - Range (CLTC): 480-702 km
+   - Power: 196-316 kW (267-430 hp)
+   - Acceleration: 0-100 km/h in 4.3s (Performance)
+   - Charging: 800V platform, 480 kW DC fast charging
+   - Autonomy: XNGP assisted driving, LiDAR on certain trims
+   - Drive: RWD or AWD
+
+2. XPeng P7+ (All-New 2026)
+   - Position: Large AI luxury sedan
+   - Launch: January 2026
+   - Battery: 100 kWh+
+   - Range: 700+ km (CLTC)
+   - Focus: AI-powered, ultra-spacious interior
+   - Technology: Latest XNGP, AI cabin
+
+3. XPeng G9 (Flagship SUV)
+   - Position: Full-size luxury SUV
+   - China Launch: 2022
+   - 2025 Updates available
+   - Battery Options: 78.5 kWh, 98 kWh
+   - Range (CLTC): 570-702 km
+   - Power: 230-405 kW (313-551 hp)
+   - Acceleration: 0-100 km/h in 3.9s (AWD)
+   - Charging: 800V architecture, 480 kW DC
+   - Features: Air suspension, XNGP with LiDAR
+   - Seats: 5 or 7-seater options
+   - Interior: Dual 14.96" screens, premium Nappa leather
+
+4. XPeng G6 (Mid-size SUV)
+   - Position: Mid-size electric SUV
+   - China Launch: 2023
+   - 2026 Updates: "焕芯上市" (chip upgrade)
+   - Battery Options: 66 kWh, 87.5 kWh
+   - Range (CLTC): 580-755 km
+   - Power: 230-358 kW
+   - Acceleration: 0-100 km/h in 3.9s (Performance)
+   - Platform: 800V architecture
+   - Technology: XNGP standard on most trims
+
+5. XPeng G3i / G3 (Compact SUV)
+   - Position: Compact electric SUV
+   - Original Launch: 2018, Updated as G3i (2021)
+   - Battery: 57-66 kWh
+   - Range (CLTC): 460-520 km
+   - Power: 145-160 kW
+   - Compact SUV alternative to Tesla Model Y
+
+6. XPeng X9 (Luxury MPV)
+   - Position: Full-size luxury MPV (7-seater)
+   - China Launch: 2024
+   - 2026 Updates: "超级增程" (Super Range Extender)
+   - Battery: 84.5 kWh (EV) or Range Extender version
+   - Range (CLTC): 640+ km (EV), 1000+ km (EREV)
+   - Power: 230 kW
+   - Features: Premium 7-seater, air suspension
+   - Focus: Family luxury transportation
+
+7. XPeng G7 (NEW 2026)
+   - Position: Large SUV with super range extender
+   - Launch: January 2026
+   - Range: 1704 km combined (EREV)
+   - Market: World's longest range SUV
+
+8. XPeng MONA M03 (Entry-level)
+   - Position: Affordable electric hatchback
+   - Launch: 2025
+   - Range: 485-620 km
+   - Price: ~120,000-150,000 CNY in China
+   - Target: Mass market
+
+GCC/QATAR STATUS:
+================================================================================
+- Official Launch: NO official XPeng presence in GCC/Qatar as of 2025
+- Grey Market: Some units imported through QatarSale
+- XNGP (Navigation Guided Pilot): Limited functionality in GCC
+  - Requires HD mapping data
+  - May not work in Qatar without regional adaptation
+- Service: NO official XPeng service centers
+- Warranty: Chinese warranty only
+
+POTENTIAL GCC PRICING (ESTIMATED - Grey Market):
+================================================================================
+Based on China pricing and import costs:
+
+- XPeng G3i: QAR 85,000 - 110,000 (imported)
+- XPeng P7: QAR 140,000 - 180,000 (imported)
+- XPeng P7+: QAR 160,000 - 200,000 (imported)
+- XPeng G6: QAR 135,000 - 170,000 (imported)
+- XPeng G9: QAR 180,000 - 230,000 (imported)
+- XPeng X9: QAR 190,000 - 250,000 (imported)
+- XPeng MONA M03: QAR 70,000 - 95,000 (imported)
+
+CHINA PRICING (Reference):
+- P7i: 209,900 - 289,900 CNY
+- G6: 209,900 - 279,900 CNY
+- G9: 263,900 - 359,900 CNY
+- X9: 349,900 - 419,900 CNY
+
+XPENG TECHNOLOGY IN GCC:
+================================================================================
+XNGP (Navigation Guided Pilot):
+- Highway driving assistance
+- Traffic jam assist
+- Automatic lane changing
+- Point-to-point autonomous navigation
+- GCC STATUS: Not operational without regional mapping
+
+Xmart OS:
+- Voice control (English/Chinese)
+- OTA updates
+- App connectivity
+- Arabic support: Uncertain, likely limited
+
+800V ARCHITECTURE:
+- Super-fast DC charging (480 kW)
+- 10-80% in ~20 minutes
+- Compatible with CCS2 charging standards
+
+GCC SPECIFICATIONS (IF EXPORTED):
+================================================================================
+Required modifications:
+- Enhanced cooling for desert conditions
+- Dust filtration
+- Battery thermal management optimization
+- Suspension tuning for local roads
+- Software updates for GCC regulations
+
+INTERNATIONAL EXPANSION:
+================================================================================
+- XPeng entered Europe (Norway, Netherlands, Sweden) 2021-2023
+- Israel launch: 2022
+- XPeng plans Middle East expansion: TBA
+- No confirmed Qatar distributor as of 2025
+
+IMAGE SOURCES:
+- https://www.xiaopeng.com
+- https://www.xiaopeng.com/p7_plus_2026.html
+- https://www.xiaopeng.com/g6.html
+- https://www.xiaopeng.com/g9.html
+
+RESEARCH NOTES:
+- XPeng has strong technology but limited global presence
+- XNGP requires extensive mapping infrastructure
+- Grey market imports face warranty/service challenges
+- 2026 models show significant AI and range improvements
+

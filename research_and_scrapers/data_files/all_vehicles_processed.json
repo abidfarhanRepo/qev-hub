@@ -1,0 +1,3391 @@
+[
+  {
+    "make": "BYD",
+    "model": "SEAL",
+    "year": 2025,
+    "trim_level": "Long Range FWD",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 570,
+    "battery_kwh": 82.5,
+    "price": 142700,
+    "manufacturer_direct_price": 142700,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD SEAL is an all-electric sedan with ocean-inspired aesthetics, featuring CTB technology and exceptional performance.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4800,
+        "width_mm": 1875,
+        "height_mm": 1460,
+        "wheelbase_mm": 2920
+      },
+      "battery": {
+        "type": "BYD Blade Battery (LFP)",
+        "technology": "Lithium Iron Phosphate"
+      },
+      "charging": {
+        "dc_charging_kw": 150,
+        "ac_charging_kw": 11,
+        "charging_time_30_80_min": 26
+      },
+      "features": [
+        "CTB Technology",
+        "iTAC",
+        "e-Platform 3.0",
+        "Heat pump",
+        "8-in-1 electric powertrain"
+      ],
+      "range_km": 570,
+      "battery_kwh": 82.5,
+      "acceleration_0_100": 5.9,
+      "top_speed_kmh": 180,
+      "power_kw": 230,
+      "power_hp": 313,
+      "drivetrain": "RWD",
+      "body_style": "Sedan",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/09/section02-scaled.jpg",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "SEAL",
+    "year": 2025,
+    "trim_level": "Flagship AWD",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 460,
+    "battery_kwh": 82.5,
+    "price": 171698,
+    "manufacturer_direct_price": 171698,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD SEAL Flagship AWD with dual motors, 3.8s 0-100 km/h acceleration.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4800,
+        "width_mm": 1875,
+        "height_mm": 1460,
+        "wheelbase_mm": 2920
+      },
+      "battery": {
+        "type": "BYD Blade Battery (LFP)",
+        "technology": "Lithium Iron Phosphate"
+      },
+      "charging": {
+        "dc_charging_kw": 150,
+        "ac_charging_kw": 11,
+        "charging_time_30_80_min": 26
+      },
+      "range_km": 460,
+      "battery_kwh": 82.5,
+      "acceleration_0_100": 3.8,
+      "top_speed_kmh": 180,
+      "power_kw": 390,
+      "power_hp": 530,
+      "drivetrain": "AWD",
+      "body_style": "Sedan",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/09/section02-scaled.jpg",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "ATTO 3",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 420,
+    "battery_kwh": 60.48,
+    "price": 108987,
+    "manufacturer_direct_price": 108987,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD ATTO 3 is a compact electric SUV with 420km range, featuring the signature rotating display.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4455,
+        "width_mm": 1875,
+        "height_mm": 1615,
+        "wheelbase_mm": 2720
+      },
+      "battery": {
+        "type": "BYD Blade Battery (LFP)",
+        "capacity_kwh": 60.48
+      },
+      "charging": {
+        "dc_charging_kw": 88,
+        "ac_charging_kw": 7.4
+      },
+      "features": [
+        "12.8-inch rotating screen",
+        "DiPilot",
+        "VTOL mobile power supply"
+      ],
+      "range_km": 420,
+      "battery_kwh": 60.48,
+      "acceleration_0_100": 7.3,
+      "top_speed_kmh": 160,
+      "power_kw": 150,
+      "power_hp": 204,
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "ATTO 3",
+    "year": 2025,
+    "trim_level": "Plus",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 420,
+    "battery_kwh": 60.48,
+    "price": 116062,
+    "manufacturer_direct_price": 116062,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD ATTO 3 Plus trim with enhanced features.",
+    "specs": {
+      "range_km": 420,
+      "battery_kwh": 60.48,
+      "acceleration_0_100": 7.3,
+      "top_speed_kmh": 160,
+      "power_kw": 150,
+      "power_hp": 204,
+      "drivetrain": "FWD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "HAN EV",
+    "year": 2025,
+    "trim_level": "AWD",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 521,
+    "battery_kwh": 85.4,
+    "price": 197348,
+    "manufacturer_direct_price": 197348,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD HAN EV luxury sedan with dual motors, 521km range.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4995,
+        "width_mm": 1910,
+        "height_mm": 1495,
+        "wheelbase_mm": 2920
+      },
+      "battery": {
+        "type": "BYD Blade Battery (LFP)",
+        "capacity_kwh": 85.4
+      },
+      "range_km": 521,
+      "battery_kwh": 85.4,
+      "acceleration_0_100": 3.9,
+      "top_speed_kmh": 180,
+      "power_kw": 380,
+      "power_hp": 530,
+      "drivetrain": "AWD",
+      "body_style": "Sedan",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/10/21-scaled.jpg",
+        "type": "exterior_front",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "DOLPHIN",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 340,
+    "battery_kwh": 44.9,
+    "price": 52925,
+    "manufacturer_direct_price": 52925,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD DOLPHIN - affordable electric hatchback with 340km range.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4290,
+        "width_mm": 1770,
+        "height_mm": 1570,
+        "wheelbase_mm": 2700
+      },
+      "range_km": 340,
+      "battery_kwh": 44.9,
+      "acceleration_0_100": 12.3,
+      "top_speed_kmh": 150,
+      "power_kw": 95,
+      "power_hp": 130,
+      "drivetrain": "FWD",
+      "body_style": "Hatchback",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "DOLPHIN",
+    "year": 2025,
+    "trim_level": "Premium",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 427,
+    "battery_kwh": 60.4,
+    "price": 67708,
+    "manufacturer_direct_price": 67708,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD DOLPHIN Premium with 60.4kWh battery and 427km range.",
+    "specs": {
+      "range_km": 427,
+      "battery_kwh": 60.4,
+      "acceleration_0_100": 7.0,
+      "top_speed_kmh": 160,
+      "power_kw": 150,
+      "power_hp": 204,
+      "drivetrain": "FWD",
+      "body_style": "Hatchback"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "SEALION 7",
+    "year": 2025,
+    "trim_level": "Excellence AWD",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 482,
+    "battery_kwh": 80.64,
+    "price": 228490,
+    "manufacturer_direct_price": 228490,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD SEALION 7 - premium electric SUV with Nappa leather, 523HP, 482km range.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4830,
+        "width_mm": 1920,
+        "height_mm": 1720,
+        "wheelbase_mm": 2830
+      },
+      "range_km": 482,
+      "battery_kwh": 80.64,
+      "acceleration_0_100": 4.5,
+      "top_speed_kmh": 180,
+      "power_kw": 390,
+      "power_hp": 523,
+      "drivetrain": "AWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/12/byd-sealion-7-exterior-01-l-scaled.jpg",
+        "type": "exterior_front",
+        "is_primary": true
+      },
+      {
+        "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/12/byd-sealion-7-exterior-02-l-scaled.jpg",
+        "type": "exterior_side",
+        "is_primary": false
+      },
+      {
+        "url": "https://www.bydqatar.com.qa/wp-content/uploads/2024/12/byd-sealion-7-interior-01-l-scaled.jpg",
+        "type": "interior",
+        "is_primary": false
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "SHARK 6",
+    "year": 2025,
+    "trim_level": "Premium",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 520,
+    "battery_kwh": 29.58,
+    "price": 157311,
+    "manufacturer_direct_price": 157311,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD SHARK 6 - plug-in hybrid pickup with DMO off-road system, 2500kg towing.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 5260,
+        "width_mm": 1940,
+        "height_mm": 1920,
+        "wheelbase_mm": 3120
+      },
+      "technology": [
+        "DMO Hybrid System",
+        "V2L",
+        "2500kg towing capacity"
+      ],
+      "range_km": 520,
+      "battery_kwh": 29.58,
+      "acceleration_0_100": 5.7,
+      "top_speed_kmh": 160,
+      "power_kw": 321,
+      "power_hp": 430,
+      "drivetrain": "AWD",
+      "body_style": "Pickup Truck"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "SEAL 7 DM-i",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 850,
+    "battery_kwh": 17.6,
+    "price": 104667,
+    "manufacturer_direct_price": 104667,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD SEAL 7 DM-i - plug-in hybrid sedan with 850km combined range, DM-i Gen 4.0.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4830,
+        "width_mm": 1890,
+        "height_mm": 1495,
+        "wheelbase_mm": 2900
+      },
+      "range_km": 850,
+      "battery_kwh": 17.6,
+      "acceleration_0_100": 6.5,
+      "top_speed_kmh": 180,
+      "power_kw": 200,
+      "power_hp": 270,
+      "drivetrain": "FWD",
+      "body_style": "Sedan"
+    },
+    "images": [
+      {
+        "url": "https://www.bydqatar.com.qa/wp-content/uploads/2025/04/kv4pc-scaled.png",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "SEAL 7 DM-i",
+    "year": 2025,
+    "trim_level": "AWD",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 800,
+    "battery_kwh": 17.6,
+    "price": 133714,
+    "manufacturer_direct_price": 133714,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD SEAL 7 DM-i AWD with 4.8s acceleration.",
+    "specs": {
+      "range_km": 800,
+      "battery_kwh": 17.6,
+      "acceleration_0_100": 4.8,
+      "top_speed_kmh": 190,
+      "power_kw": 270,
+      "power_hp": 366,
+      "drivetrain": "AWD",
+      "body_style": "Sedan"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "SONG PLUS DM-i",
+    "year": 2025,
+    "trim_level": "FWD",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 110,
+    "battery_kwh": 18.3,
+    "price": 110648,
+    "manufacturer_direct_price": 110648,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD SONG PLUS DM-i - plug-in hybrid SUV with 890km combined range.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4705,
+        "width_mm": 1890,
+        "height_mm": 1680,
+        "wheelbase_mm": 2765
+      },
+      "range_km": 110,
+      "battery_kwh": 18.3,
+      "acceleration_0_100": 7.3,
+      "top_speed_kmh": 170,
+      "power_kw": 150,
+      "power_hp": 204,
+      "drivetrain": "FWD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "SONG PLUS EV",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 520,
+    "battery_kwh": 71.8,
+    "price": 80000,
+    "manufacturer_direct_price": 80000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD SONG PLUS EV - electric SUV with 520km range.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4785,
+        "width_mm": 1890,
+        "height_mm": 1665,
+        "wheelbase_mm": 2765
+      },
+      "range_km": 520,
+      "battery_kwh": 71.8,
+      "acceleration_0_100": 7.5,
+      "top_speed_kmh": 160,
+      "power_kw": 150,
+      "power_hp": 204,
+      "drivetrain": "FWD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "QIN PLUS DM-i",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 90,
+    "battery_kwh": 18.3,
+    "price": 74278,
+    "manufacturer_direct_price": 74278,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD QIN PLUS DM-i - efficient plug-in hybrid sedan with 795km range.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4765,
+        "width_mm": 1837,
+        "height_mm": 1495,
+        "wheelbase_mm": 2718
+      },
+      "range_km": 90,
+      "battery_kwh": 18.3,
+      "acceleration_0_100": 7.3,
+      "top_speed_kmh": 185,
+      "power_kw": 197,
+      "power_hp": 266,
+      "drivetrain": "FWD",
+      "body_style": "Sedan"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "E2",
+    "year": 2025,
+    "trim_level": "Luxury",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 405,
+    "battery_kwh": 43.2,
+    "price": 58400,
+    "manufacturer_direct_price": 58400,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD E2 - affordable electric hatchback with 405km range.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4240,
+        "width_mm": 1760,
+        "height_mm": 1530,
+        "wheelbase_mm": 2610
+      },
+      "range_km": 405,
+      "battery_kwh": 43.2,
+      "acceleration_0_100": 9.3,
+      "top_speed_kmh": 130,
+      "power_kw": 70,
+      "power_hp": 95,
+      "drivetrain": "FWD",
+      "body_style": "Hatchback"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "YUAN PLUS",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 510,
+    "battery_kwh": 60.48,
+    "price": 120450,
+    "manufacturer_direct_price": 120450,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD YUAN PLUS - electric SUV with 510km range.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4455,
+        "width_mm": 1875,
+        "height_mm": 1615,
+        "wheelbase_mm": 2720
+      },
+      "range_km": 510,
+      "battery_kwh": 60.48,
+      "acceleration_0_100": 7.5,
+      "top_speed_kmh": 160,
+      "power_kw": 150,
+      "power_hp": 204,
+      "drivetrain": "FWD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "SONG L",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 550,
+    "battery_kwh": 71.8,
+    "price": 67615,
+    "manufacturer_direct_price": 67615,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD SONG L - electric SUV coupe with 550km range.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4840,
+        "width_mm": 1950,
+        "height_mm": 1560,
+        "wheelbase_mm": 2930
+      },
+      "range_km": 550,
+      "battery_kwh": 71.8,
+      "acceleration_0_100": 7.5,
+      "top_speed_kmh": 170,
+      "power_kw": 150,
+      "power_hp": 204,
+      "drivetrain": "FWD",
+      "body_style": "SUV Coupe"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "SONG L",
+    "year": 2025,
+    "trim_level": "Performance",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 662,
+    "battery_kwh": 87.04,
+    "price": 85000,
+    "manufacturer_direct_price": 85000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "BYD SONG L Performance with 4.5s acceleration and 662km range.",
+    "specs": {
+      "range_km": 662,
+      "battery_kwh": 87.04,
+      "acceleration_0_100": 4.5,
+      "top_speed_kmh": 200,
+      "power_kw": 230,
+      "power_hp": 313,
+      "drivetrain": "AWD",
+      "body_style": "SUV Coupe"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "LEOPARD 5",
+    "year": 2025,
+    "trim_level": "Ultra 5",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 165000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 165000,
+    "grey_market_source": "QatarSale",
+    "grey_market_url": "https://qatarsale.com/en/products/cars_for_sale/byd",
+    "description": "BYD Leopard 5 (Fang Cheng Bao) - Chinese-spec grey market import via QatarSale. Petrol hybrid SUV.",
+    "specs": {
+      "drivetrain": "4WD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "LEOPARD 7",
+    "year": 2025,
+    "trim_level": "Titanium 7",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 143000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 143000,
+    "grey_market_source": "QatarSale",
+    "grey_market_url": "https://qatarsale.com/en/products/cars_for_sale/byd",
+    "description": "BYD Leopard 7 - Chinese-spec grey market import via QatarSale. Petrol hybrid SUV.",
+    "specs": {
+      "drivetrain": "4WD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "LEOPARD 8",
+    "year": 2025,
+    "trim_level": "Flagship",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 280000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 280000,
+    "grey_market_source": "QatarSale",
+    "grey_market_url": "https://qatarsale.com/en/products/cars_for_sale/byd",
+    "description": "BYD Leopard 8 Flagship - Chinese-spec grey market import. Premium SUV with 6 seaters, 21 inch rims.",
+    "specs": {
+      "drivetrain": "4WD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "DENZA B5",
+    "year": 2026,
+    "trim_level": "Flagship",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 100,
+    "battery_kwh": 31.8,
+    "price": 185000,
+    "manufacturer_direct_price": 195000,
+    "grey_market_price": 185000,
+    "grey_market_source": "QatarSale",
+    "grey_market_url": null,
+    "description": "BYD Denza B5 - plug-in hybrid off-road SUV with 1000km range, 790mm wading depth.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 5090,
+        "width_mm": 1990,
+        "height_mm": 1940,
+        "wheelbase_mm": 2850
+      },
+      "powertrain": {
+        "power_kw": 400,
+        "power_hp": 570,
+        "torque_nm": 760
+      },
+      "range_km": 100,
+      "battery_kwh": 31.8,
+      "drivetrain": "AWD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "DENZA B8",
+    "year": 2026,
+    "trim_level": "Luxury",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 100,
+    "battery_kwh": 36.8,
+    "price": 243000,
+    "manufacturer_direct_price": 242046,
+    "grey_market_price": 243000,
+    "grey_market_source": "QatarSale",
+    "grey_market_url": null,
+    "description": "BYD Denza B8 - luxury plug-in hybrid SUV with 905km range, 890mm wading depth.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 5140,
+        "width_mm": 1995,
+        "height_mm": 1805,
+        "wheelbase_mm": 3050
+      },
+      "powertrain": {
+        "power_kw": 450,
+        "power_hp": 738,
+        "torque_nm": 760
+      },
+      "range_km": 100,
+      "battery_kwh": 36.8,
+      "drivetrain": "AWD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "BYD",
+    "model": "DENZA N9",
+    "year": 2025,
+    "trim_level": "Flagship",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 229999,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 229999,
+    "grey_market_source": "QatarSale",
+    "grey_market_url": "https://qatarsale.com/en/products/cars_for_sale/byd",
+    "description": "BYD Denza N9 Flagship - Chinese-spec grey market import via QatarSale.",
+    "specs": {
+      "drivetrain": "AWD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "GAC",
+    "model": "AION Y Plus",
+    "year": 2024,
+    "trim_level": "Plus",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 430,
+    "battery_kwh": 61.7,
+    "price": 89000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "The GAC AION Y Plus is a fully electric suv offering 430 km of range\nand 204 horsepower. It features modern electric vehicle technology with advanced battery systems,\ncomfortable interior with premium features, and comprehensive safety systems.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4535,
+        "width_mm": 1870,
+        "height_mm": 1650,
+        "wheelbase_mm": 2750,
+        "ground_clearance_mm": 165
+      },
+      "performance": {
+        "acceleration_0_100kmh_s": 8.5,
+        "top_speed_kmh": 150,
+        "range_nedc_km": 430
+      },
+      "powertrain": {
+        "motor_type": "Permanent magnet synchronous motor",
+        "peak_power_kw": 150,
+        "peak_power_hp": 204,
+        "max_torque_nm": 225,
+        "drivetrain": "Front-wheel drive"
+      },
+      "battery": {
+        "type": "Lithium-ion NCM",
+        "capacity_kwh": 61.7,
+        "technology": "Nickel Cobalt Manganese"
+      },
+      "charging": {
+        "dc_charging_kw": 80,
+        "ac_charging_kw": 7.2,
+        "ac_charging_port": "Type 2",
+        "dc_charging_port": "GB/T (China) / CCS (GCC)"
+      },
+      "features": [
+        "Hyper.dashboard - 14.6-inch touchscreen",
+        "ADIGO intelligent driving system",
+        "Panoramic sunroof",
+        "Electric tailgate",
+        "Hidden door handles",
+        "LED matrix headlights",
+        "Ambient lighting",
+        "Wireless phone charging",
+        "Voice control",
+        "OTA updates",
+        "ADAS (Advanced Driver Assistance Systems)",
+        "360-degree camera",
+        "Auto parking",
+        "Adaptive cruise control",
+        "Lane keep assist",
+        "Blind spot monitoring",
+        "Automatic emergency braking"
+      ],
+      "safety": [
+        "6 airbags",
+        "Electronic Stability Program (ESP)",
+        "Traction Control System (TCS)",
+        "Hill Start Assist (HSA)",
+        "Tyre Pressure Monitoring System (TPMS)",
+        "ISOFIX child seat anchors",
+        "Rear parking sensors",
+        "Front and rear parking sensors"
+      ],
+      "range_km": 430,
+      "battery_kwh": 61.7,
+      "acceleration_0_100": 8.5,
+      "top_speed_kmh": 150,
+      "power_kw": 150,
+      "power_hp": 204,
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "type": "exterior_front",
+        "url": "https://www.gacmotor.com/uploads/21012021074638456.jpg"
+      },
+      {
+        "type": "exterior_side",
+        "url": "https://www.gacmotor.com/uploads/21012021074641389.jpg"
+      },
+      {
+        "type": "interior",
+        "url": "https://www.gacmotor.com/uploads/21012021074643256.jpg"
+      },
+      {
+        "type": "exterior_rear",
+        "url": "https://www.gacmotor.com/uploads/21012021074645123.jpg"
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "GAC",
+    "model": "AION S Plus",
+    "year": 2024,
+    "trim_level": "Plus",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 500,
+    "battery_kwh": 58.8,
+    "price": 95000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "The GAC AION S Plus is a fully electric sedan offering 500 km of range\nand 204 horsepower. It features modern electric vehicle technology with advanced battery systems,\ncomfortable interior with premium features, and comprehensive safety systems.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4800,
+        "width_mm": 1880,
+        "height_mm": 1515,
+        "wheelbase_mm": 2750,
+        "ground_clearance_mm": 130
+      },
+      "performance": {
+        "acceleration_0_100kmh_s": 7.5,
+        "top_speed_kmh": 165,
+        "range_nedc_km": 500
+      },
+      "powertrain": {
+        "motor_type": "Permanent magnet synchronous motor",
+        "peak_power_kw": 150,
+        "peak_power_hp": 204,
+        "max_torque_nm": 235,
+        "drivetrain": "Front-wheel drive"
+      },
+      "battery": {
+        "type": "Lithium-ion NCM",
+        "capacity_kwh": 58.8,
+        "technology": "Nickel Cobalt Manganese"
+      },
+      "charging": {
+        "dc_charging_kw": 100,
+        "ac_charging_kw": 7.2,
+        "dc_charging_time_30_to_80_min": 30
+      },
+      "features": [
+        "14.6-inch rotating touchscreen",
+        "ADIGO 3.0 intelligent system",
+        "LED headlights and taillights",
+        "Panoramic sunroof",
+        "Hidden door handles",
+        "Ventilated front seats",
+        "Heated front seats",
+        "Electric driver seat adjustment",
+        "Dual-zone climate control",
+        "PM2.5 air filtration",
+        "Wireless phone charger",
+        "NFC card key",
+        "Voice control",
+        "OTA updates"
+      ],
+      "safety": [
+        "6 airbags",
+        "C-NCAP 5-star rating",
+        "ADAS with lane keep assist",
+        "Adaptive cruise control",
+        "Automatic emergency braking",
+        "Blind spot detection",
+        "Rear cross traffic alert",
+        "360-degree camera",
+        "Traffic sign recognition"
+      ],
+      "range_km": 500,
+      "battery_kwh": 58.8,
+      "acceleration_0_100": 7.5,
+      "top_speed_kmh": 165,
+      "power_kw": 150,
+      "power_hp": 204,
+      "drivetrain": "FWD",
+      "body_style": "Sedan",
+      "seats": 5
+    },
+    "images": [
+      {
+        "type": "exterior_front",
+        "url": "https://www.gacmotor.com/uploads/21012021074700123.jpg"
+      },
+      {
+        "type": "exterior_side",
+        "url": "https://www.gacmotor.com/uploads/21012021074702456.jpg"
+      },
+      {
+        "type": "interior",
+        "url": "https://www.gacmotor.com/uploads/21012021074704789.jpg"
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "GAC",
+    "model": "AION LX Plus",
+    "year": 2024,
+    "trim_level": "Plus",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 600,
+    "battery_kwh": 93.3,
+    "price": 145000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "The GAC AION LX Plus is a fully electric suv offering 600 km of range\nand 408 horsepower. It features modern electric vehicle technology with advanced battery systems,\ncomfortable interior with premium features, and comprehensive safety systems.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4835,
+        "width_mm": 1935,
+        "height_mm": 1685,
+        "wheelbase_mm": 2920,
+        "ground_clearance_mm": 170
+      },
+      "performance": {
+        "acceleration_0_100kmh_s": 4.5,
+        "top_speed_kmh": 180,
+        "range_nedc_km": 600
+      },
+      "powertrain": {
+        "motor_type": "Dual motor AWD",
+        "peak_power_kw": 300,
+        "peak_power_hp": 408,
+        "max_torque_nm": 450,
+        "drivetrain": "All-wheel drive"
+      },
+      "battery": {
+        "type": "Lithium-ion NCM",
+        "capacity_kwh": 93.3,
+        "technology": "Nickel Cobalt Manganese",
+        "cell_technology": "811 NCM cells"
+      },
+      "charging": {
+        "dc_charging_kw": 150,
+        "ac_charging_kw": 11,
+        "dc_charging_time_30_to_80_min": 18
+      },
+      "features": [
+        "15.6-inch touchscreen",
+        "ADIGO 3.0 intelligent system",
+        "Nappa leather seats",
+        "Ventilated and massaging front seats",
+        "Heated rear seats",
+        "21-speaker audio system",
+        "Panoramic sunroof",
+        "HUD (Head-Up Display)",
+        "Wireless phone charger",
+        "Ambient lighting - 64 colors",
+        "Triple-zone climate control",
+        "PM2.5 air filtration",
+        "Fragrance system",
+        "OTA updates",
+        "V2L (Vehicle-to-Load)"
+      ],
+      "safety": [
+        "6 airbags",
+        "C-NCAP 5-star rating",
+        "Level 2 ADAS",
+        "Adaptive cruise control",
+        "Lane centering",
+        "Automatic emergency braking",
+        "Blind spot monitoring",
+        "Rear cross traffic alert",
+        "360-degree camera",
+        "Traffic sign recognition",
+        "Driver monitoring system"
+      ],
+      "range_km": 600,
+      "battery_kwh": 93.3,
+      "acceleration_0_100": 4.5,
+      "top_speed_kmh": 180,
+      "power_kw": 300,
+      "power_hp": 408,
+      "drivetrain": "AWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "type": "exterior_front",
+        "url": "https://www.gacmotor.com/uploads/21012021074720012.jpg"
+      },
+      {
+        "type": "exterior_side",
+        "url": "https://www.gacmotor.com/uploads/21012021074722345.jpg"
+      },
+      {
+        "type": "interior",
+        "url": "https://www.gacmotor.com/uploads/21012021074724678.jpg"
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "GAC",
+    "model": "AION V",
+    "year": 2024,
+    "trim_level": "Plus",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 400,
+    "battery_kwh": 60.0,
+    "price": 92000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "The GAC AION V is a fully electric suv offering 400 km of range\nand 224 horsepower. It features modern electric vehicle technology with advanced battery systems,\ncomfortable interior with premium features, and comprehensive safety systems.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4586,
+        "width_mm": 1865,
+        "height_mm": 1660,
+        "wheelbase_mm": 2830,
+        "ground_clearance_mm": 175
+      },
+      "performance": {
+        "acceleration_0_100kmh_s": 8.0,
+        "top_speed_kmh": 160,
+        "range_nedc_km": 400
+      },
+      "powertrain": {
+        "motor_type": "Permanent magnet synchronous motor",
+        "peak_power_kw": 165,
+        "peak_power_hp": 224,
+        "max_torque_nm": 280,
+        "drivetrain": "Front-wheel drive"
+      },
+      "battery": {
+        "type": "Lithium-ion NCM",
+        "capacity_kwh": 60.0,
+        "technology": "Nickel Cobalt Manganese"
+      },
+      "charging": {
+        "dc_charging_kw": 80,
+        "ac_charging_kw": 7.2
+      },
+      "features": [
+        "12.3-inch touchscreen",
+        "ADIGO intelligent system",
+        "Panoramic sunroof",
+        "Electric tailgate",
+        "LED headlights",
+        "Alloy wheels",
+        "Automatic climate control",
+        "Rear parking sensors",
+        "360-degree camera"
+      ],
+      "safety": [
+        "6 airbags",
+        "Electronic Stability Program",
+        "Traction Control",
+        "Hill Start Assist",
+        "Tyre Pressure Monitoring",
+        "ISOFIX anchors"
+      ],
+      "range_km": 400,
+      "battery_kwh": 60.0,
+      "acceleration_0_100": 8.0,
+      "top_speed_kmh": 160,
+      "power_kw": 165,
+      "power_hp": 224,
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "type": "exterior_front",
+        "url": "https://www.gacmotor.com/uploads/21012021074740012.jpg"
+      },
+      {
+        "type": "exterior_side",
+        "url": "https://www.gacmotor.com/uploads/21012021074742345.jpg"
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "GAC",
+    "model": "AION ES",
+    "year": 2024,
+    "trim_level": "Standard",
+    "vehicle_type": "EV",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 350,
+    "battery_kwh": 52.1,
+    "price": null,
+    "manufacturer_direct_price": null,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "The GAC AION ES is a fully electric sedan offering 350 km of range\nand 136 horsepower. It features modern electric vehicle technology with advanced battery systems,\ncomfortable interior with premium features, and comprehensive safety systems.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4680,
+        "width_mm": 1800,
+        "height_mm": 1510,
+        "wheelbase_mm": 2700
+      },
+      "performance": {
+        "acceleration_0_100kmh_s": 9.5,
+        "top_speed_kmh": 140,
+        "range_nedc_km": 350
+      },
+      "powertrain": {
+        "motor_type": "Permanent magnet synchronous motor",
+        "peak_power_kw": 100,
+        "peak_power_hp": 136,
+        "max_torque_nm": 180,
+        "drivetrain": "Front-wheel drive"
+      },
+      "battery": {
+        "type": "Lithium-ion NCM",
+        "capacity_kwh": 52.1
+      },
+      "charging": {
+        "dc_charging_kw": 60,
+        "ac_charging_kw": 6.6
+      },
+      "range_km": 350,
+      "battery_kwh": 52.1,
+      "acceleration_0_100": 9.5,
+      "top_speed_kmh": 140,
+      "power_kw": 100,
+      "power_hp": 136,
+      "drivetrain": "FWD",
+      "body_style": "Sedan",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "eQ7",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "EV",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 512,
+    "battery_kwh": 67.12,
+    "price": 95000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 95000,
+    "grey_market_source": "Grey Market / China Import",
+    "grey_market_url": null,
+    "description": "Chery eQ7 - Pure electric SUV with 512km range, 67.12kWh LFP battery. Grey market import from China.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4675,
+        "width_mm": 1865,
+        "height_mm": 1680,
+        "wheelbase_mm": 2715
+      },
+      "battery": {
+        "type": "Lithium Iron Phosphate (LFP)",
+        "capacity_kwh": 67.12,
+        "charging_time_dc_min": 45
+      },
+      "features": [
+        "LFP Battery Pack",
+        "Single Motor FWD",
+        "512km CLTC Range"
+      ],
+      "range_km": 512,
+      "battery_kwh": 67.12,
+      "acceleration_0_100": 8.5,
+      "top_speed_kmh": 170,
+      "power_kw": 155,
+      "power_hp": 208,
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://www.autocango.com/carspecs-detail/Chery-EV-eQ7-RD3AKB",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "eQ7",
+    "year": 2025,
+    "trim_level": "Base",
+    "vehicle_type": "EV",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 412,
+    "battery_kwh": 53.87,
+    "price": 85000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 85000,
+    "grey_market_source": "Grey Market / China Import",
+    "grey_market_url": null,
+    "description": "Chery eQ7 Base - 412km range with 53.87kWh battery. Grey market import.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4675,
+        "width_mm": 1865,
+        "height_mm": 1680,
+        "wheelbase_mm": 2715
+      },
+      "battery": {
+        "type": "Lithium Iron Phosphate (LFP)",
+        "capacity_kwh": 53.87
+      },
+      "range_km": 412,
+      "battery_kwh": 53.87,
+      "acceleration_0_100": 9.5,
+      "top_speed_kmh": 160,
+      "power_kw": 150,
+      "power_hp": 201,
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "TIGGO 8 PRO e+",
+    "year": 2025,
+    "trim_level": "PHEV",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 75,
+    "battery_kwh": 19.27,
+    "price": 139000,
+    "manufacturer_direct_price": 139000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Chery Tiggo 8 Pro e+ - Plug-in hybrid SUV with 75km electric range and 1000km combined range. Official GCC spec available via Elite Motors.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4722,
+        "width_mm": 1860,
+        "height_mm": 1745,
+        "wheelbase_mm": 2710
+      },
+      "battery": {
+        "type": "Lithium-ion",
+        "capacity_kwh": 19.27,
+        "pure_electric_range": 75
+      },
+      "features": [
+        "1.5TCI Turbocharged Engine",
+        "24.6-inch Dual Screen",
+        "9 Driving Modes",
+        "Pure electric endurance of 75km"
+      ],
+      "range_km": 75,
+      "battery_kwh": 19.27,
+      "acceleration_0_100": 8.2,
+      "top_speed_kmh": 185,
+      "power_kw": 240,
+      "power_hp": 326,
+      "drivetrain": "AWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://cheryqatar.com/sites/default/files/2023-02/TE1.jpg",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "ARRIZO 8",
+    "year": 2025,
+    "trim_level": "Luxury",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 91000,
+    "manufacturer_direct_price": 91000,
+    "grey_market_price": 63900,
+    "grey_market_source": "QatarSale",
+    "grey_market_url": null,
+    "description": "Chery Arrizo 8 - Premium sedan with 24.6-inch dual screen, 1.6L turbo engine. Official GCC spec available.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4780,
+        "width_mm": 1843,
+        "height_mm": 1469,
+        "wheelbase_mm": 2790
+      },
+      "engine": {
+        "type": "1.6L Turbo",
+        "power_hp": 197,
+        "torque_nm": 290
+      },
+      "features": [
+        "24.6-inch Floating Dual Screen",
+        "Lion 5.0 AI Technology",
+        "10 Airbags"
+      ],
+      "drivetrain": "FWD",
+      "body_style": "Sedan",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://cheryqatar.com/sites/default/files/2023-05/M1E_Appearance_Front%20Right_20221204.jpg",
+        "type": "exterior_front",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "QQ ICE CREAM",
+    "year": 2024,
+    "trim_level": "Standard",
+    "vehicle_type": "EV",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 170,
+    "battery_kwh": 13.9,
+    "price": 45000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 45000,
+    "grey_market_source": "Grey Market / China Import",
+    "grey_market_url": null,
+    "description": "Chery QQ Ice Cream - Small urban EV with 170km range. Grey market import from China.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 3010,
+        "width_mm": 1500,
+        "height_mm": 1640,
+        "wheelbase_mm": 1960
+      },
+      "battery": {
+        "type": "Lithium Iron Phosphate (LFP)",
+        "capacity_kwh": 13.9
+      },
+      "features": [
+        "Urban Micro EV",
+        "120-170km Range",
+        "27 hp Electric Motor"
+      ],
+      "range_km": 170,
+      "battery_kwh": 13.9,
+      "top_speed_kmh": 100,
+      "power_kw": 20,
+      "power_hp": 27,
+      "drivetrain": "FWD",
+      "body_style": "Hatchback",
+      "seats": 4
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "QQ ICE CREAM",
+    "year": 2024,
+    "trim_level": "Base",
+    "vehicle_type": "EV",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 120,
+    "battery_kwh": 9.42,
+    "price": 40000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 40000,
+    "grey_market_source": "Grey Market / China Import",
+    "grey_market_url": null,
+    "description": "Chery QQ Ice Cream Base - 120km range with 9.42kWh battery. Grey market import.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 3010,
+        "width_mm": 1500,
+        "height_mm": 1640,
+        "wheelbase_mm": 1960
+      },
+      "battery": {
+        "type": "Lithium Iron Phosphate (LFP)",
+        "capacity_kwh": 9.42
+      },
+      "range_km": 120,
+      "battery_kwh": 9.42,
+      "top_speed_kmh": 100,
+      "power_kw": 20,
+      "power_hp": 27,
+      "drivetrain": "FWD",
+      "body_style": "Hatchback",
+      "seats": 4
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Jaecoo",
+    "model": "J7",
+    "year": 2025,
+    "trim_level": "Summit PHEV",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 80,
+    "battery_kwh": 18.3,
+    "price": 95000,
+    "manufacturer_direct_price": 95000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Jaecoo J7 Summit PHEV - Plug-in hybrid SUV officially launched by Silver Lake Motors Qatar. 1.6L turbo with electric motor.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4500,
+        "width_mm": 1865,
+        "height_mm": 1680,
+        "wheelbase_mm": 2672
+      },
+      "engine": {
+        "type": "1.6L Turbocharged PHEV",
+        "fuel_economy": "16.7 km/l"
+      },
+      "features": [
+        "Plug-in Hybrid System",
+        "200mm Ground Clearance",
+        "Dual Zone Climate Control"
+      ],
+      "range_km": 80,
+      "battery_kwh": 18.3,
+      "acceleration_0_100": 7.5,
+      "top_speed_kmh": 200,
+      "power_kw": 185,
+      "power_hp": 251,
+      "drivetrain": "AWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Jaecoo",
+    "model": "J7",
+    "year": 2025,
+    "trim_level": "EX+ AWD",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 89000,
+    "manufacturer_direct_price": 89000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Jaecoo J7 EX+ AWD - Turbocharged petrol SUV with AWD. Official GCC spec.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4500,
+        "width_mm": 1865,
+        "height_mm": 1680,
+        "wheelbase_mm": 2672
+      },
+      "engine": {
+        "type": "1.6L Turbocharged",
+        "power_hp": 185,
+        "torque_nm": 290
+      },
+      "fuel_economy": "12.8 km/l",
+      "drivetrain": "AWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Jaecoo",
+    "model": "J7",
+    "year": 2025,
+    "trim_level": "FWD",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 79900,
+    "manufacturer_direct_price": 79900,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Jaecoo J7 FWD - Entry-level turbocharged SUV with FWD.",
+    "specs": {
+      "engine": {
+        "type": "1.6L Turbocharged",
+        "fuel_economy": "14.3 km/l"
+      },
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Jaecoo",
+    "model": "J5",
+    "year": 2025,
+    "trim_level": "Premium",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 80000,
+    "manufacturer_direct_price": 80000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Jaecoo J5 Premium - Compact hybrid SUV with excellent cargo capacity. Official GCC spec from Silver Lake Motors.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4350,
+        "width_mm": 1820,
+        "height_mm": 1655,
+        "wheelbase_mm": 2630
+      },
+      "cargo_space_liters": 480,
+      "cargo_space_expanded": 1180,
+      "features": [
+        "480L Boot Space",
+        "Expandable to 1,180L",
+        "Compact SUV"
+      ],
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Jaecoo",
+    "model": "J8",
+    "year": 2025,
+    "trim_level": "Flagship",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 110000,
+    "manufacturer_direct_price": 110000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Jaecoo J8 Flagship - Premium SUV officially launched by Silver Lake Motors Qatar.",
+    "specs": {
+      "features": [
+        "Built on Strong Chassis",
+        "Stability and Confidence",
+        "Premium Flagship SUV"
+      ],
+      "drivetrain": "AWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Omoda",
+    "model": "C5",
+    "year": 2025,
+    "trim_level": "1.5T Basic",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 80000,
+    "manufacturer_direct_price": 80000,
+    "grey_market_price": 59000,
+    "grey_market_source": "QIC Car Market",
+    "grey_market_url": null,
+    "description": "Omoda C5 1.5T Basic - Entry-level crossover SUV with 1.5L turbo engine. Official GCC spec available.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4400,
+        "width_mm": 1830,
+        "height_mm": 1588,
+        "wheelbase_mm": 2630
+      },
+      "engine": {
+        "type": "1.5L Turbocharged",
+        "power_hp": 147,
+        "transmission": "CVT"
+      },
+      "features": [
+        "1.5L Turbo Engine",
+        "CVT Transmission",
+        "FWD"
+      ],
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Omoda",
+    "model": "C5",
+    "year": 2025,
+    "trim_level": "1.6T Sport",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 87657,
+    "manufacturer_direct_price": 87657,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Omoda C5 1.6T Sport - Sport trim with more powerful 1.6L turbo engine.",
+    "specs": {
+      "engine": {
+        "type": "1.6L Turbocharged",
+        "power_hp": 197,
+        "transmission": "7DCT"
+      },
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Omoda",
+    "model": "C5",
+    "year": 2025,
+    "trim_level": "Flagship",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 135000,
+    "manufacturer_direct_price": 135000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Omoda C5 Flagship - Top trim with premium features and 1.6L turbo engine.",
+    "specs": {
+      "engine": {
+        "type": "1.6L Turbocharged",
+        "power_hp": 197
+      },
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Omoda",
+    "model": "S5 GT",
+    "year": 2024,
+    "trim_level": "Luxury",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 73999,
+    "manufacturer_direct_price": 73999,
+    "grey_market_price": 42000,
+    "grey_market_source": "QatarSale",
+    "grey_market_url": null,
+    "description": "Omoda S5 GT Luxury - Sporty sedan with 1.6L turbo engine. Available via official and grey market channels.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4780,
+        "width_mm": 1843,
+        "height_mm": 1469,
+        "wheelbase_mm": 2790
+      },
+      "engine": {
+        "type": "1.6L Turbocharged",
+        "power_hp": 150,
+        "power_kw": 110,
+        "torque_nm": 275,
+        "transmission": "AMT"
+      },
+      "features": [
+        "1.6L Turbo Engine",
+        "150 hp",
+        "275 Nm Torque",
+        "RWD"
+      ],
+      "drivetrain": "RWD",
+      "body_style": "Sedan",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Omoda",
+    "model": "S5 GT",
+    "year": 2024,
+    "trim_level": "Standard",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 65000,
+    "manufacturer_direct_price": 65000,
+    "grey_market_price": 49500,
+    "grey_market_source": "QatarSale",
+    "grey_market_url": null,
+    "description": "Omoda S5 GT Standard - Entry-level sport sedan with 1.5L turbo engine.",
+    "specs": {
+      "engine": {
+        "type": "1.5L Turbocharged",
+        "power_hp": 147,
+        "torque_nm": 210,
+        "transmission": "CVT"
+      },
+      "drivetrain": "RWD",
+      "body_style": "Sedan",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Omoda",
+    "model": "5",
+    "year": 2024,
+    "trim_level": "Luxury",
+    "vehicle_type": "ICE",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 79900,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 79900,
+    "grey_market_source": "QatarSale",
+    "grey_market_url": null,
+    "description": "Omoda 5 Luxury - Chinese-spec grey market import via QatarSale. Compact crossover SUV.",
+    "specs": {
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "TIGGO 8 PRO MAX",
+    "year": 2025,
+    "trim_level": "AWD",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 109000,
+    "manufacturer_direct_price": 109000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Chery Tiggo 8 Pro Max AWD - Flagship SUV with 2.0L turbo engine. Official GCC spec from Elite Motors.",
+    "specs": {
+      "engine": {
+        "type": "2.0L Turbocharged",
+        "power_hp": 251,
+        "torque_nm": 390
+      },
+      "features": [
+        "Flagship SUV",
+        "2.0L Turbo Engine",
+        "AWD"
+      ],
+      "drivetrain": "AWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://cheryqatar.com/sites/default/files/2024-10/T1D-2.0T-Exterior%20%283%29.jpg",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "TIGGO 8 PRO",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 89500,
+    "manufacturer_direct_price": 89500,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Chery Tiggo 8 Pro - Mid-size SUV with 1.6L turbo engine.",
+    "specs": {
+      "engine": {
+        "type": "1.6L Turbocharged",
+        "power_hp": 197
+      },
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://cheryqatar.com/sites/default/files/2023-02/root1675322558875315.jpg",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "TIGGO 7 PRO MAX",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 69500,
+    "manufacturer_direct_price": 69500,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Chery Tiggo 7 Pro Max - Compact SUV with premium features.",
+    "specs": {
+      "engine": {
+        "type": "1.6L Turbocharged",
+        "power_hp": 197
+      },
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://cheryqatar.com/sites/default/files/2023-05/WEBSITE%202_0.png",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "TIGGO 7 PRO",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 64500,
+    "manufacturer_direct_price": 64500,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Chery Tiggo 7 Pro - Compact SUV with 1.5L turbo engine.",
+    "specs": {
+      "engine": {
+        "type": "1.5L Turbocharged",
+        "power_hp": 156
+      },
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://cheryqatar.com/sites/default/files/2023-02/tiggo%207%20pro.jpg",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "TIGGO 4 PRO",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 54500,
+    "manufacturer_direct_price": 54500,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Chery Tiggo 4 Pro - Subcompact SUV with 1.5L turbo engine.",
+    "specs": {
+      "engine": {
+        "type": "1.5L Turbocharged",
+        "power_hp": 156
+      },
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://cheryqatar.com/sites/default/files/2023-02/1.5T-image%204%20copy.jpg",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "ARRIZO 6 PRO",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 53000,
+    "manufacturer_direct_price": 53000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Chery Arrizo 6 Pro - Compact sedan with 1.6L engine.",
+    "specs": {
+      "engine": {
+        "type": "1.6L Naturally Aspirated",
+        "power_hp": 126
+      },
+      "drivetrain": "FWD",
+      "body_style": "Sedan",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://cheryqatar.com/sites/default/files/2023-02/Arrizo%206%20pro.jpg",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Chery",
+    "model": "ARRIZO 5",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 61000,
+    "manufacturer_direct_price": 61000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Chery Arrizo 5 - Subcompact sedan with 1.5L turbo engine.",
+    "specs": {
+      "engine": {
+        "type": "1.5L Turbocharged",
+        "power_hp": 147
+      },
+      "drivetrain": "FWD",
+      "body_style": "Sedan",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://cheryqatar.com/sites/default/files/2023-05/WEB%20AR5%202.png",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "MG",
+    "model": "ZS EV",
+    "year": 2025,
+    "trim_level": "Long Range",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 440,
+    "battery_kwh": 72.6,
+    "price": 144764,
+    "manufacturer_direct_price": 144764,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "MG ZS EV Long Range - Affordable electric SUV with 440km range, 72.6kWh LFP battery, and competitive pricing.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4323,
+        "width_mm": 1809,
+        "height_mm": 1644,
+        "wheelbase_mm": 2585
+      },
+      "battery": {
+        "type": "Lithium Iron Phosphate (LFP)",
+        "capacity_kwh": 72.6,
+        "usable_kwh": 68.3,
+        "warranty": "8 years"
+      },
+      "charging": {
+        "dc_charging_kw": 87,
+        "ac_charging_kw": 6.6,
+        "charging_time_10_80_min_dc": 42
+      },
+      "features": [
+        "72.6 kWh LFP battery",
+        "440 km WLTP range",
+        "MG Pilot driver assistance",
+        "360-degree camera",
+        "PM2.5 air filtration"
+      ],
+      "range_km": 440,
+      "battery_kwh": 72.6,
+      "acceleration_0_100": 8.4,
+      "top_speed_kmh": 160,
+      "power_kw": 130,
+      "power_hp": 176,
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://www.mg-qa.com/new-cars/mg-zs-ev",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "MG",
+    "model": "MG 4 EV",
+    "year": 2025,
+    "trim_level": "Standard Range 51 kWh",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 365,
+    "battery_kwh": 51,
+    "price": 100900,
+    "manufacturer_direct_price": 100900,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "MG 4 EV Standard Range - Rear-wheel drive electric hatchback with 365km range.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4287,
+        "width_mm": 1836,
+        "height_mm": 1506,
+        "wheelbase_mm": 2705
+      },
+      "battery": {
+        "type": "Lithium Iron Phosphate (LFP)",
+        "capacity_kwh": 51,
+        "technology": "Modular Scalable Platform (MSP)"
+      },
+      "charging": {
+        "dc_charging_kw": 88,
+        "ac_charging_kw": 11
+      },
+      "features": [
+        "Rear-wheel drive",
+        "5-link rear suspension",
+        "Vehicle-to-load (V2L)",
+        "MG iSMART connectivity"
+      ],
+      "range_km": 365,
+      "battery_kwh": 51,
+      "acceleration_0_100": 7.9,
+      "top_speed_kmh": 160,
+      "power_kw": 125,
+      "power_hp": 170,
+      "drivetrain": "RWD",
+      "body_style": "Hatchback",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "MG",
+    "model": "MG 4 EV",
+    "year": 2025,
+    "trim_level": "Long Range 64 kWh",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 465,
+    "battery_kwh": 64,
+    "price": 107000,
+    "manufacturer_direct_price": 107000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "MG 4 EV Long Range 64 kWh with 465km range and 140kW DC charging.",
+    "specs": {
+      "battery": {
+        "capacity_kwh": 64
+      },
+      "charging": {
+        "dc_charging_kw": 140
+      },
+      "range_km": 465,
+      "battery_kwh": 64,
+      "acceleration_0_100": 7.5,
+      "top_speed_kmh": 160,
+      "power_kw": 150,
+      "power_hp": 204,
+      "drivetrain": "RWD",
+      "body_style": "Hatchback",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "MG",
+    "model": "MG 4 EV",
+    "year": 2025,
+    "trim_level": "XPower 77 kWh",
+    "vehicle_type": "EV",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 530,
+    "battery_kwh": 77,
+    "price": 145000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 145000,
+    "grey_market_source": "QatarSale (estimated)",
+    "grey_market_url": null,
+    "description": "MG 4 EV XPower - High-performance dual-motor version with 435HP, 3.8s acceleration. Grey market import from UAE/China.",
+    "specs": {
+      "battery": {
+        "capacity_kwh": 77
+      },
+      "features": [
+        "Dual motor AWD",
+        "3.8s 0-100 km/h",
+        "530km range",
+        "Performance chassis tuning"
+      ],
+      "range_km": 530,
+      "battery_kwh": 77,
+      "acceleration_0_100": 3.8,
+      "top_speed_kmh": 200,
+      "power_kw": 320,
+      "power_hp": 435,
+      "drivetrain": "AWD",
+      "body_style": "Hatchback",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "MG",
+    "model": "HS Hybrid+",
+    "year": 2025,
+    "trim_level": "Deluxe",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 85,
+    "battery_kwh": 16.6,
+    "price": 116316,
+    "manufacturer_direct_price": 116316,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "MG HS Hybrid+ Deluxe - Plug-in hybrid SUV with 1287km combined range, 85km electric only.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4579,
+        "width_mm": 1876,
+        "height_mm": 1685,
+        "wheelbase_mm": 2720
+      },
+      "battery": {
+        "type": "Lithium-ion",
+        "capacity_kwh": 16.6,
+        "electric_range_km": 85
+      },
+      "fuel_efficiency": {
+        "combined_l_100km": 1.8,
+        "combined_range_km": 1287
+      },
+      "features": [
+        "Plug-in hybrid system",
+        "1287km combined range",
+        "85km electric range",
+        "MG Pilot driver assist"
+      ],
+      "range_km": 85,
+      "battery_kwh": 16.6,
+      "acceleration_0_100": 7.9,
+      "top_speed_kmh": 190,
+      "power_kw": 186,
+      "power_hp": 254,
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "MG",
+    "model": "HS Hybrid+",
+    "year": 2025,
+    "trim_level": "Luxury",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 85,
+    "battery_kwh": 16.6,
+    "price": 135728,
+    "manufacturer_direct_price": 135728,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "MG HS Hybrid+ Luxury trim with premium features.",
+    "specs": {
+      "range_km": 85,
+      "battery_kwh": 16.6,
+      "drivetrain": "FWD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "MG",
+    "model": "EHS",
+    "year": 2025,
+    "trim_level": "PHEV",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 75,
+    "battery_kwh": 16.6,
+    "price": 135233,
+    "manufacturer_direct_price": 135233,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "MG EHS PHEV - Plug-in hybrid SUV similar to HS Hybrid+ but different styling/marketing.",
+    "specs": {
+      "features": [
+        "Plugin hybrid SUV",
+        "75km electric range",
+        "1200km total range"
+      ],
+      "range_km": 75,
+      "battery_kwh": 16.6,
+      "drivetrain": "FWD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Geely",
+    "model": "Geometry C",
+    "year": 2025,
+    "trim_level": "GS 53 kWh",
+    "vehicle_type": "EV",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 400,
+    "battery_kwh": 53,
+    "price": 130680,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 132000,
+    "grey_market_source": "UAE import via QatarSale",
+    "grey_market_url": null,
+    "description": "Geely Geometry C GS 53 kWh - Electric SUV crossover available through UAE imports. 400km range, 201HP.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4432,
+        "width_mm": 1833,
+        "height_mm": 1560,
+        "wheelbase_mm": 2700
+      },
+      "battery": {
+        "type": "Lithium-ion",
+        "capacity_kwh": 53,
+        "range_km": 400
+      },
+      "charging": {
+        "dc_charging_kw": 100,
+        "ac_charging_kw": 6.6
+      },
+      "features": [
+        "201 HP electric motor",
+        "400km range",
+        "Futuristic design",
+        "UAE official specs"
+      ],
+      "range_km": 400,
+      "battery_kwh": 53,
+      "acceleration_0_100": 7.7,
+      "top_speed_kmh": 150,
+      "power_kw": 150,
+      "power_hp": 201,
+      "drivetrain": "FWD",
+      "body_style": "SUV Crossover",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://www.geely.ae/car/geometry-c",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Geely",
+    "model": "Geometry C",
+    "year": 2025,
+    "trim_level": "GF 70 kWh Long Range",
+    "vehicle_type": "EV",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 485,
+    "battery_kwh": 70,
+    "price": 155430,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 155430,
+    "grey_market_source": "UAE import via QatarSale",
+    "grey_market_url": null,
+    "description": "Geely Geometry C GF 70 kWh Long Range - Extended range version with 485km WLTP range.",
+    "specs": {
+      "battery": {
+        "capacity_kwh": 70,
+        "range_km": 485
+      },
+      "range_km": 485,
+      "battery_kwh": 70,
+      "acceleration_0_100": 7.7,
+      "top_speed_kmh": 150,
+      "power_kw": 150,
+      "power_hp": 201,
+      "drivetrain": "FWD",
+      "body_style": "SUV Crossover",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Geely",
+    "model": "Monjaro",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 118000,
+    "manufacturer_direct_price": 118000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Geely Monjaro - Flagship SUV with 2.0L turbo engine, AWD, and premium features. Officially available in Qatar.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4770,
+        "width_mm": 1895,
+        "height_mm": 1689,
+        "wheelbase_mm": 2845
+      },
+      "engine": {
+        "displacement_l": 2.0,
+        "power_kw": 175,
+        "power_hp": 238,
+        "torque_nm": 350,
+        "fuel_economy_l_100km": 8.8
+      },
+      "features": [
+        "2.0L turbocharged engine",
+        "238 HP",
+        "AWD system",
+        "Premium interior",
+        "360-degree camera"
+      ],
+      "drivetrain": "AWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://geely.com.qa/the_new_monjaro/",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Geely",
+    "model": "Tugella",
+    "year": 2025,
+    "trim_level": "GF",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 117087,
+    "manufacturer_direct_price": 117087,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Geely Tugella GF - Performance SUV coupe with sporty styling.",
+    "specs": {
+      "features": [
+        "Performance SUV coupe",
+        "AWD system",
+        "Sporty design"
+      ],
+      "drivetrain": "AWD",
+      "body_style": "SUV Coupe",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Geely",
+    "model": "Tugella",
+    "year": 2025,
+    "trim_level": "GF+",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 126454,
+    "manufacturer_direct_price": 126454,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Geely Tugella GF+ - Enhanced trim level.",
+    "specs": {
+      "drivetrain": "AWD",
+      "body_style": "SUV Coupe"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Geely",
+    "model": "Tugella",
+    "year": 2025,
+    "trim_level": "GF+ BR",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 129365,
+    "manufacturer_direct_price": 129365,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Geely Tugella GF+ BR - Premium trim with brown interior package.",
+    "specs": {
+      "drivetrain": "AWD",
+      "body_style": "SUV Coupe"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Geely",
+    "model": "Emgrand",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 49900,
+    "manufacturer_direct_price": 49900,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Geely Emgrand - Entry-level sedan, most affordable Geely in Qatar.",
+    "specs": {
+      "engine": {
+        "power_kw": 90,
+        "power_hp": 120,
+        "torque_nm": 152,
+        "fuel_economy_l_100km": 6.4
+      },
+      "features": [
+        "Affordable sedan",
+        "120 HP",
+        "6.4 L/100km fuel economy"
+      ],
+      "drivetrain": "FWD",
+      "body_style": "Sedan",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Geely",
+    "model": "Coolray",
+    "year": 2025,
+    "trim_level": "Comfort",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 57990,
+    "manufacturer_direct_price": 57990,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Geely Coolray Comfort - Compact SUV with turbocharged engine.",
+    "specs": {
+      "features": [
+        "Compact SUV",
+        "Turbocharged engine",
+        "Affordable pricing"
+      ],
+      "drivetrain": "FWD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Geely",
+    "model": "Starray",
+    "year": 2025,
+    "trim_level": "Standard",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 84000,
+    "manufacturer_direct_price": 84000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Geely Starray - Mid-size SUV.",
+    "specs": {
+      "drivetrain": "FWD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Geely",
+    "model": "Galaxy L6",
+    "year": 2025,
+    "trim_level": "EM-i PHEV",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 100,
+    "battery_kwh": 18.4,
+    "price": 95000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": null,
+    "grey_market_source": "China/UAE import",
+    "grey_market_url": null,
+    "description": "Geely Galaxy L6 EM-i - Advanced plug-in hybrid sedan with 1370km total range. Grey market import.",
+    "specs": {
+      "powertrain": {
+        "engine": "1.5L turbo",
+        "electric_motor": "DHT Pro hybrid system",
+        "combined_power_hp": 180,
+        "electric_range_km": 100,
+        "combined_range_km": 1370
+      },
+      "features": [
+        "Fourth-generation DM-i hybrid technology",
+        "100km electric range",
+        "1370km total range",
+        "Advanced connectivity"
+      ],
+      "range_km": 100,
+      "battery_kwh": 18.4,
+      "drivetrain": "FWD",
+      "body_style": "Sedan",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Geely",
+    "model": "Galaxy L7",
+    "year": 2025,
+    "trim_level": "PHEV",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 115,
+    "battery_kwh": 18.4,
+    "price": 190000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": null,
+    "grey_market_source": "China import",
+    "grey_market_url": null,
+    "description": "Geely Galaxy L7 PHEV - Plug-in hybrid SUV competing with BYD Song Plus DM-i. Grey market only.",
+    "specs": {
+      "features": [
+        "Plug-in hybrid SUV",
+        "115km electric range",
+        "1370km combined range",
+        "Competitor to BYD Song Plus DM-i"
+      ],
+      "range_km": 115,
+      "battery_kwh": 18.4,
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Haval",
+    "model": "H6",
+    "year": 2025,
+    "trim_level": "2.0T Supreme",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 89100,
+    "manufacturer_direct_price": 90000,
+    "grey_market_price": 89100,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Haval H6 2.0T Supreme - Mid-size SUV with 2.0L turbo engine, officially available in Qatar through GWM.",
+    "specs": {
+      "engine": {
+        "displacement_l": 2.0,
+        "power_hp": 201,
+        "torque_nm": 320
+      },
+      "dimensions": {
+        "length_mm": 4653,
+        "width_mm": 1886,
+        "height_mm": 1724,
+        "wheelbase_mm": 2738
+      },
+      "features": [
+        "2.0L turbocharged engine",
+        "201 HP",
+        "Official GCC specs",
+        "Advanced safety features"
+      ],
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://gwmqatar.com/haval-h6-2025/",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Haval",
+    "model": "H6",
+    "year": 2025,
+    "trim_level": "2.0T Premium 4WD",
+    "vehicle_type": "ICE",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 103950,
+    "manufacturer_direct_price": 105000,
+    "grey_market_price": 103950,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Haval H6 2.0T Premium 4WD - Top-spec version with 4WD system.",
+    "specs": {
+      "features": [
+        "2.0L turbocharged engine",
+        "4WD system",
+        "Premium trim",
+        "Advanced safety features"
+      ],
+      "drivetrain": "4WD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Haval",
+    "model": "H6",
+    "year": 2025,
+    "trim_level": "Hybrid",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": null,
+    "battery_kwh": null,
+    "price": 113751,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 113751,
+    "grey_market_source": "UAE import via QatarSale",
+    "grey_market_url": null,
+    "description": "Haval H6 Hybrid - Hybrid version available in UAE, can be imported to Qatar through grey market.",
+    "specs": {
+      "features": [
+        "Hybrid powertrain",
+        "Better fuel economy",
+        "Available in UAE",
+        "Grey market import to Qatar"
+      ],
+      "drivetrain": "FWD",
+      "body_style": "SUV"
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "GWM",
+    "model": "ORA 03",
+    "year": 2026,
+    "trim_level": "48 kWh Pro",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 420,
+    "battery_kwh": 48,
+    "price": 95000,
+    "manufacturer_direct_price": 95000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "GWM ORA 03 Pro - Retro-styled electric hatchback with 420km range. Officially available in Qatar.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4235,
+        "width_mm": 1825,
+        "height_mm": 1596,
+        "wheelbase_mm": 2650
+      },
+      "battery": {
+        "type": "Lithium-ion",
+        "capacity_kwh": 48,
+        "range_km": 420
+      },
+      "charging": {
+        "dc_charging_kw": 80,
+        "ac_charging_kw": 6.6,
+        "charging_time_10_80_min": 45
+      },
+      "features": [
+        "Retro-modern design",
+        "420km WLTP range",
+        "Fast charging support",
+        "Women-friendly features"
+      ],
+      "range_km": 420,
+      "battery_kwh": 48,
+      "acceleration_0_100": 7.9,
+      "top_speed_kmh": 152,
+      "power_kw": 126,
+      "power_hp": 169,
+      "drivetrain": "FWD",
+      "body_style": "Hatchback",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://gwmqatar.com/ora-electric-car/",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "NETA",
+    "model": "V",
+    "year": 2023,
+    "trim_level": "Standard",
+    "vehicle_type": "EV",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 401,
+    "battery_kwh": 38.5,
+    "price": 65586,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 65586,
+    "grey_market_source": "UAE import (limited availability)",
+    "grey_market_url": null,
+    "description": "NETA V - Compact electric SUV from Hozon Auto. NOTE: NETA Motors has halted production, raising concerns about warranty and spare parts support in the GCC. Limited availability in UAE.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4070,
+        "width_mm": 1690,
+        "height_mm": 1540,
+        "wheelbase_mm": 2420
+      },
+      "battery": {
+        "type": "Lithium-ion",
+        "capacity_kwh": 38.5,
+        "range_km": 401
+      },
+      "features": [
+        "Compact electric SUV",
+        "401km NEDC range",
+        "Affordable pricing",
+        "Production halted - warranty concerns"
+      ],
+      "range_km": 401,
+      "battery_kwh": 38.5,
+      "top_speed_kmh": 101,
+      "power_kw": 70,
+      "power_hp": 95,
+      "drivetrain": "FWD",
+      "body_style": "Compact SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "NETA",
+    "model": "U",
+    "year": 2023,
+    "trim_level": "54.34 kWh",
+    "vehicle_type": "EV",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 500,
+    "battery_kwh": 54.34,
+    "price": 75000,
+    "manufacturer_direct_price": null,
+    "grey_market_price": null,
+    "grey_market_source": "China import",
+    "grey_market_url": null,
+    "description": "NETA U 54.34 kWh - Larger electric SUV. WARNING: Production halted due to manufacturer financial issues.",
+    "specs": {
+      "features": [
+        "54.34 kWh battery",
+        "500km range",
+        "Grey market import",
+        "Production halted - warranty concerns"
+      ],
+      "range_km": 500,
+      "battery_kwh": 54.34,
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Voyah",
+    "model": "FREE",
+    "year": 2025,
+    "trim_level": "106 kWh Extended Range",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 680,
+    "battery_kwh": 106,
+    "price": 230000,
+    "manufacturer_direct_price": 230000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Voyah FREE 106 kWh - Premium electric SUV from Dongfeng with 680km range, 490HP dual motor, luxury features. Officially available in Qatar.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4905,
+        "width_mm": 1950,
+        "height_mm": 1645,
+        "wheelbase_mm": 2960
+      },
+      "battery": {
+        "type": "Lithium-ion NCM",
+        "capacity_kwh": 106,
+        "range_km": 680
+      },
+      "charging": {
+        "dc_charging_kw": 120,
+        "ac_charging_kw": 11,
+        "charging_time_30_80_min": 36
+      },
+      "features": [
+        "Dongfeng premium EV brand",
+        "680km range",
+        "4.2s 0-100 km/h",
+        "490 HP dual motor",
+        "Luxury interior",
+        "Air suspension",
+        "Official Qatar distributor"
+      ],
+      "range_km": 680,
+      "battery_kwh": 106,
+      "acceleration_0_100": 4.2,
+      "top_speed_kmh": 200,
+      "power_kw": 360,
+      "power_hp": 490,
+      "drivetrain": "AWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://voyahqatar.com/voyah-free/",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Voyah",
+    "model": "FREE",
+    "year": 2025,
+    "trim_level": "REEV Range Extender",
+    "vehicle_type": "Hybrid",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 200,
+    "battery_kwh": 43,
+    "price": 84150,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 84150,
+    "grey_market_source": "UAE import via QatarSale",
+    "grey_market_url": null,
+    "description": "Voyah FREE REEV - Range extender version with 1357km combined range. Available through UAE imports.",
+    "specs": {
+      "features": [
+        "Range extender hybrid",
+        "1357km total range",
+        "200km electric range",
+        "43 kWh battery",
+        "Premium Dongfeng brand"
+      ],
+      "range_km": 200,
+      "battery_kwh": 43,
+      "acceleration_0_100": 4.5,
+      "top_speed_kmh": 200,
+      "power_kw": 360,
+      "power_hp": 490,
+      "drivetrain": "AWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Avatr",
+    "model": "11",
+    "year": 2025,
+    "trim_level": "Ultra Range AWD",
+    "vehicle_type": "EV",
+    "gcc_spec": true,
+    "chinese_spec": false,
+    "range_km": 680,
+    "battery_kwh": 90,
+    "price": 320000,
+    "manufacturer_direct_price": 320000,
+    "grey_market_price": null,
+    "grey_market_source": null,
+    "grey_market_url": null,
+    "description": "Avatr 11 Ultra Range AWD - Premium electric SUV with Huawei technology, 680km range, triple LiDAR, 240kW charging. Officially available in Qatar through Elaf Auto.",
+    "specs": {
+      "dimensions": {
+        "length_mm": 4880,
+        "width_mm": 1970,
+        "height_mm": 1601,
+        "wheelbase_mm": 2975
+      },
+      "battery": {
+        "type": "Lithium-ion NCM",
+        "capacity_kwh": 90,
+        "range_km": 680,
+        "technology": "CATL NCM"
+      },
+      "charging": {
+        "dc_charging_kw": 240,
+        "ac_charging_kw": 11,
+        "charging_time_10_80_min": 25
+      },
+      "features": [
+        "Huawei-powered technology",
+        "680km range",
+        "240kW ultra-fast charging",
+        "Triple LiDAR sensors",
+        "AI cockpit",
+        "578 HP dual motor",
+        "3.9s 0-100 km/h",
+        "Air suspension",
+        "Official Qatar distributor (Elaf Auto)"
+      ],
+      "range_km": 680,
+      "battery_kwh": 90,
+      "acceleration_0_100": 3.9,
+      "top_speed_kmh": 200,
+      "power_kw": 425,
+      "power_hp": 578,
+      "drivetrain": "AWD",
+      "body_style": "SUV",
+      "seats": 5
+    },
+    "images": [
+      {
+        "url": "https://www.avatrqa.com/avatr11",
+        "type": "exterior",
+        "is_primary": true
+      }
+    ],
+    "stock_count": 1,
+    "status": "pending"
+  },
+  {
+    "make": "Avatr",
+    "model": "12",
+    "year": 2025,
+    "trim_level": "Gran Coupe",
+    "vehicle_type": "EV",
+    "gcc_spec": false,
+    "chinese_spec": true,
+    "range_km": 700,
+    "battery_kwh": 94.5,
+    "price": 214830,
+    "manufacturer_direct_price": null,
+    "grey_market_price": 214830,
+    "grey_market_source": "UAE import via QatarSale",
+    "grey_market_url": null,
+    "description": "Avatr 12 Gran Coupe - Futuristic luxury gran coupe with scissor doors, Huawei AI technology, 700km range. Available through UAE imports.",
+    "specs": {
+      "features": [
+        "Futuristic gran coupe design",
+        "Scissor doors",
+        "Huawei AI cockpit",
+        "700km range",
+        "Triple LiDAR",
+        "29 sensors"
+      ],
+      "range_km": 700,
+      "battery_kwh": 94.5,
+      "acceleration_0_100": 3.9,
+      "top_speed_kmh": 210,
+      "power_kw": 425,
+      "power_hp": 578,
+      "drivetrain": "AWD",
+      "body_style": "Gran Coupe",
+      "seats": 5
+    },
+    "images": [],
+    "stock_count": 1,
+    "status": "pending"
+  }
+]

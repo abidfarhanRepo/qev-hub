@@ -18,7 +18,7 @@ class EnhancedChargingScreen extends StatefulWidget {
 }
 
 class _EnhancedChargingScreenState extends State<EnhancedChargingScreen> {
-  final MapController _mapController = MapController();
+  MapController? _mapController;
   final EnhancedChargingRepository _repository = EnhancedChargingRepository(Supabase.instance.client);
   final TextEditingController _searchController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
@@ -57,6 +57,7 @@ class _EnhancedChargingScreenState extends State<EnhancedChargingScreen> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     _searchController.dispose();
     _scrollController.dispose();
+    _mapController?.dispose();
     super.dispose();
   }
 
@@ -101,8 +102,8 @@ class _EnhancedChargingScreenState extends State<EnhancedChargingScreen> {
         _userLocation = LatLng(position.latitude, position.longitude);
       });
 
-      if (_userLocation != null && !_isLoading) {
-        _mapController.move(_userLocation!, 14);
+      if (_userLocation != null && !_isLoading && _mapController != null) {
+        _mapController!.move(_userLocation!, 14);
       }
     } catch (e) {
       debugPrint('Error getting location: $e');

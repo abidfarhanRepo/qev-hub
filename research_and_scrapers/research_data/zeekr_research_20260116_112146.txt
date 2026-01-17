@@ -1,0 +1,155 @@
+================================================================================
+ZEEKR RESEARCH - QATAR MARKET
+================================================================================
+
+BRAND OVERVIEW:
+- Zeekr (Chinese: 极氪) is Geely's premium electric vehicle brand
+- Founded: 2021
+- Parent Company: Geely Holdings (also owns Volvo, Lotus, Polestar)
+- Headquarters: Ningbo, China
+- Market Position: Premium/luxury performance EV
+- Key Technology: Sustainable Experience Architecture (SEA)
+
+MODELS RESEARCH:
+================================================================================
+
+1. Zeekr 001 (Flagship Shooting Brake)
+   - Position: Premium luxury shooting brake (hatchback/SUV crossover)
+   - Original Launch: 2021
+   - 2024 Refresh: 001 with 800V architecture
+   - Battery Options: 95 kWh, 100 kWh, 140 kWh (Qilin battery)
+   - Range (CLTC): 546-1032 km (depending on battery)
+   - Power: 200-400 kW (272-544 hp)
+   - Acceleration: 0-100 km/h in 3.3s (FR version)
+   - Charging: 800V platform, up to 500 kW DC
+   - Drive: RWD or AWD
+   - Features: Air suspension, CCD continuous damping control
+   - Platform: Sustainable Experience Architecture (SEA)
+   - 2025 Updates: Improved ADAS, new interior options
+
+2. Zeekr 009 (Luxury MPV)
+   - Position: Full-size luxury MPV (6-seater)
+   - China Launch: 2022
+   - 2024 Refresh: 009光辉 (Glory) edition
+   - Battery: 116 kWh (CATL Qilin)
+   - Range (CLTC): 702-822 km
+   - Power: 400-580 kW (544-789 hp)
+   - Acceleration: 0-100 km/h in 4.5s
+   - Seats: 6 individual captain's chairs
+   - Interior: Ultra-luxury, refrigerator, premium leather
+   - Features: Air suspension, rear entertainment
+   - Focus: Executive transportation
+
+3. Zeekr X (Compact Luxury SUV)
+   - Position: Compact luxury SUV
+   - China Launch: 2023
+   - Global Launch: Europe 2024
+   - Battery Options: 66 kWh, 77 kWh
+   - Range (CLTC): 500-560 km
+   - Power: 200-315 kW (272-428 hp)
+   - Acceleration: 0-100 km/h in 3.7s (4WD version)
+   - Drive: RWD or AWD
+   - Features: Sliding center screen, frameless doors
+   - Design: Futuristic, urban-focused
+   - Platform: SEA
+   - 2025 Updates: New battery options, improved range
+
+4. Zeekr 007 (Premium Sedan) - NEW 2024
+   - Position: Premium electric sedan
+   - China Launch: Late 2023
+   - Battery: 75-100 kWh (with 800V architecture)
+   - Range: 688-870 km (CLTC)
+   - Power: 310 kW
+   - Acceleration: 0-100 km/h in 2.84s (Performance)
+   - Charging: 800V, 475 kW DC
+   - Features: LiDAR, advanced ADAS
+   - Interior: Minimalist luxury
+
+5. Zeekr 7X (Large SUV) - COMING 2025
+   - Position: Large luxury SUV
+   - Expected Launch: 2025
+   - Will compete with ES8, G9
+
+6. Zeekr MIX (MPV) - COMING 2025
+   - Position: Innovative MPV with swivel seats
+   - Expected Launch: 2025
+
+GCC/QATAR STATUS:
+================================================================================
+- Official Launch: NO official Zeekr presence in GCC/Qatar as of 2025
+- Grey Market: Limited private imports
+- Geely Connection: Geely has regional partnerships but Zeekr not officially launched
+- Battery Technology: CATL Qilin batteries (good for high temps)
+- Service: NO official Zeekr service centers
+
+POTENTIAL GCC PRICING (ESTIMATED):
+================================================================================
+Based on China pricing and export potential:
+
+- Zeekr 001: QAR 180,000 - 240,000 (estimated if imported)
+- Zeekr 009: QAR 220,000 - 280,000 (estimated if imported)
+- Zeekr X: QAR 140,000 - 180,000 (estimated if imported)
+- Zeekr 007: QAR 160,000 - 210,000 (estimated if imported)
+
+CHINA PRICING (Reference):
+- Zeekr 001: 269,000 - 769,000 CNY (depending on version)
+- Zeekr 009: 499,000 - 589,000 CNY
+- Zeekr X: 209,900 - 279,900 CNY
+- Zeekr 007: 209,900 - 299,900 CNY
+
+EUROPEAN PRICING (Reference):
+- Zeekr X: €44,900 - €53,990 (Netherlands/Germany 2024)
+- Zeekr 001: €59,990+ (Europe 2024)
+
+ZEEKR TECHNOLOGY:
+================================================================================
+Sustainable Experience Architecture (SEA):
+- Modular EV platform
+- Supports various body styles
+- 800V architecture on latest models
+- Fast charging capability
+
+CATL QILIN BATTERY:
+- High energy density
+- Good thermal management
+- Suitable for hot climates (advantage for GCC)
+
+ADAS:
+- Mobileye-based autonomous driving
+- Highway assist
+- Parking assist
+- GCC functionality: Limited without regional mapping
+
+GEELY CONNECTION:
+================================================================================
+- Geely owns Volvo, Polestar, Lotus, Proton
+- Geely has GCC presence through other brands
+- Potential for Zeekr regional expansion
+- No confirmed distributor in Qatar as of 2025
+
+GCC SPECIFICATIONS (IF EXPORTED):
+================================================================================
+Required modifications:
+- Enhanced battery cooling (CATL batteries are suitable)
+- Desert package (dust filtration, cooling)
+- Suspension tuning
+- GCC certification requirements
+
+INTERNATIONAL EXPANSION:
+================================================================================
+- Zeekr launched in Europe (Netherlands, Sweden, Germany) 2023-2024
+- Middle East expansion: Planned but not confirmed
+- Potential for Geely network leverage in GCC
+- No official Qatar distributor announced
+
+IMAGE SOURCES:
+- https://www.zeekr.com
+- https://www.zeekr.com/int (international site)
+
+RESEARCH NOTES:
+- Zeekr has strong product lineup with premium positioning
+- Geely connection could facilitate GCC entry
+- 800V architecture and CATL batteries well-suited for region
+- Grey market imports limited due to lack of service network
+- European expansion shows global ambition
+

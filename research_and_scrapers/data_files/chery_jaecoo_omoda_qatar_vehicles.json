@@ -1,0 +1,819 @@
+{
+  "metadata": {
+    "manufacturer": "Chery/Jaecoo/Omoda",
+    "country": "Qatar",
+    "official_distributors": {
+      "chery": "Elite Motors",
+      "omoda_jaecoo": "Silver Lake Motors"
+    },
+    "showroom": "Multiple locations across Doha",
+    "warranty": {
+      "chery": "6 years or 200,000 km",
+      "omoda_jaecoo": "5 years or 150,000 km"
+    },
+    "scrape_date": "2025-01-16",
+    "notes": "Chery EV/PHEV models primarily available as grey market imports. OMODA & JAECOO officially launched in Qatar by Silver Lake Motors in 2025."
+  },
+  "vehicles": [
+    {
+      "manufacturer": "Chery",
+      "model": "eQ7",
+      "year": 2025,
+      "trim_level": "Standard",
+      "vehicle_type": "EV",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "range_km": 512,
+      "battery_kwh": 67.12,
+      "acceleration_0_100": 8.5,
+      "top_speed_kmh": 170,
+      "power_kw": 155,
+      "power_hp": 208,
+      "torque_nm": 285,
+      "charging_ac_kw": 6.6,
+      "charging_dc_kw": 100,
+      "manufacturer_direct_price": null,
+      "grey_market_price": 95000,
+      "grey_market_source": "Grey Market / China Import",
+      "price_qar": 95000,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4675,
+          "width_mm": 1865,
+          "height_mm": 1680,
+          "wheelbase_mm": 2715
+        },
+        "battery": {
+          "type": "Lithium Iron Phosphate (LFP)",
+          "capacity_kwh": 67.12,
+          "charging_time_dc_min": 45
+        },
+        "features": [
+          "LFP Battery Pack",
+          "Single Motor FWD",
+          "512km CLTC Range"
+        ]
+      },
+      "images": [
+        {
+          "url": "https://www.autocango.com/carspecs-detail/Chery-EV-eQ7-RD3AKB",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Chery eQ7 - Pure electric SUV with 512km range, 67.12kWh LFP battery. Grey market import from China.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Chery",
+      "model": "eQ7",
+      "year": 2025,
+      "trim_level": "Base",
+      "vehicle_type": "EV",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "range_km": 412,
+      "battery_kwh": 53.87,
+      "acceleration_0_100": 9.5,
+      "top_speed_kmh": 160,
+      "power_kw": 150,
+      "power_hp": 201,
+      "torque_nm": 250,
+      "charging_ac_kw": 6.6,
+      "charging_dc_kw": 80,
+      "manufacturer_direct_price": null,
+      "grey_market_price": 85000,
+      "grey_market_source": "Grey Market / China Import",
+      "price_qar": 85000,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4675,
+          "width_mm": 1865,
+          "height_mm": 1680,
+          "wheelbase_mm": 2715
+        },
+        "battery": {
+          "type": "Lithium Iron Phosphate (LFP)",
+          "capacity_kwh": 53.87
+        }
+      },
+      "images": [],
+      "description": "Chery eQ7 Base - 412km range with 53.87kWh battery. Grey market import.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Chery",
+      "model": "TIGGO 8 PRO e+",
+      "year": 2025,
+      "trim_level": "PHEV",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 75,
+      "combined_range_km": 1000,
+      "battery_kwh": 19.27,
+      "acceleration_0_100": 8.2,
+      "top_speed_kmh": 185,
+      "power_kw": 240,
+      "power_hp": 326,
+      "torque_nm": 510,
+      "charging_ac_kw": 6.6,
+      "manufacturer_direct_price": 139000,
+      "grey_market_price": null,
+      "price_qar": 139000,
+      "body_style": "SUV",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4722,
+          "width_mm": 1860,
+          "height_mm": 1745,
+          "wheelbase_mm": 2710
+        },
+        "battery": {
+          "type": "Lithium-ion",
+          "capacity_kwh": 19.27,
+          "pure_electric_range": 75
+        },
+        "features": [
+          "1.5TCI Turbocharged Engine",
+          "24.6-inch Dual Screen",
+          "9 Driving Modes",
+          "Pure electric endurance of 75km"
+        ]
+      },
+      "images": [
+        {
+          "url": "https://cheryqatar.com/sites/default/files/2023-02/TE1.jpg",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Chery Tiggo 8 Pro e+ - Plug-in hybrid SUV with 75km electric range and 1000km combined range. Official GCC spec available via Elite Motors.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Chery",
+      "model": "ARRIZO 8",
+      "year": 2025,
+      "trim_level": "Luxury",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 91000,
+      "grey_market_price": 63900,
+      "grey_market_source": "QatarSale",
+      "price_qar": 91000,
+      "body_style": "Sedan",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4780,
+          "width_mm": 1843,
+          "height_mm": 1469,
+          "wheelbase_mm": 2790
+        },
+        "engine": {
+          "type": "1.6L Turbo",
+          "power_hp": 197,
+          "torque_nm": 290
+        },
+        "features": [
+          "24.6-inch Floating Dual Screen",
+          "Lion 5.0 AI Technology",
+          "10 Airbags"
+        ]
+      },
+      "images": [
+        {
+          "url": "https://cheryqatar.com/sites/default/files/2023-05/M1E_Appearance_Front%20Right_20221204.jpg",
+          "type": "exterior_front",
+          "is_primary": true
+        }
+      ],
+      "description": "Chery Arrizo 8 - Premium sedan with 24.6-inch dual screen, 1.6L turbo engine. Official GCC spec available.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Chery",
+      "model": "QQ ICE CREAM",
+      "year": 2024,
+      "trim_level": "Standard",
+      "vehicle_type": "EV",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "range_km": 170,
+      "battery_kwh": 13.9,
+      "acceleration_0_100": null,
+      "top_speed_kmh": 100,
+      "power_kw": 20,
+      "power_hp": 27,
+      "torque_nm": 85,
+      "manufacturer_direct_price": null,
+      "grey_market_price": 45000,
+      "grey_market_source": "Grey Market / China Import",
+      "price_qar": 45000,
+      "body_style": "Hatchback",
+      "drivetrain": "FWD",
+      "seats": 4,
+      "specs": {
+        "dimensions": {
+          "length_mm": 3010,
+          "width_mm": 1500,
+          "height_mm": 1640,
+          "wheelbase_mm": 1960
+        },
+        "battery": {
+          "type": "Lithium Iron Phosphate (LFP)",
+          "capacity_kwh": 13.9
+        },
+        "features": [
+          "Urban Micro EV",
+          "120-170km Range",
+          "27 hp Electric Motor"
+        ]
+      },
+      "images": [],
+      "description": "Chery QQ Ice Cream - Small urban EV with 170km range. Grey market import from China.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Chery",
+      "model": "QQ ICE CREAM",
+      "year": 2024,
+      "trim_level": "Base",
+      "vehicle_type": "EV",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "range_km": 120,
+      "battery_kwh": 9.42,
+      "top_speed_kmh": 100,
+      "power_kw": 20,
+      "power_hp": 27,
+      "torque_nm": 85,
+      "manufacturer_direct_price": null,
+      "grey_market_price": 40000,
+      "grey_market_source": "Grey Market / China Import",
+      "price_qar": 40000,
+      "body_style": "Hatchback",
+      "drivetrain": "FWD",
+      "seats": 4,
+      "specs": {
+        "dimensions": {
+          "length_mm": 3010,
+          "width_mm": 1500,
+          "height_mm": 1640,
+          "wheelbase_mm": 1960
+        },
+        "battery": {
+          "type": "Lithium Iron Phosphate (LFP)",
+          "capacity_kwh": 9.42
+        }
+      },
+      "images": [],
+      "description": "Chery QQ Ice Cream Base - 120km range with 9.42kWh battery. Grey market import.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Jaecoo",
+      "model": "J7",
+      "year": 2025,
+      "trim_level": "Summit PHEV",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 80,
+      "combined_range_km": 900,
+      "battery_kwh": 18.3,
+      "acceleration_0_100": 7.5,
+      "top_speed_kmh": 200,
+      "power_kw": 185,
+      "power_hp": 251,
+      "torque_nm": 290,
+      "manufacturer_direct_price": 95000,
+      "grey_market_price": null,
+      "price_qar": 95000,
+      "body_style": "SUV",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4500,
+          "width_mm": 1865,
+          "height_mm": 1680,
+          "wheelbase_mm": 2672
+        },
+        "engine": {
+          "type": "1.6L Turbocharged PHEV",
+          "fuel_economy": "16.7 km/l"
+        },
+        "features": [
+          "Plug-in Hybrid System",
+          "200mm Ground Clearance",
+          "Dual Zone Climate Control"
+        ]
+      },
+      "images": [],
+      "description": "Jaecoo J7 Summit PHEV - Plug-in hybrid SUV officially launched by Silver Lake Motors Qatar. 1.6L turbo with electric motor.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Jaecoo",
+      "model": "J7",
+      "year": 2025,
+      "trim_level": "EX+ AWD",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 89000,
+      "price_qar": 89000,
+      "body_style": "SUV",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4500,
+          "width_mm": 1865,
+          "height_mm": 1680,
+          "wheelbase_mm": 2672
+        },
+        "engine": {
+          "type": "1.6L Turbocharged",
+          "power_hp": 185,
+          "torque_nm": 290
+        },
+        "fuel_economy": "12.8 km/l"
+      },
+      "images": [],
+      "description": "Jaecoo J7 EX+ AWD - Turbocharged petrol SUV with AWD. Official GCC spec.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Jaecoo",
+      "model": "J7",
+      "year": 2025,
+      "trim_level": "FWD",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 79900,
+      "price_qar": 79900,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "engine": {
+          "type": "1.6L Turbocharged",
+          "fuel_economy": "14.3 km/l"
+        }
+      },
+      "images": [],
+      "description": "Jaecoo J7 FWD - Entry-level turbocharged SUV with FWD.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Jaecoo",
+      "model": "J5",
+      "year": 2025,
+      "trim_level": "Premium",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 80000,
+      "price_qar": 80000,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4350,
+          "width_mm": 1820,
+          "height_mm": 1655,
+          "wheelbase_mm": 2630
+        },
+        "cargo_space_liters": 480,
+        "cargo_space_expanded": 1180,
+        "features": [
+          "480L Boot Space",
+          "Expandable to 1,180L",
+          "Compact SUV"
+        ]
+      },
+      "images": [],
+      "description": "Jaecoo J5 Premium - Compact hybrid SUV with excellent cargo capacity. Official GCC spec from Silver Lake Motors.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Jaecoo",
+      "model": "J8",
+      "year": 2025,
+      "trim_level": "Flagship",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 110000,
+      "price_qar": 110000,
+      "body_style": "SUV",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "specs": {
+        "features": [
+          "Built on Strong Chassis",
+          "Stability and Confidence",
+          "Premium Flagship SUV"
+        ]
+      },
+      "images": [],
+      "description": "Jaecoo J8 Flagship - Premium SUV officially launched by Silver Lake Motors Qatar.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Omoda",
+      "model": "C5",
+      "year": 2025,
+      "trim_level": "1.5T Basic",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 80000,
+      "grey_market_price": 59000,
+      "grey_market_source": "QIC Car Market",
+      "price_qar": 80000,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4400,
+          "width_mm": 1830,
+          "height_mm": 1588,
+          "wheelbase_mm": 2630
+        },
+        "engine": {
+          "type": "1.5L Turbocharged",
+          "power_hp": 147,
+          "transmission": "CVT"
+        },
+        "features": [
+          "1.5L Turbo Engine",
+          "CVT Transmission",
+          "FWD"
+        ]
+      },
+      "images": [],
+      "description": "Omoda C5 1.5T Basic - Entry-level crossover SUV with 1.5L turbo engine. Official GCC spec available.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Omoda",
+      "model": "C5",
+      "year": 2025,
+      "trim_level": "1.6T Sport",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 87657,
+      "price_qar": 87657,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "engine": {
+          "type": "1.6L Turbocharged",
+          "power_hp": 197,
+          "transmission": "7DCT"
+        }
+      },
+      "images": [],
+      "description": "Omoda C5 1.6T Sport - Sport trim with more powerful 1.6L turbo engine.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Omoda",
+      "model": "C5",
+      "year": 2025,
+      "trim_level": "Flagship",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 135000,
+      "price_qar": 135000,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "engine": {
+          "type": "1.6L Turbocharged",
+          "power_hp": 197
+        }
+      },
+      "images": [],
+      "description": "Omoda C5 Flagship - Top trim with premium features and 1.6L turbo engine.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Omoda",
+      "model": "S5 GT",
+      "year": 2024,
+      "trim_level": "Luxury",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 73999,
+      "grey_market_price": 42000,
+      "grey_market_source": "QatarSale",
+      "price_qar": 73999,
+      "body_style": "Sedan",
+      "drivetrain": "RWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4780,
+          "width_mm": 1843,
+          "height_mm": 1469,
+          "wheelbase_mm": 2790
+        },
+        "engine": {
+          "type": "1.6L Turbocharged",
+          "power_hp": 150,
+          "power_kw": 110,
+          "torque_nm": 275,
+          "transmission": "AMT"
+        },
+        "features": [
+          "1.6L Turbo Engine",
+          "150 hp",
+          "275 Nm Torque",
+          "RWD"
+        ]
+      },
+      "images": [],
+      "description": "Omoda S5 GT Luxury - Sporty sedan with 1.6L turbo engine. Available via official and grey market channels.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Omoda",
+      "model": "S5 GT",
+      "year": 2024,
+      "trim_level": "Standard",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 65000,
+      "grey_market_price": 49500,
+      "grey_market_source": "QatarSale",
+      "price_qar": 65000,
+      "body_style": "Sedan",
+      "drivetrain": "RWD",
+      "seats": 5,
+      "specs": {
+        "engine": {
+          "type": "1.5L Turbocharged",
+          "power_hp": 147,
+          "torque_nm": 210,
+          "transmission": "CVT"
+        }
+      },
+      "images": [],
+      "description": "Omoda S5 GT Standard - Entry-level sport sedan with 1.5L turbo engine.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Omoda",
+      "model": "5",
+      "year": 2024,
+      "trim_level": "Luxury",
+      "vehicle_type": "Petrol",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "manufacturer_direct_price": null,
+      "grey_market_price": 79900,
+      "grey_market_source": "QatarSale",
+      "price_qar": 79900,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {},
+      "images": [],
+      "description": "Omoda 5 Luxury - Chinese-spec grey market import via QatarSale. Compact crossover SUV.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Chery",
+      "model": "TIGGO 8 PRO MAX",
+      "year": 2025,
+      "trim_level": "AWD",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 109000,
+      "price_qar": 109000,
+      "body_style": "SUV",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "specs": {
+        "engine": {
+          "type": "2.0L Turbocharged",
+          "power_hp": 251,
+          "torque_nm": 390
+        },
+        "features": [
+          "Flagship SUV",
+          "2.0L Turbo Engine",
+          "AWD"
+        ]
+      },
+      "images": [
+        {
+          "url": "https://cheryqatar.com/sites/default/files/2024-10/T1D-2.0T-Exterior%20%283%29.jpg",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Chery Tiggo 8 Pro Max AWD - Flagship SUV with 2.0L turbo engine. Official GCC spec from Elite Motors.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Chery",
+      "model": "TIGGO 8 PRO",
+      "year": 2025,
+      "trim_level": "Standard",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 89500,
+      "price_qar": 89500,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "engine": {
+          "type": "1.6L Turbocharged",
+          "power_hp": 197
+        }
+      },
+      "images": [
+        {
+          "url": "https://cheryqatar.com/sites/default/files/2023-02/root1675322558875315.jpg",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Chery Tiggo 8 Pro - Mid-size SUV with 1.6L turbo engine.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Chery",
+      "model": "TIGGO 7 PRO MAX",
+      "year": 2025,
+      "trim_level": "Standard",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 69500,
+      "price_qar": 69500,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "engine": {
+          "type": "1.6L Turbocharged",
+          "power_hp": 197
+        }
+      },
+      "images": [
+        {
+          "url": "https://cheryqatar.com/sites/default/files/2023-05/WEBSITE%202_0.png",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Chery Tiggo 7 Pro Max - Compact SUV with premium features.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Chery",
+      "model": "TIGGO 7 PRO",
+      "year": 2025,
+      "trim_level": "Standard",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 64500,
+      "price_qar": 64500,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "engine": {
+          "type": "1.5L Turbocharged",
+          "power_hp": 156
+        }
+      },
+      "images": [
+        {
+          "url": "https://cheryqatar.com/sites/default/files/2023-02/tiggo%207%20pro.jpg",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Chery Tiggo 7 Pro - Compact SUV with 1.5L turbo engine.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Chery",
+      "model": "TIGGO 4 PRO",
+      "year": 2025,
+      "trim_level": "Standard",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 54500,
+      "price_qar": 54500,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "engine": {
+          "type": "1.5L Turbocharged",
+          "power_hp": 156
+        }
+      },
+      "images": [
+        {
+          "url": "https://cheryqatar.com/sites/default/files/2023-02/1.5T-image%204%20copy.jpg",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Chery Tiggo 4 Pro - Subcompact SUV with 1.5L turbo engine.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Chery",
+      "model": "ARRIZO 6 PRO",
+      "year": 2025,
+      "trim_level": "Standard",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 53000,
+      "price_qar": 53000,
+      "body_style": "Sedan",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "engine": {
+          "type": "1.6L Naturally Aspirated",
+          "power_hp": 126
+        }
+      },
+      "images": [
+        {
+          "url": "https://cheryqatar.com/sites/default/files/2023-02/Arrizo%206%20pro.jpg",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Chery Arrizo 6 Pro - Compact sedan with 1.6L engine.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Chery",
+      "model": "ARRIZO 5",
+      "year": 2025,
+      "trim_level": "Standard",
+      "vehicle_type": "Petrol",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 61000,
+      "price_qar": 61000,
+      "body_style": "Sedan",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "engine": {
+          "type": "1.5L Turbocharged",
+          "power_hp": 147
+        }
+      },
+      "images": [
+        {
+          "url": "https://cheryqatar.com/sites/default/files/2023-05/WEB%20AR5%202.png",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Chery Arrizo 5 - Subcompact sedan with 1.5L turbo engine.",
+      "status": "pending"
+    }
+  ]
+}

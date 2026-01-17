@@ -38,10 +38,31 @@ export default function VehicleCarousel() {
 
   useEffect(() => {
     fetchVehicles()
-    if (carousel.current) {
-      setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
-    }
   }, [])
+
+  // Recalculate width after vehicles load and on resize
+  useEffect(() => {
+    const calculateWidth = () => {
+      if (carousel.current && vehicles.length > 0) {
+        // Use requestAnimationFrame to ensure DOM is updated
+        requestAnimationFrame(() => {
+          if (carousel.current) {
+            setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
+          }
+        })
+      }
+    }
+
+    calculateWidth()
+
+    // Recalculate on resize
+    const resizeObserver = new ResizeObserver(calculateWidth)
+    if (carousel.current) {
+      resizeObserver.observe(carousel.current)
+    }
+
+    return () => resizeObserver.disconnect()
+  }, [vehicles, loading])
 
   const fetchVehicles = async () => {
     try {

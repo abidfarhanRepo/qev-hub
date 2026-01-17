@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, SlidersHorizontal, X, ChevronDown } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
@@ -21,8 +21,9 @@ interface Vehicle {
   broker_market_price: number
   price_transparency_enabled: boolean
   vehicle_type: 'EV' | 'PHEV' | 'FCEV'
+  origin_country?: string
   arrival_weeks: number
-  image_url: string
+  image_url?: string
 }
 
 interface SmartSearchBarProps {
@@ -138,28 +139,41 @@ export function SmartSearchBar({ onVehicleSelect, selectedVehicle }: SmartSearch
     maxChargingTime: 90,
     maxPrice: 500000,
     maxArrivalTime: 15,
+    vehicleType: 'all' as 'all' | 'ev' | 'phev',
   })
   const [filteredVehicles, setFilteredVehicles] = useState<Vehicle[]>(MOCK_VEHICLES)
   const [showResults, setShowResults] = useState(false)
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm)
 
-  const applyFilters = () => {
+  // Debounce search term
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm)
+    }, 300)
+    return () => clearTimeout(timer)
+  }, [searchTerm])
+
+  const applyFilters = useCallback(() => {
     let filtered = MOCK_VEHICLES.filter((vehicle) => {
       const matchesSearch =
-        vehicle.manufacturer.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        vehicle.model.toLowerCase().includes(searchTerm.toLowerCase())
+        vehicle.manufacturer.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+        vehicle.model.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
 
       const matchesRange =
         vehicle.range_km >= filters.minRange && vehicle.range_km <= filters.maxRange
       const matchesCharging = vehicle.charging_time_min <= filters.maxChargingTime
       const matchesPrice = vehicle.price_qar <= filters.maxPrice
       const matchesArrival = vehicle.arrival_weeks <= filters.maxArrivalTime
+      const matchesVehicleType =
+        filters.vehicleType === 'all' ||
+        vehicle.vehicle_type.toLowerCase() === filters.vehicleType
 
-      return matchesSearch && matchesRange && matchesCharging && matchesPrice && matchesArrival
+      return matchesSearch && matchesRange && matchesCharging && matchesPrice && matchesArrival && matchesVehicleType
     })
 
     setFilteredVehicles(filtered)
     setShowResults(true)
-  }
+  }, [debouncedSearchTerm, filters])
 
   const handleVehicleClick = (vehicle: Vehicle) => {
     onVehicleSelect(vehicle)

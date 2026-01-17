@@ -6,7 +6,6 @@ import '../../features/splash/presentation/splash_screen.dart';
 import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/signup_screen.dart';
 import '../../features/auth/presentation/forgot_password_screen.dart';
-import '../../features/dashboard/presentation/dashboard_screen.dart';
 import '../../features/home/presentation/enhanced_home_screen.dart';
 import '../../features/marketplace/presentation/enhanced_marketplace_screen.dart';
 import '../../features/marketplace/presentation/vehicle_detail_screen.dart';
@@ -14,22 +13,17 @@ import '../../features/charging/presentation/charging_screen_simple.dart';
 import '../../features/booking/presentation/enhanced_station_detail.dart';
 import '../../features/booking/presentation/booking_flow_simple.dart';
 import '../../features/booking/presentation/my_bookings_screen.dart';
-import '../../features/booking/presentation/booking_provider.dart';
 import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/auth/presentation/auth_provider.dart';
 import '../../core/constants/route_constants.dart';
 import '../../data/models/user.dart';
-import '../../data/models/charging_station.dart';
-import '../../data/models/charger.dart';
 import '../../shared/widgets/main_screen.dart';
-import '../../shared/widgets/app_loader.dart';
 
 /// App router configuration with auth guards
 class AppRouter {
   AppRouter._();
 
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
-  static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   static GoRouter router({required ProviderContainer container}) {
     return GoRouter(

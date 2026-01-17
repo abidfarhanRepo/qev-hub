@@ -266,10 +266,10 @@ export default function VehicleDetailPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {vehicle.grey_market_price && vehicle.manufacturer_direct_price ? (
+                  {vehicle.price_transparency_enabled && vehicle.broker_market_price && vehicle.manufacturer_direct_price ? (
                     <PriceComparison
                       manufacturerDirectPrice={vehicle.manufacturer_direct_price}
-                      greyMarketPrice={vehicle.grey_market_price}
+                      greyMarketPrice={vehicle.broker_market_price}
                       currency="QAR"
                       showDetails={true}
                     />

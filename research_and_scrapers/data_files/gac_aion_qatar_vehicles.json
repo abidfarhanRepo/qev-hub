@@ -1,0 +1,523 @@
+{
+  "manufacturer": "GAC",
+  "brand": "AION",
+  "country": "Qatar",
+  "dealer": "GAC Motor Middle East",
+  "website": "https://www.gacmotor.com",
+  "warranty": {
+    "vehicle": "5 years or 150,000 km (whichever comes first)",
+    "battery": "8 years or 200,000 km (whichever comes first)"
+  },
+  "models": [
+    {
+      "manufacturer": "GAC",
+      "model": "AION Y Plus",
+      "year": 2024,
+      "trim_level": "Plus",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 430,
+      "battery_kwh": 61.7,
+      "battery_type": "Lithium-ion NCM",
+      "acceleration_0_100": 8.5,
+      "top_speed_kmh": 150,
+      "power_kw": 150,
+      "power_hp": 204,
+      "torque_nm": 225,
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5,
+      "cargo_capacity_min_l": 330,
+      "cargo_capacity_max_l": 1050,
+      "charging_dc_kw": 80,
+      "charging_ac_kw": 7.2,
+      "wheels": "17 inch alloy",
+      "specs": {
+        "dimensions": {
+          "length_mm": 4535,
+          "width_mm": 1870,
+          "height_mm": 1650,
+          "wheelbase_mm": 2750,
+          "ground_clearance_mm": 165
+        },
+        "performance": {
+          "acceleration_0_100kmh_s": 8.5,
+          "top_speed_kmh": 150,
+          "range_nedc_km": 430
+        },
+        "powertrain": {
+          "motor_type": "Permanent magnet synchronous motor",
+          "peak_power_kw": 150,
+          "peak_power_hp": 204,
+          "max_torque_nm": 225,
+          "drivetrain": "Front-wheel drive"
+        },
+        "battery": {
+          "type": "Lithium-ion NCM",
+          "capacity_kwh": 61.7,
+          "technology": "Nickel Cobalt Manganese"
+        },
+        "charging": {
+          "dc_charging_kw": 80,
+          "ac_charging_kw": 7.2,
+          "ac_charging_port": "Type 2",
+          "dc_charging_port": "GB/T (China) / CCS (GCC)"
+        },
+        "features": [
+          "Hyper.dashboard - 14.6-inch touchscreen",
+          "ADIGO intelligent driving system",
+          "Panoramic sunroof",
+          "Electric tailgate",
+          "Hidden door handles",
+          "LED matrix headlights",
+          "Ambient lighting",
+          "Wireless phone charging",
+          "Voice control",
+          "OTA updates",
+          "ADAS (Advanced Driver Assistance Systems)",
+          "360-degree camera",
+          "Auto parking",
+          "Adaptive cruise control",
+          "Lane keep assist",
+          "Blind spot monitoring",
+          "Automatic emergency braking"
+        ],
+        "safety": [
+          "6 airbags",
+          "Electronic Stability Program (ESP)",
+          "Traction Control System (TCS)",
+          "Hill Start Assist (HSA)",
+          "Tyre Pressure Monitoring System (TPMS)",
+          "ISOFIX child seat anchors",
+          "Rear parking sensors",
+          "Front and rear parking sensors"
+        ]
+      },
+      "price_qar": 89000,
+      "trims": [
+        {
+          "trim": "Plus Standard",
+          "price": 89000
+        },
+        {
+          "trim": "Plus Premium",
+          "price": 97000
+        }
+      ],
+      "images": [
+        {
+          "type": "exterior_front",
+          "url": "https://www.gacmotor.com/uploads/21012021074638456.jpg"
+        },
+        {
+          "type": "exterior_side",
+          "url": "https://www.gacmotor.com/uploads/21012021074641389.jpg"
+        },
+        {
+          "type": "interior",
+          "url": "https://www.gacmotor.com/uploads/21012021074643256.jpg"
+        },
+        {
+          "type": "exterior_rear",
+          "url": "https://www.gacmotor.com/uploads/21012021074645123.jpg"
+        }
+      ],
+      "description": "The GAC AION Y Plus is a fully electric suv offering 430 km of range\nand 204 horsepower. It features modern electric vehicle technology with advanced battery systems,\ncomfortable interior with premium features, and comprehensive safety systems."
+    },
+    {
+      "manufacturer": "GAC",
+      "model": "AION S Plus",
+      "year": 2024,
+      "trim_level": "Plus",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 500,
+      "battery_kwh": 58.8,
+      "battery_type": "Lithium-ion NCM",
+      "acceleration_0_100": 7.5,
+      "top_speed_kmh": 165,
+      "power_kw": 150,
+      "power_hp": 204,
+      "torque_nm": 235,
+      "drivetrain": "FWD",
+      "body_style": "Sedan",
+      "seats": 5,
+      "cargo_capacity_l": 453,
+      "charging_dc_kw": 100,
+      "charging_ac_kw": 7.2,
+      "wheels": "17 inch alloy",
+      "specs": {
+        "dimensions": {
+          "length_mm": 4800,
+          "width_mm": 1880,
+          "height_mm": 1515,
+          "wheelbase_mm": 2750,
+          "ground_clearance_mm": 130
+        },
+        "performance": {
+          "acceleration_0_100kmh_s": 7.5,
+          "top_speed_kmh": 165,
+          "range_nedc_km": 500
+        },
+        "powertrain": {
+          "motor_type": "Permanent magnet synchronous motor",
+          "peak_power_kw": 150,
+          "peak_power_hp": 204,
+          "max_torque_nm": 235,
+          "drivetrain": "Front-wheel drive"
+        },
+        "battery": {
+          "type": "Lithium-ion NCM",
+          "capacity_kwh": 58.8,
+          "technology": "Nickel Cobalt Manganese"
+        },
+        "charging": {
+          "dc_charging_kw": 100,
+          "ac_charging_kw": 7.2,
+          "dc_charging_time_30_to_80_min": 30
+        },
+        "features": [
+          "14.6-inch rotating touchscreen",
+          "ADIGO 3.0 intelligent system",
+          "LED headlights and taillights",
+          "Panoramic sunroof",
+          "Hidden door handles",
+          "Ventilated front seats",
+          "Heated front seats",
+          "Electric driver seat adjustment",
+          "Dual-zone climate control",
+          "PM2.5 air filtration",
+          "Wireless phone charger",
+          "NFC card key",
+          "Voice control",
+          "OTA updates"
+        ],
+        "safety": [
+          "6 airbags",
+          "C-NCAP 5-star rating",
+          "ADAS with lane keep assist",
+          "Adaptive cruise control",
+          "Automatic emergency braking",
+          "Blind spot detection",
+          "Rear cross traffic alert",
+          "360-degree camera",
+          "Traffic sign recognition"
+        ]
+      },
+      "price_qar": 95000,
+      "trims": [
+        {
+          "trim": "Plus Standard",
+          "price": 95000
+        },
+        {
+          "trim": "Plus Premium",
+          "price": 105000
+        }
+      ],
+      "images": [
+        {
+          "type": "exterior_front",
+          "url": "https://www.gacmotor.com/uploads/21012021074700123.jpg"
+        },
+        {
+          "type": "exterior_side",
+          "url": "https://www.gacmotor.com/uploads/21012021074702456.jpg"
+        },
+        {
+          "type": "interior",
+          "url": "https://www.gacmotor.com/uploads/21012021074704789.jpg"
+        }
+      ],
+      "description": "The GAC AION S Plus is a fully electric sedan offering 500 km of range\nand 204 horsepower. It features modern electric vehicle technology with advanced battery systems,\ncomfortable interior with premium features, and comprehensive safety systems."
+    },
+    {
+      "manufacturer": "GAC",
+      "model": "AION LX Plus",
+      "year": 2024,
+      "trim_level": "Plus",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 600,
+      "battery_kwh": 93.3,
+      "battery_type": "Lithium-ion NCM",
+      "acceleration_0_100": 4.5,
+      "top_speed_kmh": 180,
+      "power_kw": 300,
+      "power_hp": 408,
+      "torque_nm": 450,
+      "drivetrain": "AWD",
+      "body_style": "SUV",
+      "seats": 5,
+      "cargo_capacity_min_l": 520,
+      "cargo_capacity_max_l": 1450,
+      "charging_dc_kw": 150,
+      "charging_ac_kw": 11,
+      "wheels": "19 inch alloy",
+      "specs": {
+        "dimensions": {
+          "length_mm": 4835,
+          "width_mm": 1935,
+          "height_mm": 1685,
+          "wheelbase_mm": 2920,
+          "ground_clearance_mm": 170
+        },
+        "performance": {
+          "acceleration_0_100kmh_s": 4.5,
+          "top_speed_kmh": 180,
+          "range_nedc_km": 600
+        },
+        "powertrain": {
+          "motor_type": "Dual motor AWD",
+          "peak_power_kw": 300,
+          "peak_power_hp": 408,
+          "max_torque_nm": 450,
+          "drivetrain": "All-wheel drive"
+        },
+        "battery": {
+          "type": "Lithium-ion NCM",
+          "capacity_kwh": 93.3,
+          "technology": "Nickel Cobalt Manganese",
+          "cell_technology": "811 NCM cells"
+        },
+        "charging": {
+          "dc_charging_kw": 150,
+          "ac_charging_kw": 11,
+          "dc_charging_time_30_to_80_min": 18
+        },
+        "features": [
+          "15.6-inch touchscreen",
+          "ADIGO 3.0 intelligent system",
+          "Nappa leather seats",
+          "Ventilated and massaging front seats",
+          "Heated rear seats",
+          "21-speaker audio system",
+          "Panoramic sunroof",
+          "HUD (Head-Up Display)",
+          "Wireless phone charger",
+          "Ambient lighting - 64 colors",
+          "Triple-zone climate control",
+          "PM2.5 air filtration",
+          "Fragrance system",
+          "OTA updates",
+          "V2L (Vehicle-to-Load)"
+        ],
+        "safety": [
+          "6 airbags",
+          "C-NCAP 5-star rating",
+          "Level 2 ADAS",
+          "Adaptive cruise control",
+          "Lane centering",
+          "Automatic emergency braking",
+          "Blind spot monitoring",
+          "Rear cross traffic alert",
+          "360-degree camera",
+          "Traffic sign recognition",
+          "Driver monitoring system"
+        ]
+      },
+      "price_qar": 145000,
+      "trims": [
+        {
+          "trim": "Plus 80",
+          "price": 145000
+        },
+        {
+          "trim": "Plus Performance",
+          "price": 165000
+        }
+      ],
+      "images": [
+        {
+          "type": "exterior_front",
+          "url": "https://www.gacmotor.com/uploads/21012021074720012.jpg"
+        },
+        {
+          "type": "exterior_side",
+          "url": "https://www.gacmotor.com/uploads/21012021074722345.jpg"
+        },
+        {
+          "type": "interior",
+          "url": "https://www.gacmotor.com/uploads/21012021074724678.jpg"
+        }
+      ],
+      "description": "The GAC AION LX Plus is a fully electric suv offering 600 km of range\nand 408 horsepower. It features modern electric vehicle technology with advanced battery systems,\ncomfortable interior with premium features, and comprehensive safety systems."
+    },
+    {
+      "manufacturer": "GAC",
+      "model": "AION V",
+      "year": 2024,
+      "trim_level": "Plus",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 400,
+      "battery_kwh": 60.0,
+      "battery_type": "Lithium-ion NCM",
+      "acceleration_0_100": 8.0,
+      "top_speed_kmh": 160,
+      "power_kw": 165,
+      "power_hp": 224,
+      "torque_nm": 280,
+      "drivetrain": "FWD",
+      "body_style": "SUV",
+      "seats": 5,
+      "cargo_capacity_min_l": 370,
+      "cargo_capacity_max_l": 1560,
+      "charging_dc_kw": 80,
+      "charging_ac_kw": 7.2,
+      "wheels": "18 inch alloy",
+      "specs": {
+        "dimensions": {
+          "length_mm": 4586,
+          "width_mm": 1865,
+          "height_mm": 1660,
+          "wheelbase_mm": 2830,
+          "ground_clearance_mm": 175
+        },
+        "performance": {
+          "acceleration_0_100kmh_s": 8.0,
+          "top_speed_kmh": 160,
+          "range_nedc_km": 400
+        },
+        "powertrain": {
+          "motor_type": "Permanent magnet synchronous motor",
+          "peak_power_kw": 165,
+          "peak_power_hp": 224,
+          "max_torque_nm": 280,
+          "drivetrain": "Front-wheel drive"
+        },
+        "battery": {
+          "type": "Lithium-ion NCM",
+          "capacity_kwh": 60.0,
+          "technology": "Nickel Cobalt Manganese"
+        },
+        "charging": {
+          "dc_charging_kw": 80,
+          "ac_charging_kw": 7.2
+        },
+        "features": [
+          "12.3-inch touchscreen",
+          "ADIGO intelligent system",
+          "Panoramic sunroof",
+          "Electric tailgate",
+          "LED headlights",
+          "Alloy wheels",
+          "Automatic climate control",
+          "Rear parking sensors",
+          "360-degree camera"
+        ],
+        "safety": [
+          "6 airbags",
+          "Electronic Stability Program",
+          "Traction Control",
+          "Hill Start Assist",
+          "Tyre Pressure Monitoring",
+          "ISOFIX anchors"
+        ]
+      },
+      "price_qar": 92000,
+      "trims": [
+        {
+          "trim": "Plus Standard",
+          "price": 92000
+        }
+      ],
+      "images": [
+        {
+          "type": "exterior_front",
+          "url": "https://www.gacmotor.com/uploads/21012021074740012.jpg"
+        },
+        {
+          "type": "exterior_side",
+          "url": "https://www.gacmotor.com/uploads/21012021074742345.jpg"
+        }
+      ],
+      "description": "The GAC AION V is a fully electric suv offering 400 km of range\nand 224 horsepower. It features modern electric vehicle technology with advanced battery systems,\ncomfortable interior with premium features, and comprehensive safety systems."
+    },
+    {
+      "manufacturer": "GAC",
+      "model": "AION ES",
+      "year": 2024,
+      "trim_level": "Standard",
+      "vehicle_type": "EV",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "range_km": 350,
+      "battery_kwh": 52.1,
+      "battery_type": "Lithium-ion NCM",
+      "acceleration_0_100": 9.5,
+      "top_speed_kmh": 140,
+      "power_kw": 100,
+      "power_hp": 136,
+      "torque_nm": 180,
+      "drivetrain": "FWD",
+      "body_style": "Sedan",
+      "seats": 5,
+      "charging_dc_kw": 60,
+      "charging_ac_kw": 6.6,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4680,
+          "width_mm": 1800,
+          "height_mm": 1510,
+          "wheelbase_mm": 2700
+        },
+        "performance": {
+          "acceleration_0_100kmh_s": 9.5,
+          "top_speed_kmh": 140,
+          "range_nedc_km": 350
+        },
+        "powertrain": {
+          "motor_type": "Permanent magnet synchronous motor",
+          "peak_power_kw": 100,
+          "peak_power_hp": 136,
+          "max_torque_nm": 180,
+          "drivetrain": "Front-wheel drive"
+        },
+        "battery": {
+          "type": "Lithium-ion NCM",
+          "capacity_kwh": 52.1
+        },
+        "charging": {
+          "dc_charging_kw": 60,
+          "ac_charging_kw": 6.6
+        }
+      },
+      "price_qar": null,
+      "trims": [],
+      "images": [],
+      "description": "The GAC AION ES is a fully electric sedan offering 350 km of range\nand 136 horsepower. It features modern electric vehicle technology with advanced battery systems,\ncomfortable interior with premium features, and comprehensive safety systems."
+    }
+  ],
+  "dealer_info": {
+    "name": "GAC Motor",
+    "website": "https://www.gacmotor.com",
+    "middle_east_website": "https://www.gacmotor.com",
+    "regions_available": [
+      "Qatar",
+      "UAE",
+      "Saudi Arabia",
+      "Kuwait"
+    ],
+    "social_media": {
+      "facebook": "https://www.facebook.com/gacmotor",
+      "instagram": "https://www.instagram.com/gacmotor",
+      "youtube": "https://www.youtube.com/@GACMotor"
+    }
+  },
+  "notes": [
+    "GAC Aion models are available in selected GCC markets",
+    "AION Y Plus, AION S Plus, and AION LX Plus are the primary models in GCC",
+    "Pricing varies by dealer and availability",
+    "GCC specs include enhanced cooling systems",
+    "Some models may be special order only in Qatar",
+    "Grey market imports may have Chinese specs",
+    "Charging ports may differ between GCC and Chinese specs",
+    "Warranty coverage may differ by GCC country"
+  ],
+  "scraped_date": "2026-01-16"
+}

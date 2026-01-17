@@ -1,0 +1,1141 @@
+{
+  "metadata": {
+    "project": "Qatar Chinese EV/PHEV Database",
+    "research_date": "2025-01-16",
+    "researcher": "AI Vehicle Data Scraper",
+    "scope": [
+      "MG (Morris Garages)",
+      "Geely",
+      "GWM (Great Wall Motors)",
+      "Other Chinese Brands (Haval, NETA, Voyah, Avatr, ORA)"
+    ],
+    "data_sources": [
+      "Official manufacturer websites",
+      "GCC dealership websites",
+      "Qatar grey market platforms (QatarSale)",
+      "UAE import channels",
+      "Regional automotive news"
+    ],
+    "currencies": {
+      "primary": "QAR",
+      "conversion_note": "1 USD ≈ 3.64 QAR, 1 AED ≈ 0.99 QAR"
+    },
+    "notes": [
+      "Pricing includes VAT where applicable",
+      "GCC spec vehicles are officially distributed with local warranty",
+      "Grey market imports are Chinese-spec with limited warranty support",
+      "Prices are estimates and may vary by dealership"
+    ]
+  },
+  "distributors": {
+    "MG": {
+      "official_distributor": "Auto Class Cars",
+      "parent_company": "NBK Holding",
+      "showroom": "Vendom Mall, Lusail",
+      "service_center": "Al Wukair, Al Mashaf Rd, Doha",
+      "phone": "+974 4040 1416",
+      "website": "https://www.mg-qa.com",
+      "brands": ["MG", "Maxus", "BAIC"]
+    },
+    "Geely": {
+      "official_distributor": "Skyline Automotive",
+      "website": "https://geely.com.qa",
+      "buying_portal": "https://buy.geely.com.qa"
+    },
+    "GWM": {
+      "official_distributor": "Wakalat Qatar",
+      "website": "https://gwmqatar.com",
+      "brands": ["Haval", "ORA", "GWM Pickup"]
+    },
+    "Voyah": {
+      "official_distributor": "Voyah Qatar",
+      "website": "https://voyahqatar.com"
+    },
+    "Avatr": {
+      "official_distributor": "Elaf Auto",
+      "website": "https://www.avatrqa.com",
+      "phone": "Available on website"
+    }
+  },
+  "vehicles": [
+    {
+      "manufacturer": "MG",
+      "model": "ZS EV",
+      "year": 2025,
+      "trim_level": "Long Range",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 440,
+      "battery_kwh": 72.6,
+      "acceleration_0_100": 8.4,
+      "top_speed_kmh": 160,
+      "power_kw": 130,
+      "power_hp": 176,
+      "torque_nm": 280,
+      "charging_ac_kw": 6.6,
+      "charging_dc_kw": 87,
+      "manufacturer_direct_price": 144764,
+      "grey_market_price": null,
+      "grey_market_source": null,
+      "price_qar": 144764,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4323,
+          "width_mm": 1809,
+          "height_mm": 1644,
+          "wheelbase_mm": 2585
+        },
+        "battery": {
+          "type": "Lithium Iron Phosphate (LFP)",
+          "capacity_kwh": 72.6,
+          "usable_kwh": 68.3,
+          "warranty": "8 years"
+        },
+        "charging": {
+          "dc_charging_kw": 87,
+          "ac_charging_kw": 6.6,
+          "charging_time_10_80_min_dc": 42
+        },
+        "features": [
+          "72.6 kWh LFP battery",
+          "440 km WLTP range",
+          "MG Pilot driver assistance",
+          "360-degree camera",
+          "PM2.5 air filtration"
+        ]
+      },
+      "images": [
+        {
+          "url": "https://www.mg-qa.com/new-cars/mg-zs-ev",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "MG ZS EV Long Range - Affordable electric SUV with 440km range, 72.6kWh LFP battery, and competitive pricing.",
+      "status": "pending",
+      "availability": "Official MG Qatar distributor"
+    },
+    {
+      "manufacturer": "MG",
+      "model": "MG 4 EV",
+      "year": 2025,
+      "trim_level": "Standard Range 51 kWh",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 365,
+      "battery_kwh": 51,
+      "acceleration_0_100": 7.9,
+      "top_speed_kmh": 160,
+      "power_kw": 125,
+      "power_hp": 170,
+      "torque_nm": 250,
+      "charging_ac_kw": 11,
+      "charging_dc_kw": 88,
+      "manufacturer_direct_price": 100900,
+      "grey_market_price": null,
+      "price_qar": 100900,
+      "body_style": "Hatchback",
+      "drivetrain": "RWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4287,
+          "width_mm": 1836,
+          "height_mm": 1506,
+          "wheelbase_mm": 2705
+        },
+        "battery": {
+          "type": "Lithium Iron Phosphate (LFP)",
+          "capacity_kwh": 51,
+          "technology": "Modular Scalable Platform (MSP)"
+        },
+        "charging": {
+          "dc_charging_kw": 88,
+          "ac_charging_kw": 11
+        },
+        "features": [
+          "Rear-wheel drive",
+          "5-link rear suspension",
+          "Vehicle-to-load (V2L)",
+          "MG iSMART connectivity"
+        ]
+      },
+      "images": [],
+      "description": "MG 4 EV Standard Range - Rear-wheel drive electric hatchback with 365km range.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "MG",
+      "model": "MG 4 EV",
+      "year": 2025,
+      "trim_level": "Long Range 64 kWh",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 465,
+      "battery_kwh": 64,
+      "acceleration_0_100": 7.5,
+      "top_speed_kmh": 160,
+      "power_kw": 150,
+      "power_hp": 204,
+      "torque_nm": 250,
+      "charging_ac_kw": 11,
+      "charging_dc_kw": 140,
+      "manufacturer_direct_price": 107000,
+      "grey_market_price": null,
+      "price_qar": 107000,
+      "body_style": "Hatchback",
+      "drivetrain": "RWD",
+      "seats": 5,
+      "specs": {
+        "battery": {
+          "capacity_kwh": 64
+        },
+        "charging": {
+          "dc_charging_kw": 140
+        }
+      },
+      "images": [],
+      "description": "MG 4 EV Long Range 64 kWh with 465km range and 140kW DC charging.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "MG",
+      "model": "MG 4 EV",
+      "year": 2025,
+      "trim_level": "XPower 77 kWh",
+      "vehicle_type": "EV",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "range_km": 530,
+      "battery_kwh": 77,
+      "acceleration_0_100": 3.8,
+      "top_speed_kmh": 200,
+      "power_kw": 320,
+      "power_hp": 435,
+      "torque_nm": 600,
+      "charging_ac_kw": 11,
+      "charging_dc_kw": 144,
+      "manufacturer_direct_price": null,
+      "grey_market_price": 145000,
+      "grey_market_source": "QatarSale (estimated)",
+      "price_qar": 145000,
+      "body_style": "Hatchback",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "specs": {
+        "battery": {
+          "capacity_kwh": 77
+        },
+        "features": [
+          "Dual motor AWD",
+          "3.8s 0-100 km/h",
+          "530km range",
+          "Performance chassis tuning"
+        ]
+      },
+      "images": [],
+      "description": "MG 4 EV XPower - High-performance dual-motor version with 435HP, 3.8s acceleration. Grey market import from UAE/China.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "MG",
+      "model": "HS Hybrid+",
+      "year": 2025,
+      "trim_level": "Deluxe",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 85,
+      "combined_range_km": 1287,
+      "battery_kwh": 16.6,
+      "acceleration_0_100": 7.9,
+      "top_speed_kmh": 190,
+      "power_kw": 186,
+      "power_hp": 254,
+      "torque_nm": 370,
+      "charging_ac_kw": 3.3,
+      "manufacturer_direct_price": 116316,
+      "grey_market_price": null,
+      "price_qar": 116316,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4579,
+          "width_mm": 1876,
+          "height_mm": 1685,
+          "wheelbase_mm": 2720
+        },
+        "battery": {
+          "type": "Lithium-ion",
+          "capacity_kwh": 16.6,
+          "electric_range_km": 85
+        },
+        "fuel_efficiency": {
+          "combined_l_100km": 1.8,
+          "combined_range_km": 1287
+        },
+        "features": [
+          "Plug-in hybrid system",
+          "1287km combined range",
+          "85km electric range",
+          "MG Pilot driver assist"
+        ]
+      },
+      "images": [],
+      "description": "MG HS Hybrid+ Deluxe - Plug-in hybrid SUV with 1287km combined range, 85km electric only.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "MG",
+      "model": "HS Hybrid+",
+      "year": 2025,
+      "trim_level": "Luxury",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 85,
+      "combined_range_km": 1287,
+      "battery_kwh": 16.6,
+      "manufacturer_direct_price": 135728,
+      "grey_market_price": null,
+      "price_qar": 135728,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "specs": {},
+      "images": [],
+      "description": "MG HS Hybrid+ Luxury trim with premium features.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "MG",
+      "model": "EHS",
+      "year": 2025,
+      "trim_level": "PHEV",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 75,
+      "combined_range_km": 1200,
+      "battery_kwh": 16.6,
+      "manufacturer_direct_price": 135233,
+      "grey_market_price": null,
+      "price_qar": 135233,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "specs": {
+        "features": [
+          "Plugin hybrid SUV",
+          "75km electric range",
+          "1200km total range"
+        ]
+      },
+      "images": [],
+      "description": "MG EHS PHEV - Plug-in hybrid SUV similar to HS Hybrid+ but different styling/marketing.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Geely",
+      "model": "Geometry C",
+      "year": 2025,
+      "trim_level": "GS 53 kWh",
+      "vehicle_type": "EV",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "availability": "UAE import to Qatar",
+      "range_km": 400,
+      "battery_kwh": 53,
+      "acceleration_0_100": 7.7,
+      "top_speed_kmh": 150,
+      "power_kw": 150,
+      "power_hp": 201,
+      "torque_nm": 310,
+      "charging_ac_kw": 6.6,
+      "charging_dc_kw": 100,
+      "manufacturer_direct_price": null,
+      "uae_price_aed": 132000,
+      "uae_price_aed_high": 132000,
+      "grey_market_price": 132000,
+      "grey_market_source": "UAE import via QatarSale",
+      "price_qar": 130680,
+      "body_style": "SUV Crossover",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4432,
+          "width_mm": 1833,
+          "height_mm": 1560,
+          "wheelbase_mm": 2700
+        },
+        "battery": {
+          "type": "Lithium-ion",
+          "capacity_kwh": 53,
+          "range_km": 400
+        },
+        "charging": {
+          "dc_charging_kw": 100,
+          "ac_charging_kw": 6.6
+        },
+        "features": [
+          "201 HP electric motor",
+          "400km range",
+          "Futuristic design",
+          "UAE official specs"
+        ]
+      },
+      "images": [
+        {
+          "url": "https://www.geely.ae/car/geometry-c",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Geely Geometry C GS 53 kWh - Electric SUV crossover available through UAE imports. 400km range, 201HP.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Geely",
+      "model": "Geometry C",
+      "year": 2025,
+      "trim_level": "GF 70 kWh Long Range",
+      "vehicle_type": "EV",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "availability": "UAE import to Qatar",
+      "range_km": 485,
+      "battery_kwh": 70,
+      "acceleration_0_100": 7.7,
+      "top_speed_kmh": 150,
+      "power_kw": 150,
+      "power_hp": 201,
+      "torque_nm": 310,
+      "charging_ac_kw": 6.6,
+      "charging_dc_kw": 100,
+      "manufacturer_direct_price": null,
+      "uae_price_aed": 157000,
+      "grey_market_price": 155430,
+      "grey_market_source": "UAE import via QatarSale",
+      "price_qar": 155430,
+      "body_style": "SUV Crossover",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "battery": {
+          "capacity_kwh": 70,
+          "range_km": 485
+        }
+      },
+      "images": [],
+      "description": "Geely Geometry C GF 70 kWh Long Range - Extended range version with 485km WLTP range.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Geely",
+      "model": "Monjaro",
+      "year": 2025,
+      "trim_level": "Standard",
+      "vehicle_type": "ICE",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 118000,
+      "grey_market_price": null,
+      "price_qar": 118000,
+      "body_style": "SUV",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "fuel_type": "Petrol",
+      "specs": {
+        "dimensions": {
+          "length_mm": 4770,
+          "width_mm": 1895,
+          "height_mm": 1689,
+          "wheelbase_mm": 2845
+        },
+        "engine": {
+          "displacement_l": 2.0,
+          "power_kw": 175,
+          "power_hp": 238,
+          "torque_nm": 350,
+          "fuel_economy_l_100km": 8.8
+        },
+        "features": [
+          "2.0L turbocharged engine",
+          "238 HP",
+          "AWD system",
+          "Premium interior",
+          "360-degree camera"
+        ]
+      },
+      "images": [
+        {
+          "url": "https://geely.com.qa/the_new_monjaro/",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Geely Monjaro - Flagship SUV with 2.0L turbo engine, AWD, and premium features. Officially available in Qatar.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Geely",
+      "model": "Tugella",
+      "year": 2025,
+      "trim_level": "GF",
+      "vehicle_type": "ICE",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 117087,
+      "grey_market_price": null,
+      "price_qar": 117087,
+      "body_style": "SUV Coupe",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "fuel_type": "Petrol",
+      "specs": {
+        "features": [
+          "Performance SUV coupe",
+          "AWD system",
+          "Sporty design"
+        ]
+      },
+      "images": [],
+      "description": "Geely Tugella GF - Performance SUV coupe with sporty styling.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Geely",
+      "model": "Tugella",
+      "year": 2025,
+      "trim_level": "GF+",
+      "vehicle_type": "ICE",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 126454,
+      "grey_market_price": null,
+      "price_qar": 126454,
+      "body_style": "SUV Coupe",
+      "drivetrain": "AWD",
+      "specs": {},
+      "images": [],
+      "description": "Geely Tugella GF+ - Enhanced trim level.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Geely",
+      "model": "Tugella",
+      "year": 2025,
+      "trim_level": "GF+ BR",
+      "vehicle_type": "ICE",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 129365,
+      "grey_market_price": null,
+      "price_qar": 129365,
+      "body_style": "SUV Coupe",
+      "drivetrain": "AWD",
+      "specs": {},
+      "images": [],
+      "description": "Geely Tugella GF+ BR - Premium trim with brown interior package.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Geely",
+      "model": "Emgrand",
+      "year": 2025,
+      "trim_level": "Standard",
+      "vehicle_type": "ICE",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 49900,
+      "grey_market_price": null,
+      "price_qar": 49900,
+      "body_style": "Sedan",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "fuel_type": "Petrol",
+      "specs": {
+        "engine": {
+          "power_kw": 90,
+          "power_hp": 120,
+          "torque_nm": 152,
+          "fuel_economy_l_100km": 6.4
+        },
+        "features": [
+          "Affordable sedan",
+          "120 HP",
+          "6.4 L/100km fuel economy"
+        ]
+      },
+      "images": [],
+      "description": "Geely Emgrand - Entry-level sedan, most affordable Geely in Qatar.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Geely",
+      "model": "Coolray",
+      "year": 2025,
+      "trim_level": "Comfort",
+      "vehicle_type": "ICE",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 57990,
+      "grey_market_price": null,
+      "price_qar": 57990,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "fuel_type": "Petrol",
+      "specs": {
+        "features": [
+          "Compact SUV",
+          "Turbocharged engine",
+          "Affordable pricing"
+        ]
+      },
+      "images": [],
+      "description": "Geely Coolray Comfort - Compact SUV with turbocharged engine.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Geely",
+      "model": "Starray",
+      "year": 2025,
+      "trim_level": "Standard",
+      "vehicle_type": "ICE",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 84000,
+      "grey_market_price": null,
+      "price_qar": 84000,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "fuel_type": "Petrol",
+      "specs": {},
+      "images": [],
+      "description": "Geely Starray - Mid-size SUV.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Geely",
+      "model": "Galaxy L6",
+      "year": 2025,
+      "trim_level": "EM-i PHEV",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "availability": "Grey market import from China/UAE",
+      "range_km": 100,
+      "combined_range_km": 1370,
+      "battery_kwh": 18.4,
+      "manufacturer_direct_price": null,
+      "china_price_cny": 69800,
+      "estimated_grey_market_price": 95000,
+      "grey_market_source": "China/UAE import",
+      "price_qar": 95000,
+      "body_style": "Sedan",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "powertrain": {
+          "engine": "1.5L turbo",
+          "electric_motor": "DHT Pro hybrid system",
+          "combined_power_hp": 180,
+          "electric_range_km": 100,
+          "combined_range_km": 1370
+        },
+        "features": [
+          "Fourth-generation DM-i hybrid technology",
+          "100km electric range",
+          "1370km total range",
+          "Advanced connectivity"
+        ]
+      },
+      "images": [],
+      "description": "Geely Galaxy L6 EM-i - Advanced plug-in hybrid sedan with 1370km total range. Grey market import.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Geely",
+      "model": "Galaxy L7",
+      "year": 2025,
+      "trim_level": "PHEV",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "availability": "Grey market import from China",
+      "range_km": 115,
+      "combined_range_km": 1370,
+      "battery_kwh": 18.4,
+      "manufacturer_direct_price": null,
+      "china_price_cny": 140000,
+      "estimated_grey_market_price": 190000,
+      "grey_market_source": "China import",
+      "price_qar": 190000,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "features": [
+          "Plug-in hybrid SUV",
+          "115km electric range",
+          "1370km combined range",
+          "Competitor to BYD Song Plus DM-i"
+        ]
+      },
+      "images": [],
+      "description": "Geely Galaxy L7 PHEV - Plug-in hybrid SUV competing with BYD Song Plus DM-i. Grey market only.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Haval",
+      "model": "H6",
+      "year": 2025,
+      "trim_level": "2.0T Supreme",
+      "vehicle_type": "ICE",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 90000,
+      "uae_price_aed": 90000,
+      "grey_market_price": 89100,
+      "price_qar": 89100,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "fuel_type": "Petrol",
+      "specs": {
+        "engine": {
+          "displacement_l": 2.0,
+          "power_hp": 201,
+          "torque_nm": 320
+        },
+        "dimensions": {
+          "length_mm": 4653,
+          "width_mm": 1886,
+          "height_mm": 1724,
+          "wheelbase_mm": 2738
+        },
+        "features": [
+          "2.0L turbocharged engine",
+          "201 HP",
+          "Official GCC specs",
+          "Advanced safety features"
+        ]
+      },
+      "images": [
+        {
+          "url": "https://gwmqatar.com/haval-h6-2025/",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Haval H6 2.0T Supreme - Mid-size SUV with 2.0L turbo engine, officially available in Qatar through GWM.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Haval",
+      "model": "H6",
+      "year": 2025,
+      "trim_level": "2.0T Premium 4WD",
+      "vehicle_type": "ICE",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "manufacturer_direct_price": 105000,
+      "uae_price_aed": 105000,
+      "grey_market_price": 103950,
+      "price_qar": 103950,
+      "body_style": "SUV",
+      "drivetrain": "4WD",
+      "seats": 5,
+      "fuel_type": "Petrol",
+      "specs": {
+        "features": [
+          "2.0L turbocharged engine",
+          "4WD system",
+          "Premium trim",
+          "Advanced safety features"
+        ]
+      },
+      "images": [],
+      "description": "Haval H6 2.0T Premium 4WD - Top-spec version with 4WD system.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Haval",
+      "model": "H6",
+      "year": 2025,
+      "trim_level": "Hybrid",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "availability": "UAE import to Qatar",
+      "manufacturer_direct_price": null,
+      "uae_price_aed": 114900,
+      "grey_market_price": 113751,
+      "grey_market_source": "UAE import via QatarSale",
+      "price_qar": 113751,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "fuel_type": "Hybrid",
+      "specs": {
+        "features": [
+          "Hybrid powertrain",
+          "Better fuel economy",
+          "Available in UAE",
+          "Grey market import to Qatar"
+        ]
+      },
+      "images": [],
+      "description": "Haval H6 Hybrid - Hybrid version available in UAE, can be imported to Qatar through grey market.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "GWM",
+      "model": "ORA 03",
+      "year": 2026,
+      "trim_level": "48 kWh Pro",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 420,
+      "battery_kwh": 48,
+      "acceleration_0_100": 7.9,
+      "top_speed_kmh": 152,
+      "power_kw": 126,
+      "power_hp": 169,
+      "torque_nm": 250,
+      "charging_ac_kw": 6.6,
+      "charging_dc_kw": 80,
+      "manufacturer_direct_price": 95000,
+      "uae_price_aed": 85000,
+      "grey_market_price": null,
+      "price_qar": 95000,
+      "body_style": "Hatchback",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4235,
+          "width_mm": 1825,
+          "height_mm": 1596,
+          "wheelbase_mm": 2650
+        },
+        "battery": {
+          "type": "Lithium-ion",
+          "capacity_kwh": 48,
+          "range_km": 420
+        },
+        "charging": {
+          "dc_charging_kw": 80,
+          "ac_charging_kw": 6.6,
+          "charging_time_10_80_min": 45
+        },
+        "features": [
+          "Retro-modern design",
+          "420km WLTP range",
+          "Fast charging support",
+          "Women-friendly features"
+        ]
+      },
+      "images": [
+        {
+          "url": "https://gwmqatar.com/ora-electric-car/",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "GWM ORA 03 Pro - Retro-styled electric hatchback with 420km range. Officially available in Qatar.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "NETA",
+      "model": "V",
+      "year": 2023,
+      "trim_level": "Standard",
+      "vehicle_type": "EV",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "availability": "Limited UAE availability, production halted",
+      "range_km": 401,
+      "battery_kwh": 38.5,
+      "acceleration_0_100": null,
+      "top_speed_kmh": 101,
+      "power_kw": 70,
+      "power_hp": 95,
+      "manufacturer_direct_price": null,
+      "uae_price_aed": 66249,
+      "china_price_usd": 12000,
+      "grey_market_price": 65586,
+      "grey_market_source": "UAE import (limited availability)",
+      "price_qar": 65586,
+      "body_style": "Compact SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4070,
+          "width_mm": 1690,
+          "height_mm": 1540,
+          "wheelbase_mm": 2420
+        },
+        "battery": {
+          "type": "Lithium-ion",
+          "capacity_kwh": 38.5,
+          "range_km": 401
+        },
+        "features": [
+          "Compact electric SUV",
+          "401km NEDC range",
+          "Affordable pricing",
+          "Production halted - warranty concerns"
+        ]
+      },
+      "images": [],
+      "description": "NETA V - Compact electric SUV from Hozon Auto. NOTE: NETA Motors has halted production, raising concerns about warranty and spare parts support in the GCC. Limited availability in UAE.",
+      "status": "warning",
+      "warning": "Manufacturer financial crisis - production halted. Not recommended for purchase due to warranty and service support concerns."
+    },
+    {
+      "manufacturer": "NETA",
+      "model": "U",
+      "year": 2023,
+      "trim_level": "54.34 kWh",
+      "vehicle_type": "EV",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "availability": "Grey market only",
+      "range_km": 500,
+      "battery_kwh": 54.34,
+      "manufacturer_direct_price": null,
+      "china_price_usd": 18000,
+      "estimated_grey_market_price": 75000,
+      "grey_market_source": "China import",
+      "price_qar": 75000,
+      "body_style": "SUV",
+      "drivetrain": "FWD",
+      "seats": 5,
+      "specs": {
+        "features": [
+          "54.34 kWh battery",
+          "500km range",
+          "Grey market import",
+          "Production halted - warranty concerns"
+        ]
+      },
+      "images": [],
+      "description": "NETA U 54.34 kWh - Larger electric SUV. WARNING: Production halted due to manufacturer financial issues.",
+      "status": "warning",
+      "warning": "Manufacturer financial crisis - not recommended."
+    },
+    {
+      "manufacturer": "Voyah",
+      "model": "FREE",
+      "year": 2025,
+      "trim_level": "106 kWh Extended Range",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 680,
+      "battery_kwh": 106,
+      "acceleration_0_100": 4.2,
+      "top_speed_kmh": 200,
+      "power_kw": 360,
+      "power_hp": 490,
+      "torque_nm": 720,
+      "charging_ac_kw": 11,
+      "charging_dc_kw": 120,
+      "manufacturer_direct_price": 230000,
+      "uae_price_aed": 220000,
+      "grey_market_price": null,
+      "price_qar": 230000,
+      "body_style": "SUV",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4905,
+          "width_mm": 1950,
+          "height_mm": 1645,
+          "wheelbase_mm": 2960
+        },
+        "battery": {
+          "type": "Lithium-ion NCM",
+          "capacity_kwh": 106,
+          "range_km": 680
+        },
+        "charging": {
+          "dc_charging_kw": 120,
+          "ac_charging_kw": 11,
+          "charging_time_30_80_min": 36
+        },
+        "features": [
+          "Dongfeng premium EV brand",
+          "680km range",
+          "4.2s 0-100 km/h",
+          "490 HP dual motor",
+          "Luxury interior",
+          "Air suspension",
+          "Official Qatar distributor"
+        ]
+      },
+      "images": [
+        {
+          "url": "https://voyahqatar.com/voyah-free/",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Voyah FREE 106 kWh - Premium electric SUV from Dongfeng with 680km range, 490HP dual motor, luxury features. Officially available in Qatar.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Voyah",
+      "model": "FREE",
+      "year": 2025,
+      "trim_level": "REEV Range Extender",
+      "vehicle_type": "Hybrid",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "availability": "UAE import to Qatar",
+      "range_km": 200,
+      "combined_range_km": 1357,
+      "battery_kwh": 43,
+      "acceleration_0_100": 4.5,
+      "top_speed_kmh": 200,
+      "power_kw": 360,
+      "power_hp": 490,
+      "torque_nm": 720,
+      "manufacturer_direct_price": null,
+      "uae_price_aed": 85000,
+      "grey_market_price": 84150,
+      "grey_market_source": "UAE import via QatarSale",
+      "price_qar": 84150,
+      "body_style": "SUV",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "fuel_type": "Petrol Electric Hybrid",
+      "specs": {
+        "features": [
+          "Range extender hybrid",
+          "1357km total range",
+          "200km electric range",
+          "43 kWh battery",
+          "Premium Dongfeng brand"
+        ]
+      },
+      "images": [],
+      "description": "Voyah FREE REEV - Range extender version with 1357km combined range. Available through UAE imports.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Avatr",
+      "model": "11",
+      "year": 2025,
+      "trim_level": "Ultra Range AWD",
+      "vehicle_type": "EV",
+      "gcc_spec": true,
+      "chinese_spec": false,
+      "range_km": 680,
+      "battery_kwh": 90,
+      "acceleration_0_100": 3.9,
+      "top_speed_kmh": 200,
+      "power_kw": 425,
+      "power_hp": 578,
+      "torque_nm": 650,
+      "charging_ac_kw": 11,
+      "charging_dc_kw": 240,
+      "manufacturer_direct_price": 320000,
+      "uae_price_aed": 320000,
+      "grey_market_price": null,
+      "price_qar": 320000,
+      "body_style": "SUV",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "specs": {
+        "dimensions": {
+          "length_mm": 4880,
+          "width_mm": 1970,
+          "height_mm": 1601,
+          "wheelbase_mm": 2975
+        },
+        "battery": {
+          "type": "Lithium-ion NCM",
+          "capacity_kwh": 90,
+          "range_km": 680,
+          "technology": "CATL NCM"
+        },
+        "charging": {
+          "dc_charging_kw": 240,
+          "ac_charging_kw": 11,
+          "charging_time_10_80_min": 25
+        },
+        "features": [
+          "Huawei-powered technology",
+          "680km range",
+          "240kW ultra-fast charging",
+          "Triple LiDAR sensors",
+          "AI cockpit",
+          "578 HP dual motor",
+          "3.9s 0-100 km/h",
+          "Air suspension",
+          "Official Qatar distributor (Elaf Auto)"
+        ]
+      },
+      "images": [
+        {
+          "url": "https://www.avatrqa.com/avatr11",
+          "type": "exterior",
+          "is_primary": true
+        }
+      ],
+      "description": "Avatr 11 Ultra Range AWD - Premium electric SUV with Huawei technology, 680km range, triple LiDAR, 240kW charging. Officially available in Qatar through Elaf Auto.",
+      "status": "pending"
+    },
+    {
+      "manufacturer": "Avatr",
+      "model": "12",
+      "year": 2025,
+      "trim_level": "Gran Coupe",
+      "vehicle_type": "EV",
+      "gcc_spec": false,
+      "chinese_spec": true,
+      "availability": "UAE import to Qatar",
+      "range_km": 700,
+      "battery_kwh": 94.5,
+      "acceleration_0_100": 3.9,
+      "top_speed_kmh": 210,
+      "power_kw": 425,
+      "power_hp": 578,
+      "torque_nm": 650,
+      "charging_ac_kw": 11,
+      "charging_dc_kw": 240,
+      "manufacturer_direct_price": null,
+      "uae_price_aed": 217000,
+      "grey_market_price": 214830,
+      "grey_market_source": "UAE import via QatarSale",
+      "price_qar": 214830,
+      "body_style": "Gran Coupe",
+      "drivetrain": "AWD",
+      "seats": 5,
+      "specs": {
+        "features": [
+          "Futuristic gran coupe design",
+          "Scissor doors",
+          "Huawei AI cockpit",
+          "700km range",
+          "Triple LiDAR",
+          "29 sensors"
+        ]
+      },
+      "images": [],
+      "description": "Avatr 12 Gran Coupe - Futuristic luxury gran coupe with scissor doors, Huawei AI technology, 700km range. Available through UAE imports.",
+      "status": "pending"
+    }
+  ]
+}

@@ -12,7 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { User as UserIcon, LogOut, Settings, ShoppingBag } from '@/components/icons'
+import { User as UserIcon, LogOut, ShoppingBag } from '@/components/icons'
 
 export function UserMenu() {
   const { user, signOut } = useAuth()

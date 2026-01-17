@@ -1,0 +1,108 @@
+================================================================================
+NIO RESEARCH - QATAR MARKET
+================================================================================
+
+BRAND OVERVIEW:
+- NIO (Chinese: 蔚来) is a premium Chinese electric vehicle manufacturer
+- Founded: 2014 by William Li
+- Headquarters: Shanghai, China
+- Market Position: Premium/luxury EV segment
+- Key Technology: Battery swap stations, NIO Pilot autonomous driving
+
+MODELS RESEARCH:
+================================================================================
+
+1. NIO ES8 (Flagship SUV)
+   - Position: Full-size luxury SUV (7-seater)
+   - China Launch: 2018
+   - 2024/2025 Model Year Updates
+   - Battery Options: 75 kWh, 100 kWh, 150 kWh (semi-solid-state)
+   - Range (CLTC): 450-605 km depending on battery
+   - Power: 480 kW (650 hp)
+   - Acceleration: 0-100 km/h in 4.1s
+   - Charging: Supports battery swap
+   - Drive: AWD
+
+2. NIO ES6 (Mid-size SUV)
+   - Position: 5-seater performance SUV
+   - China Launch: 2019
+   - 2024/2025 Refresh: ES6 with updated design
+   - Battery Options: 75 kWh, 100 kWh
+   - Range (CLTC): 500-625 km
+   - Power: 360-480 kW
+   - Acceleration: 0-100 km/h in 4.5s
+   - Drive: AWD
+
+3. NIO EL7 (Formerly ES7)
+   - Position: Large luxury SUV
+   - China Launch: 2022
+   - Battery: 100 kWh
+   - Range (CLTC): 500+ km
+   - Power: 480 kW
+   - Features: Air suspension, NAD autonomous driving
+
+4. NIO ET7 (Flagship Sedan)
+   - Position: Full-size luxury sedan
+   - China Launch: 2022
+   - Global Launch: Europe 2022-2023
+   - Battery Options: 75 kWh, 100 kWh, 150 kWh
+   - Range (CLTC): 500-700+ km
+   - Power: 480 kW (653 hp)
+   - Acceleration: 0-100 km/h in 3.8s
+   - Autonomous: NIO Adam supercomputer + LiDAR
+   - Interior: Minimalist luxury, 12.8" AMOLED display
+
+5. NIO ET5 (Mid-size Sedan)
+   - Position: Premium sports sedan
+   - China Launch: 2022
+   - Battery Options: 75 kWh, 100 kWh
+   - Range (CLTC): 560-710 km
+   - Power: 360 kW (480 hp)
+   - Acceleration: 0-100 km/h in 4.0s
+   - Platform: NT2.0
+
+GCC/QATAR STATUS:
+================================================================================
+- Official Launch: NO official NIO presence in GCC/Qatar as of 2025
+- Grey Market: Limited private imports through QatarSale
+- Battery Swap: NO NIO Power Swap stations in Qatar
+- Service: NO NIO House or official service centers
+- Warranty: Chinese warranty only, not valid in Qatar
+- Availability: Through private importers/dealers
+
+POTENTIAL GCC PRICING (ESTIMATED - Grey Market):
+================================================================================
+- NIO ET5: QAR 180,000 - 220,000 (imported)
+- NIO ES6: QAR 200,000 - 250,000 (imported)
+- NIO ES8: QAR 240,000 - 290,000 (imported)
+- NIO ET7: QAR 260,000 - 320,000 (imported)
+
+KEY FEATURES IN GCC:
+- Desert cooling packages required
+- Battery performance in extreme heat
+- NAD (NIO Autonomous Driving) availability limited
+- NOMI AI assistant with Arabic language support (uncertain)
+
+OFFICIAL DISTRIBUTOR:
+- None - grey market only
+- Private importers may offer limited warranty
+
+NIO EUROPE COMPARISON:
+================================================================================
+- NIO launched in Norway (2021), Germany, Netherlands (2022)
+- European pricing: ET5 from €49,000, ES6 from €61,000
+- GCC would likely have 20-30% premium due to logistics
+
+IMAGE SOURCES:
+- https://www.nio.com
+- https://www.nio.com/es8
+- https://www.nio.com/es6
+- https://www.nio.com/et7
+- https://www.nio.com/et5
+
+RESEARCH NOTES:
+- NIO has NOT announced official GCC expansion plans
+- Battery swap technology requires infrastructure investment
+- Regional competitors: Tesla, Lucid (official), BMW iX, Mercedes EQS
+- Grey market imports limited due to lack of service/warranty
+

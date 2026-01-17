@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../data/repositories/vehicle_repository.dart';
@@ -49,7 +50,8 @@ class VehicleListNotifier extends StateNotifier<AsyncValue<VehicleListResult>> {
 
   Future<void> loadMore() async {
     final current = state.valueOrNull;
-    if (current == null || !current.hasMore!) return;
+    // Handle null hasMore safely without force unwrap
+    if (current == null || current.hasMore != true) return;
 
     try {
       final result = await _repository.getVehicles(
@@ -68,7 +70,8 @@ class VehicleListNotifier extends StateNotifier<AsyncValue<VehicleListResult>> {
 
       state = AsyncValue.data(updated);
     } catch (e, st) {
-      // Don't update state on error, just keep existing data
+      // Log error but keep existing data to allow retry
+      debugPrint('Failed to load more vehicles: $e');
     }
   }
 

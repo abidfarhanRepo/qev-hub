@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
@@ -22,7 +22,7 @@ export function SavingsCalculator({ onClose, vehicle }: SavingsCalculatorProps) 
   const [evEfficiency, setEvEfficiency] = useState(18)
   const [years, setYears] = useState(5)
 
-  const calculateSavings = () => {
+  const calculateSavings = useMemo(() => {
     const vehiclePrice = vehicle?.price_qar || 175000
     const marketPrice = vehicle?.market_price_qar || vehiclePrice * 1.35
 
@@ -54,9 +54,9 @@ export function SavingsCalculator({ onClose, vehicle }: SavingsCalculatorProps) 
       totalSavingsPercent: ((totalSavings / iceTotalCost) * 100).toFixed(1),
       co2Saved: (annualKm / 100) * (iceLitersPer100km * 2.3 - evKwhPer100km * 0.5) * years,
     }
-  }
+  }, [annualKm, electricityPrice, fuelPrice, fuelEfficiency, evEfficiency, years, vehicle])
 
-  const savings = calculateSavings()
+  const savings = calculateSavings
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-QA', {

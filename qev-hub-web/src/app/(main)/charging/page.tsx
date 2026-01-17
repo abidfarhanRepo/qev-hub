@@ -7,22 +7,30 @@ import { supabase } from '@/lib/supabase'
 import { ChargingStation } from '@/lib/charging-data-provider'
 
 // Dynamically import leaflet components to avoid SSR issues
+// Using any type to bypass dynamic import type inference issues with react-leaflet
 const MapContainer = dynamic(
   () => import('react-leaflet').then((mod) => mod.MapContainer),
   { ssr: false }
-)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+) as any
+
 const TileLayer = dynamic(
   () => import('react-leaflet').then((mod) => mod.TileLayer),
   { ssr: false }
-)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+) as any
+
 const Marker = dynamic(
   () => import('react-leaflet').then((mod) => mod.Marker),
   { ssr: false }
-)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+) as any
+
 const Popup = dynamic(
   () => import('react-leaflet').then((mod) => mod.Popup),
   { ssr: false }
-)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+) as any
 
 // Lazy load useMap
 const MapController = dynamic(

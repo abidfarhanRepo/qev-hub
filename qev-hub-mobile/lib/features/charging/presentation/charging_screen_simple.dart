@@ -76,6 +76,9 @@ class _ChargingScreenSimpleState extends State<ChargingScreenSimple> {
         desiredAccuracy: LocationAccuracy.high,
       );
 
+      // Check if still mounted before updating state
+      if (!mounted) return;
+
       setState(() {
         _userLocation = LatLng(position.latitude, position.longitude);
       });

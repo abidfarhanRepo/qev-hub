@@ -1,0 +1,11 @@
+[Unit]
+Description=QEV Charging Station Sync Timer
+Requires=qev-charging-sync.service
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,29 @@
+Manufacturer,Model,Year,Trim,Vehicle Type,GCC Spec,Range_km,Battery_kWh,Power_HP,Price_QAR,Availability,Status
+MG,ZS EV,2025,Long Range,EV,true,440,72.6,176,144764,Official,pending
+MG,MG 4 EV,2025,Standard Range 51 kWh,EV,true,365,51,170,100900,Official,pending
+MG,MG 4 EV,2025,Long Range 64 kWh,EV,true,465,64,204,107000,Official,pending
+MG,MG 4 EV,2025,XPower 77 kWh,EV,false,530,77,435,145000,Grey Market,pending
+MG,HS Hybrid+,2025,Deluxe,Hybrid,true,85,16.6,254,116316,Official,pending
+MG,HS Hybrid+,2025,Luxury,Hybrid,true,85,16.6,254,135728,Official,pending
+MG,EHS,2025,PHEV,Hybrid,true,75,16.6,254,135233,Official,pending
+Geely,Geometry C,2025,GS 53 kWh,EV,false,400,53,201,130680,UAE Import,pending
+Geely,Geometry C,2025,GF 70 kWh,EV,false,485,70,201,155430,UAE Import,pending
+Geely,Monjaro,2025,Standard,ICE,true,0,0,238,118000,Official,pending
+Geely,Tugella,2025,GF,ICE,true,0,0,201,117087,Official,pending
+Geely,Tugella,2025,GF+,ICE,true,0,0,201,126454,Official,pending
+Geely,Tugella,2025,GF+ BR,ICE,true,0,0,201,129365,Official,pending
+Geely,Emgrand,2025,Standard,ICE,true,0,0,120,49900,Official,pending
+Geely,Coolray,2025,Comfort,ICE,true,0,0,150,57990,Official,pending
+Geely,Starray,2025,Standard,ICE,true,0,0,170,84000,Official,pending
+Geely,Galaxy L6,2025,EM-i PHEV,Hybrid,false,100,18.4,180,95000,Grey Market,pending
+Geely,Galaxy L7,2025,PHEV,Hybrid,false,115,18.4,180,190000,Grey Market,pending
+Haval,H6,2025,2.0T Supreme,ICE,true,0,0,201,89100,Official,pending
+Haval,H6,2025,2.0T Premium 4WD,ICE,true,0,0,201,103950,Official,pending
+Haval,H6,2025,Hybrid,Hybrid,false,0,0,180,113751,UAE Import,pending
+GWM,ORA 03,2026,48 kWh Pro,EV,true,420,48,169,95000,Official,pending
+NETA,V,2023,Standard,EV,false,401,38.5,95,65586,UAE Import,WARNING
+NETA,U,2023,54.34 kWh,EV,false,500,54.34,120,75000,Grey Market,WARNING
+Voyah,FREE,2025,106 kWh,EV,true,680,106,490,230000,Official,pending
+Voyah,FREE,2025,REEV,Hybrid,false,200,43,490,84150,UAE Import,pending
+Avatr,11,2025,Ultra Range AWD,EV,true,680,90,578,320000,Official,pending
+Avatr,12,2025,Gran Coupe,EV,false,700,94.5,578,214830,UAE Import,pending

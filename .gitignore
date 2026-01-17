@@ -117,3 +117,14 @@ Screenshot_*.png
 __pycache__/
 *.pyc
 *.pyo
+flutter
+
+# Large files
+videos/
+*.mp4
+*.avi
+*.mov
+
+# Build outputs
+**/build/
+**/.dart_tool/

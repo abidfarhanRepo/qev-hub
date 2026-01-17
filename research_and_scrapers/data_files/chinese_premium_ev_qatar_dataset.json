@@ -1,0 +1,1296 @@
+{
+  "metadata": {
+    "project": "Premium Chinese EV Brands - Qatar Market Research",
+    "country": "Qatar",
+    "research_date": "2025-01-16",
+    "brands": ["NIO", "XPeng", "Zeekr"],
+    "data_sources": [
+      "Official manufacturer websites",
+      "Manufacturer specifications",
+      "Grey market import data",
+      "Regional automotive analysis"
+    ],
+    "notes": [
+      "As of 2025, NONE of these brands have official distributor presence in Qatar",
+      "All vehicles are grey market imports through private dealers",
+      "Pricing estimates based on China/Europe pricing plus import costs",
+      "Warranty coverage limited to Chinese/manufacturer origin",
+      "Service and parts availability challenging without official presence"
+    ],
+    "official_distributors": {
+      "NIO": "None - Grey market only",
+      "XPeng": "None - Grey market only",
+      "Zeekr": "None - Grey market only"
+    }
+  },
+  "brands": [
+    {
+      "brand": "NIO",
+      "chinese_name": "蔚来",
+      "founded": 2014,
+      "founder": "William Li",
+      "headquarters": "Shanghai, China",
+      "market_position": "Premium/Luxury EV",
+      "key_technologies": [
+        "Battery Swap Stations (NIO Power)",
+        "NIO Pilot / NAD Autonomous Driving",
+        "NOMI AI Assistant",
+        "NT2.0 Platform"
+      ],
+      "gcc_status": {
+        "official_presence": false,
+        "battery_swap_stations": 0,
+        "nio_houses": 0,
+        "service_centers": 0,
+        "warranty_coverage": "China only - not valid in Qatar"
+      },
+      "vehicles": [
+        {
+          "manufacturer": "NIO",
+          "model": "ES8",
+          "year": 2025,
+          "trim_level": "Signature 100 kWh",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 605,
+          "battery_kwh": 100,
+          "acceleration_0_100": 4.1,
+          "top_speed_kmh": 200,
+          "power_kw": 480,
+          "power_hp": 650,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 180,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 240000,
+          "grey_market_source": "Private Import",
+          "price_qar": 240000,
+          "body_style": "SUV",
+          "drivetrain": "AWD",
+          "seats": 7,
+          "specs": {
+            "dimensions": {
+              "length_mm": 5022,
+              "width_mm": 1962,
+              "height_mm": 1756,
+              "wheelbase_mm": 3010
+            },
+            "battery": {
+              "type": "NIO Battery Pack",
+              "swap_capability": true,
+              "options": ["75 kWh", "100 kWh", "150 kWh"]
+            },
+            "features": [
+              "Air suspension",
+              "NAD autonomous driving",
+              "NOMI AI assistant",
+              "12.8\" AMOLED display",
+              "Premium Nappa leather"
+            ]
+          },
+          "images": [
+            {
+              "url": "https://www.nio.com/es8",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "NIO ES8 flagship 7-seater luxury SUV with 605km range, 650hp, air suspension, and battery swap capability.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "NIO",
+          "model": "ES8",
+          "year": 2025,
+          "trim_level": "Performance 150 kWh",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 520,
+          "battery_kwh": 150,
+          "acceleration_0_100": 4.1,
+          "top_speed_kmh": 200,
+          "power_kw": 480,
+          "power_hp": 650,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 200,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 290000,
+          "grey_market_source": "Private Import",
+          "price_qar": 290000,
+          "body_style": "SUV",
+          "drivetrain": "AWD",
+          "seats": 7,
+          "specs": {
+            "battery": {
+              "type": "Semi-solid-state 150 kWh",
+              "swap_capability": true
+            }
+          },
+          "images": [],
+          "description": "NIO ES8 with 150 kWh semi-solid-state battery offering 520km range with extended battery life.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "NIO",
+          "model": "ES6",
+          "year": 2025,
+          "trim_level": "100 kWh Performance",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 625,
+          "battery_kwh": 100,
+          "acceleration_0_100": 4.5,
+          "top_speed_kmh": 200,
+          "power_kw": 480,
+          "power_hp": 650,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 180,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 225000,
+          "grey_market_source": "Private Import",
+          "price_qar": 225000,
+          "body_style": "SUV",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "dimensions": {
+              "length_mm": 4854,
+              "width_mm": 1965,
+              "height_mm": 1758,
+              "wheelbase_mm": 2915
+            },
+            "battery": {
+              "type": "NIO Battery Pack",
+              "swap_capability": true
+            }
+          },
+          "images": [
+            {
+              "url": "https://www.nio.com/es6",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "NIO ES6 5-seater performance SUV with 625km range, 650hp, battery swap capability.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "NIO",
+          "model": "ES6",
+          "year": 2025,
+          "trim_level": "75 kWh Standard",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 500,
+          "battery_kwh": 75,
+          "acceleration_0_100": 5.0,
+          "top_speed_kmh": 200,
+          "power_kw": 360,
+          "power_hp": 480,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 150,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 200000,
+          "grey_market_source": "Private Import",
+          "price_qar": 200000,
+          "body_style": "SUV",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {},
+          "images": [],
+          "description": "NIO ES6 with 75 kWh battery offering 500km range at more accessible price point.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "NIO",
+          "model": "EL7",
+          "year": 2025,
+          "trim_level": "100 kWh Premium",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 500,
+          "battery_kwh": 100,
+          "acceleration_0_100": 4.5,
+          "top_speed_kmh": 200,
+          "power_kw": 480,
+          "power_hp": 650,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 180,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 235000,
+          "grey_market_source": "Private Import",
+          "price_qar": 235000,
+          "body_style": "SUV",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "features": [
+              "Air suspension",
+              "NAD autonomous driving with LiDAR",
+              "Premium interior"
+            ]
+          },
+          "images": [],
+          "description": "NIO EL7 (formerly ES7) large luxury SUV with air suspension and NAD autonomous driving.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "NIO",
+          "model": "ET7",
+          "year": 2025,
+          "trim_level": "100 kWh Signature",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 700,
+          "battery_kwh": 100,
+          "acceleration_0_100": 3.8,
+          "top_speed_kmh": 200,
+          "power_kw": 480,
+          "power_hp": 653,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 200,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 280000,
+          "grey_market_source": "Private Import",
+          "price_qar": 280000,
+          "body_style": "Sedan",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "dimensions": {
+              "length_mm": 5101,
+              "width_mm": 1987,
+              "height_mm": 1509,
+              "wheelbase_mm": 3060
+            },
+            "features": [
+              "NIO Adam supercomputer",
+              "LiDAR sensor array",
+              "12.8\" AMOLED display",
+              "Minimalist luxury interior",
+              "Air suspension"
+            ]
+          },
+          "images": [
+            {
+              "url": "https://www.nio.com/et7",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "NIO ET7 flagship luxury sedan with 700km range, 653hp, LiDAR autonomous driving, ultra-luxury interior.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "NIO",
+          "model": "ET7",
+          "year": 2025,
+          "trim_level": "150 kWh Ultra Range",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 1000,
+          "battery_kwh": 150,
+          "acceleration_0_100": 3.8,
+          "top_speed_kmh": 200,
+          "power_kw": 480,
+          "power_hp": 653,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 200,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 320000,
+          "grey_market_source": "Private Import",
+          "price_qar": 320000,
+          "body_style": "Sedan",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {},
+          "images": [],
+          "description": "NIO ET7 with 150 kWh semi-solid-state battery achieving 1000km range.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "NIO",
+          "model": "ET5",
+          "year": 2025,
+          "trim_level": "100 kWh Sport",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 710,
+          "battery_kwh": 100,
+          "acceleration_0_100": 4.0,
+          "top_speed_kmh": 200,
+          "power_kw": 360,
+          "power_hp": 480,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 180,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 200000,
+          "grey_market_source": "Private Import",
+          "price_qar": 200000,
+          "body_style": "Sedan",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "dimensions": {
+              "length_mm": 4790,
+              "width_mm": 1960,
+              "height_mm": 1499,
+              "wheelbase_mm": 2888
+            },
+            "platform": "NT2.0",
+            "features": [
+              "Sport-tuned suspension",
+              "Premium interior",
+              "NOMI AI assistant"
+            ]
+          },
+          "images": [
+            {
+              "url": "https://www.nio.com/et5",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "NIO ET5 premium sports sedan with 710km range, 480hp, NT2.0 platform.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "NIO",
+          "model": "ET5",
+          "year": 2025,
+          "trim_level": "75 kWh Standard",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 560,
+          "battery_kwh": 75,
+          "acceleration_0_100": 4.3,
+          "top_speed_kmh": 200,
+          "power_kw": 360,
+          "power_hp": 480,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 150,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 180000,
+          "grey_market_source": "Private Import",
+          "price_qar": 180000,
+          "body_style": "Sedan",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {},
+          "images": [],
+          "description": "NIO ET5 with 75 kWh battery offering 560km range at accessible price.",
+          "status": "grey_market_only"
+        }
+      ]
+    },
+    {
+      "brand": "XPeng",
+      "chinese_name": "小鹏汽车",
+      "founded": 2014,
+      "founder": "Henry Xia (He Xiaopeng)",
+      "headquarters": "Guangzhou, China",
+      "market_position": "Premium Smart EV",
+      "key_technologies": [
+        "XNGP (Navigation Guided Pilot) - Assisted Driving",
+        "Xmart OS - AI Operating System",
+        "800V Architecture - Fast Charging",
+        "X-HP Integrated Thermal Management"
+      ],
+      "gcc_status": {
+        "official_presence": false,
+        "xngp_availability": "Limited - requires regional HD mapping",
+        "service_centers": 0,
+        "warranty_coverage": "China only - not valid in Qatar",
+        "charging_network": "Compatible with local CCS2 chargers"
+      },
+      "vehicles": [
+        {
+          "manufacturer": "XPeng",
+          "model": "P7",
+          "year": 2025,
+          "trim_level": "P7i Performance AWD",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 702,
+          "battery_kwh": 87.5,
+          "acceleration_0_100": 4.3,
+          "top_speed_kmh": 200,
+          "power_kw": 316,
+          "power_hp": 430,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 480,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 175000,
+          "grey_market_source": "Private Import",
+          "price_qar": 175000,
+          "body_style": "Sedan",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "dimensions": {
+              "length_mm": 4880,
+              "width_mm": 1896,
+              "height_mm": 1450,
+              "wheelbase_mm": 2998
+            },
+            "battery": {
+              "type": "LFP",
+              "architecture": "800V"
+            },
+            "features": [
+              "XNGP assisted driving with LiDAR",
+              "Xmart OS",
+              "Dual 14.96\" screens",
+              "Premium audio system",
+              "Nappa leather interior"
+            ]
+          },
+          "images": [
+            {
+              "url": "https://www.xiaopeng.com/p7_plus_2026.html",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "XPeng P7i premium sports sedan with 702km range, 430hp, 800V architecture, XNGP autonomous driving.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "XPeng",
+          "model": "P7",
+          "year": 2025,
+          "trim_level": "P7i Standard RWD",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 680,
+          "battery_kwh": 78.5,
+          "acceleration_0_100": 6.0,
+          "top_speed_kmh": 200,
+          "power_kw": 196,
+          "power_hp": 267,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 480,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 145000,
+          "grey_market_source": "Private Import",
+          "price_qar": 145000,
+          "body_style": "Sedan",
+          "drivetrain": "RWD",
+          "seats": 5,
+          "specs": {},
+          "images": [],
+          "description": "XPeng P7i RWD standard version with 680km range at accessible price.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "XPeng",
+          "model": "P7+",
+          "year": 2026,
+          "trim_level": "Ultra AI Luxury",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 700,
+          "battery_kwh": 100,
+          "acceleration_0_100": 4.0,
+          "top_speed_kmh": 210,
+          "power_kw": 350,
+          "power_hp": 475,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 480,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 195000,
+          "grey_market_source": "Private Import",
+          "price_qar": 195000,
+          "body_style": "Sedan",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "features": [
+              "Ultra-spacious AI cabin",
+              "Latest XNGP with dual LiDAR",
+              "Advanced AI voice assistant",
+              "Executive rear seats"
+            ]
+          },
+          "images": [
+            {
+              "url": "https://www.xiaopeng.com/p7_plus_2026.html",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "XPeng P7+ all-new large AI luxury sedan with ultra-spacious interior and advanced AI features. Launch: January 2026.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "XPeng",
+          "model": "G9",
+          "year": 2025,
+          "trim_level": "702 Max AWD",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 702,
+          "battery_kwh": 98,
+          "acceleration_0_100": 3.9,
+          "top_speed_kmh": 200,
+          "power_kw": 405,
+          "power_hp": 551,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 480,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 220000,
+          "grey_market_source": "Private Import",
+          "price_qar": 220000,
+          "body_style": "SUV",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "dimensions": {
+              "length_mm": 4891,
+              "width_mm": 1937,
+              "height_mm": 1680,
+              "wheelbase_mm": 2998
+            },
+            "features": [
+              "800V architecture",
+              "XNGP with LiDAR",
+              "Air suspension",
+              "Dual 14.96\" screens",
+              "5D music cockpit",
+              "Premium Nappa leather"
+            ]
+          },
+          "images": [
+            {
+              "url": "https://www.xiaopeng.com/g9.html",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "XPeng G9 flagship luxury SUV with 702km range, 551hp, air suspension, XNGP autonomous driving.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "XPeng",
+          "model": "G9",
+          "year": 2025,
+          "trim_level": "570 Plus RWD",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 570,
+          "battery_kwh": 78.5,
+          "acceleration_0_100": 6.4,
+          "top_speed_kmh": 200,
+              "power_kw": 230,
+          "power_hp": 313,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 480,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 185000,
+          "grey_market_source": "Private Import",
+          "price_qar": 185000,
+          "body_style": "SUV",
+          "drivetrain": "RWD",
+          "seats": 5,
+          "specs": {},
+          "images": [],
+          "description": "XPeng G9 RWD standard version with 570km range at accessible price.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "XPeng",
+          "model": "G6",
+          "year": 2025,
+          "trim_level": "755 Performance AWD",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 755,
+          "battery_kwh": 87.5,
+          "acceleration_0_100": 3.9,
+          "top_speed_kmh": 200,
+          "power_kw": 358,
+          "power_hp": 487,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 480,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 165000,
+          "grey_market_source": "Private Import",
+          "price_qar": 165000,
+          "body_style": "SUV",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "dimensions": {
+              "length_mm": 4753,
+              "width_mm": 1920,
+              "height_mm": 1650,
+              "wheelbase_mm": 2890
+            },
+            "features": [
+              "800V architecture",
+              "XNGP standard",
+              "Spacious interior",
+              "Smart cockpit"
+            ]
+          },
+          "images": [
+            {
+              "url": "https://www.xiaopeng.com/g6.html",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "XPeng G6 mid-size SUV with 755km range, 487hp, 800V architecture, XNGP as standard.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "XPeng",
+          "model": "G6",
+          "year": 2026,
+          "trim_level": "焕芯 AI Edition",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 755,
+          "battery_kwh": 87.5,
+          "acceleration_0_100": 3.9,
+          "top_speed_kmh": 200,
+          "power_kw": 358,
+          "power_hp": 487,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 480,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 170000,
+          "grey_market_source": "Private Import",
+          "price_qar": 170000,
+          "body_style": "SUV",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "features": [
+              "Chip upgrade 2026",
+              "Enhanced AI processing",
+              "Improved XNGP"
+            ]
+          },
+          "images": [],
+          "description": "XPeng G6 2026 '焕芯上市' with upgraded AI chip and enhanced processing.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "XPeng",
+          "model": "X9",
+          "year": 2025,
+          "trim_level": "EV 640 km",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 640,
+          "battery_kwh": 84.5,
+          "acceleration_0_100": 5.8,
+          "top_speed_kmh": 200,
+          "power_kw": 230,
+          "power_hp": 313,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 350,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 210000,
+          "grey_market_source": "Private Import",
+          "price_qar": 210000,
+          "body_style": "MPV",
+          "drivetrain": "RWD",
+          "seats": 7,
+          "specs": {
+            "dimensions": {
+              "length_mm": 5291,
+              "width_mm": 1988,
+              "height_mm": 1785,
+              "wheelbase_mm": 3160
+            },
+            "features": [
+              "Air suspension",
+              "Premium 7-seater",
+              "Executive rear seats",
+              "Xmart OS"
+            ]
+          },
+          "images": [
+            {
+              "url": "https://www.xiaopeng.com",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "XPeng X9 luxury 7-seater MPV with 640km range, air suspension, premium executive transportation.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "XPeng",
+          "model": "X9",
+          "year": 2026,
+          "trim_level": "超级增程 Super Range Extender",
+          "vehicle_type": "Hybrid",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 200,
+          "combined_range_km": 1200,
+          "battery_kwh": 40,
+          "acceleration_0_100": 5.5,
+          "top_speed_kmh": 190,
+          "power_kw": 280,
+          "power_hp": 380,
+          "charging_ac_kw": 6.6,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 230000,
+          "grey_market_source": "Private Import",
+          "price_qar": 230000,
+          "body_style": "MPV",
+          "drivetrain": "AWD",
+          "seats": 7,
+          "specs": {
+            "features": [
+              "World's longest range MPV",
+              "Extended range technology",
+              "No range anxiety"
+            ]
+          },
+          "images": [],
+          "description": "XPeng X9 超级增程 with 1200km combined range - world's longest range MPV. Launch: January 2026.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "XPeng",
+          "model": "G3i",
+          "year": 2025,
+          "trim_level": "520 km",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 520,
+          "battery_kwh": 66,
+          "acceleration_0_100": 8.6,
+          "top_speed_kmh": 170,
+          "power_kw": 160,
+          "power_hp": 218,
+          "charging_ac_kw": 7,
+          "charging_dc_kw": 120,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 105000,
+          "grey_market_source": "Private Import",
+          "price_qar": 105000,
+          "body_style": "SUV",
+          "drivetrain": "FWD",
+          "seats": 5,
+          "specs": {
+            "dimensions": {
+              "length_mm": 4495,
+              "width_mm": 1837,
+              "height_mm": 1610,
+              "wheelbase_mm": 2625
+            },
+            "features": [
+              "Compact SUV",
+              "Xmart OS",
+              "X-Pilot assist"
+            ]
+          },
+          "images": [],
+          "description": "XPeng G3i compact electric SUV with 520km range, affordable entry-level option.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "XPeng",
+          "model": "G7",
+          "year": 2026,
+          "trim_level": "1704 km Super Range Extender",
+          "vehicle_type": "Hybrid",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 200,
+          "combined_range_km": 1704,
+          "battery_kwh": 45,
+          "acceleration_0_100": 6.0,
+          "top_speed_kmh": 190,
+          "power_kw": 300,
+          "power_hp": 408,
+          "charging_ac_kw": 6.6,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 200000,
+          "grey_market_source": "Private Import",
+          "price_qar": 200000,
+          "body_style": "SUV",
+          "drivetrain": "AWD",
+          "seats": 7,
+          "specs": {
+            "features": [
+              "World's longest range SUV - 1704km",
+              "Extended range technology",
+              "7-seater configuration"
+            ]
+          },
+          "images": [],
+          "description": "XPeng G7 super range extender SUV with 1704km combined range - world's longest. Launch: January 2026.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "XPeng",
+          "model": "MONA M03",
+          "year": 2025,
+          "trim_level": "620 Long Range",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 620,
+          "battery_kwh": 62,
+          "acceleration_0_100": 7.4,
+          "top_speed_kmh": 170,
+          "power_kw": 160,
+          "power_hp": 218,
+          "charging_ac_kw": 7,
+          "charging_dc_kw": 120,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 90000,
+          "grey_market_source": "Private Import",
+          "price_qar": 90000,
+          "body_style": "Hatchback",
+          "drivetrain": "RWD",
+          "seats": 5,
+          "specs": {
+            "dimensions": {
+              "length_mm": 4780,
+              "width_mm": 1896,
+              "height_mm": 1445,
+              "wheelbase_mm": 2815
+            },
+            "features": [
+              "Affordable entry-level",
+              "AI features",
+              "Trendy design"
+            ]
+          },
+          "images": [],
+          "description": "XPeng MONA M03 affordable electric hatchback with 620km range, AI features, mass market appeal.",
+          "status": "grey_market_only"
+        }
+      ]
+    },
+    {
+      "brand": "Zeekr",
+      "chinese_name": "极氪",
+      "founded": 2021,
+      "parent_company": "Geely Holdings",
+      "headquarters": "Ningbo, China",
+      "market_position": "Premium/Luxury Performance EV",
+      "key_technologies": [
+        "Sustainable Experience Architecture (SEA)",
+        "CATL Qilin Battery - High Energy Density",
+        "800V Architecture - Ultra Fast Charging",
+        "Geely Global Platform"
+      ],
+      "gcc_status": {
+        "official_presence": false,
+        "geely_partnership": "Geely has GCC presence via other brands",
+        "service_centers": 0,
+        "warranty_coverage": "China/Europe only - not valid in Qatar",
+        "battery_suitability": "CATL Qilin batteries suitable for hot climates"
+      },
+      "vehicles": [
+        {
+          "manufacturer": "Zeekr",
+          "model": "001",
+          "year": 2025,
+          "trim_level": "100 kWh YOU Version",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 1032,
+          "battery_kwh": 100,
+          "acceleration_0_100": 3.8,
+          "top_speed_kmh": 200,
+          "power_kw": 400,
+          "power_hp": 544,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 500,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 220000,
+          "grey_market_source": "Private Import",
+          "price_qar": 220000,
+          "body_style": "Shooting Brake",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "dimensions": {
+              "length_mm": 4970,
+              "width_mm": 1999,
+              "height_mm": 1560,
+              "wheelbase_mm": 3005
+            },
+            "battery": {
+              "type": "CATL Qilin",
+              "architecture": "800V",
+              "energy_density": "High"
+            },
+            "features": [
+              "Air suspension",
+              "CCD continuous damping control",
+              "Frameless doors",
+              "Premium interior",
+              "800V architecture"
+            ]
+          },
+          "images": [
+            {
+              "url": "https://www.zeekr.com",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "Zeekr 001 flagship luxury shooting brake with 1032km range, 544hp, 800V architecture, CATL Qilin battery.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "Zeekr",
+          "model": "001",
+          "year": 2025,
+          "trim_level": "95 kWh FR Performance",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 546,
+          "battery_kwh": 95,
+          "acceleration_0_100": 3.3,
+          "top_speed_kmh": 240,
+          "power_kw": 400,
+          "power_hp": 544,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 500,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 240000,
+          "grey_market_source": "Private Import",
+          "price_qar": 240000,
+          "body_style": "Shooting Brake",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "features": [
+              "Performance-tuned",
+              "3.3s 0-100 km/h acceleration",
+              "Track-ready suspension"
+            ]
+          },
+          "images": [],
+          "description": "Zeekr 001 FR performance version with 3.3s acceleration, 546km range, track-tuned suspension.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "Zeekr",
+          "model": "009",
+          "year": 2025,
+          "trim_level": "116 kWh Glory Edition",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 822,
+          "battery_kwh": 116,
+          "acceleration_0_100": 4.5,
+          "top_speed_kmh": 190,
+          "power_kw": 580,
+          "power_hp": 789,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 450,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 270000,
+          "grey_market_source": "Private Import",
+          "price_qar": 270000,
+          "body_style": "MPV",
+          "drivetrain": "AWD",
+          "seats": 6,
+          "specs": {
+            "dimensions": {
+              "length_mm": 5209,
+              "width_mm": 2024,
+              "height_mm": 1856,
+              "wheelbase_mm": 3205
+            },
+            "features": [
+              "Ultra-luxury 6-seater",
+              "Individual captain's chairs",
+              "Refrigerator",
+              "Premium leather throughout",
+              "Air suspension",
+              "Rear entertainment system"
+            ]
+          },
+          "images": [
+            {
+              "url": "https://www.zeekr.com",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "Zeekr 009 Glory Edition ultra-luxury 6-seater MPV with 822km range, executive transportation, ultra-premium interior.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "Zeekr",
+          "model": "X",
+          "year": 2025,
+          "trim_level": "77 kWh Performance AWD",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 560,
+          "battery_kwh": 77,
+          "acceleration_0_100": 3.7,
+          "top_speed_kmh": 200,
+          "power_kw": 315,
+          "power_hp": 428,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 270,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 175000,
+          "grey_market_source": "Private Import",
+          "price_qar": 175000,
+          "body_style": "SUV",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "dimensions": {
+              "length_mm": 4450,
+              "width_mm": 1836,
+              "height_mm": 1572,
+              "wheelbase_mm": 2750
+            },
+            "features": [
+              "Compact luxury SUV",
+              "Sliding center screen",
+              "Frameless doors",
+              "Futuristic design",
+              "Urban-focused"
+            ]
+          },
+          "images": [
+            {
+              "url": "https://www.zeekr.com",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "Zeekr X compact luxury SUV with 560km range, 428hp, sliding screen, frameless doors, futuristic design.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "Zeekr",
+          "model": "X",
+          "year": 2025,
+          "trim_level": "66 kWh Standard RWD",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 500,
+          "battery_kwh": 66,
+          "acceleration_0_100": 6.5,
+          "top_speed_kmh": 185,
+          "power_kw": 200,
+          "power_hp": 272,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 270,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 145000,
+          "grey_market_source": "Private Import",
+          "price_qar": 145000,
+          "body_style": "SUV",
+          "drivetrain": "RWD",
+          "seats": 5,
+          "specs": {},
+          "images": [],
+          "description": "Zeekr X RWD standard version with 500km range at accessible price.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "Zeekr",
+          "model": "007",
+          "year": 2025,
+          "trim_level": "100 kWh Performance",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 870,
+          "battery_kwh": 100,
+          "acceleration_0_100": 2.84,
+          "top_speed_kmh": 210,
+          "power_kw": 310,
+          "power_hp": 421,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 475,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 205000,
+          "grey_market_source": "Private Import",
+          "price_qar": 205000,
+          "body_style": "Sedan",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {
+            "dimensions": {
+              "length_mm": 4865,
+              "width_mm": 1900,
+              "height_mm": 1450,
+              "wheelbase_mm": 2925
+            },
+            "features": [
+              "800V architecture",
+              "LiDAR sensor",
+              "Advanced ADAS",
+              "Minimalist luxury interior",
+              "2.84s acceleration"
+            ]
+          },
+          "images": [
+            {
+              "url": "https://www.zeekr.com",
+              "type": "exterior",
+              "is_primary": true
+            }
+          ],
+          "description": "Zeekr 007 premium sedan with 870km range, 2.84s acceleration, LiDAR, 800V architecture.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "Zeekr",
+          "model": "007",
+          "year": 2025,
+          "trim_level": "75 kWh Standard",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": 688,
+          "battery_kwh": 75,
+          "acceleration_0_100": 5.5,
+          "top_speed_kmh": 190,
+          "power_kw": 310,
+          "power_hp": 421,
+          "charging_ac_kw": 11,
+          "charging_dc_kw": 475,
+          "manufacturer_direct_price": null,
+          "grey_market_price": 165000,
+          "grey_market_source": "Private Import",
+          "price_qar": 165000,
+          "body_style": "Sedan",
+          "drivetrain": "AWD",
+          "seats": 5,
+          "specs": {},
+          "images": [],
+          "description": "Zeekr 007 with 75 kWh battery offering 688km range at accessible price.",
+          "status": "grey_market_only"
+        },
+        {
+          "manufacturer": "Zeekr",
+          "model": "7X",
+          "year": 2025,
+          "trim_level": "Coming Soon",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": null,
+          "battery_kwh": null,
+          "acceleration_0_100": null,
+          "top_speed_kmh": null,
+          "power_kw": null,
+          "power_hp": null,
+          "charging_ac_kw": null,
+          "charging_dc_kw": null,
+          "manufacturer_direct_price": null,
+          "grey_market_price": null,
+          "grey_market_source": null,
+          "price_qar": null,
+          "body_style": "SUV",
+          "drivetrain": "AWD",
+          "seats": 7,
+          "specs": {
+            "features": [
+              "Large luxury SUV",
+              "Competitor to ES8, G9",
+              "7-seater configuration"
+            ]
+          },
+          "images": [],
+          "description": "Zeekr 7X large luxury SUV - coming in 2025. Will compete with NIO ES8 and XPeng G9.",
+          "status": "coming_soon"
+        },
+        {
+          "manufacturer": "Zeekr",
+          "model": "MIX",
+          "year": 2025,
+          "trim_level": "Coming Soon",
+          "vehicle_type": "EV",
+          "gcc_spec": false,
+          "chinese_spec": true,
+          "range_km": null,
+          "battery_kwh": null,
+          "acceleration_0_100": null,
+          "top_speed_kmh": null,
+          "power_kw": null,
+          "power_hp": null,
+          "charging_ac_kw": null,
+          "charging_dc_kw": null,
+          "manufacturer_direct_price": null,
+          "grey_market_price": null,
+          "grey_market_source": null,
+          "price_qar": null,
+          "body_style": "MPV",
+          "drivetrain": "AWD",
+          "seats": 6,
+          "specs": {
+            "features": [
+              "Innovative MPV",
+              "Swivel seats",
+              "Flexible interior"
+            ]
+          },
+          "images": [],
+          "description": "Zeekr MIX innovative MPV with swivel seats - coming in 2025.",
+          "status": "coming_soon"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_models": 38,
+    "total_trims": 58,
+    "brands_count": 3,
+    "market_status": "All grey market imports - no official presence",
+    "price_range_qar": {
+      "minimum": 90000,
+      "maximum": 320000
+    },
+    "key_findings": [
+      "NIO: 8 models across 9 trims, premium positioning, battery swap tech unique",
+      "XPeng: 8 models across 13 trims, strongest tech (XNGP, 800V), most diverse lineup",
+      "Zeekr: 5 models across 7 trims, Geely backing, CATL batteries ideal for GCC heat",
+      "All brands lack official distributor presence in Qatar as of 2025",
+      "Grey market imports face service/warranty challenges",
+      "2026 models show significant AI and range improvements across all brands"
+    ],
+    "recommendations": [
+      "Wait for official distributor presence for warranty/service support",
+      "CATL batteries (Zeekr) well-suited for GCC climate",
+      "XNGP and NAD autonomous features limited without regional mapping",
+      "Consider BYD as alternative - official Mannai distributor presence in Qatar",
+      "Grey market prices include import premium - 20-30% above China pricing"
+    ]
+  }
+}

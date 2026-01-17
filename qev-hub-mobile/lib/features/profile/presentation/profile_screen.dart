@@ -29,7 +29,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen>
   void initState() {
     super.initState();
     _setupAnimations();
-    _refreshData();
+    // Defer refresh to after widget tree is built to avoid modifying provider during build
+    Future.microtask(() => _refreshData());
   }
 
   void _setupAnimations() {

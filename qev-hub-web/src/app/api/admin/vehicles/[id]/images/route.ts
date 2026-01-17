@@ -141,32 +141,31 @@ export async function POST(
 
     // Update vehicle with new image
     if (isPrimary) {
+      // Get current vehicle images first
+      const { data: currentVehicle } = await supabase
+        .from('vehicles')
+        .select('images')
+        .eq('id', vehicleId)
+        .single()
+
+      let newImages: Array<{url: string, is_primary: boolean}>
+      const currentImages = (currentVehicle?.images || []) as Array<{url: string, is_primary: boolean}>
+
+      if (currentImages.length === 0) {
+        // No existing images, create new array with primary image
+        newImages = [{ url: publicUrl, is_primary: true }]
+      } else {
+        // Set all existing images to non-primary and add new primary
+        newImages = currentImages.map(img => ({ ...img, is_primary: false }))
+        newImages.unshift({ url: publicUrl, is_primary: true })
+      }
+
       // Set as primary image in image_url and update images array
       const { error: updateError } = await supabase
         .from('vehicles')
         .update({
           image_url: publicUrl,
-          images: supabase.sql`
-            CASE 
-              WHEN images IS NULL THEN jsonb_build_array(jsonb_build_object('url', ${publicUrl}, 'is_primary', true))
-              WHEN (SELECT COUNT(*) FROM jsonb_array_elements(images) WHERE value->>'is_primary' = 'true') = 0 
-                THEN jsonb_array_append(images, jsonb_build_object('url', ${publicUrl}, 'is_primary', true))
-              ELSE jsonb_set(
-                jsonb_set(
-                  images,
-                  '{0}',
-                  jsonb_build_object('url', ${publicUrl}, 'is_primary', true),
-                  true
-                ),
-                array_length(images, 1),
-                  CASE 
-                    WHEN array_length(images, 1) IS NULL THEN '[0]'
-                    ELSE '[' || (array_length(images, 1))::text || ']'
-                  END,
-                  jsonb_build_object('url', ${publicUrl}, 'is_primary', false)
-                )
-            END
-          `
+          images: newImages
         })
         .eq('id', vehicleId)
 

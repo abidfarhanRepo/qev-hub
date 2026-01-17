@@ -69,17 +69,29 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     // Get the repository to access auth state stream directly
     final repository = ref.read(auth.authRepositoryProvider);
 
-    // Wait for auth state to be determined
-    final firstValue = await repository.authStateChanges.first;
+    // Wait for auth state to be determined with timeout to prevent hanging
+    try {
+      final firstValue = await repository.authStateChanges
+          .first
+          .timeout(
+            const Duration(seconds: 5),
+            onTimeout: () => AppAuthState.unauthenticated,
+          );
 
-    if (!mounted) return;
+      if (!mounted) return;
 
-    // Navigate based on auth state
-    final isAuthenticated = firstValue == AppAuthState.authenticated;
-    if (isAuthenticated) {
-      context.go('/home');
-    } else {
-      context.go('/login');
+      // Navigate based on auth state
+      final isAuthenticated = firstValue == AppAuthState.authenticated;
+      if (isAuthenticated) {
+        context.go('/home');
+      } else {
+        context.go('/login');
+      }
+    } catch (e) {
+      // On any error, default to login screen
+      if (mounted) {
+        context.go('/login');
+      }
     }
   }
 
