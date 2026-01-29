@@ -170,7 +170,7 @@ DROP POLICY IF EXISTS "Admins can update all vehicles" ON vehicles;
 CREATE POLICY "Public can view vehicles with filtering"
   ON vehicles FOR SELECT
   TO anon, authenticated
-  USING (status = 'available' OR status = 'sold_out');
+  USING (status = 'available' OR status = 'approved' OR status = 'sold_out');
 
 CREATE POLICY "Manufacturers can view own vehicles"
   ON vehicles FOR SELECT

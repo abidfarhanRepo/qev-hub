@@ -53,7 +53,7 @@ export default function ManufacturersPage() {
               .from('vehicles')
               .select('*', { count: 'exact', head: true })
               .eq('manufacturer_id', manufacturer.id)
-              .eq('status', 'available')
+              .eq('status', 'approved')
 
             if (countError) console.error('Error counting vehicles:', countError)
 

@@ -45,7 +45,7 @@ export default function MarketplacePage() {
       const { data, error } = await supabase
         .from('vehicles')
         .select('*')
-        .eq('status', 'available')
+        .eq('status', 'approved')
         .order('manufacturer', { ascending: true })
 
       if (error) throw error

@@ -70,7 +70,7 @@ export default function VehicleCarousel() {
       const { data, error } = await supabase
         .from('vehicles')
         .select('*')
-        .eq('status', 'available')
+        .eq('status', 'approved')
         .order('manufacturer', { ascending: true })
         .limit(6)
 
