@@ -157,10 +157,11 @@ export async function GET(request: NextRequest) {
   if (authResponse) return authResponse
 
   try {
-    // Only allow users to fetch their own orders
     const userId = user!.id
+    const { searchParams } = new URL(request.url)
+    const orderId = searchParams.get('id')
 
-    const { data: orders, error } = await supabase
+    let query = supabase
       .from('orders')
       .select(`
         *,
@@ -169,7 +170,15 @@ export async function GET(request: NextRequest) {
         payments(*)
       `)
       .eq('user_id', userId)
-      .order('created_at', { ascending: false })
+
+    // Filter by specific order ID if provided
+    if (orderId) {
+      query = query.eq('id', orderId)
+    } else {
+      query = query.order('created_at', { ascending: false })
+    }
+
+    const { data: orders, error } = await query
 
     if (error) {
       return NextResponse.json(

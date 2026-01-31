@@ -12,6 +12,7 @@ import type { Session } from '@supabase/supabase-js'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Separator } from '@/components/ui/separator'
 import { toast } from '@/components/ui/use-toast'
 import { PackageIcon, TruckIcon, ClockIcon, CheckIcon } from '@/components/icons'
 
@@ -217,6 +218,7 @@ function OrdersPageContent() {
   const [loading, setLoading] = useState(false)
   const [logistics, setLogistics] = useState<any>(null)
   const [documents, setDocuments] = useState<any[]>([])
+  const [orderDetails, setOrderDetails] = useState<any>(null)
 
   // Redirect to login if not authenticated and trying to purchase
   useEffect(() => {
@@ -244,10 +246,22 @@ function OrdersPageContent() {
 
   const fetchExistingOrderDetails = async (id: string) => {
     try {
-      const [logisticsRes, docsRes] = await Promise.all([
+      const [logisticsRes, docsRes, orderRes] = await Promise.all([
         fetch(`/api/logistics/${id}`),
         fetch(`/api/compliance?order_id=${id}`),
+        fetch(`/api/orders?id=${id}`),
       ])
+
+      if (orderRes.ok) {
+        const orderData = await orderRes.json()
+        if (orderData.orders && orderData.orders.length > 0) {
+          const order = orderData.orders[0]
+          setOrderDetails(order)
+          setOrderId(order.id)
+          setTrackingId(order.tracking_id)
+          setDepositAmount(order.deposit_amount)
+        }
+      }
 
       if (logisticsRes.ok) {
         const logisticsData = await logisticsRes.json()
@@ -378,10 +392,18 @@ function OrdersPageContent() {
     if (!orderId) return
 
     try {
-      const [logisticsRes, docsRes] = await Promise.all([
+      const [logisticsRes, docsRes, orderRes] = await Promise.all([
         fetch(`/api/logistics/${orderId}`),
         fetch(`/api/compliance?order_id=${orderId}`),
+        fetch(`/api/orders?id=${orderId}`),
       ])
+
+      if (orderRes.ok) {
+        const orderData = await orderRes.json()
+        if (orderData.orders && orderData.orders.length > 0) {
+          setOrderDetails(orderData.orders[0])
+        }
+      }
 
       if (logisticsRes.ok) {
         const logisticsData = await logisticsRes.json()
@@ -523,6 +545,62 @@ function OrdersPageContent() {
 
         {step === 'tracking' && logistics && (
           <div className="space-y-6">
+            {/* Order Details Card */}
+            {orderDetails && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Order Details</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold">
+                        {orderDetails.vehicle?.manufacturer} {orderDetails.vehicle?.model}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        Tracking ID: {trackingId}
+                      </p>
+                    </div>
+                    <Badge variant="outline">{orderDetails.status}</Badge>
+                  </div>
+
+                  <Separator />
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Total Price</p>
+                      <p className="font-semibold">{formatPrice(orderDetails.total_price)}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Deposit Paid</p>
+                      <p className="font-semibold">{formatPrice(orderDetails.deposit_amount)}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Remaining</p>
+                      <p className="font-semibold">{formatPrice(orderDetails.total_price - orderDetails.deposit_amount)}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Payment Status</p>
+                      <p className="font-semibold capitalize">{orderDetails.payment_status}</p>
+                    </div>
+                  </div>
+
+                  <Separator />
+
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p className="text-muted-foreground">Order Date</p>
+                      <p className="font-medium">{formatDate(orderDetails.created_at)}</p>
+                    </div>
+                    <div>
+                      <p className="text-muted-foreground">Vehicle Year</p>
+                      <p className="font-medium">{orderDetails.vehicle?.year}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
             <OrderTracking logistics={logistics} />
             {documents.length > 0 && (
               <ComplianceDocuments documents={documents} orderId={orderId!} />
