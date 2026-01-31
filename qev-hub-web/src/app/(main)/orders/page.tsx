@@ -648,8 +648,12 @@ function OrdersPageContent() {
                   </Card>
                 )}
 
-                {/* Test mode enabled for automatic status progression during development */}
-                <OrderTracking logistics={logistics} testMode={true} onLogisticsUpdate={setLogistics} />
+                {/* Test mode controlled by NEXT_PUBLIC_TEST_MODE environment variable */}
+                <OrderTracking
+                  logistics={logistics}
+                  testMode={process.env.NEXT_PUBLIC_TEST_MODE === 'true'}
+                  onLogisticsUpdate={setLogistics}
+                />
                 {documents.length > 0 && (
                   <ComplianceDocuments documents={documents} orderId={orderId!} />
                 )}

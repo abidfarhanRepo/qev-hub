@@ -136,6 +136,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 Optional variables:
 ```env
+NEXT_PUBLIC_TEST_MODE=true  # Enable auto-progression for testing (set to "false" in production!)
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_key  # For maps integration
 ```
 
@@ -204,9 +205,11 @@ npm run build  # Validates types and builds
 
 The OrderTracking component includes a **Test Mode** feature that automatically progresses order status for development and demonstration purposes.
 
+**Controlled via Environment Variable**: `NEXT_PUBLIC_TEST_MODE` (default: `true` for development)
+
 #### How Test Mode Works
 
-When `testMode=true` is passed to the `<OrderTracking>` component:
+When `NEXT_PUBLIC_TEST_MODE=true` in your environment:
 
 1. **Auto-Status Progression** (every 5 seconds):
    - Order Placed → Processing → In Transit → In Customs → Delivered
@@ -226,13 +229,26 @@ When `testMode=true` is passed to the `<OrderTracking>` component:
 
 #### Enabling/Disabling Test Mode
 
-**Current Implementation** (in `src/app/(main)/orders/page.tsx`):
-```tsx
-<OrderTracking logistics={logistics} testMode={true} onLogisticsUpdate={setLogistics} />
+**Environment Variable** (in `.env.local`):
+```env
+# Enable test mode (development)
+NEXT_PUBLIC_TEST_MODE=true
+
+# Disable test mode (production)
+NEXT_PUBLIC_TEST_MODE=false
 ```
 
-**To Disable for Production**:
-Change `testMode={true}` to `testMode={false}` or remove the prop entirely (defaults to `false`).
+**Implementation** (in `src/app/(main)/orders/page.tsx`):
+```tsx
+<OrderTracking
+  logistics={logistics}
+  testMode={process.env.NEXT_PUBLIC_TEST_MODE === 'true'}
+  onLogisticsUpdate={setLogistics}
+/>
+```
+
+**Production Deployment**:
+Set `NEXT_PUBLIC_TEST_MODE=false` in your production environment variables.
 
 #### Test Mode Behavior by Stage
 
@@ -259,11 +275,12 @@ This updates the database so the test progression is persisted.
 
 #### Important Notes
 
-- Test mode is **intentionally enabled** in the current implementation for development/demonstration
-- **Must be disabled** before production deployment
+- Test mode is **controlled by `NEXT_PUBLIC_TEST_MODE` environment variable**
+- **Set `NEXT_PUBLIC_TEST_MODE=false`** for production deployments
 - The auto-progression only applies to the specific order being viewed
 - Multiple orders can be tested independently in separate browser tabs
 - Backend logistics API uses admin client (bypasses RLS) for smooth testing
+- Changes to environment variables require restarting the dev server
 
 #### Testing the Full Flow
 
