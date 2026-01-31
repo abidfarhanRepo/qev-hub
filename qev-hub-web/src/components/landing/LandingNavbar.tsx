@@ -18,9 +18,9 @@ export default function LandingNavbar() {
   })
 
   return (
-    <motion.nav 
+    <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border py-4 shadow-lg' : 'bg-transparent py-6'
+        isScrolled ? 'bg-background/95 backdrop-blur-md border-b border-border py-4 shadow-lg' : 'bg-background/60 backdrop-blur-sm py-6'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -34,16 +34,16 @@ export default function LandingNavbar() {
         <div className="hidden md:flex items-center space-x-8">
           {!user && (
             <>
-              <Link href="/marketplace" className="text-sm font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">
+              <Link href="/marketplace" className="text-sm font-bold text-foreground/90 hover:text-primary transition-colors uppercase tracking-wider">
                 Marketplace
               </Link>
-              <Link href="/charging" className="text-sm font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">
+              <Link href="/charging" className="text-sm font-bold text-foreground/90 hover:text-primary transition-colors uppercase tracking-wider">
                 Charging
               </Link>
             </>
           )}
           {user && (
-            <Link href="/dashboard" className="text-sm font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">
+            <Link href="/dashboard" className="text-sm font-bold text-foreground/90 hover:text-primary transition-colors uppercase tracking-wider">
               Dashboard
             </Link>
           )}

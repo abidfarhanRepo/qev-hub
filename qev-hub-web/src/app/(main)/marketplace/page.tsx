@@ -48,7 +48,9 @@ export default function MarketplacePage() {
         .eq('status', 'approved')
         .order('manufacturer', { ascending: true })
 
+      console.log('Supabase response:', { data, error })
       if (error) throw error
+      console.log('Setting vehicles:', data?.length || 0, 'vehicles')
       setVehicles(data || [])
     } catch (error) {
       console.error('Error fetching vehicles:', error)

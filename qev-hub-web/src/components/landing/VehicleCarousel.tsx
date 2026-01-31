@@ -7,7 +7,7 @@ import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { CarIcon, BatteryIcon } from '@/components/icons'
+import { CarIcon, BatteryIcon, ArrowRight } from 'lucide-react'
 
 interface Vehicle {
   id: string
@@ -96,137 +96,111 @@ export default function VehicleCarousel() {
        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.05)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.05)_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-20 pointer-events-none"></div>
 
       <div className="container px-4 md:px-6 mb-12 relative z-10">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-bold text-foreground uppercase tracking-wider"
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-5xl font-bold text-foreground uppercase tracking-wider mb-4 text-center"
         >
-          Featured <span className="text-primary">Models</span>
+          Premium <span className="text-primary">Selection</span>
         </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="h-1 w-24 bg-primary mx-auto rounded-full shadow-lg"
+        />
       </div>
 
       {loading ? (
-        <div className="flex justify-center items-center py-20 px-4 md:px-6">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-        </div>
-      ) : vehicles.length === 0 ? (
-        <div className="text-center py-20 px-4 md:px-6">
-          <p className="text-muted-foreground">No vehicles available</p>
+        <div className="container px-4 md:px-6 relative z-10">
+          <div className="flex gap-6 overflow-x-auto pb-8">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="min-w-[300px] md:min-w-[350px] h-[400px] bg-muted/30 rounded-2xl animate-pulse" />
+            ))}
+          </div>
         </div>
       ) : (
-        <motion.div ref={carousel} className="cursor-grab active:cursor-grabbing overflow-hidden px-4 md:px-6 relative z-10">
+        <div className="relative">
+          {/* Scroll Buttons */}
+          {width > 0 && (
+            <>
+              <button
+                onClick={() => carousel.current?.scrollBy({ left: -300, behavior: 'smooth' })}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-background border border-border rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all ml-4"
+                aria-label="Scroll left"
+              >
+                ←
+              </button>
+              <button
+                onClick={() => carousel.current?.scrollBy({ left: 300, behavior: 'smooth' })}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-background border border-border rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all mr-4"
+                aria-label="Scroll right"
+              >
+                →
+              </button>
+            </>
+          )}
+
           <motion.div
-            drag="x"
-            dragConstraints={{ right: 0, left: -width }}
-            className="flex gap-8"
+            ref={carousel}
+            className="flex gap-6 overflow-x-auto pb-8 px-4 scroll-smooth"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            {vehicles.map((vehicle) => (
+            {vehicles.map((vehicle, index) => (
               <motion.div
                 key={vehicle.id}
-                className="min-w-[300px] md:min-w-[400px] h-[520px] relative"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="min-w-[300px] md:min-w-[350px] flex-shrink-0"
               >
-                <Card
-                  className="bg-card/50 border-border backdrop-blur-md overflow-hidden hover:border-primary transition-all hover:-translate-y-1 cursor-pointer group rounded-2xl shadow-2xl h-full"
-                  onClick={() => router.push(`/marketplace/${vehicle.id}`)}
-                >
-                  <div className="h-56 bg-gradient-to-br from-black/40 to-black/60 flex items-center justify-center relative overflow-hidden">
-                    {vehicle.image_url ? (
-                      <img
-                        src={vehicle.image_url}
-                        alt={`${vehicle.manufacturer} ${vehicle.model}`}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <CarIcon className="h-20 w-20 text-muted-foreground/50 group-hover:text-primary transition-colors" />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-
+                <Card className="group hover:shadow-2xl transition-all duration-300 border border-border bg-card hover:border-primary/50">
                   <CardContent className="p-6">
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                          {vehicle.manufacturer} {vehicle.model}
-                        </h3>
-                        <p className="text-sm text-muted-foreground">{vehicle.year}</p>
-                      </div>
-                      {vehicle.stock_count > 0 ? (
-                        <Badge variant="secondary" className="bg-primary text-primary-foreground font-bold border-none">
-                          {vehicle.stock_count}
+                    {/* Vehicle Image/Icon */}
+                    <div className="h-48 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg mb-4 flex items-center justify-center group-hover:from-primary group-hover:to-primary transition-all duration-500">
+                      <CarIcon className="w-20 h-20 text-primary group-hover:text-primary-foreground" />
+                    </div>
+
+                    {/* Vehicle Info */}
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="text-xl font-bold text-foreground">{vehicle.manufacturer}</h3>
+                          <p className="text-lg font-semibold text-primary">{vehicle.model}</p>
+                        </div>
+                        <Badge variant={vehicle.vehicle_type === 'EV' ? 'default' : 'secondary'}>
+                          {vehicle.vehicle_type}
                         </Badge>
-                      ) : (
-                        <Badge variant="destructive" className="font-bold">Out of Stock</Badge>
-                      )}
-                    </div>
+                      </div>
 
-                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                      {vehicle.description}
-                    </p>
-
-                    <div className="grid grid-cols-2 gap-2 mb-4">
-                      <div className="bg-muted/20 p-2.5 rounded-lg border border-border">
-                        <div className="flex items-center gap-1 mb-1">
-                          <BatteryIcon className="h-3 w-3 text-primary" />
-                          <p className="text-xs text-muted-foreground">Range</p>
+                      <div className="grid grid-cols-2 gap-3 text-sm">
+                        <div className="flex items-center gap-1 text-foreground/70">
+                          <BatteryIcon className="w-4 h-4 text-primary" />
+                          <span>{vehicle.battery_kwh} kWh</span>
                         </div>
-                        <p className="text-sm font-semibold text-foreground">
+                        <div className="text-foreground/70">
                           {vehicle.range_km} km
-                        </p>
-                      </div>
-                      <div className="bg-muted/20 p-2.5 rounded-lg border border-border">
-                        <div className="flex items-center gap-1 mb-1">
-                          <BatteryIcon className="h-3 w-3 text-primary" />
-                          <p className="text-xs text-muted-foreground">Battery</p>
                         </div>
-                        <p className="text-sm font-semibold text-foreground">
-                          {vehicle.battery_kwh} kWh
-                        </p>
                       </div>
-                    </div>
 
-                    {vehicle.price_transparency_enabled && vehicle.broker_market_price ? (
-                      <div className="mb-4 p-3 bg-green-500/10 rounded-lg border border-green-500/30">
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs text-muted-foreground">Factory Direct:</span>
-                          <span className="text-lg font-bold text-green-600">
-                            {formatPrice(vehicle.manufacturer_direct_price)}
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs text-muted-foreground">Broker Market:</span>
-                          <span className="text-sm line-through text-muted-foreground">
-                            {formatPrice(vehicle.broker_market_price)}
-                          </span>
-                        </div>
-                        <div className="pt-1 border-t border-green-500/20 mt-1">
-                          <span className="text-xs font-semibold text-green-600">
-                            Save {formatPrice(vehicle.broker_market_price - vehicle.manufacturer_direct_price)}
-                          </span>
-                        </div>
+                      <div className="pt-3 border-t border-border">
+                        <p className="text-2xl font-bold text-primary mb-1">{formatPrice(vehicle.price_qar)}</p>
+                        <p className="text-xs text-muted-foreground">Starting price</p>
                       </div>
-                    ) : (
-                      <div className="mb-4">
-                        <p className="text-2xl font-bold text-primary">
-                          {formatPrice(vehicle.price_qar)}
-                        </p>
-                        <p className="text-xs text-muted-foreground">Direct from manufacturer</p>
-                      </div>
-                    )}
 
-                    <div className="flex items-center justify-between">
-                      <Badge variant="outline" className="text-xs">
-                        {vehicle.vehicle_type} · {vehicle.origin_country}
-                      </Badge>
                       <Button
-                        size="sm"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          router.push(`/marketplace/${vehicle.id}`)
-                        }}
-                        className="bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-colors"
+                        onClick={() => router.push(`/marketplace/${vehicle.id}`)}
+                        className="w-full group mt-4"
                       >
                         View Details
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </div>
                   </CardContent>
@@ -234,8 +208,27 @@ export default function VehicleCarousel() {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
+        </div>
       )}
+
+      {/* View All Button */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mt-8 relative z-10 px-4"
+      >
+        <Button
+          size="lg"
+          variant="outline"
+          className="rounded-full px-8 py-6"
+          onClick={() => router.push('/marketplace')}
+        >
+          View All Vehicles
+          <ArrowRight className="ml-2 h-5 w-5" />
+        </Button>
+      </motion.div>
     </section>
   )
 }

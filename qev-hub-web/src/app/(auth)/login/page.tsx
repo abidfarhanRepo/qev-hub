@@ -24,8 +24,15 @@ export default function LoginPage() {
 
       if (error) throw error
 
-      // Redirect to dashboard after successful login
-      router.push('/dashboard')
+      // Check for return URL stored in sessionStorage
+      const returnUrl = sessionStorage.getItem('returnUrl')
+      if (returnUrl) {
+        sessionStorage.removeItem('returnUrl')
+        router.push(returnUrl)
+      } else {
+        // Default to dashboard
+        router.push('/dashboard')
+      }
       router.refresh()
     } catch (error: any) {
       setError(error.message || 'Failed to login')

@@ -1,20 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
-import { requireAuth } from '@/lib/api-auth'
+import { requireAuth, getAdminClient } from '@/lib/api-auth'
 
 export async function POST(request: NextRequest) {
   // Require authentication for creating orders
   const { response: authResponse, user } = await requireAuth(request)
   if (authResponse) return authResponse
 
+  // Use admin client to bypass RLS for order creation
+  const adminSupabase = getAdminClient()
+
   try {
     const body = await request.json()
     const { vehicle_id, total_price, deposit_amount } = body
-    
+
+    console.log('[POST /api/orders] Request body:', { vehicle_id, total_price, deposit_amount, user_id: user!.id })
+
     // Use authenticated user's ID instead of accepting it from request body
     const user_id = user!.id
 
     if (!vehicle_id || !total_price || !deposit_amount) {
+      console.log('[POST /api/orders] Missing required fields')
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -23,28 +29,42 @@ export async function POST(request: NextRequest) {
 
     // Check if vehicle is available and decrement stock atomically
     // Using a transaction-like approach to prevent race conditions
-    const { data: vehicle, error: vehicleError } = await supabase
+    console.log('[POST /api/orders] Fetching vehicle...')
+    const { data: vehicle, error: vehicleError } = await adminSupabase
       .from('vehicles')
       .select('*')
       .eq('id', vehicle_id)
       .gt('stock_count', 0)
       .single()
 
-    if (vehicleError || !vehicle) {
+    if (vehicleError) {
+      console.error('[POST /api/orders] Vehicle fetch error:', vehicleError)
+      return NextResponse.json(
+        { error: 'Vehicle not available or out of stock', details: vehicleError.message },
+        { status: 400 }
+      )
+    }
+
+    if (!vehicle) {
+      console.error('[POST /api/orders] Vehicle not found or out of stock')
       return NextResponse.json(
         { error: 'Vehicle not available or out of stock' },
         { status: 400 }
       )
     }
 
+    console.log('[POST /api/orders] Vehicle found:', { id: vehicle.id, stock_count: vehicle.stock_count })
+
     // Atomically decrement stock count
-    const { error: updateError } = await supabase
+    console.log('[POST /api/orders] Decrementing stock...')
+    const { error: updateError } = await adminSupabase
       .from('vehicles')
       .update({ stock_count: vehicle.stock_count - 1 })
       .eq('id', vehicle_id)
       .eq('stock_count', vehicle.stock_count) // Optimistic locking
 
     if (updateError) {
+      console.error('[POST /api/orders] Stock update error:', updateError)
       return NextResponse.json(
         { error: 'Vehicle stock changed, please try again' },
         { status: 409 }
@@ -53,32 +73,39 @@ export async function POST(request: NextRequest) {
 
     // Generate tracking ID
     const trackingId = await generateTrackingId()
+    console.log('[POST /api/orders] Creating order with tracking_id:', trackingId)
 
     // Create order
-    const { data: order, error: orderError } = await supabase
+    const orderData = {
+      user_id,
+      vehicle_id,
+      tracking_id: trackingId,
+      total_price,
+      deposit_amount,
+      status: 'Order Placed',
+      payment_status: 'pending',
+    }
+    console.log('[POST /api/orders] Order data:', orderData)
+
+    const { data: order, error: orderError } = await adminSupabase
       .from('orders')
-      .insert({
-        user_id,
-        vehicle_id,
-        tracking_id: trackingId,
-        total_price,
-        deposit_amount,
-        status: 'Order Placed',
-        payment_status: 'Pending',
-      })
+      .insert(orderData)
       .select()
       .single()
 
     if (orderError) {
-      console.error('Order creation error:', orderError)
+      console.error('[POST /api/orders] Order creation error:', orderError)
       return NextResponse.json(
-        { error: 'Failed to create order' },
+        { error: 'Failed to create order', details: orderError.message, code: orderError.code },
         { status: 500 }
       )
     }
 
+    console.log('[POST /api/orders] Order created:', { id: order.id, tracking_id: order.tracking_id })
+
     // Create logistics entry
-    const { error: logisticsError } = await supabase
+    console.log('[POST /api/orders] Creating logistics entry...')
+    const { error: logisticsError } = await adminSupabase
       .from('logistics')
       .insert({
         order_id: order.id,
@@ -95,7 +122,9 @@ export async function POST(request: NextRequest) {
       })
 
     if (logisticsError) {
-      console.error('Logistics creation error:', logisticsError)
+      console.error('[POST /api/orders] Logistics creation error:', logisticsError)
+    } else {
+      console.log('[POST /api/orders] Logistics created successfully')
     }
 
     return NextResponse.json({
@@ -109,9 +138,9 @@ export async function POST(request: NextRequest) {
       },
     })
   } catch (error) {
-    console.error('Order API error:', error)
+    console.error('[POST /api/orders] Unhandled error:', error)
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     )
   }

@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { CreditCardIcon, ShieldIcon } from '@/components/icons'
 import { Progress } from '@/components/ui/progress'
 import { useToast } from '@/components/ui/use-toast'
+import { useAuth } from '@/contexts/AuthContext'
 
 interface PaymentFormProps {
   orderId: string
@@ -43,6 +44,7 @@ const validateExpiry = (expiry: string): boolean => {
 
 export function PaymentForm({ orderId, depositAmount, onPaymentComplete, onCancel }: PaymentFormProps) {
   const { toast } = useToast()
+  const { session } = useAuth()
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'bank'>('card')
   const [cardNumber, setCardNumber] = useState('')
   const [cardName, setCardName] = useState('')
@@ -110,13 +112,23 @@ export function PaymentForm({ orderId, depositAmount, onPaymentComplete, onCance
       })
       return
     }
-    
+
+    if (!session?.access_token) {
+      toast({
+        title: 'Authentication Required',
+        description: 'Please log in to complete your payment',
+        variant: 'destructive'
+      })
+      return
+    }
+
     setLoading(true)
     try {
       const response = await fetch('/api/payments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${session.access_token}`,
         },
         body: JSON.stringify({
           order_id: orderId,

@@ -30,11 +30,11 @@ export default function FeaturesSection() {
   return (
     <section className="py-24 bg-background relative overflow-hidden">
        {/* Background Elements */}
-       <div className="absolute inset-0 bg-background/40" />
-       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent opacity-50" />
-       
+       <div className="absolute inset-0 bg-muted/20" />
+       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-60" />
+
       <div className="container px-4 md:px-6 relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -55,13 +55,13 @@ export default function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group p-6 border border-border bg-card/50 hover:bg-muted/40 hover:border-primary/50 transition-all duration-300 rounded-xl backdrop-blur-sm hover:-translate-y-2"
+              className="group p-6 border border-border bg-card hover:bg-muted/20 hover:border-primary/50 transition-all duration-300 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-2"
             >
-              <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit group-hover:bg-primary/20 transition-colors group-hover:shadow-lg">
-                <feature.icon className="w-8 h-8 text-primary" />
+              <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit group-hover:bg-primary group-hover:shadow-md transition-all">
+                <feature.icon className="w-8 h-8 text-primary group-hover:text-primary-foreground" />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80">{feature.description}</p>
+              <p className="text-foreground/80 leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
         </div>

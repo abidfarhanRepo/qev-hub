@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
+import { useAuth } from '@/contexts/AuthContext'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -45,6 +46,7 @@ interface Vehicle {
 export default function VehicleDetailPage() {
   const params = useParams()
   const router = useRouter()
+  const { user } = useAuth()
   const vehicleId = params.id as string
   const [vehicle, setVehicle] = useState<Vehicle | null>(null)
   const [loading, setLoading] = useState(true)
@@ -79,12 +81,16 @@ export default function VehicleDetailPage() {
     }).format(price)
   }
 
-  const formatSpec = (key: string, value: string) => {
+  const formatSpec = (key: string, value: string | object | number | boolean) => {
     const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+    // Handle objects, numbers, and other non-string values
+    const displayValue = typeof value === 'object'
+      ? JSON.stringify(value)
+      : String(value)
     return (
       <div key={key} className="flex justify-between py-2">
         <span className="text-muted-foreground">{formattedKey}</span>
-        <span className="font-medium">{value}</span>
+        <span className="font-medium">{displayValue}</span>
       </div>
     )
   }
@@ -310,12 +316,19 @@ export default function VehicleDetailPage() {
                   <Button
                     className="w-full h-14 text-lg"
                     disabled={vehicle.stock_count === 0}
-                    onClick={() =>
-                      router.push(`/orders?vehicle_id=${vehicle.id}`)
-                    }
+                    onClick={() => {
+                      if (!user) {
+                        sessionStorage.setItem('returnUrl', `/orders?vehicle_id=${vehicle.id}`)
+                        router.push('/login')
+                      } else {
+                        router.push(`/orders?vehicle_id=${vehicle.id}`)
+                      }
+                    }}
                   >
                     {vehicle.stock_count > 0
-                      ? 'Purchase Now'
+                      ? user
+                        ? 'Purchase Now'
+                        : 'Sign In to Purchase'
                       : 'Out of Stock'}
                   </Button>
 

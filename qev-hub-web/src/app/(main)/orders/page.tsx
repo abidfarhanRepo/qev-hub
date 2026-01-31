@@ -8,6 +8,7 @@ import { OrderDetails } from '@/components/OrderDetails'
 import { PaymentForm } from '@/components/PaymentForm'
 import { OrderTracking } from '@/components/OrderTracking'
 import { ComplianceDocuments } from '@/components/ComplianceDocuments'
+import type { Session } from '@supabase/supabase-js'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -203,6 +204,8 @@ function OrdersListView() {
 
 function OrdersPageContent() {
   const searchParams = useSearchParams()
+  const router = useRouter()
+  const { user, session } = useAuth()
   const vehicleId = searchParams.get('vehicle_id')
   const existingOrderId = searchParams.get('order_id')
 
@@ -215,15 +218,29 @@ function OrdersPageContent() {
   const [logistics, setLogistics] = useState<any>(null)
   const [documents, setDocuments] = useState<any[]>([])
 
+  // Redirect to login if not authenticated and trying to purchase
   useEffect(() => {
-    if (vehicleId) {
+    if (vehicleId && !user) {
+      // Store the return URL for after login
+      sessionStorage.setItem('returnUrl', `/orders?vehicle_id=${vehicleId}`)
+      toast({
+        title: 'Authentication Required',
+        description: 'Please log in to complete your purchase',
+        variant: 'default',
+      })
+      router.push('/login')
+    }
+  }, [vehicleId, user, router])
+
+  useEffect(() => {
+    if (vehicleId && user) {
       fetchVehicle(vehicleId)
     } else if (existingOrderId) {
       // Viewing existing order - go directly to tracking
       setStep('tracking')
       fetchExistingOrderDetails(existingOrderId)
     }
-  }, [vehicleId, existingOrderId])
+  }, [vehicleId, existingOrderId, user])
 
   const fetchExistingOrderDetails = async (id: string) => {
     try {
@@ -267,22 +284,62 @@ function OrdersPageContent() {
   }
 
   const handlePurchase = async (selectedVehicle: Vehicle) => {
+    if (!user || !session?.access_token) {
+      toast({
+        title: 'Authentication Required',
+        description: 'Please log in to complete your purchase',
+        variant: 'destructive',
+      })
+      sessionStorage.setItem('returnUrl', `/orders?vehicle_id=${selectedVehicle.id}`)
+      router.push('/login')
+      return
+    }
+
+    // Validate vehicle data
+    if (!selectedVehicle.price_qar || selectedVehicle.price_qar <= 0) {
+      toast({
+        title: 'Invalid Vehicle',
+        description: 'This vehicle has no pricing information. Please select a different vehicle.',
+        variant: 'destructive',
+      })
+      return
+    }
+
     setLoading(true)
     try {
+      const payload = {
+        vehicle_id: selectedVehicle.id,
+        total_price: selectedVehicle.price_qar,
+        deposit_amount: selectedVehicle.price_qar * 0.2,
+      }
+      console.log('Creating order with payload:', payload)
+
       const response = await fetch('/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${session.access_token}`,
         },
-        body: JSON.stringify({
-          vehicle_id: selectedVehicle.id,
-          user_id: 'demo-user-id',
-          total_price: selectedVehicle.price_qar,
-          deposit_amount: selectedVehicle.price_qar * 0.2,
-        }),
+        body: JSON.stringify(payload),
       })
 
       const data = await response.json()
+      console.log('Order API response:', { status: response.status, data })
+
+      if (!response.ok) {
+        // Handle 401 Unauthorized specifically
+        if (response.status === 401) {
+          toast({
+            title: 'Authentication Required',
+            description: 'Please log in to complete your purchase',
+            variant: 'destructive',
+          })
+          sessionStorage.setItem('returnUrl', `/orders?vehicle_id=${selectedVehicle.id}`)
+          router.push('/login')
+          return
+        }
+        throw new Error(data.error || `HTTP ${response.status}: ${response.statusText}`)
+      }
 
       if (data.success) {
         setOrderId(data.order.id)
@@ -290,17 +347,13 @@ function OrdersPageContent() {
         setDepositAmount(data.order.deposit_amount)
         setStep('payment')
       } else {
-        toast({
-          title: 'Error',
-          description: data.error || 'Failed to create order',
-          variant: 'destructive',
-        })
+        throw new Error(data.error || 'Failed to create order')
       }
     } catch (error) {
       console.error('Purchase error:', error)
       toast({
         title: 'Error',
-        description: 'An error occurred while creating your order',
+        description: error instanceof Error ? error.message : 'An error occurred while creating your order',
         variant: 'destructive',
       })
     } finally {
