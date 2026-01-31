@@ -203,6 +203,25 @@ function OrdersListView() {
   )
 }
 
+/**
+ * OrdersPageContent Component
+ *
+ * Main component handling the complete order flow for vehicle purchases.
+ *
+ * Flow Steps:
+ * 1. Details - Review vehicle information before purchase
+ * 2. Payment - Complete deposit payment (card or bank transfer)
+ * 3. Confirmation - Order confirmation with redirect to tracking
+ * 4. Tracking - Real-time order tracking with FAHES/customs status
+ *
+ * Test Mode:
+ * When viewing an existing order in tracking mode, test mode is enabled for
+ * automatic status progression to demonstrate the full order lifecycle.
+ *
+ * Query Parameters:
+ * - vehicle_id: Vehicle to purchase (redirects to purchase flow)
+ * - order_id: Existing order to track (redirects to tracking step)
+ */
 function OrdersPageContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -629,6 +648,7 @@ function OrdersPageContent() {
                   </Card>
                 )}
 
+                {/* Test mode enabled for automatic status progression during development */}
                 <OrderTracking logistics={logistics} testMode={true} onLogisticsUpdate={setLogistics} />
                 {documents.length > 0 && (
                   <ComplianceDocuments documents={documents} orderId={orderId!} />

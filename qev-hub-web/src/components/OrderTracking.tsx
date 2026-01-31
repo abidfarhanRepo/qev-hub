@@ -1,5 +1,30 @@
 'use client'
 
+/**
+ * OrderTracking Component
+ *
+ * Displays the real-time tracking status of vehicle orders with a visual timeline.
+ * Shows logistics information, tracking history, and Qatar-specific customs clearance details.
+ *
+ * Features:
+ * - Visual progress timeline with 5 stages (Order Placed → Delivered)
+ * - Current location, destination, vessel, and estimated arrival info
+ * - Tracking history with timestamps
+ * - FAHES & Customs section (shown when "In Customs" stage or later)
+ * - Test mode for automatic status progression during development
+ *
+ * Test Mode:
+ * When `testMode=true`, the component automatically:
+ * - Progresses order status every 5 seconds through all stages
+ * - Updates backend via PUT to /api/logistics/[id]
+ * - Auto-approves FAHES requirements every 3 seconds when "In Customs"
+ * - Auto-receives paperwork documents every 3 seconds when "In Customs"
+ *
+ * @param logistics - Logistics object containing current order tracking data
+ * @param onLogisticsUpdate - Optional callback when logistics data updates
+ * @param testMode - Enable automatic status progression for testing (default: false)
+ */
+
 import { useState, useEffect, useCallback } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -24,11 +49,15 @@ interface Logistics {
 }
 
 interface OrderTrackingProps {
+  /** Current logistics data for the order */
   logistics: Logistics
+  /** Optional callback invoked when logistics data is updated (e.g., during test mode progression) */
   onLogisticsUpdate?: (logistics: Logistics) => void
+  /** Enable automatic status progression for testing purposes */
   testMode?: boolean
 }
 
+/** Order stages with labels, locations, and vessel information */
 const ORDER_STAGES = [
   { key: 'Order Placed', label: 'Order Placed', location: 'Manufacturer Facility' },
   { key: 'Processing', label: 'Processing', location: 'Processing Center' },
@@ -37,9 +66,14 @@ const ORDER_STAGES = [
   { key: 'Delivered', label: 'Delivered', location: 'Delivered to Customer' },
 ]
 
+/** Sequence of order statuses for automatic progression in test mode */
 const STATUS_PROGRESSION_SEQUENCE = ['Order Placed', 'Processing', 'In Transit', 'In Customs', 'Delivered']
 
-// Customs-related data
+/**
+ * FAHES (General Authority for Standardization and Metrology) requirements
+ * These are mandatory inspections and certifications for vehicle import into Qatar.
+ * In test mode, these auto-approve every 3 seconds when status is "In Customs".
+ */
 const FAHES_REQUIREMENTS = [
   { id: '1', name: 'Vehicle Inspection', status: 'pending', description: 'Comprehensive safety and emissions inspection' },
   { id: '2', name: 'Certificate of Conformity', status: 'pending', description: 'GCC compliance certificate verification' },
@@ -47,6 +81,10 @@ const FAHES_REQUIREMENTS = [
   { id: '4', name: 'Traffic Registration', status: 'pending', description: 'Traffic department registration' },
 ]
 
+/**
+ * Required paperwork for customs clearance in Qatar.
+ * In test mode, pending documents auto-receive every 3 seconds when status is "In Customs".
+ */
 const PAPERWORK_ITEMS = [
   { name: 'Bill of Lading', status: 'received', required: true },
   { name: 'Commercial Invoice', status: 'received', required: true },
@@ -56,6 +94,11 @@ const PAPERWORK_ITEMS = [
   { name: 'Export Declaration', status: 'pending', required: true },
 ]
 
+/**
+ * Customs fees and charges for vehicle import into Qatar.
+ * Import duty is typically 5% of vehicle value (calculated dynamically based on order total).
+ * Other fees are fixed charges.
+ */
 const CUSTOMS_FEES = [
   { name: 'Import Duty (5%)', amount: 0 }, // Will be calculated
   { name: 'Customs Processing Fee', amount: 350 },
@@ -70,6 +113,10 @@ export function OrderTracking({ logistics, onLogisticsUpdate, testMode = false }
   const [fahesStatus, setFahesStatus] = useState<typeof FAHES_REQUIREMENTS>(FAHES_REQUIREMENTS)
   const [paperwork, setPaperwork] = useState<typeof PAPERWORK_ITEMS>(PAPERWORK_ITEMS)
 
+  /**
+   * Initialize state from logistics prop
+   * Updates current stage and local logistics whenever the prop changes
+   */
   useEffect(() => {
     const stageIndex = ORDER_STAGES.findIndex(
       (stage) => stage.key === logistics.status
@@ -78,7 +125,14 @@ export function OrderTracking({ logistics, onLogisticsUpdate, testMode = false }
     setLocalLogistics(logistics)
   }, [logistics.status, logistics])
 
-  // Auto-progression for testing
+  /**
+   * Test Mode: Auto-progression of order status
+   *
+   * When enabled, automatically advances the order through all stages every 5 seconds:
+   * - Updates local state immediately for instant UI feedback
+   * - Updates backend via PUT to /api/logistics/[id]
+   * - Stops when order reaches "Delivered" status
+   */
   useEffect(() => {
     if (!testMode || !logistics.id) return
 
@@ -138,7 +192,14 @@ export function OrderTracking({ logistics, onLogisticsUpdate, testMode = false }
     return () => clearInterval(timer)
   }, [testMode, localLogistics, logistics.id, onLogisticsUpdate])
 
-  // Simulate FAHES and paperwork updates when in customs
+  /**
+   * Test Mode: Auto-approve FAHES requirements and paperwork
+   *
+   * When order is in "In Customs" stage and test mode is enabled:
+   * - Approves one FAHES requirement every 3 seconds
+   * - Receives one pending paperwork document every 3 seconds
+   * - Stops when all items are approved/received
+   */
   useEffect(() => {
     if (localLogistics.status === 'In Customs' && testMode) {
       const timer = setInterval(() => {
