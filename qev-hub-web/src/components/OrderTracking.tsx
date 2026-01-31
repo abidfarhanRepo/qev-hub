@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import { ShipIcon, TruckIcon, MapPinIcon, PackageIcon, CheckIcon } from '@/components/icons'
+import { Progress } from '@/components/ui/progress'
+import { ShipIcon, TruckIcon, MapPinIcon, PackageIcon, CheckIcon, FileText, AlertCircle } from '@/components/icons'
 
 interface TrackingEvent {
   status: string
@@ -13,6 +14,7 @@ interface TrackingEvent {
 }
 
 interface Logistics {
+  id?: string
   status: string
   current_location: string
   destination: string
@@ -23,25 +25,147 @@ interface Logistics {
 
 interface OrderTrackingProps {
   logistics: Logistics
+  onLogisticsUpdate?: (logistics: Logistics) => void
+  testMode?: boolean
 }
 
 const ORDER_STAGES = [
-  { key: 'Order Placed', label: 'Order Placed' },
-  { key: 'Processing', label: 'Processing' },
-  { key: 'In Transit', label: 'In Transit' },
-  { key: 'In Customs', label: 'In Customs' },
-  { key: 'Delivered', label: 'Delivered' },
+  { key: 'Order Placed', label: 'Order Placed', location: 'Manufacturer Facility' },
+  { key: 'Processing', label: 'Processing', location: 'Processing Center' },
+  { key: 'In Transit', label: 'In Transit', location: 'International Waters', vessel: 'MV Qatar Express' },
+  { key: 'In Customs', label: 'In Customs', location: 'Hamad Port, Qatar' },
+  { key: 'Delivered', label: 'Delivered', location: 'Delivered to Customer' },
 ]
 
-export function OrderTracking({ logistics }: OrderTrackingProps) {
+const STATUS_PROGRESSION_SEQUENCE = ['Order Placed', 'Processing', 'In Transit', 'In Customs', 'Delivered']
+
+// Customs-related data
+const FAHES_REQUIREMENTS = [
+  { id: '1', name: 'Vehicle Inspection', status: 'pending', description: 'Comprehensive safety and emissions inspection' },
+  { id: '2', name: 'Certificate of Conformity', status: 'pending', description: 'GCC compliance certificate verification' },
+  { id: '3', name: 'Insurance Registration', status: 'pending', description: 'Qatar vehicle insurance registration' },
+  { id: '4', name: 'Traffic Registration', status: 'pending', description: 'Traffic department registration' },
+]
+
+const PAPERWORK_ITEMS = [
+  { name: 'Bill of Lading', status: 'received', required: true },
+  { name: 'Commercial Invoice', status: 'received', required: true },
+  { name: 'Certificate of Origin', status: 'received', required: true },
+  { name: 'Packing List', status: 'received', required: true },
+  { name: 'Insurance Certificate', status: 'pending', required: true },
+  { name: 'Export Declaration', status: 'pending', required: true },
+]
+
+const CUSTOMS_FEES = [
+  { name: 'Import Duty (5%)', amount: 0 }, // Will be calculated
+  { name: 'Customs Processing Fee', amount: 350 },
+  { name: 'Port Handling Charges', amount: 500 },
+  { name: 'Documentation Fee', amount: 150 },
+  { name: 'Storage Fees', amount: 200 },
+]
+
+export function OrderTracking({ logistics, onLogisticsUpdate, testMode = false }: OrderTrackingProps) {
   const [currentStage, setCurrentStage] = useState(0)
+  const [localLogistics, setLocalLogistics] = useState<Logistics>(logistics)
+  const [fahesStatus, setFahesStatus] = useState<typeof FAHES_REQUIREMENTS>(FAHES_REQUIREMENTS)
+  const [paperwork, setPaperwork] = useState<typeof PAPERWORK_ITEMS>(PAPERWORK_ITEMS)
 
   useEffect(() => {
     const stageIndex = ORDER_STAGES.findIndex(
       (stage) => stage.key === logistics.status
     )
     setCurrentStage(Math.max(0, stageIndex))
-  }, [logistics.status])
+    setLocalLogistics(logistics)
+  }, [logistics.status, logistics])
+
+  // Auto-progression for testing
+  useEffect(() => {
+    if (!testMode || !logistics.id) return
+
+    // Stop progression when delivered
+    if (localLogistics.status === 'Delivered') return
+
+    const timer = setInterval(async () => {
+      const currentIndex = STATUS_PROGRESSION_SEQUENCE.indexOf(localLogistics.status)
+      if (currentIndex < STATUS_PROGRESSION_SEQUENCE.length - 1) {
+        const nextStatus = STATUS_PROGRESSION_SEQUENCE[currentIndex + 1]
+        const stageInfo = ORDER_STAGES.find(s => s.key === nextStatus)
+
+        const newEvent = {
+          status: nextStatus,
+          location: stageInfo?.location || localLogistics.current_location,
+          timestamp: new Date().toISOString(),
+        }
+
+        const updatedLogistics = {
+          ...localLogistics,
+          status: nextStatus,
+          current_location: stageInfo?.location || localLogistics.current_location,
+          vessel_name: stageInfo?.vessel || localLogistics.vessel_name,
+          tracking_events: [...localLogistics.tracking_events, newEvent],
+          estimated_arrival: nextStatus === 'In Transit'
+            ? new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()
+            : localLogistics.estimated_arrival,
+        }
+
+        // Update local state
+        setLocalLogistics(updatedLogistics)
+        setCurrentStage(currentIndex + 1)
+
+        // Update backend
+        try {
+          const response = await fetch(`/api/logistics/${logistics.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              status: nextStatus,
+              current_location: stageInfo?.location,
+            }),
+          })
+
+          if (response.ok) {
+            const data = await response.json()
+            if (data.logistics && onLogisticsUpdate) {
+              onLogisticsUpdate(data.logistics)
+            }
+          }
+        } catch (error) {
+          console.error('Failed to update logistics:', error)
+        }
+      }
+    }, 5000)
+
+    return () => clearInterval(timer)
+  }, [testMode, localLogistics, logistics.id, onLogisticsUpdate])
+
+  // Simulate FAHES and paperwork updates when in customs
+  useEffect(() => {
+    if (localLogistics.status === 'In Customs' && testMode) {
+      const timer = setInterval(() => {
+        setFahesStatus(prev => {
+          const pendingIndex = prev.findIndex(item => item.status === 'pending')
+          if (pendingIndex >= 0) {
+            const updated = [...prev]
+            updated[pendingIndex] = { ...updated[pendingIndex], status: 'approved' }
+            return updated
+          }
+          return prev
+        })
+
+        setPaperwork(prev => {
+          const pendingIndex = prev.findIndex(item => item.status === 'pending')
+          if (pendingIndex >= 0) {
+            const updated = [...prev]
+            updated[pendingIndex] = { ...updated[pendingIndex], status: 'received' }
+            return updated
+          }
+          return prev
+        })
+      }, 3000)
+
+      return () => clearInterval(timer)
+    }
+  }, [localLogistics.status, testMode])
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
@@ -70,6 +194,9 @@ export function OrderTracking({ logistics }: OrderTrackingProps) {
     return 'pending'
   }
 
+  // Use localLogistics for real-time updates during test mode
+  const displayLogistics = testMode ? localLogistics : logistics
+
   return (
     <Card className="w-full">
       <CardHeader>
@@ -77,10 +204,10 @@ export function OrderTracking({ logistics }: OrderTrackingProps) {
           <CardTitle>Order Tracking</CardTitle>
           <Badge
             variant={
-              logistics.status === 'Delivered' ? 'default' : 'secondary'
+              displayLogistics.status === 'Delivered' ? 'default' : 'secondary'
             }
           >
-            {logistics.status}
+            {displayLogistics.status}
           </Badge>
         </div>
       </CardHeader>
@@ -126,7 +253,7 @@ export function OrderTracking({ logistics }: OrderTrackingProps) {
                   </div>
                   {getStageStatus(index) === 'current' && (
                     <p className="text-sm text-muted-foreground">
-                      {logistics.current_location}
+                      {displayLogistics.current_location}
                     </p>
                   )}
                 </div>
@@ -143,7 +270,7 @@ export function OrderTracking({ logistics }: OrderTrackingProps) {
           <div>
             <p className="text-sm font-medium">Current Location</p>
             <p className="text-sm text-muted-foreground">
-              {logistics.current_location}
+              {displayLogistics.current_location}
             </p>
           </div>
         </div>
@@ -154,32 +281,32 @@ export function OrderTracking({ logistics }: OrderTrackingProps) {
           <div>
             <p className="text-sm font-medium">Destination</p>
             <p className="text-sm text-muted-foreground">
-              {logistics.destination}
+              {displayLogistics.destination}
             </p>
           </div>
         </div>
 
         {/* Estimated Arrival */}
-        {logistics.estimated_arrival && (
+        {displayLogistics.estimated_arrival && (
           <div className="flex items-start gap-3">
             <PackageIcon className="h-5 w-5 text-muted-foreground mt-0.5" />
             <div>
               <p className="text-sm font-medium">Estimated Arrival</p>
               <p className="text-sm text-muted-foreground">
-                {formatDate(logistics.estimated_arrival)}
+                {formatDate(displayLogistics.estimated_arrival)}
               </p>
             </div>
           </div>
         )}
 
         {/* Vessel Information */}
-        {logistics.vessel_name && (
+        {displayLogistics.vessel_name && (
           <div className="flex items-start gap-3">
             <ShipIcon className="h-5 w-5 text-muted-foreground mt-0.5" />
             <div>
               <p className="text-sm font-medium">Vessel</p>
               <p className="text-sm text-muted-foreground">
-                {logistics.vessel_name}
+                {displayLogistics.vessel_name}
               </p>
             </div>
           </div>
@@ -188,11 +315,11 @@ export function OrderTracking({ logistics }: OrderTrackingProps) {
         <Separator />
 
         {/* Tracking Events */}
-        {logistics.tracking_events && logistics.tracking_events.length > 0 && (
+        {displayLogistics.tracking_events && displayLogistics.tracking_events.length > 0 && (
           <div>
             <h3 className="font-semibold mb-3">Tracking History</h3>
             <div className="space-y-3">
-              {logistics.tracking_events
+              {displayLogistics.tracking_events
                 .slice()
                 .reverse()
                 .map((event, index) => (
@@ -213,6 +340,99 @@ export function OrderTracking({ logistics }: OrderTrackingProps) {
                 ))}
             </div>
           </div>
+        )}
+
+        {/* FAHES & Customs Section - Only shown when In Customs or later */}
+        {currentStage >= 3 && (
+          <>
+            <Separator />
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <FileText className="h-5 w-5 text-primary" />
+                <h3 className="font-semibold text-lg">FAHES & Customs Clearance</h3>
+              </div>
+
+              {/* FAHES Requirements Progress */}
+              <div className="bg-muted/30 rounded-lg p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-medium">FAHES Inspection Status</h4>
+                  <Badge variant={fahesStatus.every(r => r.status === 'approved') ? 'default' : 'secondary'}>
+                    {fahesStatus.filter(r => r.status === 'approved').length}/{fahesStatus.length} Approved
+                  </Badge>
+                </div>
+                <div className="space-y-3">
+                  {fahesStatus.map((req) => (
+                    <div key={req.id} className="flex items-start gap-3">
+                      <div className="mt-0.5">
+                        {req.status === 'approved' ? (
+                          <CheckIcon className="h-4 w-4 text-green-600" />
+                        ) : (
+                          <AlertCircle className="h-4 w-4 text-yellow-600" />
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium">{req.name}</p>
+                        <p className="text-xs text-muted-foreground">{req.description}</p>
+                      </div>
+                      <Badge variant={req.status === 'approved' ? 'default' : 'outline'} className="text-xs">
+                        {req.status === 'approved' ? 'Approved' : 'Pending'}
+                      </Badge>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Paperwork Checklist */}
+              <div className="bg-muted/30 rounded-lg p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-medium">Required Paperwork</h4>
+                  <Badge variant={paperwork.every(p => p.status === 'received') ? 'default' : 'secondary'}>
+                    {paperwork.filter(p => p.status === 'received').length}/{paperwork.length} Received
+                  </Badge>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  {paperwork.map((doc, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-sm">
+                      {doc.status === 'received' ? (
+                        <CheckIcon className="h-4 w-4 text-green-600 flex-shrink-0" />
+                      ) : (
+                        <div className="h-4 w-4 rounded-full border-2 border-muted flex-shrink-0" />
+                      )}
+                      <span className={doc.status === 'received' ? '' : 'text-muted-foreground'}>
+                        {doc.name}
+                        {doc.required && <span className="text-red-500 ml-1">*</span>}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-muted-foreground mt-2">* Required for customs clearance</p>
+              </div>
+
+              {/* Customs Fees Breakdown */}
+              <div className="bg-muted/30 rounded-lg p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-medium">Customs Fees & Charges</h4>
+                  <Badge variant="outline">QAR</Badge>
+                </div>
+                <div className="space-y-2 text-sm">
+                  {CUSTOMS_FEES.map((fee, idx) => (
+                    <div key={idx} className="flex justify-between">
+                      <span className="text-muted-foreground">{fee.name}</span>
+                      <span className="font-medium">
+                        {fee.amount > 0 ? `QAR ${fee.amount.toLocaleString()}` : '---'}
+                      </span>
+                    </div>
+                  ))}
+                  <div className="border-t pt-2 mt-2">
+                    <div className="flex justify-between font-semibold">
+                      <span>Total Fees</span>
+                      <span>QAR {CUSTOMS_FEES.reduce((sum, f) => sum + f.amount, 0).toLocaleString()}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
         )}
       </CardContent>
     </Card>

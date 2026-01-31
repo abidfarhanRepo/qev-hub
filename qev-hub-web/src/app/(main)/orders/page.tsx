@@ -220,6 +220,21 @@ function OrdersPageContent() {
   const [documents, setDocuments] = useState<any[]>([])
   const [orderDetails, setOrderDetails] = useState<any>(null)
 
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('en-QA', {
+      style: 'currency',
+      currency: 'QAR'
+    }).format(price)
+  }
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-QA', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
+  }
+
   // Redirect to login if not authenticated and trying to purchase
   useEffect(() => {
     if (vehicleId && !user) {
@@ -614,7 +629,7 @@ function OrdersPageContent() {
                   </Card>
                 )}
 
-                <OrderTracking logistics={logistics} />
+                <OrderTracking logistics={logistics} testMode={true} onLogisticsUpdate={setLogistics} />
                 {documents.length > 0 && (
                   <ComplianceDocuments documents={documents} orderId={orderId!} />
                 )}

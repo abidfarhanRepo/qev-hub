@@ -152,6 +152,9 @@ async function generateTrackingId(): Promise<string> {
 }
 
 export async function GET(request: NextRequest) {
+  // Use admin client to bypass RLS for fetching orders
+  const adminSupabase = getAdminClient()
+
   // Require authentication for fetching orders
   const { response: authResponse, user } = await requireAuth(request)
   if (authResponse) return authResponse
@@ -161,7 +164,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
     const orderId = searchParams.get('id')
 
-    let query = supabase
+    let query = adminSupabase
       .from('orders')
       .select(`
         *,
