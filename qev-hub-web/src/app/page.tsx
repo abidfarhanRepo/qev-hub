@@ -1,20 +1,14 @@
 'use client'
 
-import { useState } from 'react'
-import IntroAnimation from '@/components/landing/IntroAnimation'
 import HeroSection from '@/components/landing/HeroSection'
 import FeaturesSection from '@/components/landing/FeaturesSection'
 import VehicleCarousel from '@/components/landing/VehicleCarousel'
 import LandingNavbar from '@/components/landing/LandingNavbar'
 
 export default function Home() {
-  const [showIntro, setShowIntro] = useState(true)
-
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground overflow-x-hidden">
-      {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
-      
-      <div className={`transition-opacity duration-1000 ${showIntro ? 'opacity-0' : 'opacity-100'}`}>
+      <div>
         <LandingNavbar />
         <HeroSection />
         <FeaturesSection />
