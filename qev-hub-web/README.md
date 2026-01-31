@@ -200,6 +200,79 @@ The application includes comprehensive TypeScript type checking. Run:
 npm run build  # Validates types and builds
 ```
 
+### Test Mode for Order Tracking
+
+The OrderTracking component includes a **Test Mode** feature that automatically progresses order status for development and demonstration purposes.
+
+#### How Test Mode Works
+
+When `testMode=true` is passed to the `<OrderTracking>` component:
+
+1. **Auto-Status Progression** (every 5 seconds):
+   - Order Placed → Processing → In Transit → In Customs → Delivered
+   - Updates both UI (instant) and backend (via PUT to `/api/logistics/[id]`)
+   - Stops when order reaches "Delivered" status
+
+2. **FAHES Auto-Approval** (every 3 seconds, when "In Customs"):
+   - Vehicle Inspection → Approved
+   - Certificate of Conformity → Approved
+   - Insurance Registration → Approved
+   - Traffic Registration → Approved
+
+3. **Paperwork Auto-Receive** (every 3 seconds, when "In Customs"):
+   - Insurance Certificate → Received
+   - Export Declaration → Received
+   - (Other documents start as "received")
+
+#### Enabling/Disabling Test Mode
+
+**Current Implementation** (in `src/app/(main)/orders/page.tsx`):
+```tsx
+<OrderTracking logistics={logistics} testMode={true} onLogisticsUpdate={setLogistics} />
+```
+
+**To Disable for Production**:
+Change `testMode={true}` to `testMode={false}` or remove the prop entirely (defaults to `false`).
+
+#### Test Mode Behavior by Stage
+
+| Stage | Duration | What Happens |
+|-------|----------|--------------|
+| Order Placed | 5s | Progresses to Processing |
+| Processing | 5s | Progresses to In Transit |
+| In Transit | 5s | Progresses to In Customs |
+| **In Customs** | 12s+ | FAHES items approve every 3s (4 items = 12s)<br>Paperwork receives every 3s (2 items = 6s) |
+| Delivered | - | Stops auto-progression |
+
+#### API Calls During Test Mode
+
+Each status progression triggers a PUT request:
+```
+PUT /api/logistics/[logistics_id]
+{
+  "status": "next_status",
+  "current_location": "next_location"
+}
+```
+
+This updates the database so the test progression is persisted.
+
+#### Important Notes
+
+- Test mode is **intentionally enabled** in the current implementation for development/demonstration
+- **Must be disabled** before production deployment
+- The auto-progression only applies to the specific order being viewed
+- Multiple orders can be tested independently in separate browser tabs
+- Backend logistics API uses admin client (bypasses RLS) for smooth testing
+
+#### Testing the Full Flow
+
+1. Navigate to `/orders?order_id=<existing_order_id>`
+2. Watch the timeline auto-progress every 5 seconds
+3. When "In Customs" is reached, observe FAHES/paperwork sections appear
+4. See items get approved/received every 3 seconds
+5. Verify backend data updates (refresh page to confirm persistence)
+
 ## 📱 Pages Overview
 
 | Page | Route | Description |
