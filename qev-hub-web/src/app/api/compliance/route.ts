@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { getAdminClient } from '@/lib/api-auth'
 
 export async function POST(request: NextRequest) {
+  const adminSupabase = getAdminClient()
+
   try {
     const body = await request.json()
     const { order_id, document_type } = body
@@ -14,7 +17,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get order details
-    const { data: order, error: orderError } = await supabase
+    const { data: order, error: orderError } = await adminSupabase
       .from('orders')
       .select('*, vehicle:vehicles(*)')
       .eq('id', order_id)
@@ -31,7 +34,7 @@ export async function POST(request: NextRequest) {
     const mockDocumentUrl = `https://storage.qev-hub.qa/compliance/${document_type.toLowerCase().replace(' ', '-')}-${order_id}.pdf`
 
     // Create compliance document record
-    const { data: document, error: docError } = await supabase
+    const { data: document, error: docError } = await adminSupabase
       .from('compliance_documents')
       .insert({
         order_id,
@@ -72,6 +75,8 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
+  const adminSupabase = getAdminClient()
+
   try {
     const { searchParams } = new URL(request.url)
     const orderId = searchParams.get('order_id')
@@ -83,10 +88,14 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const { data: documents, error } = await supabase
+    console.log('[GET /api/compliance] Fetching documents for order:', orderId)
+
+    const { data: documents, error } = await adminSupabase
       .from('compliance_documents')
       .select('*')
       .eq('order_id', orderId)
+
+    console.log('[GET /api/compliance] Result:', { documents, error })
 
     if (error) {
       return NextResponse.json(
@@ -95,7 +104,7 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    return NextResponse.json({ documents })
+    return NextResponse.json({ documents: documents || [] })
   } catch (error) {
     console.error('Fetch compliance documents error:', error)
     return NextResponse.json(

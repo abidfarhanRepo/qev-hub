@@ -543,69 +543,85 @@ function OrdersPageContent() {
            </div>
          )}
 
-        {step === 'tracking' && logistics && (
+        {step === 'tracking' && (
+          <>
+            {(() => {
+              console.log('[Tracking Step] logistics:', logistics, 'orderDetails:', orderDetails, 'orderId:', orderId)
+              return null
+            })()}
           <div className="space-y-6">
-            {/* Order Details Card */}
-            {orderDetails && (
+            {!logistics ? (
               <Card>
-                <CardHeader>
-                  <CardTitle>Order Details</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="text-xl font-bold">
-                        {orderDetails.vehicle?.manufacturer} {orderDetails.vehicle?.model}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Tracking ID: {trackingId}
-                      </p>
-                    </div>
-                    <Badge variant="outline">{orderDetails.status}</Badge>
-                  </div>
-
-                  <Separator />
-
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div>
-                      <p className="text-sm text-muted-foreground">Total Price</p>
-                      <p className="font-semibold">{formatPrice(orderDetails.total_price)}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Deposit Paid</p>
-                      <p className="font-semibold">{formatPrice(orderDetails.deposit_amount)}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Remaining</p>
-                      <p className="font-semibold">{formatPrice(orderDetails.total_price - orderDetails.deposit_amount)}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Payment Status</p>
-                      <p className="font-semibold capitalize">{orderDetails.payment_status}</p>
-                    </div>
-                  </div>
-
-                  <Separator />
-
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <p className="text-muted-foreground">Order Date</p>
-                      <p className="font-medium">{formatDate(orderDetails.created_at)}</p>
-                    </div>
-                    <div>
-                      <p className="text-muted-foreground">Vehicle Year</p>
-                      <p className="font-medium">{orderDetails.vehicle?.year}</p>
-                    </div>
-                  </div>
+                <CardContent className="py-12 text-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4" />
+                  <p>Loading tracking information...</p>
                 </CardContent>
               </Card>
-            )}
+            ) : (
+              <>
+                {orderDetails && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Order Details</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <h3 className="text-xl font-bold">
+                            {orderDetails.vehicle?.manufacturer} {orderDetails.vehicle?.model}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            Tracking ID: {trackingId}
+                          </p>
+                        </div>
+                        <Badge variant="outline">{orderDetails.status}</Badge>
+                      </div>
 
-            <OrderTracking logistics={logistics} />
-            {documents.length > 0 && (
-              <ComplianceDocuments documents={documents} orderId={orderId!} />
+                      <Separator />
+
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                          <p className="text-sm text-muted-foreground">Total Price</p>
+                          <p className="font-semibold">{formatPrice(orderDetails.total_price)}</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Deposit Paid</p>
+                          <p className="font-semibold">{formatPrice(orderDetails.deposit_amount)}</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Remaining</p>
+                          <p className="font-semibold">{formatPrice(orderDetails.total_price - orderDetails.deposit_amount)}</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Payment Status</p>
+                          <p className="font-semibold capitalize">{orderDetails.payment_status}</p>
+                        </div>
+                      </div>
+
+                      <Separator />
+
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <p className="text-muted-foreground">Order Date</p>
+                          <p className="font-medium">{formatDate(orderDetails.created_at)}</p>
+                        </div>
+                        <div>
+                          <p className="text-muted-foreground">Vehicle Year</p>
+                          <p className="font-medium">{orderDetails.vehicle?.year}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+
+                <OrderTracking logistics={logistics} />
+                {documents.length > 0 && (
+                  <ComplianceDocuments documents={documents} orderId={orderId!} />
+                )}
+              </>
             )}
           </div>
+          </>
         )}
 
         {/* Back button */}
