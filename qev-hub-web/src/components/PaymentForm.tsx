@@ -63,6 +63,62 @@ export function PaymentForm({ orderId, depositAmount, onPaymentComplete, onCance
     }
   }, [])
 
+  // Auto-process bank transfer payment (fake)
+  useEffect(() => {
+    if (paymentMethod === 'bank') {
+      // Fake bank transfer - automatically process payment
+      const processBankTransfer = async () => {
+        setLoading(true)
+        // Simulate processing delay
+        await new Promise(resolve => setTimeout(resolve, 1500))
+
+        // Call the payment API with bank transfer method
+        try {
+          const response = await fetch('/api/payments', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              ...(session?.access_token && { 'Authorization': `Bearer ${session.access_token}` }),
+            },
+            body: JSON.stringify({
+              order_id: orderId,
+              amount: depositAmount,
+              payment_method: 'bank_transfer',
+              transaction_id: `bank_txn_${Date.now()}`,
+            }),
+          })
+
+          const data = await response.json()
+
+          // Always succeed for fake bank transfer
+          onPaymentComplete({
+            success: true,
+            order_tracking_id: orderId,
+            message: 'Bank transfer initiated successfully',
+          })
+
+          toast({
+            title: 'Payment Initiated',
+            description: 'Bank transfer payment initiated successfully',
+          })
+        } catch (error) {
+          console.error('Bank transfer error:', error)
+          // Still proceed on error for fake payment
+          onPaymentComplete({
+            success: true,
+            order_tracking_id: orderId,
+            message: 'Bank transfer initiated successfully',
+          })
+        } finally {
+          setLoading(false)
+        }
+      }
+
+      processBankTransfer()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paymentMethod, orderId, depositAmount, session])
+
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-QA', {
       style: 'currency',
@@ -297,18 +353,25 @@ export function PaymentForm({ orderId, depositAmount, onPaymentComplete, onCance
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3">
-          <Button variant="outline" onClick={onCancel} className="flex-1">
-            Cancel
-          </Button>
-          <Button
-            onClick={handlePayment}
-            disabled={loading}
-            className="flex-1"
-          >
-            {loading ? 'Processing...' : 'Pay Now'}
-          </Button>
-        </div>
+        {paymentMethod === 'bank' && loading ? (
+          <div className="flex flex-col items-center gap-3 py-4">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto" />
+            <p className="text-sm text-muted-foreground">Processing bank transfer...</p>
+          </div>
+        ) : paymentMethod === 'bank' ? null : (
+          <div className="flex gap-3">
+            <Button variant="outline" onClick={onCancel} className="flex-1">
+              Cancel
+            </Button>
+            <Button
+              onClick={handlePayment}
+              disabled={loading}
+              className="flex-1"
+            >
+              {loading ? 'Processing...' : 'Pay Now'}
+            </Button>
+          </div>
+        )}
       </CardContent>
     </Card>
   )
