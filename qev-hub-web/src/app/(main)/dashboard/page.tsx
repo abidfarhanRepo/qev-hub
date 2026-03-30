@@ -201,9 +201,9 @@ export default function DashboardPage() {
                 <div className="p-3 bg-primary/10 rounded-lg">
                   <CarIcon className="h-6 w-6 text-primary" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <p className="text-sm text-muted-foreground">Total Spent</p>
-                  <p className="text-2xl font-bold">{formatPrice(stats.totalSpent)}</p>
+                  <p className="text-xl font-bold truncate">{formatPrice(stats.totalSpent)}</p>
                 </div>
               </div>
             </CardContent>
